@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KwyttoUtilityITM", "KwyttoUtilityITM\KwyttoUtilityITM.csproj", "{27C920F8-F40F-4D56-0601-9C9025ED0A0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImprovedTransportManager", "ImprovedTransportManager\ImprovedTransportManager.csproj", "{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27C920F8-F40F-4D56-0601-9C9025ED0A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27C920F8-F40F-4D56-0601-9C9025ED0A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27C920F8-F40F-4D56-0601-9C9025ED0A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27C920F8-F40F-4D56-0601-9C9025ED0A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD00E727-56D0-431F-8D5E-A91B8CD9D3A3}
+	EndGlobalSection
+EndGlobal

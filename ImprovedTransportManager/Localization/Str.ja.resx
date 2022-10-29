@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="root_modDescription" xml:space="preserve">
+    <value>複数の車両スキンが追加や選択が可能です</value>
+  </data>
+  <data name="VS_MODELSELECT" xml:space="preserve">
+    <value>モデルを選択</value>
+  </data>
+  <data name="VS_THEREARENOSKINS" xml:space="preserve">
+    <value>この車両モデルにスキンがロードされていません</value>
+  </data>
+  <data name="VS_CREATENEWSKIN" xml:space="preserve">
+    <value>新しいスキンを作成</value>
+  </data>
+  <data name="VS_CREATESKIN_MESSAGE" xml:space="preserve">
+    <value>新しいスキン名を入力:</value>
+  </data>
+  <data name="VS_CREATESKIN_ERROR_ALREADYEXISTS" xml:space="preserve">
+    <value>&lt;color=yellow&gt;既に同じスキン名があります！&lt;/color&gt;</value>
+  </data>
+  <data name="VS_RELOADALLSKINS" xml:space="preserve">
+    <value>全てのスキンを再読み込み</value>
+  </data>
+  <data name="VS_RELOADASSETSKINS" xml:space="preserve">
+    <value>現在のアセットから全てのスキンを再読み込み</value>
+  </data>
+  <data name="VS_ACTIVERULESONLY" xml:space="preserve">
+    <value>1つ以上のスキンを持つアセットをフィルター</value>
+  </data>
+  <data name="VS_EXPORTTOASSET_TITLE" xml:space="preserve">
+    <value>共有したスキンをエクスポートしてワークショップに公開</value>
+  </data>
+  <data name="VS_EXPORTTOASSET_MSG" xml:space="preserve">
+    <value>ワークショップ用で既にエクスポートした、スキンを全て消去しますか？
+同じスキン名は上書きされるので注意ください。   </value>
+  </data>
+  <data name="VS_EXPORTASSET" xml:space="preserve">
+    <value>ワークショップに共有してエクスポート</value>
+  </data>
+  <data name="VS_EXPORTTOASSET_MSGSUC" xml:space="preserve">
+    <value>エクスポートしたファイルは、正常にアップロードされました！</value>
+  </data>
+  <data name="VS_VIEWFILES" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
+  <data name="VS_SOURCECOLOR_LEGEND" xml:space="preserve">
+    <value>スキンの凡例: &lt;color=gray&gt;オリジナル&lt;/color&gt; &lt;color=green&gt;ワークショップ/準備中&lt;/color&gt; &lt;color=yellow&gt;共有フォルダ&lt;/color&gt;</value>
+  </data>
+  <data name="VS_CREATESKIN_MSGSUC" xml:space="preserve">
+    <value>スキンファイルを作成しました！
+フォルダ内のファイルを確認や編集をして、ゲーム内でリロードすれば変更が確認可能です。   </value>
+  </data>
+  <data name="VS_USINGSAVEGAMECONFIG" xml:space="preserve">
+    <value>セーブゲームの設定を使用</value>
+  </data>
+  <data name="VS_USINGSHAREDCONFIG" xml:space="preserve">
+    <value>共有の設定を使用</value>
+  </data>
+  <data name="VS_EXPORTASSHARED" xml:space="preserve">
+    <value>現在の共有にエクスポート</value>
+  </data>
+  <data name="VS_DISCARDSAVEGAME" xml:space="preserve">
+    <value>破棄して共有で使用</value>
+  </data>
+  <data name="VS_DEFAULTSNOTSAVED" xml:space="preserve">
+    <value>&lt;color=red&gt;デフォルトの選択で、有効なスキンの保存がありません！&lt;/color&gt;</value>
+  </data>
+  <data name="VS_DEFAULTSSAVED" xml:space="preserve">
+    <value>デフォルトで有効なスキンは、最新のファイルです。</value>
+  </data>
+  <data name="VS_SAVESKINENABLESELECTION" xml:space="preserve">
+    <value>デフォルトで有効なスキンを保存</value>
+  </data>
+  <data name="VS_DISCARDCHANGES" xml:space="preserve">
+    <value>変更を破棄</value>
+  </data>
+  <data name="vs_forceSkinInCurrentSelectedVehicle" xml:space="preserve">
+    <value>現在、選択中の車両にスキンを強制的に適用</value>
+  </data>
+</root>
