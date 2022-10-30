@@ -10,8 +10,8 @@ namespace ImprovedTransportManager.TransportSystems
 {
     public static class TransportSystemTypeExtensions
     {
-        public const int ROLL_TRANSPORT_TYPE = 19;
-        public const int ROLL_VEHICLE_TYPE_NTH_BIT = 14;
+        public const int ROLL_TRANSPORT_TYPE = 20;
+        public const int ROLL_VEHICLE_TYPE_NTH_BIT = 15;
         public const int ROLL_SUBSERVICE = 8;
         public const int ROLL_CITY_LEVELMASK = 3;
         public const int ROLL_INTERCITY_LEVEL = 0;

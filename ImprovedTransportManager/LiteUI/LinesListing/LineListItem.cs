@@ -20,6 +20,7 @@ namespace ImprovedTransportManager.UI
         }
         public Func<string> LineIdentifier { get; private set; }
         public Func<ushort> LineInternalSequentialNumber { get; private set; }
+        public Func<bool> IsVisible { get; private set; }
         public Color LineColor
         {
             get => TransportManager.instance.GetLineColor(m_id.TransportLine);
@@ -54,7 +55,7 @@ namespace ImprovedTransportManager.UI
                 m_type = TransportSystemTypeExtensions.FromLineId(lineID, false),
                 LineIdentifier = () => tlBuff[lineID].m_lineNumber.ToString(),
                 LineInternalSequentialNumber = () => tlBuff[lineID].m_lineNumber,
-
+                IsVisible = () => (tlBuff[lineID].m_flags & TransportLine.Flags.Hidden) == 0
             };
         }
 
@@ -117,6 +118,23 @@ namespace ImprovedTransportManager.UI
                 });
 
             }
+        }
+
+
+        public void ChangeLineVisibility(bool r)
+        {
+            Singleton<SimulationManager>.instance.AddAction(() =>
+            {
+                if (r)
+                {
+                    Singleton<TransportManager>.instance.m_lines.m_buffer[m_id.TransportLine].m_flags &= ~TransportLine.Flags.Hidden;
+                }
+                else
+                {
+                    Singleton<TransportManager>.instance.m_lines.m_buffer[m_id.TransportLine].m_flags |= TransportLine.Flags.Hidden;
+                }
+            });
+
         }
     }
 }

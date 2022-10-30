@@ -79,6 +79,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines in the type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}.
+        /// </summary>
+        internal static string itm_linesListingWindow_footerFormat {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_footerFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Line Name.
         /// </summary>
         internal static string itm_linesListingWindow_nameColumnTitle {
@@ -102,6 +111,15 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_linesListingWindow_stopsColumnTitle {
             get {
                 return ResourceManager.GetString("itm_linesListingWindow_stopsColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a There are no lines in this city!.
+        /// </summary>
+        internal static string itm_linesListingWindow_thereAreNoLinesInCity {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_thereAreNoLinesInCity", resourceCulture);
             }
         }
         
