@@ -61,11 +61,65 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Balance.
+        /// </summary>
+        internal static string itm_linesListingWindow_balanceColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_balanceColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Bdgt..
+        /// </summary>
+        internal static string itm_linesListingWindow_budgetColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_budgetColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Name.
+        /// </summary>
+        internal static string itm_linesListingWindow_nameColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_nameColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pass..
+        /// </summary>
+        internal static string itm_linesListingWindow_passengersColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_passengersColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Stops.
+        /// </summary>
+        internal static string itm_linesListingWindow_stopsColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_stopsColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Public Transport Lines.
         /// </summary>
         internal static string itm_linesListingWindow_tilte {
             get {
                 return ResourceManager.GetString("itm_linesListingWindow_tilte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Veh..
+        /// </summary>
+        internal static string itm_linesListingWindow_vehiclesColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_vehiclesColumnTitle", resourceCulture);
             }
         }
         
