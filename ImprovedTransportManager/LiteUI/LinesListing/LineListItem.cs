@@ -1,4 +1,5 @@
 ﻿using ColossalFramework;
+using ColossalFramework.UI;
 using ImprovedTransportManager.TransportSystems;
 using Kwytto.Utils;
 using System;
@@ -135,6 +136,26 @@ namespace ImprovedTransportManager.UI
                 }
             });
 
+        }
+
+        public void GoTo()
+        {
+            Vector3 position = Singleton<NetManager>.instance.m_nodes.m_buffer[Singleton<TransportManager>.instance.m_lines.m_buffer[m_id.TransportLine].m_stops].m_position;
+            WorldInfoPanel.Show<PublicTransportWorldInfoPanel>(position, m_id);
+        }
+
+        public void Delete()
+        {
+            ConfirmPanel.ShowModal("CONFIRM_LINEDELETE", delegate (UIComponent comp, int ret)
+            {
+                if (ret == 1)
+                {
+                    Singleton<SimulationManager>.instance.AddAction(delegate
+                    {
+                        Singleton<TransportManager>.instance.ReleaseLine(m_id.TransportLine);
+                    });
+                }
+            });
         }
     }
 }

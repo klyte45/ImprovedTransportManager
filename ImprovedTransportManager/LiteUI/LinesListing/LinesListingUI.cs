@@ -126,8 +126,8 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.m_vehiclesTarget:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_lineFinancesBalance:C}", m_HeaderLineStyle, GUILayout.Width(80));
-                        GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => { }, size: 20);
-                        GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => { }, size: 20, style: m_redButton);
+                        GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20);
+                        GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
                     }
                     if (Event.current.type == EventType.Repaint)
                     {
