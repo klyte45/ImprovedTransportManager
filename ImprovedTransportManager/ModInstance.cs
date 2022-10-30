@@ -1,5 +1,6 @@
 ﻿extern alias UUI;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.UI;
 using Kwytto.Interfaces;
 using Kwytto.Utils;
 using System.Collections.Generic;
@@ -26,7 +27,12 @@ namespace ImprovedTransportManager
         private IUUIButtonContainerPlaceholder[] cachedUUI;
         public override IUUIButtonContainerPlaceholder[] UUIButtons => cachedUUI ?? (cachedUUI = new IUUIButtonContainerPlaceholder[]
         {
-
+             new UUIWindowButtonContainerPlaceholder(
+             buttonName: $"{SimpleName}",
+             tooltip: $"{SimpleName}",
+             iconPath: "ModIcon",
+             windowGetter: ()=>LinesListingUI.Instance
+             )
         }.Where(x => x != null).ToArray());
 
         protected override Dictionary<ulong, string> IncompatibleModList { get; } = new Dictionary<ulong, string>
@@ -36,8 +42,8 @@ namespace ImprovedTransportManager
 
         protected override List<string> IncompatibleDllModList { get; } = new List<string>
         {
-            "KlyteTransportLinesManager",
-            "TransportLinesManager",
+            //"KlyteTransportLinesManager",
+            //"TransportLinesManager",
         };
 
     }

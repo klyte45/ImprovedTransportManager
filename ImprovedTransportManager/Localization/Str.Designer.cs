@@ -39,7 +39,7 @@ namespace ImprovedTransportManager.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TransportLinesManager.Localization.Str", typeof(Str).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ImprovedTransportManager.Localization.Str", typeof(Str).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace ImprovedTransportManager.Localization {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Public Transport Lines.
+        /// </summary>
+        internal static string itm_linesListingWindow_tilte {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_tilte", resourceCulture);
             }
         }
         
