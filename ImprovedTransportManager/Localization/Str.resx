@@ -126,7 +126,7 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>Lines in the type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>

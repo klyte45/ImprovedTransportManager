@@ -23,6 +23,8 @@ namespace ImprovedTransportManager.UI
             Init(Str.itm_linesListingWindow_tilte, new Rect(128, 128, 680, 420), resizable: true, minSize: new Vector2(440, 260));
             m_eyeSlashIcon.SetPixels(m_eyeSlashIcon.GetPixels().Select(x => new Color(x.r * .75f, 0, 0, x.a)).ToArray());
             m_eyeSlashIcon.Apply();
+            m_picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
+            m_picker.Visible = false;
             Visible = false;
         }
 
@@ -34,6 +36,8 @@ namespace ImprovedTransportManager.UI
         private string[] m_availableTypesNames;
         private bool m_invertOrder = false;
         private Vector2 m_scrollLines;
+        private GUIColorPicker m_picker;
+        private InstanceID m_currentLineColorPicker;
 
         private GUIStyle m_LineBasicLabelStyle;
         private GUIStyle m_HeaderLineStyle;
@@ -115,7 +119,15 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label("", m_LineBasicLabelStyle);
                         var rect = GUILayoutUtility.GetLastRect();
                         GUI.DrawTexture(rect, line.m_uiTextureColor);
-                        GUI.Label(rect, $"<color=#{line.LineColor.ContrastColor().ToRGB()}>{line.LineIdentifier()}</color>", m_LineBasicLabelStyle);
+                        if (GUI.Button(rect, $"<color=#{line.LineColor.ContrastColor().ToRGB()}>{line.LineIdentifier()}</color>", m_LineBasicLabelStyle))
+                        {
+                            m_currentLineColorPicker = line.m_id;
+                            m_picker.Show("itm_linesWindow_clrPicker", line.LineColor, -1);
+                        }
+                        else if (m_currentLineColorPicker == line.m_id && m_picker.Visible && m_picker.SelectedColor != line.LineColor)
+                        {
+                            line.LineColor = m_picker.SelectedColor;
+                        }
                         var oldName = line.LineName;
                         if (GUILayout.TextField(oldName, GUILayout.Width(lineNameSize)) is string str && str != oldName)
                         {
@@ -125,7 +137,7 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label($"{line.m_budget:N0}%", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.m_vehiclesTarget:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_lineFinancesBalance:C}", m_HeaderLineStyle, GUILayout.Width(80));
+                        GUILayout.Label($"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat)}", m_HeaderLineStyle, GUILayout.Width(80));
                         GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20);
                         GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
                     }

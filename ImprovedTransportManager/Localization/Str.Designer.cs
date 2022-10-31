@@ -79,7 +79,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines in the type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}.
         /// </summary>
         internal static string itm_linesListingWindow_footerFormat {
             get {
