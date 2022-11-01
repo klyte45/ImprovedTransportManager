@@ -42,8 +42,8 @@ namespace ImprovedTransportManager
 
         protected override List<string> IncompatibleDllModList { get; } = new List<string>
         {
-            //"KlyteTransportLinesManager",
-            //"TransportLinesManager",
+            "KlyteTransportLinesManager",
+            "TransportLinesManager",
         };
 
     }

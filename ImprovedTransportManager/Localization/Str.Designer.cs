@@ -61,6 +61,87 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Day.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_Day {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Day.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_Day_SHORT {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_Day_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Day and Night.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_DayNight {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_DayNight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a D &amp; N.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_DayNight_SHORT {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_DayNight_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Night.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_Night {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_Night", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Night.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_Night_SHORT {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_Night_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Disabled.
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_None {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Disab..
+        /// </summary>
+        internal static string itm_Enum__LineActivityOptions_None_SHORT {
+            get {
+                return ResourceManager.GetString("itm_Enum__LineActivityOptions_None_SHORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Activ..
+        /// </summary>
+        internal static string itm_linesListingWindow_activityColumnTitle {
+            get {
+                return ResourceManager.GetString("itm_linesListingWindow_activityColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Balance.
         /// </summary>
         internal static string itm_linesListingWindow_balanceColumnTitle {
@@ -138,6 +219,69 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_linesListingWindow_vehiclesColumnTitle {
             get {
                 return ResourceManager.GetString("itm_linesListingWindow_vehiclesColumnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Day:.
+        /// </summary>
+        internal static string itm_lineView_dayBudgetTitle {
+            get {
+                return ResourceManager.GetString("itm_lineView_dayBudgetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Delete line.
+        /// </summary>
+        internal static string itm_lineView_deleteLine {
+            get {
+                return ResourceManager.GetString("itm_lineView_deleteLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Activity.
+        /// </summary>
+        internal static string itm_lineView_lineActivity {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Budget.
+        /// </summary>
+        internal static string itm_lineView_lineBudget {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Color.
+        /// </summary>
+        internal static string itm_lineView_lineColor {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Internal line number.
+        /// </summary>
+        internal static string itm_lineView_lineInternalNumber {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineInternalNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Night:.
+        /// </summary>
+        internal static string itm_lineView_nightBudgetTitle {
+            get {
+                return ResourceManager.GetString("itm_lineView_nightBudgetTitle", resourceCulture);
             }
         }
         

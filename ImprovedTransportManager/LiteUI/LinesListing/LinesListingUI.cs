@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
@@ -15,6 +16,7 @@ namespace ImprovedTransportManager.UI
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
+        protected override float FontSizeMultiplier => .9f;
         public static LinesListingUI Instance { get; private set; }
         public override void Awake()
         {
@@ -29,7 +31,7 @@ namespace ImprovedTransportManager.UI
         }
 
         private uint m_lastUsedCount = 0;
-        private readonly Dictionary<InstanceID, LineListItem> m_lines = new Dictionary<InstanceID, LineListItem>();
+        private readonly Dictionary<InstanceID, LineData> m_lines = new Dictionary<InstanceID, LineData>();
         private SortOrder m_currentOrder = SortOrder.Id;
         private TransportSystemType m_currentTab = TransportSystemType.BUS;
         private TransportSystemType[] m_availableTypes;
@@ -38,6 +40,7 @@ namespace ImprovedTransportManager.UI
         private Vector2 m_scrollLines;
         private GUIColorPicker m_picker;
         private InstanceID m_currentLineColorPicker;
+        private string[] m_lineActivityOptionsNames;
 
         private GUIStyle m_LineBasicLabelStyle;
         private GUIStyle m_HeaderLineStyle;
@@ -60,7 +63,7 @@ namespace ImprovedTransportManager.UI
                 {
                     if ((buff[lineID].m_flags & (TransportLine.Flags.Created | TransportLine.Flags.Temporary)) == TransportLine.Flags.Created)
                     {
-                        m_lines[new InstanceID { TransportLine = lineID }] = LineListItem.FromLine(lineID);
+                        m_lines[new InstanceID { TransportLine = lineID }] = LineData.FromLine(lineID);
                     }
                 }
 
@@ -84,7 +87,7 @@ namespace ImprovedTransportManager.UI
                 m_currentTab = m_availableTypes[sel];
             }
             var currentView = GetCurrentView();
-            var lineNameSize = size.x - 400;
+            var lineNameSize = size.x - 480;
             var anyVisible = currentView.Any(x => x.IsVisible());
             using (new GUILayout.HorizontalScope(GUILayout.Height(20)))
             {
@@ -100,6 +103,7 @@ namespace ImprovedTransportManager.UI
                 HeaderButton(Str.itm_linesListingWindow_vehiclesColumnTitle, 40, SortOrder.Vehicles);
                 HeaderButton(Str.itm_linesListingWindow_passengersColumnTitle, 40, SortOrder.Passengers);
                 HeaderButton(Str.itm_linesListingWindow_balanceColumnTitle, 80, SortOrder.Balance);
+                HeaderButton(Str.itm_linesListingWindow_activityColumnTitle, 80, SortOrder.Acitivty);
                 GUILayout.Space(40);
             }
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollLines))
@@ -134,16 +138,20 @@ namespace ImprovedTransportManager.UI
                             line.LineName = oldName;
                         }
                         GUILayout.Label($"{line.m_stopsCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_budget:N0}%", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.m_vehiclesTarget:N0}", m_LineBasicLabelStyle);
+                        GUILayout.Label($"{line.BudgetEffectiveNow:N0}%", m_LineBasicLabelStyle);
+                        GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.VehiclesTargetNow:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat)}", m_HeaderLineStyle, GUILayout.Width(80));
+                        if (GUIComboBox.Button((int)line.LineActivity, m_lineActivityOptionsNames, $"{line.m_id}", this, 80) is int newIdx && newIdx != (int)line.LineActivity)
+                        {
+                            line.LineActivity = (LineActivityOptions)newIdx;
+                        }
                         GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20);
                         GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
                     }
                     if (Event.current.type == EventType.Repaint)
                     {
-                        if (GUILayoutUtility.GetLastRect().Contains(GUIUtility.ScreenToGUIPoint(UIScaler.MousePosition)))
+                        if (GUILayoutUtility.GetLastRect().Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
                         {
                             line.OnMouseEnter();
                         }
@@ -181,9 +189,9 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        private IEnumerable<LineListItem> GetCurrentView()
+        private IEnumerable<LineData> GetCurrentView()
         {
-            Func<LineListItem, object> orderFn = null;
+            Func<LineData, object> orderFn = null;
             switch (m_currentOrder)
             {
                 case SortOrder.Id:
@@ -196,7 +204,7 @@ namespace ImprovedTransportManager.UI
                     orderFn = (x) => x.m_stopsCount;
                     break;
                 case SortOrder.Budget:
-                    orderFn = (x) => x.m_budget;
+                    orderFn = (x) => x.BudgetEffectiveNow;
                     break;
                 case SortOrder.Vehicles:
                     orderFn = (x) => x.m_vehiclesCount;
@@ -206,6 +214,9 @@ namespace ImprovedTransportManager.UI
                     break;
                 case SortOrder.Balance:
                     orderFn = (x) => x.m_lineFinancesBalance;
+                    break;
+                case SortOrder.Acitivty:
+                    orderFn = (x) => x.LineActivity;
                     break;
             }
             var baseList = m_lines.Values.Where(x => x.m_type == m_currentTab);
@@ -299,6 +310,7 @@ namespace ImprovedTransportManager.UI
         protected override void OnWindowOpened()
         {
             base.OnWindowOpened();
+            m_lineActivityOptionsNames = Enum.GetValues(typeof(LineActivityOptions)).Cast<LineActivityOptions>().Select(x => x.ValueToI18n("SHORT")).ToArray();
         }
         protected override void OnWindowClosed()
         {
@@ -319,7 +331,8 @@ namespace ImprovedTransportManager.UI
             Budget,
             Vehicles,
             Passengers,
-            Balance
+            Balance,
+            Acitivty
         }
     }
 }

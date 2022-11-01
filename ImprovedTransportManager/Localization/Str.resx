@@ -152,7 +152,56 @@
     <value>Veh.</value>
     <comment>Requires to be VERY short</comment>
   </data>
+  <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
+    <value>Day:</value>
+  </data>
+  <data name="itm_lineView_deleteLine" xml:space="preserve">
+    <value>Delete line</value>
+  </data>
+  <data name="itm_lineView_lineActivity" xml:space="preserve">
+    <value>Line Activity</value>
+  </data>
+  <data name="itm_lineView_lineBudget" xml:space="preserve">
+    <value>Line Budget</value>
+  </data>
+  <data name="itm_lineView_lineColor" xml:space="preserve">
+    <value>Line Color</value>
+  </data>
+  <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
+    <value>Internal line number</value>
+  </data>
+  <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
+    <value>Night:</value>
+  </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>Extends the public transport lines management in Cities: Skylines</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
+    <value>Day and Night</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
+    <value>Disab.</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
+    <value>Night</value>
+  </data>
+  <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
+    <value>D &amp; N</value>
+  </data>
+  <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
+    <value>Activ.</value>
+    <comment>Requires to be VERY short</comment>
   </data>
 </root>

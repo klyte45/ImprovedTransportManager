@@ -12,6 +12,7 @@ namespace ImprovedTransportManager
             base.StartActions();
             GameObjectUtils.CreateElement<LinesListingUI>(UIView.GetAView().gameObject.transform, "LinesListingUI");
 
+            _ = ITMLineDataWindow.Instance;
         }
     }
 }

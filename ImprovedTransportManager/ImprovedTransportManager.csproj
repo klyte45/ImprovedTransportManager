@@ -66,19 +66,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Localization\Str.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Str.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Localization\Str.*.resx" />
     <EmbeddedResource Include="Localization\Str.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Str.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Localization\Str.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Str.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="UI\VersionNotes.txt" />
-    <Compile Include="**\*.cs"  Exclude="Localization\Str.Designer.cs"/>
+    <Compile Include="**\*.cs" Exclude="Localization\Str.Designer.cs" />
     <EmbeddedResource Include="UI\**\*.png" />
   </ItemGroup>
   <ItemGroup>
