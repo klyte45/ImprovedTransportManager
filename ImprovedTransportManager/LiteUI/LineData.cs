@@ -1,5 +1,6 @@
 ﻿using ColossalFramework;
 using ImprovedTransportManager.TransportSystems;
+using ImprovedTransportManager.Utility;
 using Kwytto.Utils;
 using System;
 using UnityEngine;
@@ -24,7 +25,7 @@ namespace ImprovedTransportManager.UI
         public string LineName
         {
             get => TransportManager.instance.GetLineName(m_id.TransportLine);
-            set => ModInstance.Controller.StartCoroutine(TransportManager.instance.SetLineName(m_id.TransportLine, value));
+            set => SimulationManager.instance.AddAction(TransportManager.instance.SetLineName(m_id.TransportLine, value));
         }
         public Func<string> LineIdentifier { get; private set; }
         public Func<ushort> LineInternalSequentialNumber { get; private set; }
@@ -37,12 +38,13 @@ namespace ImprovedTransportManager.UI
             {
                 if (value.ToRGB() != m_uiTextureColor.GetPixel(0, 0).ToRGB())
                 {
-                    ModInstance.Controller.StartCoroutine(TransportManager.instance.SetLineColor(m_id.TransportLine, value));
+                    SimulationManager.instance.AddAction(TransportManager.instance.SetLineColor(m_id.TransportLine, value));
                 }
             }
         }
 
         public bool IsHovered { get; private set; }
+        public int FreeStops { get; private set; }
         public int BudgetEffectiveNow { get; private set; }
         public int BudgetEffectiveDay { get; private set; }
         public int BudgetEffectiveNight { get; private set; }
@@ -58,16 +60,35 @@ namespace ImprovedTransportManager.UI
                 TransportManager.instance.m_lines.m_buffer[m_id.TransportLine].m_budget = (ushort)value;
             }
         }
+        public int TicketPrice
+        {
+            get => m_ticketPrice;
+            set
+            {
+                m_ticketPrice = value;
+                TransportManager.instance.m_lines.m_buffer[m_id.TransportLine].m_ticketPrice = (ushort)value;
+            }
+        }
         public int VehiclesTargetNow { get; private set; }
         public int VehiclesTargetDay { get; private set; }
         public int VehiclesTargetNight { get; private set; }
+        public int PassengersChild { get; private set; }
+        public int PassengersTeen { get; private set; }
+        public int PassengersYoung { get; private set; }
+        public int PassengersAdult { get; private set; }
+        public int PassengersSenior { get; private set; }
+        public int PassengersCarOwning { get; private set; }
+        public int TripsSaved { get; private set; }
+        public bool Broken { get; private set; }
 
         public int m_stopsCount;
         public uint m_passengersResCount;
         public uint m_passengersTouCount;
         private int m_budgetSelf;
+        private int m_ticketPrice;
         public int m_vehiclesCount;
         public float m_lineFinancesBalance;
+        public float m_lengthKm;
         public readonly Texture2D m_uiTextureColor = TextureUtils.New(1, 1);
 
 
@@ -99,7 +120,35 @@ namespace ImprovedTransportManager.UI
                 m_stopsCount = refLine.CountStops(m_id.TransportLine);
                 m_passengersResCount = refLine.m_passengers.m_residentPassengers.m_averageCount;
                 m_passengersTouCount = refLine.m_passengers.m_touristPassengers.m_averageCount;
+
+
+                PassengersChild = (int)refLine.m_passengers.m_childPassengers.m_averageCount;
+                PassengersTeen = (int)refLine.m_passengers.m_teenPassengers.m_averageCount;
+                PassengersYoung = (int)refLine.m_passengers.m_youngPassengers.m_averageCount;
+                PassengersAdult = (int)refLine.m_passengers.m_adultPassengers.m_averageCount;
+                PassengersSenior = (int)refLine.m_passengers.m_seniorPassengers.m_averageCount;
+                PassengersCarOwning = (int)refLine.m_passengers.m_carOwningPassengers.m_averageCount;
+
+                long probabilityUsingCar = 0;
+                var totalCountPsg = m_passengersResCount + m_passengersTouCount;
+                if (totalCountPsg != 0)
+                {
+                    probabilityUsingCar += PassengersTeen * 5;
+                    probabilityUsingCar += PassengersYoung * (((15 * m_passengersResCount) + (20 * m_passengersTouCount) + (totalCountPsg >> 1)) / totalCountPsg);
+                    probabilityUsingCar += PassengersAdult * (((20 * m_passengersResCount) + (20 * m_passengersTouCount) + (totalCountPsg >> 1)) / totalCountPsg);
+                    probabilityUsingCar += PassengersSenior * (((10 * m_passengersResCount) + (20 * m_passengersTouCount) + (totalCountPsg >> 1)) / totalCountPsg);
+                }
+                if (probabilityUsingCar > 0)
+                {
+                    TripsSaved = Mathf.Clamp((int)(((PassengersCarOwning * 10000L) + (probabilityUsingCar >> 1)) / probabilityUsingCar), 0, 100);
+                }
+                else
+                {
+                    TripsSaved = 0;
+                }
+
                 m_budgetSelf = refLine.m_budget;
+                m_ticketPrice = refLine.m_ticketPrice;
                 BudgetCategoryNow = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class);
                 BudgetCategoryDay = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class, false);
                 BudgetCategoryNight = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class, true);
@@ -110,7 +159,25 @@ namespace ImprovedTransportManager.UI
                 VehiclesTargetNow = TEMP_CalculateTargetVehicles(BudgetEffectiveNow, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
                 VehiclesTargetDay = TEMP_CalculateTargetVehicles(BudgetEffectiveDay, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
                 VehiclesTargetNight = TEMP_CalculateTargetVehicles(BudgetEffectiveNight, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
+                m_lengthKm = refLine.m_totalLength;
                 m_lineFinancesBalance = 0f; //ATUALIZAR COM O SALDO!
+
+                Broken = (refLine.m_flags & TransportLine.Flags.Complete) == 0;
+
+                FreeStops = 0;
+                var bufferN = NetManager.instance.m_nodes.m_buffer;
+                for (int i = 0; i < ushort.MaxValue; i++)
+                {
+                    var nextStop = refLine.GetStop(i);
+                    if (nextStop == 0)
+                    {
+                        break;
+                    }
+                    if (bufferN[nextStop].m_position.DistrictTariffMultiplierHere() == 0)
+                    {
+                        FreeStops++;
+                    }
+                }
                 refLine.GetActive(out var day, out var night);
                 m_lineActivity = (day ? LineActivityOptions.Day : 0) | (night ? LineActivityOptions.Night : 0);
             }

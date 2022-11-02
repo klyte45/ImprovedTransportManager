@@ -162,7 +162,7 @@
     <value>Line Activity</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>Line Budget</value>
+    <value>Line Budget (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
     <value>Line Color</value>
@@ -203,5 +203,44 @@
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
     <value>Activ.</value>
     <comment>Requires to be VERY short</comment>
+  </data>
+  <data name="itm_lineView_adultLbl" xml:space="preserve">
+    <value>Adult</value>
+  </data>
+  <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
+    <value>Budget View</value>
+  </data>
+  <data name="itm_lineView_childrenLbl" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="itm_lineView_distanceStops" xml:space="preserve">
+    <value>{0:N1}m - {1} Stops - {2}% Trips saved</value>
+  </data>
+  <data name="itm_lineView_linesListBtn" xml:space="preserve">
+    <value>Lines Overview</value>
+  </data>
+  <data name="itm_lineView_residentTourists" xml:space="preserve">
+    <value>{0:N0} Residents / {1:N0} Tourists</value>
+  </data>
+  <data name="itm_lineView_seniorLbl" xml:space="preserve">
+    <value>Senior</value>
+  </data>
+  <data name="itm_lineView_teenLbl" xml:space="preserve">
+    <value>Teen</value>
+  </data>
+  <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
+    <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
+    <value>&lt;color=red&gt;This line is broken!&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineView_ticketPrice" xml:space="preserve">
+    <value>Ticket Price (in cents)</value>
+  </data>
+  <data name="itm_lineView_weeklyDataTitle" xml:space="preserve">
+    <value>Weekly report data</value>
+  </data>
+  <data name="itm_lineView_youngLbl" xml:space="preserve">
+    <value>Young</value>
   </data>
 </root>

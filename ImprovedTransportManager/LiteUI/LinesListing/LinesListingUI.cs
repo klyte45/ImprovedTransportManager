@@ -46,10 +46,10 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_HeaderLineStyle;
         private GUIStyle m_LineBasicTextStyle;
         private GUIStyle m_redButton;
-        private readonly Texture2D m_iconGoToLine = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Right);
-        private readonly Texture2D m_deleteIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Delete);
-        private readonly Texture2D m_eyeIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Eye);
-        private readonly Texture2D m_eyeSlashIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_EyeSlash);
+        private readonly Texture2D m_iconGoToLine    = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Right);
+        private readonly Texture2D m_deleteIcon      = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Delete);
+        private readonly Texture2D m_eyeIcon         = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Eye);
+        private readonly Texture2D m_eyeSlashIcon    = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_EyeSlash);
 
         protected override void DrawWindow(Vector2 size)
         {

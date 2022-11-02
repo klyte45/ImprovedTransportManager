@@ -223,6 +223,33 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Adult.
+        /// </summary>
+        internal static string itm_lineView_adultLbl {
+            get {
+                return ResourceManager.GetString("itm_lineView_adultLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Budget View.
+        /// </summary>
+        internal static string itm_lineView_budgetViewBtn {
+            get {
+                return ResourceManager.GetString("itm_lineView_budgetViewBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Children.
+        /// </summary>
+        internal static string itm_lineView_childrenLbl {
+            get {
+                return ResourceManager.GetString("itm_lineView_childrenLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Day:.
         /// </summary>
         internal static string itm_lineView_dayBudgetTitle {
@@ -241,6 +268,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N1}m - {1} Stops - {2}% Trips saved.
+        /// </summary>
+        internal static string itm_lineView_distanceStops {
+            get {
+                return ResourceManager.GetString("itm_lineView_distanceStops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Line Activity.
         /// </summary>
         internal static string itm_lineView_lineActivity {
@@ -250,7 +286,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Budget.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line Budget (%).
         /// </summary>
         internal static string itm_lineView_lineBudget {
             get {
@@ -277,11 +313,92 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines Overview.
+        /// </summary>
+        internal static string itm_lineView_linesListBtn {
+            get {
+                return ResourceManager.GetString("itm_lineView_linesListBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Night:.
         /// </summary>
         internal static string itm_lineView_nightBudgetTitle {
             get {
                 return ResourceManager.GetString("itm_lineView_nightBudgetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N0} Residents / {1:N0} Tourists.
+        /// </summary>
+        internal static string itm_lineView_residentTourists {
+            get {
+                return ResourceManager.GetString("itm_lineView_residentTourists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Senior.
+        /// </summary>
+        internal static string itm_lineView_seniorLbl {
+            get {
+                return ResourceManager.GetString("itm_lineView_seniorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Teen.
+        /// </summary>
+        internal static string itm_lineView_teenLbl {
+            get {
+                return ResourceManager.GetString("itm_lineView_teenLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=yellow&gt;{0} of {1} stops of this line aren&apos;t charging fees due stops&apos; district policies. The line might not have any earnings!&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_lineView_thereAreFreeStops {
+            get {
+                return ResourceManager.GetString("itm_lineView_thereAreFreeStops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=red&gt;This line is broken!&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_lineView_thisLineIsBroken {
+            get {
+                return ResourceManager.GetString("itm_lineView_thisLineIsBroken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ticket Price (in cents).
+        /// </summary>
+        internal static string itm_lineView_ticketPrice {
+            get {
+                return ResourceManager.GetString("itm_lineView_ticketPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Weekly report data.
+        /// </summary>
+        internal static string itm_lineView_weeklyDataTitle {
+            get {
+                return ResourceManager.GetString("itm_lineView_weeklyDataTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Young.
+        /// </summary>
+        internal static string itm_lineView_youngLbl {
+            get {
+                return ResourceManager.GetString("itm_lineView_youngLbl", resourceCulture);
             }
         }
         
