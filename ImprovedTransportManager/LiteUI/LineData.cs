@@ -80,6 +80,7 @@ namespace ImprovedTransportManager.UI
         public int PassengersCarOwning { get; private set; }
         public int TripsSaved { get; private set; }
         public bool Broken { get; private set; }
+        public Texture2D LineIcon => null;
 
         public int m_stopsCount;
         public uint m_passengersResCount;

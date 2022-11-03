@@ -33,6 +33,16 @@ namespace VehicleSkins.Localization
                         }
                     }
                     break;
+                case VehicleShowDataType v:
+                    switch (v)
+                    {
+                        case VehicleShowDataType.PassengerCapacity: return Str.itm_Enum__VehicleShowDataType_PassengerCapacity;
+                        case VehicleShowDataType.Identifier: return Str.itm_Enum__VehicleShowDataType_Identifier;
+                        case VehicleShowDataType.ProfitAllTime: return Str.itm_Enum__VehicleShowDataType_ProfitAllTime;
+                        case VehicleShowDataType.ProfitLastWeek: return Str.itm_Enum__VehicleShowDataType_ProfitLastWeek;
+                        case VehicleShowDataType.ProfitCurrentWeek: return Str.itm_Enum__VehicleShowDataType_ProfitCurrentWeek;
+                    }
+                    break;
             }
             return variable.ValueToI18nKwytto();
         }

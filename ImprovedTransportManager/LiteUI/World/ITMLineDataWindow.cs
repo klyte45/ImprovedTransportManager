@@ -39,6 +39,13 @@ namespace ImprovedTransportManager.UI
         private const string COLOR_ADULT = "44CCCC";
         private const string COLOR_SENIOR = "CC44CC";
 
+
+        private GUIStyle m_inlineBtnStyle;
+        private ushort m_currentLine;
+        private LineData m_currentLineData;
+        private GUIStyle m_rightTextLabel;
+        private GUIStyle m_centerTextLabel;
+
         public static ITMLineDataWindow Instance
         {
             get
@@ -161,14 +168,22 @@ namespace ImprovedTransportManager.UI
                         }
                     }
                     var position = GUILayoutUtility.GetLastRect().position + new Vector2(0, 3);
-                    float pixelsPerPassenger = height / (m_currentLineData.PassengersChild + m_currentLineData.PassengersTeen + m_currentLineData.PassengersYoung + m_currentLineData.PassengersAdult + m_currentLineData.PassengersSenior);
-                    float currentHeightStep = 0;
-                    float lastRectSize;
-                    GUI.DrawTexture(new Rect(position, new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersChild)), m_childTex);
-                    GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersTeen)), m_teenTex);
-                    GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersYoung)), m_youngTex);
-                    GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersAdult)), m_adultTex);
-                    GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersSenior)), m_seniorTex);
+                    var sumPassengers = m_currentLineData.PassengersChild + m_currentLineData.PassengersTeen + m_currentLineData.PassengersYoung + m_currentLineData.PassengersAdult + m_currentLineData.PassengersSenior;
+                    if (sumPassengers > 0)
+                    {
+                        float pixelsPerPassenger = height / sumPassengers;
+                        float currentHeightStep = 0;
+                        float lastRectSize;
+                        GUI.DrawTexture(new Rect(position, new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersChild)), m_childTex);
+                        GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersTeen)), m_teenTex);
+                        GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersYoung)), m_youngTex);
+                        GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersAdult)), m_adultTex);
+                        GUI.DrawTexture(new Rect(position + new Vector2(0, currentHeightStep += lastRectSize), new Vector2(100, lastRectSize = pixelsPerPassenger * m_currentLineData.PassengersSenior)), m_seniorTex);
+                    }
+                    else
+                    {
+                        GUI.DrawTexture(new Rect(position, new Vector2(100, height)), m_youngTex);
+                    }
 
                     GUILayout.FlexibleSpace();
                 }
@@ -228,16 +243,11 @@ namespace ImprovedTransportManager.UI
                 {
                     fixedHeight = 20 * ResolutionMultiplier,
                     fixedWidth = 20 * ResolutionMultiplier,
-                    padding = new RectOffset(0, 0, 0, 0),
+                    margin = new RectOffset(0, 0, 1, 1),
                 };
             }
         }
 
-        private GUIStyle m_inlineBtnStyle;
-        private ushort m_currentLine;
-        private LineData m_currentLineData;
-        private GUIStyle m_rightTextLabel;
-        private GUIStyle m_centerTextLabel;
 
         private void FixedUpdate()
         {

@@ -243,4 +243,49 @@
   <data name="itm_lineView_youngLbl" xml:space="preserve">
     <value>Young</value>
   </data>
+  <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
+    <value>Passengers/Capacity</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
+    <value>Profit (All Time)</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitLastWeek" xml:space="preserve">
+    <value>Profit (Last Period)</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
+    <value>Profit (Current Period)</value>
+  </data>
+  <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
+    <value>EAT:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
+    <value>EAT - Earnings all time</value>
+  </data>
+  <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
+    <value>ECP:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsCurrentPeriodAcronymLegend" xml:space="preserve">
+    <value>ECP - Earnings current period</value>
+  </data>
+  <data name="itm_lineMap_earningsLastPeriodAcronym" xml:space="preserve">
+    <value>ELP:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsLastPeriodAcronymLegend" xml:space="preserve">
+    <value>ELP - Earnings last period</value>
+  </data>
+  <data name="itm_lineMap_title" xml:space="preserve">
+    <value>Line stops map</value>
+  </data>
+  <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
+    <value>Vehicle data to show</value>
+  </data>
+  <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
+    <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
+  </data>
 </root>

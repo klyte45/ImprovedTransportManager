@@ -133,6 +133,132 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Identifier.
+        /// </summary>
+        internal static string itm_Enum__VehicleShowDataType_Identifier {
+            get {
+                return ResourceManager.GetString("itm_Enum__VehicleShowDataType_Identifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Passengers/Capacity.
+        /// </summary>
+        internal static string itm_Enum__VehicleShowDataType_PassengerCapacity {
+            get {
+                return ResourceManager.GetString("itm_Enum__VehicleShowDataType_PassengerCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Profit (All Time).
+        /// </summary>
+        internal static string itm_Enum__VehicleShowDataType_ProfitAllTime {
+            get {
+                return ResourceManager.GetString("itm_Enum__VehicleShowDataType_ProfitAllTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Profit (Current Period).
+        /// </summary>
+        internal static string itm_Enum__VehicleShowDataType_ProfitCurrentWeek {
+            get {
+                return ResourceManager.GetString("itm_Enum__VehicleShowDataType_ProfitCurrentWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Profit (Last Period).
+        /// </summary>
+        internal static string itm_Enum__VehicleShowDataType_ProfitLastWeek {
+            get {
+                return ResourceManager.GetString("itm_Enum__VehicleShowDataType_ProfitLastWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a EAT:.
+        /// </summary>
+        internal static string itm_lineMap_earningsAllTimeAcronym {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsAllTimeAcronym", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a EAT - Earnings all time.
+        /// </summary>
+        internal static string itm_lineMap_earningsAllTimeAcronymLegend {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsAllTimeAcronymLegend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a ECP:.
+        /// </summary>
+        internal static string itm_lineMap_earningsCurrentPeriodAcronym {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsCurrentPeriodAcronym", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a ECP - Earnings current period.
+        /// </summary>
+        internal static string itm_lineMap_earningsCurrentPeriodAcronymLegend {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsCurrentPeriodAcronymLegend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a ELP:.
+        /// </summary>
+        internal static string itm_lineMap_earningsLastPeriodAcronym {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsLastPeriodAcronym", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a ELP - Earnings last period.
+        /// </summary>
+        internal static string itm_lineMap_earningsLastPeriodAcronymLegend {
+            get {
+                return ResourceManager.GetString("itm_lineMap_earningsLastPeriodAcronymLegend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line stops map.
+        /// </summary>
+        internal static string itm_lineMap_title {
+            get {
+                return ResourceManager.GetString("itm_lineMap_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Vehicle data to show.
+        /// </summary>
+        internal static string itm_lineMap_vehicleDataToShow {
+            get {
+                return ResourceManager.GetString("itm_lineMap_vehicleDataToShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_lineMap_waitingTemplate {
+            get {
+                return ResourceManager.GetString("itm_lineMap_waitingTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Activ..
         /// </summary>
         internal static string itm_linesListingWindow_activityColumnTitle {

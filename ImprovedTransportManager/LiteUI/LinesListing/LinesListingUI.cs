@@ -1,4 +1,5 @@
 ﻿using ColossalFramework;
+using ColossalFramework.Globalization;
 using ColossalFramework.UI;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
@@ -46,10 +47,10 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_HeaderLineStyle;
         private GUIStyle m_LineBasicTextStyle;
         private GUIStyle m_redButton;
-        private readonly Texture2D m_iconGoToLine    = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Right);
-        private readonly Texture2D m_deleteIcon      = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Delete);
-        private readonly Texture2D m_eyeIcon         = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Eye);
-        private readonly Texture2D m_eyeSlashIcon    = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_EyeSlash);
+        private readonly Texture2D m_iconGoToLine = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Right);
+        private readonly Texture2D m_deleteIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Delete);
+        private readonly Texture2D m_eyeIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Eye);
+        private readonly Texture2D m_eyeSlashIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_EyeSlash);
 
         protected override void DrawWindow(Vector2 size)
         {
@@ -87,17 +88,18 @@ namespace ImprovedTransportManager.UI
                 m_currentTab = m_availableTypes[sel];
             }
             var currentView = GetCurrentView();
-            var lineNameSize = size.x - 480;
+            var lineNameSize = size.x - 440;
             var anyVisible = currentView.Any(x => x.IsVisible());
             using (new GUILayout.HorizontalScope(GUILayout.Height(20)))
             {
                 using (new GUILayout.VerticalScope(GUILayout.Width(20)))
                 {
-                    GUILayout.Space(10);
+                    GUILayout.FlexibleSpace();
                     GUIKwyttoCommons.SquareTextureButton(anyVisible ? m_eyeIcon : m_eyeSlashIcon, "", () => currentView.ForEach(line => line.ChangeLineVisibility(!anyVisible)), size: 20, style: m_HeaderLineStyle);
+                    GUILayout.FlexibleSpace();
                 }
                 HeaderButton("ID", 40, SortOrder.Id);
-                HeaderButton(Str.itm_linesListingWindow_nameColumnTitle, lineNameSize, SortOrder.Name);
+                HeaderButton(Str.itm_linesListingWindow_nameColumnTitle, lineNameSize + 5, SortOrder.Name);
                 HeaderButton(Str.itm_linesListingWindow_stopsColumnTitle, 40, SortOrder.Stops);
                 HeaderButton(Str.itm_linesListingWindow_budgetColumnTitle, 40, SortOrder.Budget);
                 HeaderButton(Str.itm_linesListingWindow_vehiclesColumnTitle, 40, SortOrder.Vehicles);
@@ -133,7 +135,14 @@ namespace ImprovedTransportManager.UI
                             line.LineColor = m_picker.SelectedColor;
                         }
                         var oldName = line.LineName;
-                        if (GUILayout.TextField(oldName, GUILayout.Width(lineNameSize)) is string str && str != oldName)
+                        if (GUILayout.TextField(oldName, new GUIStyle(GUI.skin.textField)
+                        {
+                            fixedWidth = lineNameSize,
+                            margin = new RectOffset(0, 0, 0, 0),
+                            contentOffset = new Vector2(0, 0),
+                            padding = new RectOffset(1, 1, 1, 1),
+                            stretchHeight = true
+                        }) is string str && str != oldName)
                         {
                             line.LineName = oldName;
                         }
@@ -141,12 +150,12 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label($"{line.BudgetEffectiveNow:N0}%", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.VehiclesTargetNow:N0}", m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat)}", m_HeaderLineStyle, GUILayout.Width(80));
+                        GUILayout.Label($"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}", new GUIStyle(m_HeaderLineStyle) { fixedWidth = 80 });
                         if (GUIComboBox.Button((int)line.LineActivity, m_lineActivityOptionsNames, $"{line.m_id}", this, 80) is int newIdx && newIdx != (int)line.LineActivity)
                         {
                             line.LineActivity = (LineActivityOptions)newIdx;
                         }
-                        GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20);
+                        GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20, style: m_HeaderLineStyle);
                         GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
                     }
                     if (Event.current.type == EventType.Repaint)
@@ -160,6 +169,7 @@ namespace ImprovedTransportManager.UI
                             line.OnMouseLeave();
                         }
                     }
+                    GUILayout.Space(4);
                 }
                 m_scrollLines = scroll.scrollPosition;
             }
@@ -241,8 +251,9 @@ namespace ImprovedTransportManager.UI
                     fixedWidth = 40,
                     alignment = TextAnchor.MiddleCenter,
                     fontSize = Mathf.CeilToInt(14 * ResolutionMultiplier),
-                    padding = new RectOffset(),
-                    contentOffset = default,
+                    margin = new RectOffset(0, 0, 1, 1),
+                    contentOffset = new Vector2(0, 0),
+                    padding = new RectOffset(0, 0, 0, 0),
                     wordWrap = false,
                 };
             }
@@ -253,8 +264,9 @@ namespace ImprovedTransportManager.UI
                     stretchHeight = true,
                     alignment = TextAnchor.MiddleCenter,
                     fontSize = Mathf.CeilToInt(14 * ResolutionMultiplier),
-                    padding = new RectOffset(),
-                    contentOffset = default,
+                    margin = new RectOffset(0, 0, 1, 1),
+                    contentOffset = new Vector2(0, 0),
+                    padding = new RectOffset(0, 0, 0, 0),
                     wordWrap = false,
                 };
             }
@@ -265,14 +277,16 @@ namespace ImprovedTransportManager.UI
                     stretchHeight = true,
                     alignment = TextAnchor.MiddleLeft,
                     fontSize = Mathf.CeilToInt(13 * ResolutionMultiplier),
-                    padding = new RectOffset(),
-                    contentOffset = default
+                    margin = new RectOffset(0, 0, 1, 1),
+                    contentOffset = new Vector2(0, 0),
+                    padding = new RectOffset(0, 0, 0, 0),
                 };
             }
             if (m_redButton is null)
             {
                 m_redButton = new GUIStyle(Skin.button)
                 {
+                    margin = new RectOffset(0, 0, 1, 1),
                     normal = new GUIStyleState()
                     {
                         background = GUIKwyttoCommons.darkRedTexture,

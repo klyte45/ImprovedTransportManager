@@ -1,16 +1,18 @@
 ﻿using ColossalFramework;
+using ColossalFramework.Globalization;
 using ColossalFramework.UI;
-using ImprovedTransportManager.Utility;
+using ImprovedTransportManager.Localization;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
-    public class ITMLineStopsWindow : GUIRootWindowBase
+    public partial class ITMLineStopsWindow : GUIRootWindowBase
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
@@ -32,6 +34,19 @@ namespace ImprovedTransportManager.UI
         private Color m_currentLoadedColor;
         private readonly List<StationData> m_loadedStopData = new List<StationData>();
         private readonly DisposableFastList<VehicleData> m_loadedVehiclesData = new DisposableFastList<VehicleData>();
+        private VehicleShowDataType m_currentVehicleDataShow = VehicleShowDataType.PassengerCapacity;
+        private readonly string[] m_vehicleShowOptions = Enum.GetValues(typeof(VehicleShowDataType)).Cast<VehicleShowDataType>().Select(x => x.ValueToI18n()).ToArray();
+        private Vector2 m_mapScroll;
+
+        private GUIStyle m_smallLabel;
+        private GUIStyle m_stationBtn;
+        private GUIStyle m_centerLabel;
+        private ushort m_currentLine;
+        private ushort m_loadedVehiclesLine;
+        private LineData m_currentLineData;
+        private uint m_vehicleRecalcFrame;
+        private GUIStyle m_noBreakLabel;
+        private GUIStyle m_lineIconText;
 
         public static ITMLineStopsWindow Instance
         {
@@ -40,7 +55,7 @@ namespace ImprovedTransportManager.UI
                 if (instance == null)
                 {
                     instance = GameObjectUtils.CreateElement<ITMLineStopsWindow>(UIView.GetAView().transform);
-                    instance.Init(ModInstance.Instance.GeneralName, new Rect(0, 0, 600, 600), resizable: false, minSize: new Vector2(100, UIScaler.MaxHeight - (300 / UIScaler.UIScale)), hasTitlebar: true);
+                    instance.Init(Str.itm_lineMap_title, new Rect(0, 0, 700, 300), resizable: true, minSize: new Vector2(700, 300), hasTitlebar: true, maxSize: new Vector2(700, 999999));
                     instance.Visible = false;
                 }
                 return instance;
@@ -63,7 +78,6 @@ namespace ImprovedTransportManager.UI
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
         }
-        GUIStyle m_noBreakLabel;
 
         private GUIStyle m_redButton;
         public GUIStyle RedButton
@@ -94,52 +108,83 @@ namespace ImprovedTransportManager.UI
             InitStyles();
             if (m_currentLine != 0)
             {
-                var bufferV = TransportManager.instance.m_lines.m_buffer;
-                var bufferN = NetManager.instance.m_nodes.m_buffer;
-                ref TransportLine tl = ref bufferV[m_currentLine];
                 m_currentLineData.GetUpdated();
-                if (m_loadedStopData.Count == 0)
+                using (new GUILayout.HorizontalScope())
                 {
-                    ushort nextStop = tl.GetStop(0);
-                    for (int i = 0; nextStop != 0 && i < 65536; nextStop = tl.GetStop(++i))
+                    using (new GUILayout.VerticalScope())
                     {
-                        ref NetNode nd = ref bufferN[nextStop];
-                        m_loadedStopData.Add(new StationData
+                        GUILayout.FlexibleSpace();
+                        GUILayout.Label(Str.itm_lineMap_vehicleDataToShow, m_centerLabel);
+                        using (new GUILayout.HorizontalScope())
                         {
-                            stopId = nextStop,
-                            cachedName = $"Stop #{nextStop}",
-                            distanceNextStop = -1000,
-                            position = nd.m_position,
-                            tariffMultiplier = nd.m_position.DistrictTariffMultiplierHere()
-                        });
+                            m_currentVehicleDataShow = (VehicleShowDataType)GUIComboBox.Box((int)m_currentVehicleDataShow, m_vehicleShowOptions, "itmLineStopsVehicleDataShow", this, 200);
+                        }
+                        GUILayout.FlexibleSpace();
+                    }
+                    GUILayout.FlexibleSpace();
+                    GUILayout.Label($"{Str.itm_lineMap_earningsLastPeriodAcronymLegend}\n{Str.itm_lineMap_earningsCurrentPeriodAcronymLegend}\n{Str.itm_lineMap_earningsAllTimeAcronymLegend}", m_smallLabel);
+                }
+
+                var headerRect = GUILayoutUtility.GetLastRect();
+                var iconRect = new Rect((headerRect.size.x - headerRect.height) / 2, headerRect.position.y, headerRect.height, headerRect.height);
+                if (m_currentLineData.LineIcon is Texture2D tex)
+                {
+                    if (GUI.Button(iconRect, tex, m_stationBtn))
+                    {
+                        //CALL CD if available
                     }
                 }
+                else
+                {
+                    var contrastColor = m_currentLineData.LineColor.ContrastColor();
+                    GUI.DrawTexture(iconRect, GUIKwyttoCommons.whiteTexture);
+
+                    var subRect = new Rect(iconRect.position + new Vector2(2, 2), iconRect.size - new Vector2(4, 4));
+
+                    GUI.DrawTexture(subRect, m_currentLineData.m_uiTextureColor);
+                    var identifier = m_currentLineData.LineIdentifier();
+                    if (GUI.Button(subRect, identifier, new GUIStyle(m_lineIconText)
+                    {
+                        fontSize = Mathf.RoundToInt(16 * EffectiveFontSizeMultiplier * (.5f + (3f / identifier.Length))),
+                        normal =
+                        {
+                            textColor = contrastColor
+                        }
+                    }))
+                    {
+                        //CALL CD if available
+                    }
+                }
+
                 using (var scroll = new GUILayout.ScrollViewScope(m_mapScroll))
                 {
+                    var leftPivotLine = (size.x - TexLineBg.width) * .5f;
                     var lineLengthPixels = (m_loadedStopData.Count + .125f) * STATION_SIZE;
                     GUILayout.Space(lineLengthPixels);
-                    GUI.DrawTexture(new Rect(200, 0, TexLineBg.width, lineLengthPixels), TexLineBg, ScaleMode.StretchToFill);
+                    GUI.DrawTexture(new Rect(leftPivotLine, 0, TexLineBg.width, lineLengthPixels), TexLineBg, ScaleMode.StretchToFill);
                     for (int i = 0; i < m_loadedStopData.Count; i++)
                     {
                         StationData stop = m_loadedStopData[i];
+                        stop.GetUpdated();
                         var targetTex = GetStationImage(stop);
-                        var labelWidth = size.x - (targetTex.width + 26);
+                        var labelWidth = size.x - leftPivotLine - (targetTex.width + 6);
                         var stationPosMapY = ((i + .25f) * STATION_SIZE) - (targetTex.height * .5f);
-                        if (GUI.Button(new Rect(200, stationPosMapY, targetTex.width, targetTex.height), targetTex, m_stationBtn))
+                        if (GUI.Button(new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height), targetTex, m_stationBtn))
                         {
                             ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
                         }
-                        var textsBasePosition = new Vector2(targetTex.width + 206, stationPosMapY);
+                        var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
+                        var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
                         GUI.Label(new Rect(textsBasePosition, new Vector2(labelWidth, 20)), $"<b>{stop.cachedName}</b>");
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), "54656546546 54d56a4d56a4d5 A", m_smallLabel);
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), "lkjad lkd akljd adjakl ", m_smallLabel);
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 51), new Vector2(labelWidth, 20)), "kjad lkd akljd aaaaaa ", m_smallLabel);
+                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.earningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.earningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.earningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
+                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
                         GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
                     }
                     foreach (var vehicle in m_loadedVehiclesData)
                     {
-                        var position = vehicle.GetPositionOffset(STATION_SIZE);
-                        if (GUI.Button(new Rect(position, new Vector2(50, 20)), vehicle.VehicleName, vehicle.CachedStyle))
+                        var position = vehicle.GetPositionOffset(leftPivotLine - 4, STATION_SIZE);
+                        var content = vehicle.GetContentFor(m_currentVehicleDataShow);
+                        if (GUI.Button(new Rect(position, new Vector2(leftPivotLine * .25f, 20)), content, vehicle.CachedStyle))
                         {
                             ToolsModifierControl.cameraController.SetTarget(new InstanceID { Vehicle = vehicle.VehicleId }, default, false);
                         }
@@ -148,6 +193,8 @@ namespace ImprovedTransportManager.UI
                 }
             }
         }
+
+
 
         public bool HasAnyFreeStop() => m_loadedStopData.Any(x => x.tariffMultiplier == 0);
 
@@ -169,24 +216,40 @@ namespace ImprovedTransportManager.UI
                     fontSize = Mathf.CeilToInt(GUI.skin.label.fontSize * .75f),
                 };
             }
+            if (m_centerLabel is null)
+            {
+                m_centerLabel = new GUIStyle(GUI.skin.label)
+                {
+                    margin = new RectOffset(0, 0, 1, 1),
+                    contentOffset = new Vector2(0, 0),
+                    padding = new RectOffset(0, 0, 0, 0),
+                    alignment = TextAnchor.MiddleCenter,
+                };
+            }
             if (m_stationBtn is null)
             {
                 m_stationBtn = new GUIStyle(GUI.skin.label)
                 {
-                    contentOffset = default,
-                    padding = new RectOffset(),
+                    margin = new RectOffset(0, 0, 1, 1),
+                    contentOffset = new Vector2(0, 0),
+                    padding = new RectOffset(0, 0, 0, 0),
                     hover = GUI.skin.button.hover,
                 };
             }
+            if (m_lineIconText is null)
+            {
+                m_lineIconText = new GUIStyle(GUI.skin.label)
+                {
+                    margin = new RectOffset(0, 0, -4, -4),
+                    contentOffset = new Vector2(0, -4),
+                    padding = new RectOffset(0, 0, -4, -4),
+                    wordWrap = true,
+                    alignment = TextAnchor.MiddleCenter,
+                    fontStyle = FontStyle.Bold
+                    //hover = GUI.skin.button.hover, //Only if CD exists
+                };
+            }
         }
-
-        private Vector2 m_mapScroll;
-
-        private GUIStyle m_smallLabel;
-        private GUIStyle m_stationBtn;
-        private ushort m_currentLine;
-        private LineData m_currentLineData;
-        private uint m_vehicleRecalcFrame;
 
 
         private void FixedUpdate()
@@ -211,6 +274,12 @@ namespace ImprovedTransportManager.UI
                         m_currentLineData = LineData.FromLine(m_currentLine);
                         Visible = true;
                         m_loadedStopData.Clear();
+                        ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[m_currentLine];
+                        ushort currentStop = tl.GetStop(0);
+                        for (int i = 0; currentStop != 0 && i < 65536; currentStop = tl.GetStop(++i))
+                        {
+                            m_loadedStopData.Add(StationData.FromStop(currentStop));
+                        }
                         UpdateVehicleButtons(m_currentLine, true);
                     }
                 }
@@ -245,126 +314,19 @@ namespace ImprovedTransportManager.UI
             instance = null;
         }
         private Texture2D GetStationImage(StationData s)
-        {
-            if (s.tariffMultiplier > 1.001f)
-            {
-                return TexStationHigh;
-            }
-            else
-            if (s.tariffMultiplier < 0.999f)
-            {
-                return TexStationFree;
-            }
-            else
-            {
-                return TexStation;
-            }
-        }
-
-        private class StationData
-        {
-            public ushort stopId;
-            public string cachedName;
-            public float distanceNextStop;
-            public Vector3 position;
-            public float tariffMultiplier;
-
-
-        }
-
-        private class VehicleData : IDisposable
-        {
-
-            private Color m_vehicleColor;
-            private Texture2D m_cachedBg;
-            private GUIStyle m_cachedStyle;
-            public ushort m_nextStop;
-            public int m_nextStopIdx;
-            public int m_progressItemIdx;
-            public VehicleStopProgressState m_progressState;
-            public int m_capacity;
-            public int m_passengers;
-            public ushort VehicleId { get; set; }
-            public Color VehicleColor
-            {
-                get => m_vehicleColor; set
-                {
-                    if (m_vehicleColor != value)
-                    {
-                        m_vehicleColor = value;
-                        Destroy(m_cachedBg);
-                        m_cachedBg = null;
-                        m_cachedStyle = null;
-                    }
-                }
-            }
-            public GUIStyle CachedStyle
-            {
-                get
-                {
-                    if (m_cachedStyle == null)
-                    {
-                        var contrast = m_vehicleColor.ContrastColor();
-                        m_cachedStyle = new GUIStyle(GUI.skin.label)
-                        {
-                            alignment = TextAnchor.MiddleCenter,
-                            fontStyle = FontStyle.Bold,
-                            normal =
-                            {
-                                textColor =contrast,
-                                background = CachedBG
-                            },
-                        };
-                    }
-                    return m_cachedStyle;
-                }
-            }
-            public Texture2D CachedBG
-            {
-                get
-                {
-                    if (m_cachedBg is null)
-                    {
-                        m_cachedBg = TextureUtils.NewSingleColorForUI(VehicleColor);
-                    }
-                    return m_cachedBg;
-                }
-            }
-            public string VehicleName => $"#{VehicleId}";
-
-            public float StationPositionMultiplierY => m_nextStopIdx + ((float)m_progressState * .25f);
-            public Vector2 GetPositionOffset(float stationHeight) => new Vector2(150 - (m_progressItemIdx % 4 * 50f), (stationHeight * StationPositionMultiplierY) + (Mathf.Floor(m_progressItemIdx * .25f) * 18) - 9f);
-
-            public void Dispose()
-            {
-                Destroy(m_cachedBg);
-            }
-        }
-
-        private enum VehicleStopProgressState
-        {
-            PREVIOUS = -3,
-            EXITING_FROM_PREVIOUS,
-            ON_ROUTE,
-            ARRIVING
-        }
-
-        private enum VehicleShowDataType
-        {
-            PassengerCapacity,
-            Identifier,
-            EarningsAllTime,
-            EarningsLastWeek,
-            EarningsCurrentWeek
-        }
-
+            => s.tariffMultiplier > 1.001f
+                ? TexStationHigh
+                : s.tariffMultiplier < 0.999f
+                    ? TexStationFree
+                    : TexStation;
 
         private void UpdateVehicleButtons(ushort lineID, bool force = false)
         {
-            if (!force && m_vehicleRecalcFrame + 23 < SimulationManager.instance.m_referenceFrameIndex)
+            if (m_loadedStopData.Count == 0 || (m_loadedVehiclesLine == lineID && !force && m_vehicleRecalcFrame + 23 > SimulationManager.instance.m_referenceFrameIndex))
             {
                 return;
             }
+            m_loadedVehiclesLine = lineID;
             m_vehicleRecalcFrame = SimulationManager.instance.m_referenceFrameIndex;
 
             var bufferV = Singleton<VehicleManager>.instance.m_vehicles.m_buffer;
@@ -404,6 +366,11 @@ namespace ImprovedTransportManager.UI
 
                 info.m_vehicleAI.GetBufferStatus(vehicleId, ref vehicleData, out _, out currentVehicle.m_passengers, out currentVehicle.m_capacity);
 
+                currentVehicle.m_profitAllTime = -1f;    // Change to query in the statistics
+                currentVehicle.m_profitLastWeek = -2f;   // Change to query in the statistics
+                currentVehicle.m_profitCurrentWeek = -3f;// Change to query in the statistics
+
+
                 vehicleId = vehicleData.m_nextLineVehicle;
                 if (++idx >= bufferV.Length)
                 {
@@ -414,4 +381,6 @@ namespace ImprovedTransportManager.UI
             m_loadedVehiclesData.SetCapacity(idx);
         }
     }
+
 }
+
