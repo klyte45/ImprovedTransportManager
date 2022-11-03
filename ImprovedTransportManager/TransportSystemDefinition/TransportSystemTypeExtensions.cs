@@ -10,24 +10,28 @@ namespace ImprovedTransportManager.TransportSystems
 {
     public static class TransportSystemTypeExtensions
     {
+        public const int ROLL_FREE = 25;
         public const int ROLL_TRANSPORT_TYPE = 20;
         public const int ROLL_VEHICLE_TYPE_NTH_BIT = 15;
         public const int ROLL_SUBSERVICE = 8;
         public const int ROLL_CITY_LEVELMASK = 3;
         public const int ROLL_INTERCITY_LEVEL = 0;
 
+        public const int LENGHT_FREE = 7;
         public const int LENGHT_TRANSPORT_TYPE = 5;
         public const int LENGHT_VEHICLE_TYPE_NTH_BIT = 5;
         public const int LENGHT_SUBSERVICE = 7;
         public const int LENGHT_CITY_LEVELMASK = 5;
         public const int LENGHT_INTERCITY_LEVEL = 3;
 
+        public const uint BITMASK_FREE = ((1 << LENGHT_FREE) - 1);
         public const uint BITMASK_TRANSPORT_TYPE = ((1 << LENGHT_TRANSPORT_TYPE) - 1);
         public const uint BITMASK_VEHICLE_TYPE_NTH_BIT = ((1 << LENGHT_VEHICLE_TYPE_NTH_BIT) - 1);
         public const uint BITMASK_SUBSERVICE = ((1 << LENGHT_SUBSERVICE) - 1);
         public const uint BITMASK_CITY_LEVELMASK = ((1 << LENGHT_CITY_LEVELMASK) - 1);
         public const uint BITMASK_INTERCITY_LEVEL = ((1 << LENGHT_INTERCITY_LEVEL) - 1);
 
+        public const uint MASK_FREE = BITMASK_FREE << ROLL_FREE;
         public const uint MASK_TRANSPORT_TYPE = BITMASK_TRANSPORT_TYPE << ROLL_TRANSPORT_TYPE;
         public const uint MASK_VEHICLE_TYPE_NTH_BIT = BITMASK_VEHICLE_TYPE_NTH_BIT << ROLL_VEHICLE_TYPE_NTH_BIT;
         public const uint MASK_SUBSERVICE = BITMASK_SUBSERVICE << ROLL_SUBSERVICE;
@@ -48,10 +52,10 @@ namespace ImprovedTransportManager.TransportSystems
                     for (uint i = 0; i < PrefabCollection<TransportInfo>.LoadedCount(); i++)
                     {
                         TransportInfo info = PrefabCollection<TransportInfo>.GetLoaded(i);
-                        var tsd = FromLocal(info);
+                        var tsd = ToLocalTST(info);
                         if (tsd == default)
                         {
-                            tsd = FromIntercity(info);
+                            tsd = ToIntercityTST(info);
 
                             if (tsd == default)
                             {
@@ -139,7 +143,7 @@ namespace ImprovedTransportManager.TransportSystems
             }
         }
 
-        public static TransportSystemType FromLocal(TransportInfo info)
+        public static TransportSystemType ToLocalTST(this TransportInfo info)
         {
             if (info is null)
             {
@@ -159,7 +163,7 @@ namespace ImprovedTransportManager.TransportSystems
         }
 
 
-        public static TransportSystemType FromNetInfo(NetInfo info)
+        public static TransportSystemType ToTST(this NetInfo info)
         {
             if (info is null)
             {
@@ -171,7 +175,7 @@ namespace ImprovedTransportManager.TransportSystems
             && (x.IsIntercity(info.GetClassLevel()) || x.IsCitywide(info.GetClassLevel())));
             return result;
         }
-        public static TransportSystemType FromIntercity(TransportInfo info)
+        public static TransportSystemType ToIntercityTST(this TransportInfo info)
         {
             if (info is null)
             {
@@ -190,14 +194,14 @@ namespace ImprovedTransportManager.TransportSystems
             return result;
         }
 
-        public static TransportSystemType From(PrefabAI prefabAI) =>
+        public static TransportSystemType ToTST(this PrefabAI prefabAI) =>
            prefabAI is DepotAI depotAI
-               ? FromLocal(depotAI.m_transportInfo)
+               ? ToLocalTST(depotAI.m_transportInfo)
                : prefabAI is OutsideConnectionAI ocAI
-                   ? FromIntercity(ocAI.m_transportInfo)
+                   ? ToIntercityTST(ocAI.m_transportInfo)
                    : default;
 
-        public static TransportSystemType From(VehicleInfo info) =>
+        public static TransportSystemType ToTST(this VehicleInfo info) =>
             info is null
                 ? (default)
                 : m_allTypes.FirstOrDefault(x =>
@@ -271,8 +275,8 @@ namespace ImprovedTransportManager.TransportSystems
 
         public static TransportSystemType FromLineId(ushort lineId, bool fromBuilding)
             => fromBuilding
-                ? FromNetInfo(NetManager.instance.m_nodes.m_buffer[lineId].Info)
-                : FromLocal(Singleton<TransportManager>.instance.m_lines.m_buffer[lineId].Info);
+                ? ToTST(NetManager.instance.m_nodes.m_buffer[lineId].Info)
+                : ToLocalTST(Singleton<TransportManager>.instance.m_lines.m_buffer[lineId].Info);
 
         public static bool IsIntercityBusConnection(this TransportSystemType x, BuildingInfo connectionInfo)
                  => connectionInfo.m_class.m_service == ItemClass.Service.Road && x == TransportSystemType.BUS && connectionInfo.m_class.m_subService == ItemClass.SubService.None;
