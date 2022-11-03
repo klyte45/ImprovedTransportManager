@@ -288,4 +288,7 @@
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
     <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
   </data>
+  <data name="itm_common_notApplicableAcronym" xml:space="preserve">
+    <value>N/A</value>
+  </data>
 </root>

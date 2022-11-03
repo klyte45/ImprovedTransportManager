@@ -99,7 +99,7 @@ namespace ImprovedTransportManager.UI
                     GUILayout.FlexibleSpace();
                 }
                 HeaderButton("ID", 40, SortOrder.Id);
-                HeaderButton(Str.itm_linesListingWindow_nameColumnTitle, lineNameSize + 5, SortOrder.Name);
+                HeaderButton(Str.itm_linesListingWindow_nameColumnTitle, lineNameSize + 2, SortOrder.Name);
                 HeaderButton(Str.itm_linesListingWindow_stopsColumnTitle, 40, SortOrder.Stops);
                 HeaderButton(Str.itm_linesListingWindow_budgetColumnTitle, 40, SortOrder.Budget);
                 HeaderButton(Str.itm_linesListingWindow_vehiclesColumnTitle, 40, SortOrder.Vehicles);
@@ -146,11 +146,12 @@ namespace ImprovedTransportManager.UI
                         {
                             line.LineName = oldName;
                         }
+                        var hasVehicles = line.m_type.HasVehicles();
                         GUILayout.Label($"{line.m_stopsCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.BudgetEffectiveNow:N0}%", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_vehiclesCount:N0}/{line.VehiclesTargetNow:N0}", m_LineBasicLabelStyle);
+                        GUILayout.Label(hasVehicles ? $"{line.BudgetEffectiveNow:N0}%" : Str.itm_common_notApplicableAcronym, m_LineBasicLabelStyle);
+                        GUILayout.Label(hasVehicles ? $"{line.m_vehiclesCount:N0}/{line.VehiclesTargetNow:N0}" : Str.itm_common_notApplicableAcronym, m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label($"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}", new GUIStyle(m_HeaderLineStyle) { fixedWidth = 80 });
+                        GUILayout.Label(hasVehicles ? $"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}" : Str.itm_common_notApplicableAcronym, new GUIStyle(m_HeaderLineStyle) { fixedWidth = 80 });
                         if (GUIComboBox.Button((int)line.LineActivity, m_lineActivityOptionsNames, $"{line.m_id}", this, 80) is int newIdx && newIdx != (int)line.LineActivity)
                         {
                             line.LineActivity = (LineActivityOptions)newIdx;

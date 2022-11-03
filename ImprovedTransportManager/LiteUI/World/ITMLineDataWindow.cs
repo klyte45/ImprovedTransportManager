@@ -1,5 +1,6 @@
 ﻿using ColossalFramework.UI;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.TransportSystems;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
@@ -113,29 +114,34 @@ namespace ImprovedTransportManager.UI
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[m_currentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);
-                GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_ticketPrice, m_currentLineData.TicketPrice, (x) => m_currentLineData.TicketPrice = x, 0, tl.Info.m_ticketPrice * 5);
-                GUILayout.Space(10);
-                GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_lineBudget, m_currentLineData.BudgetSelf, (x) => m_currentLineData.BudgetSelf = x, 0, 500);
-                GUILayout.Label($"\t- {Str.itm_lineView_dayBudgetTitle} " +
-                    ((m_currentLineData.LineActivity & LineActivityOptions.Day) == 0
-                        ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
-                        : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryDay}% =<color=yellow> {m_currentLineData.BudgetEffectiveDay}%</color> ({m_currentLineData.VehiclesTargetDay})"));
-                GUILayout.Label($"\t- {Str.itm_lineView_nightBudgetTitle} " +
-                    ((m_currentLineData.LineActivity & LineActivityOptions.Night) == 0
-                    ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
-                    : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryNight}% =<color=yellow> {m_currentLineData.BudgetEffectiveNight}%</color> ({m_currentLineData.VehiclesTargetNight})"
-                    ));
-                GUILayout.Space(4);
-
-                if (m_currentLineData.FreeStops > 0)
+                if (m_currentLineData.m_type.HasVehicles())
                 {
-                    GUILayout.Label(string.Format(Str.itm_lineView_thereAreFreeStops, m_currentLineData.FreeStops, m_currentLineData.m_stopsCount), m_centerTextLabel);
+                    GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_ticketPrice, m_currentLineData.TicketPrice, (x) => m_currentLineData.TicketPrice = x, 0, tl.Info.m_ticketPrice * 5);
+                    GUILayout.Space(10);
+                    GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_lineBudget, m_currentLineData.BudgetSelf, (x) => m_currentLineData.BudgetSelf = x, 0, 500);
+                    GUILayout.Label($"\t- {Str.itm_lineView_dayBudgetTitle} " +
+                        ((m_currentLineData.LineActivity & LineActivityOptions.Day) == 0
+                            ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
+                            : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryDay}% =<color=yellow> {m_currentLineData.BudgetEffectiveDay}%</color> ({m_currentLineData.VehiclesTargetDay})"));
+                    GUILayout.Label($"\t- {Str.itm_lineView_nightBudgetTitle} " +
+                        ((m_currentLineData.LineActivity & LineActivityOptions.Night) == 0
+                        ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
+                        : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryNight}% =<color=yellow> {m_currentLineData.BudgetEffectiveNight}%</color> ({m_currentLineData.VehiclesTargetNight})"
+                        ));
+                    GUILayout.Space(4);
+
+                    if (m_currentLineData.FreeStops > 0)
+                    {
+                        GUILayout.Label(string.Format(Str.itm_lineView_thereAreFreeStops, m_currentLineData.FreeStops, m_currentLineData.m_stopsCount), m_centerTextLabel);
+                    }
                 }
+
                 if (m_currentLineData.Broken)
                 {
                     GUILayout.Label(Str.itm_lineView_thisLineIsBroken, m_centerTextLabel);
                 }
                 GUILayout.FlexibleSpace();
+
                 GUILayout.Label($"<b>{Str.itm_lineView_weeklyDataTitle}</b>", m_centerTextLabel);
                 GUILayout.Label(string.Format(Str.itm_lineView_residentTourists, m_currentLineData.m_passengersResCount, m_currentLineData.m_passengersTouCount), m_centerTextLabel);
                 using (new GUILayout.HorizontalScope())

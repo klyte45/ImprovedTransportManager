@@ -61,6 +61,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a N/A.
+        /// </summary>
+        internal static string itm_common_notApplicableAcronym {
+            get {
+                return ResourceManager.GetString("itm_common_notApplicableAcronym", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Day.
         /// </summary>
         internal static string itm_Enum__LineActivityOptions_Day {
