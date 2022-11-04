@@ -538,6 +538,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Current line exclusive.
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_defaultGroupText {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_defaultGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Vehicles models for line selection.
         /// </summary>
         internal static string itm_vehicleSelectWindow_title {

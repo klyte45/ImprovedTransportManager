@@ -20,20 +20,23 @@ namespace ImprovedTransportManager.Data
         [XmlElement("Configurations")]
         public SimpleNonSequentialList<ITMTransportLineXml> Lines { get; set; } = new SimpleNonSequentialList<ITMTransportLineXml>();
         internal void SafeCleanEntry(ushort lineID) => Lines[lineID] = new ITMTransportLineXml();
-        public ITMTransportLineXml SafeGetLine(uint lineId)
+        public ITMTransportLineXml SafeGetLine(ushort lineId)
         {
             if (!Lines.ContainsKey(lineId))
             {
-                Lines[lineId] = new ITMTransportLineXml();
+                Lines[lineId] = new ITMTransportLineXml
+                {
+                    CachedTransportType = TransportSystemTypeExtensions.FromLineId(lineId, false)
+                };
             }
             return Lines[lineId];
         }
 
-        public void Awake()
+        public ITMTransportLineSettings()
         {
             VehiclesIndexes.instance.PrefabsData
-                .Select(x => x.Value.Info is VehicleInfo info ? Tuple.New(info.ToTST(), info) : null)
-                .Where(x => x != null && x.First != default)
+                .Select(x => x.Value.Info is VehicleInfo info && info.m_placementStyle != ItemClass.Placement.Procedural ? Tuple.New(info.ToTST(), info) : null)
+                .Where(x => x != null && x.First != default && x.First.IsCitywide(x.Second.m_class.m_level))
                 .GroupBy(x => x.First)
                 .ForEach(x => m_basicAssetsList[x.Key] = x.Select(y => y.Second).ToList());
         }
@@ -130,7 +133,11 @@ namespace ImprovedTransportManager.Data
         public Dictionary<string, VehicleInfo> GetAllBasicAssetsForLine(ushort lineId)
         {
             var tsd = FromLineId(lineId, false);
-            return m_basicAssetsList[tsd].ToDictionary(x => x.GetUncheckedLocalizedTitle(), x => x);
+            return m_basicAssetsList[tsd]
+                .Select(x => Tuple.New(x.GetUncheckedLocalizedTitle(), x))
+                .GroupBy(x => x.First)
+                .SelectMany(x => x.Select((y, i) => i != 0 ? Tuple.New(y.First + $" ({i + 1})", y.Second) : y))
+                .ToDictionary(x => x.First, x => x.Second);
         }
         public HashSet<VehicleInfo> GetEffectiveAssetsForLine(ushort lineId)
         {

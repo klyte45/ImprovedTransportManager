@@ -294,4 +294,7 @@
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
     <value>Vehicles models for line selection</value>
   </data>
+  <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
+    <value>Current line exclusive</value>
+  </data>
 </root>
