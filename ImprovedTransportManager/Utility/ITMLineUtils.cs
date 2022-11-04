@@ -79,5 +79,13 @@ namespace ImprovedTransportManager.Utility
                 zIterator++;
             }
         }
+
+        public static void DoSoftDespawn(this ref Vehicle vehicleData, ushort vehicleID)
+        {
+            var targetBuilding = vehicleData.m_targetBuilding;
+            TransportManager.instance.m_lines.m_buffer[vehicleData.m_transportLine].RemoveVehicle(vehicleID, ref vehicleData);
+            vehicleData.m_transportLine = 0;
+            vehicleData.m_targetBuilding = targetBuilding;
+        }
     }
 }

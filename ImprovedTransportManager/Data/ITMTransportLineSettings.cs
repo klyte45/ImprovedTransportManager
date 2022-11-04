@@ -142,15 +142,16 @@ namespace ImprovedTransportManager.Data
         public HashSet<VehicleInfo> GetEffectiveAssetsForLine(ushort lineId)
         {
             var config = SafeGetLine(lineId);
-            if (config.AssetGroup != 0)
-            {
-                return SafeGetGroupData(GroupsAssetList, config.CachedTransportType, config.AssetGroup);
-            }
-            else
-            {
-                return config.SelfAssetList;
-            }
+            return config.AssetGroup != 0
+                ? SafeGetGroupData(GroupsAssetList, config.CachedTransportType, config.AssetGroup)
+                : config.SelfAssetList;
         }
+        public bool IsInfoAllowedToLine(VehicleInfo info, ushort lineId)
+        {
+            var assetList = GetEffectiveAssetsForLine(lineId);
+            return assetList.Count == 0 || assetList.Contains(info);
+        }
+
         public VehicleInfo GetAModel(ushort lineId)
         {
             VehicleInfo info = null;

@@ -41,5 +41,7 @@ namespace ImprovedTransportManager.Xml
         public byte AssetGroup { get; set; }
         [XmlAttribute("depotGroup")]
         public byte DepotGroup { get; set; }
+        [XmlAttribute("startAtTerminal")]
+        public bool RequireLineStartTerminal { get;  set; }
     }
 }
