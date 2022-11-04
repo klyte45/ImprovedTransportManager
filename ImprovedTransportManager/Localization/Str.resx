@@ -297,4 +297,26 @@
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
     <value>Current line exclusive</value>
   </data>
+  <data name="itm_citySettings_title" xml:space="preserve">
+    <value>City settings</value>
+  </data>
+  <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
+    <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
+You can disable the unbunching also in terminal stops to get a more fluid line dynamic.</value>
+  </data>
+  <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
+    <value>Disable unbunching also in terminal stops</value>
+  </data>
+  <data name="itm_expressData_expressBuses" xml:space="preserve">
+    <value>Express buses</value>
+  </data>
+  <data name="itm_expressData_expressTrams" xml:space="preserve">
+    <value>Express trams</value>
+  </data>
+  <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
+    <value>Express trolleybuses</value>
+  </data>
+  <data name="itm_expressData_title" xml:space="preserve">
+    <value>Express lines</value>
+  </data>
 </root>

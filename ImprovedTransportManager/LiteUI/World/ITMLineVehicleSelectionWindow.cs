@@ -43,6 +43,22 @@ namespace ImprovedTransportManager.UI
         private AVOPreviewRenderer m_previewRenderer;
         private readonly Vector3 m_previewSize = new Vector3(300, 200);
 
+        public ITMLineVehicleSelectionWindow() : base()
+        {
+            DrawOverWindow = () =>
+            {
+                if (m_currentPreview != null)
+                {
+                    var defaultPos = GUIUtility.ScreenToGUIPoint(default);
+                    var localPosMouse = UIScaler.MousePosition + defaultPos;
+                    var pos = Vector2.Max(localPosMouse - new Vector2(-10, 200), new Vector2(0, 0));
+                    var rect = new Rect(pos, m_previewSize);
+                    GUI.DrawTexture(rect, GUIKwyttoCommons.almostWhiteTexture);
+                    GUI.DrawTexture(rect, m_previewRenderer.Texture);
+                    GUI.Label(rect, m_currentPreviewTitle, m_previewTitle);
+                }
+            };
+        }
         protected override void DrawWindow(Vector2 size)
         {
             InitSkins();
@@ -86,16 +102,6 @@ namespace ImprovedTransportManager.UI
                     }
                 }
                 m_scrollPos = scroll.scrollPosition;
-            }
-            if (m_currentPreview != null)
-            {
-                var defaultPos = GUIUtility.ScreenToGUIPoint(default);
-                var localPosMouse = UIScaler.MousePosition + defaultPos;
-                var pos = localPosMouse - new Vector2(300 * (localPosMouse.x / size.x), 200 * (size.y - localPosMouse.y < 200 ? 1 : 0));
-                var rect = new Rect(pos, m_previewSize);
-                GUI.DrawTexture(rect, GUIKwyttoCommons.almostWhiteTexture);
-                GUI.DrawTexture(rect, m_previewRenderer.Texture);
-                GUI.Label(rect, m_currentPreviewTitle, m_previewTitle);
             }
         }
 

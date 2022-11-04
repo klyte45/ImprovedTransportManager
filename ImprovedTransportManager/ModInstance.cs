@@ -28,10 +28,16 @@ namespace ImprovedTransportManager
         public override IUUIButtonContainerPlaceholder[] UUIButtons => cachedUUI ?? (cachedUUI = new IUUIButtonContainerPlaceholder[]
         {
              new UUIWindowButtonContainerPlaceholder(
-             buttonName: $"{SimpleName}",
-             tooltip: $"{SimpleName}",
-             iconPath: "ModIcon",
+             buttonName: $"{SimpleName} - AAA",
+             tooltip: $"{SimpleName} - {Str.itm_linesListingWindow_tilte}",
+             iconPath: "LinesListIcon",
              windowGetter: ()=>LinesListingUI.Instance
+             ),
+             new UUIWindowButtonContainerPlaceholder(
+             buttonName: $"{SimpleName} - BBB",
+             tooltip: $"{SimpleName} - {Str.itm_citySettings_title}",
+             iconPath: "CitySettingsIcon",
+             windowGetter: ()=>ITMCitySettingsGUI.Instance
              )
         }.Where(x => x != null).ToArray());
 

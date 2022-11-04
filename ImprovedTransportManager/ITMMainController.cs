@@ -15,6 +15,7 @@ namespace ImprovedTransportManager
         {
             base.StartActions();
             refGOs.Add(GameObjectUtils.CreateElement<LinesListingUI>(UIView.GetAView().gameObject.transform, "LinesListingUI").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMCitySettingsGUI>(UIView.GetAView().gameObject.transform, "ITMCitySettingsGUI").gameObject);
 
             refGOs.Add(ITMLineDataWindow.Instance.gameObject);
             refGOs.Add(ITMLineStopsWindow.Instance.gameObject);

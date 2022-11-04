@@ -61,6 +61,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a City settings.
+        /// </summary>
+        internal static string itm_citySettings_title {
+            get {
+                return ResourceManager.GetString("itm_citySettings_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a N/A.
         /// </summary>
         internal static string itm_common_notApplicableAcronym {
@@ -183,6 +192,61 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_Enum__VehicleShowDataType_ProfitLastWeek {
             get {
                 return ResourceManager.GetString("itm_Enum__VehicleShowDataType_ProfitLastWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a When enabling the express lines, the buses won&apos;t unbunch in the regular stops anymore once it would be done only in terminal stops.
+        ///You can disable the unbunching also in terminal stops to get a more fluid line dynamic..
+        /// </summary>
+        internal static string itm_expressData_disableUnbunchingDescription {
+            get {
+                return ResourceManager.GetString("itm_expressData_disableUnbunchingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Disable unbunching also in terminal stops.
+        /// </summary>
+        internal static string itm_expressData_disableUnbunchingTerminals {
+            get {
+                return ResourceManager.GetString("itm_expressData_disableUnbunchingTerminals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Express buses.
+        /// </summary>
+        internal static string itm_expressData_expressBuses {
+            get {
+                return ResourceManager.GetString("itm_expressData_expressBuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Express trams.
+        /// </summary>
+        internal static string itm_expressData_expressTrams {
+            get {
+                return ResourceManager.GetString("itm_expressData_expressTrams", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Express trolleybuses.
+        /// </summary>
+        internal static string itm_expressData_expressTrolleybus {
+            get {
+                return ResourceManager.GetString("itm_expressData_expressTrolleybus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Express lines.
+        /// </summary>
+        internal static string itm_expressData_title {
+            get {
+                return ResourceManager.GetString("itm_expressData_title", resourceCulture);
             }
         }
         
