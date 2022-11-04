@@ -538,6 +538,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Vehicles models for line selection.
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_title {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Extends the public transport lines management in Cities: Skylines.
         /// </summary>
         internal static string root_modDescription {

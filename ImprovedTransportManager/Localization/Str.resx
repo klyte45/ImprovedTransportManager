@@ -291,4 +291,7 @@
   <data name="itm_common_notApplicableAcronym" xml:space="preserve">
     <value>N/A</value>
   </data>
+  <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
+    <value>Vehicles models for line selection</value>
+  </data>
 </root>

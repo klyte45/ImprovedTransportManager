@@ -13,13 +13,20 @@ using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
-    public partial class ITMLineStopsWindow : GUIRootWindowBase
+    public partial class ITMLineStopsWindow : ITMBaseWipDependentWindow<ITMLineStopsWindow, PublicTransportWorldInfoPanel>
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
         protected override bool ShowCloseButton => false;
         protected override bool ShowMinimizeButton => true;
         protected override float FontSizeMultiplier => .9f;
+        protected override bool Resizable => true;
+        protected override string InitTitle => Str.itm_lineMap_title;
+        protected override Vector2 StartSize => new Vector2(700, 300);
+        protected override Vector2 StartPosition => default;
+        protected override Vector2 MinSize => new Vector2(700, 300);
+        protected override Vector2 MaxSize => new Vector2(700, 999999);
+        protected override Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ComponentsWatching => ModInstance.Controller.PTPanels;
 
 
         private const int STATION_SIZE = 120;
@@ -49,24 +56,7 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_noBreakLabel;
         private GUIStyle m_lineIconText;
 
-        public static ITMLineStopsWindow Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = GameObjectUtils.CreateElement<ITMLineStopsWindow>(UIView.GetAView().transform);
-                    instance.Init(Str.itm_lineMap_title, new Rect(0, 0, 700, 300), resizable: true, minSize: new Vector2(700, 300), hasTitlebar: true, maxSize: new Vector2(700, 999999));
-                    instance.Visible = false;
-                }
-                return instance;
-            }
-        }
-
-        private static ITMLineStopsWindow instance;
-        private Tuple<UIComponent, PublicTransportWorldInfoPanel>[] currentBWIP;
-
-        public void Awake()
+        public override void OnAwake()
         {
             m_baseLineBg = KResourceLoader.LoadTextureMod("map_lineBase");
             m_baseStation = KResourceLoader.LoadTextureMod("map_station");
@@ -105,6 +95,8 @@ namespace ImprovedTransportManager.UI
                 return m_redButton;
             }
         }
+
+
         protected override void DrawWindow(Vector2 size)
         {
             InitStyles();
@@ -203,8 +195,6 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-
-
         public bool HasAnyFreeStop() => m_loadedStopData.Any(x => x.tariffMultiplier == 0);
 
         private void InitStyles()
@@ -258,76 +248,6 @@ namespace ImprovedTransportManager.UI
                     //hover = GUI.skin.button.hover, //Only if CD exists
                 };
             }
-        }
-
-
-        private void FixedUpdate()
-        {
-            if (currentBWIP is null)
-            {
-                var BWIPs = UIView.GetAView().GetComponentsInChildren<PublicTransportWorldInfoPanel>();
-                if (BWIPs is null || BWIPs.Length == 0)
-                {
-                    return;
-                }
-                currentBWIP = BWIPs.Select(x => Tuple.New(x.GetComponent<UIComponent>(), x)).ToArray();
-            }
-            if (currentBWIP.FirstOrDefault(x => x.First.isVisible) is Tuple<UIComponent, PublicTransportWorldInfoPanel> window)
-            {
-                if (m_currentLine != WorldInfoPanel.GetCurrentInstanceID().TransportLine)
-                {
-                    m_currentLine = WorldInfoPanel.GetCurrentInstanceID().TransportLine;
-                    if (m_currentLine > 0)
-                    {
-                        m_currentLineData?.Dispose();
-                        m_currentLineData = LineData.FromLine(m_currentLine);
-                        Visible = true;
-                        m_loadedStopData.Clear();
-                        ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[m_currentLine];
-                        ushort currentStop = tl.GetStop(0);
-                        for (int i = 0; currentStop != 0 && i < 65536; currentStop = tl.GetStop(++i))
-                        {
-                            m_loadedStopData.Add(StationData.FromStop(currentStop));
-                        }
-                        if (m_currentLineData.m_type.HasVehicles())
-                        {
-                            UpdateVehicleButtons(m_currentLine, true);
-                        }
-                        else
-                        {
-                            m_loadedVehiclesData.Clear();
-                        }
-                    }
-                }
-                else if (m_currentLine > 0 && m_currentLineData.m_type.HasVehicles())
-                {
-                    UpdateVehicleButtons(m_currentLine);
-                }
-            }
-            else
-            {
-                Visible = false;
-                m_currentLine = 0;
-            }
-
-            if (m_currentLoadedColor != m_currentLineData.LineColor)
-            {
-                var lineColor = m_currentLineData.LineColor;
-                TexStation.SetPixels(m_baseStation.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStation.Apply();
-                TexStationFree.SetPixels(m_baseStationFree.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStationFree.Apply();
-                TexStationHigh.SetPixels(m_baseStationHigh.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStationHigh.Apply();
-                TexLineBg.SetPixels(m_baseLineBg.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexLineBg.Apply();
-                m_currentLoadedColor = lineColor;
-            }
-
-        }
-        protected override void OnWindowDestroyed()
-        {
-            instance = null;
         }
         private Texture2D GetStationImage(StationData s)
             => s.tariffMultiplier > 1.001f
@@ -395,6 +315,46 @@ namespace ImprovedTransportManager.UI
                 }
             }
             m_loadedVehiclesData.SetCapacity(idx);
+        }
+
+        protected override void OnIdChanged(InstanceID currentId)
+        {
+            m_currentLine = currentId.TransportLine;
+            m_currentLineData?.Dispose();
+            m_currentLineData = LineData.FromLine(m_currentLine);
+            Visible = true;
+            m_loadedStopData.Clear();
+            ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[m_currentLine];
+            ushort currentStop = tl.GetStop(0);
+            for (int i = 0; currentStop != 0 && i < 65536; currentStop = tl.GetStop(++i))
+            {
+                m_loadedStopData.Add(StationData.FromStop(currentStop));
+            }
+            if (m_currentLineData.m_type.HasVehicles())
+            {
+                UpdateVehicleButtons(m_currentLine, true);
+            }
+            else
+            {
+                m_loadedVehiclesData.Clear();
+            }
+        }
+
+        protected override void OnFixedUpdateIfVisible()
+        {
+            if (m_currentLoadedColor != m_currentLineData.LineColor)
+            {
+                var lineColor = m_currentLineData.LineColor;
+                TexStation.SetPixels(m_baseStation.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
+                TexStation.Apply();
+                TexStationFree.SetPixels(m_baseStationFree.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
+                TexStationFree.Apply();
+                TexStationHigh.SetPixels(m_baseStationHigh.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
+                TexStationHigh.Apply();
+                TexLineBg.SetPixels(m_baseLineBg.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
+                TexLineBg.Apply();
+                m_currentLoadedColor = lineColor;
+            }
         }
     }
 

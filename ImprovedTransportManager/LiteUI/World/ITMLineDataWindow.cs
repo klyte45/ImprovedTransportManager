@@ -10,21 +10,19 @@ using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
-    internal enum LineActivityOptions
-    {
-        None,
-        Day,
-        Night,
-        DayNight
-    }
-
-    public class ITMLineDataWindow : GUIOpacityChanging
+    public class ITMLineDataWindow : ITMBaseWipDependentWindow<ITMLineDataWindow, PublicTransportWorldInfoPanel>
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
         protected override bool ShowCloseButton => false;
         protected override bool ShowMinimizeButton => true;
         protected override float FontSizeMultiplier => .9f;
+        protected override bool Resizable => false;
+        protected override string InitTitle => ModInstance.Instance.GeneralName;
+        protected override Vector2 StartSize => new Vector2(400, minHeight);
+        protected override Vector2 StartPosition => new Vector2(256, 256);
+        protected override Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ComponentsWatching => ModInstance.Controller.PTPanels;
+
         private const float minHeight = 500;
         private GUIColorPicker picker;
         private Texture2D m_childTex;
@@ -47,26 +45,8 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_rightTextLabel;
         private GUIStyle m_centerTextLabel;
 
-        public static ITMLineDataWindow Instance
+        public override void OnAwake()
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = GameObjectUtils.CreateElement<ITMLineDataWindow>(UIView.GetAView().transform);
-                    instance.Init(ModInstance.Instance.GeneralName, new Rect(256, 256, 400, minHeight), resizable: false, minSize: new Vector2(100, minHeight), hasTitlebar: true);
-                    instance.Visible = false;
-                }
-                return instance;
-            }
-        }
-
-        private static ITMLineDataWindow instance;
-        private Tuple<UIComponent, PublicTransportWorldInfoPanel>[] currentBWIP;
-
-        public override void Awake()
-        {
-            base.Awake();
             m_childTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_CHILDREN));
             m_teenTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_TEEN));
             m_youngTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_YOUNG));
@@ -102,6 +82,8 @@ namespace ImprovedTransportManager.UI
                 return m_redButton;
             }
         }
+
+
         protected override void DrawWindow(Vector2 size)
         {
             InitStyles();
@@ -254,44 +236,15 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-
-        private void FixedUpdate()
+        protected override void OnIdChanged(InstanceID currentId)
         {
-            if (currentBWIP is null)
-            {
-                var BWIPs = UIView.GetAView().GetComponentsInChildren<PublicTransportWorldInfoPanel>();
-                if (BWIPs is null || BWIPs.Length == 0)
-                {
-                    return;
-                }
-                currentBWIP = BWIPs.Select(x => Tuple.New(x.GetComponent<UIComponent>(), x)).ToArray();
-            }
-            if (currentBWIP.FirstOrDefault(x => x.First.isVisible) is Tuple<UIComponent, PublicTransportWorldInfoPanel> window)
-            {
-                if (m_currentLine != WorldInfoPanel.GetCurrentInstanceID().TransportLine)
-                {
-                    m_currentLine = WorldInfoPanel.GetCurrentInstanceID().TransportLine;
-                    if (m_currentLine > 0)
-                    {
-                        m_lineActivityOptionsNames = m_lineActivityOptions.Select(x => x.ValueToI18n()).ToArray();
-                        m_currentLineData?.Dispose();
-                        m_currentLineData = LineData.FromLine(m_currentLine);
-                        Visible = true;
-                        Title = TransportManager.instance.GetLineName(m_currentLine);
-                    }
-                }
-            }
-            else
-            {
-                Visible = false;
-                m_currentLine = 0;
-            }
+            m_currentLine = currentId.TransportLine;
+            m_lineActivityOptionsNames = m_lineActivityOptions.Select(x => x.ValueToI18n()).ToArray();
+            m_currentLineData?.Dispose();
+            m_currentLineData = LineData.FromLine(m_currentLine);
+            Visible = true;
+            Title = TransportManager.instance.GetLineName(m_currentLine);
         }
-        protected override void OnWindowDestroyed()
-        {
-            instance = null;
-        }
-
     }
 
 }
