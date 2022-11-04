@@ -19,7 +19,7 @@ namespace ImprovedTransportManager.Overrides
         public static void SetRandomBuilding(TransportSystemType tsd, ushort lineId, ref ushort currentId)
         {
             return;
-            //Interfaces.IBasicExtension config = TLMLineUtils.GetEffectiveExtensionForLine(lineId);
+            //Interfaces.IBasicExtension config = ITMLineUtils.GetEffectiveExtensionForLine(lineId);
             //List<ushort> allowedDepots = config.GetAllowedDepots(tsd, lineId);
             //if (allowedDepots.Count == 0)
             //{

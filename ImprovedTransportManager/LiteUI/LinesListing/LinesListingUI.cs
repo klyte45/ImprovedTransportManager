@@ -315,7 +315,7 @@ namespace ImprovedTransportManager.UI
         //    {
         //        Vector3 position = default;
         //        InstanceID iid = InstanceID.Empty;
-        //        iid.Set(TLMInstanceType.TransportSystemDefinition, TLMPanel.Instance.m_linesPanel.TSD.Id);
+        //        iid.Set(ITMInstanceType.TransportSystemDefinition, ITMPanel.Instance.m_linesPanel.TSD.Id);
         //        WorldInfoPanel.Show<PublicTransportWorldInfoPanel>(position, iid);
         //    }
 

@@ -1,4 +1,5 @@
-﻿using ImprovedTransportManager.Utility;
+﻿using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Utility;
 using UnityEngine;
 
 namespace ImprovedTransportManager.UI
@@ -10,12 +11,16 @@ namespace ImprovedTransportManager.UI
         public float distanceNextStop;
         public Vector3 position;
         public float tariffMultiplier;
-        public float earningAllTime;
-        public float earningLastWeek;
-        public float earningCurrentWeek;
+        private long m_earningAllTime;
+        private long m_earningLastWeek;
+        private long m_earningCurrentWeek;
         public int residentsWaiting;
         public int touristsWaiting;
         public int timeUntilBored;
+
+        public float EarningAllTime => m_earningAllTime * .01f;
+        public float EarningLastWeek => m_earningLastWeek * .01f;
+        public float EarningCurrentWeek => m_earningCurrentWeek * .01f;
 
         private uint lastUpdateFrame;
 
@@ -50,9 +55,9 @@ namespace ImprovedTransportManager.UI
                 return;
             }
             lastUpdateFrame = SimulationManager.instance.m_referenceFrameIndex;
-            earningAllTime++;
-            earningCurrentWeek++;
-            earningLastWeek++;
+            ITMTransportLineStatusesManager.instance.GetLastWeekStopIncome(stopId, out m_earningLastWeek);
+            ITMTransportLineStatusesManager.instance.GetStopIncome(stopId, out m_earningAllTime);
+            ITMTransportLineStatusesManager.instance.GetCurrentStopIncome(stopId, out m_earningCurrentWeek);
             ITMLineUtils.GetQuantityPassengerWaiting(stopId, out residentsWaiting, out touristsWaiting, out timeUntilBored);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using ColossalFramework;
 using ColossalFramework.Globalization;
 using ColossalFramework.UI;
+using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using Kwytto.LiteUI;
@@ -173,7 +174,7 @@ namespace ImprovedTransportManager.UI
                         var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
                         var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
                         GUI.Label(new Rect(textsBasePosition, new Vector2(labelWidth, 20)), $"<b>{stop.cachedName}</b>");
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.earningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.earningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.earningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
+                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
                         GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
                     }
@@ -302,9 +303,12 @@ namespace ImprovedTransportManager.UI
 
                 info.m_vehicleAI.GetBufferStatus(vehicleId, ref vehicleData, out _, out currentVehicle.m_passengers, out currentVehicle.m_capacity);
 
-                currentVehicle.m_profitAllTime = -1f;    // Change to query in the statistics
-                currentVehicle.m_profitLastWeek = -2f;   // Change to query in the statistics
-                currentVehicle.m_profitCurrentWeek = -3f;// Change to query in the statistics
+                ITMTransportLineStatusesManager.instance.GetCurrentIncomeAndExpensesForVehicles(vehicleId, out var incC, out var expC);
+                ITMTransportLineStatusesManager.instance.GetLastWeekIncomeAndExpensesForVehicles(vehicleId, out var incL, out var expL);
+                ITMTransportLineStatusesManager.instance.GetIncomeAndExpensesForVehicle(vehicleId, out var incA, out var expA);
+                currentVehicle.m_profitAllTime = (incA - expA) * .01f;
+                currentVehicle.m_profitLastWeek = (incL - expL) * .01f;
+                currentVehicle.m_profitCurrentWeek = (incC - expC) * .01f;
 
 
                 vehicleId = vehicleData.m_nextLineVehicle;

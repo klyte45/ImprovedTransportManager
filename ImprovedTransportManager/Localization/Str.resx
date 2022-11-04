@@ -259,11 +259,11 @@
     <value>Profit (Current Period)</value>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
-    <value>EAT:</value>
+    <value>E16:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
-    <value>EAT - Earnings all time</value>
+    <value>E16 - Earnings last 16 weeks (24h for Real Time)</value>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
     <value>ECP:</value>

@@ -251,7 +251,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a EAT:.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a E16:.
         /// </summary>
         internal static string itm_lineMap_earningsAllTimeAcronym {
             get {
@@ -260,7 +260,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a EAT - Earnings all time.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a E16 - Earnings last 16 weeks (24h for Real Time).
         /// </summary>
         internal static string itm_lineMap_earningsAllTimeAcronymLegend {
             get {

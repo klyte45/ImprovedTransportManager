@@ -89,21 +89,21 @@ namespace ImprovedTransportManager.Overrides
         //        if ((Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].m_flags & TransportLine.Flags.Complete) != TransportLine.Flags.None
         //            && (Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].m_flags & (TransportLine.Flags.Temporary)) == TransportLine.Flags.None)
         //        {
-        //            if (TLMBaseConfigXML.Instance.UseAutoColor)
+        //            if (ITMBaseConfigXML.Instance.UseAutoColor)
         //            {
-        //                TLMController.AutoColor(lineID);
+        //                ITMController.AutoColor(lineID);
         //            }
-        //            if (TLMBaseConfigXML.Instance.UseAutoName)
+        //            if (ITMBaseConfigXML.Instance.UseAutoName)
         //            {
-        //                TLMController.AutoName(lineID);
+        //                ITMController.AutoName(lineID);
         //            }
-        //            TLMController.Instance.LineCreationToolbox.IncrementNumber();
+        //            ITMController.Instance.LineCreationToolbox.IncrementNumber();
         //        }
         //    }
         //    if ((Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].m_flags & TransportLine.Flags.Complete) == TransportLine.Flags.None)
         //    {
         //        Singleton<TransportManager>.instance.m_lines.m_buffer[lineID].m_flags &= ~TransportLine.Flags.CustomColor;
-        //        TLMTransportLineExtension.Instance.SafeCleanEntry(lineID);
+        //        ITMTransportLineExtension.Instance.SafeCleanEntry(lineID);
         //    }
 
         //}
@@ -114,7 +114,7 @@ namespace ImprovedTransportManager.Overrides
         //private static readonly MethodInfo m_setActive = typeof(TransportLine).GetMethod("SetActive", RedirectorUtils.allFlags);
         //private static readonly MethodInfo m_newTargetVehicles = typeof(TransportLineOverrides).GetMethod("NewCalculateTargetVehicleCount", RedirectorUtils.allFlags);
         //private static readonly FieldInfo m_budgetField = typeof(TransportLine).GetField("m_budget", RedirectorUtils.allFlags);
-        //private static readonly MethodInfo m_getBudgetInt = typeof(TLMLineUtils).GetMethod("GetEffectiveBudgetInt", RedirectorUtils.allFlags);
+        //private static readonly MethodInfo m_getBudgetInt = typeof(ITMLineUtils).GetMethod("GetEffectiveBudgetInt", RedirectorUtils.allFlags);
         //public static IEnumerable<CodeInstruction> TranspileSimulationStepLine(IEnumerable<CodeInstruction> instructions)
         //{
         //    var inst = new List<CodeInstruction>(instructions);
@@ -208,7 +208,7 @@ namespace ImprovedTransportManager.Overrides
         //        }
         //        t.m_totalLength = lineLength;
         //    }
-        //    return TLMLineUtils.ProjectTargetVehicleCount(t.Info, lineLength, TLMLineUtils.GetEffectiveBudget(lineId));
+        //    return ITMLineUtils.ProjectTargetVehicleCount(t.Info, lineLength, ITMLineUtils.GetEffectiveBudget(lineId));
         //}
 
         #endregion
@@ -277,7 +277,7 @@ namespace ImprovedTransportManager.Overrides
         //            multiplier = 1;
         //        }
         //    }
-        //    uint ticketPriceDefault = TLMLineUtils.GetTicketPriceForLine(def, vehicleData.m_transportLine).First.Value;
+        //    uint ticketPriceDefault = ITMLineUtils.GetTicketPriceForLine(def, vehicleData.m_transportLine).First.Value;
         //    LogUtils.DoLog($"GetTicketPriceForVehicle ({vehicleID}): multiplier = {multiplier}, ticketPriceDefault = {ticketPriceDefault}");
 
         //    return (int)(multiplier * ticketPriceDefault);
@@ -393,5 +393,4 @@ namespace ImprovedTransportManager.Overrides
         }
         #endregion
     }
-
 }
