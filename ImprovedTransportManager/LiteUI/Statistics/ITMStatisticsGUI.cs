@@ -35,17 +35,16 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_centeredLabelTitle;
         private GUIStyle m_centeredLabelSubtitle;
 
-        internal ushort CurrentSelectedLine => m_currentLineIdxSelected < 0 ? default : m_linesDic[m_linesOptions[m_currentLineIdxSelected]];
-        internal ushort CurrentSelectedStop => m_currentStopIdxSelected < 0 ? default : m_stopsDic[m_stopsOptions[m_currentStopIdxSelected]];
-        internal ushort CurrentSelectedVehicle => m_currentVehicleIdxSelected < 0 ? default : m_vehiclesDic[m_vehiclesOptions[m_currentVehicleIdxSelected]];
-
+        internal ushort GetCurrentSelectedLine() => m_currentLineIdxSelected < 0 ? default : m_linesDic[m_linesOptions[m_currentLineIdxSelected]];
+        internal ushort GetCurrentSelectedStop() => m_currentStopIdxSelected < 0 ? default : m_stopsDic[m_stopsOptions[m_currentStopIdxSelected]];
+        internal ushort GetCurrentSelectedVehicle() => m_currentVehicleIdxSelected < 0 ? default : m_vehiclesDic[m_vehiclesOptions[m_currentVehicleIdxSelected]];
         public override void Awake()
         {
             base.Awake();
             Instance = this;
             Init($"{ModInstance.Instance.GeneralName} - {Str.itm_statistics_title}", new Rect(128, 128, 680, 420), resizable: true, minSize: new Vector2(440, 260));
             var tabs = new IGUIVerticalITab[] {
-
+                        new FinanceReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle)
                     };
             m_tabsContainer = new GUIVerticalTabsContainer(tabs);
             Visible = false;
@@ -104,10 +103,22 @@ namespace ImprovedTransportManager.UI
                 {
                     GUILayout.Label(Str.itm_statistics_subtitleTableFormatAll, m_centeredLabelSubtitle);
                 }
-
-                m_tabsContainer.DrawListTabs(new Rect(default, size), 150);
+                GUILayout.Space(0);
+                var rect = GUILayoutUtility.GetLastRect();
+                if (rect.position == default)
+                {
+                    rect = cachedRect;
+                }
+                else
+                {
+                    cachedRect = rect;
+                }
+                rect.x = 0;
+                m_tabsContainer.DrawListTabs(new Rect(rect.position, size - rect.position), 150);
             }
         }
+
+        Rect cachedRect;
 
         private void InitStyles()
         {
@@ -139,9 +150,9 @@ namespace ImprovedTransportManager.UI
 
         private void ReloadLines()
         {
-            var currentSelectedLine = CurrentSelectedLine;
-            var currentSelectedStop = CurrentSelectedStop;
-            var currentSelectedVehicle = CurrentSelectedVehicle;
+            var currentSelectedLine = GetCurrentSelectedLine();
+            var currentSelectedStop = GetCurrentSelectedStop();
+            var currentSelectedVehicle = GetCurrentSelectedVehicle();
             SelectLine(-1);
 
             m_linesDic.Clear();

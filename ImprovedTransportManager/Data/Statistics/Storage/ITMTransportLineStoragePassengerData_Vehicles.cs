@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ImprovedTransportManager.Singleton;
+using System;
 using System.IO;
-using static ImprovedTransportManager.Data.ITMTransportLineStatusesManager;
+using static ImprovedTransportManager.Singleton.ITMTransportLineStatusesManager;
 
 namespace ImprovedTransportManager.Data
 {

@@ -1,5 +1,5 @@
 ﻿using ColossalFramework;
-using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using Kwytto.Utils;
@@ -162,7 +162,7 @@ namespace ImprovedTransportManager.UI
                 VehiclesTargetDay = TEMP_CalculateTargetVehicles(BudgetEffectiveDay, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
                 VehiclesTargetNight = TEMP_CalculateTargetVehicles(BudgetEffectiveNight, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
                 m_lengthKm = refLine.m_totalLength;
-                ITMTransportLineStatusesManager.instance.GetLastWeekIncomeAndExpensesForLine(m_id.TransportLine, out var inc, out var exp);
+                ITMTransportLineStatusesManager.Instance.GetLastWeekIncomeAndExpensesForLine(m_id.TransportLine, out var inc, out var exp);
                 m_lineFinancesBalance = (inc - exp) * .01f;
                 Broken = (refLine.m_flags & TransportLine.Flags.Complete) == 0;
 

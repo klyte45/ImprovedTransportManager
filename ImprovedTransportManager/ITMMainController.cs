@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.UI;
 using Kwytto.Interfaces;
 using Kwytto.Utils;
@@ -13,6 +14,8 @@ namespace ImprovedTransportManager
         public const ulong REALTIME_MOD_ID = 1420955187;
 
         private readonly List<GameObject> refGOs = new List<GameObject>();
+        public ITMTransportLineStatusesManager StatisticsManager => ITMTransportLineStatusesManager.Instance;
+
         protected override void StartActions()
         {
             base.StartActions();
@@ -23,6 +26,7 @@ namespace ImprovedTransportManager
             refGOs.Add(ITMLineDataWindow.Instance.gameObject);
             refGOs.Add(ITMLineStopsWindow.Instance.gameObject);
             refGOs.Add(ITMLineVehicleSelectionWindow.Instance.gameObject);
+
         }
 
 

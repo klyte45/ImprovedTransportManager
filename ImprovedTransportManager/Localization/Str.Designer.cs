@@ -710,6 +710,87 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Since {0}.
+        /// </summary>
+        internal static string itm_statisticsTable_currentLineColumnValue {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_currentLineColumnValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a This data is not available in current selected filter.
+        /// </summary>
+        internal static string itm_statisticsTable_dataNotAvailableForThisFilter {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_dataNotAvailableForThisFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Balance.
+        /// </summary>
+        internal static string itm_statisticsTable_financeReport_balance {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_financeReport_balance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Expense.
+        /// </summary>
+        internal static string itm_statisticsTable_financeReport_expense {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_financeReport_expense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Income.
+        /// </summary>
+        internal static string itm_statisticsTable_financeReport_income {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_financeReport_income", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Financial report.
+        /// </summary>
+        internal static string itm_statisticsTable_financeReport_title {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_financeReport_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Period.
+        /// </summary>
+        internal static string itm_statisticsTable_periodTitle {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_periodTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total last 16 weeks.
+        /// </summary>
+        internal static string itm_statisticsTable_totalLast16w {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_totalLast16w", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total last 24h.
+        /// </summary>
+        internal static string itm_statisticsTable_totalLast24h {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_totalLast24h", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Current line exclusive.
         /// </summary>
         internal static string itm_vehicleSelectWindow_defaultGroupText {

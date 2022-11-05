@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ImprovedTransportManager.Singleton;
+using System;
 using System.IO;
-using static ImprovedTransportManager.Data.ITMTransportLineStatusesManager;
+using static ImprovedTransportManager.Singleton.ITMTransportLineStatusesManager;
 
 namespace ImprovedTransportManager.Data
 {
@@ -23,6 +24,5 @@ namespace ImprovedTransportManager.Data
         protected override Action<Stream, long> SerializeFunction { get; } = WriteInt16;
         protected override Func<Stream, long> DeserializeFunction { get; } = ReadInt16;
     }
-
 
 }

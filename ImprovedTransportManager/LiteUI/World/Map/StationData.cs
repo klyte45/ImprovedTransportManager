@@ -1,4 +1,5 @@
 ﻿using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.Utility;
 using UnityEngine;
 
@@ -55,9 +56,9 @@ namespace ImprovedTransportManager.UI
                 return;
             }
             lastUpdateFrame = SimulationManager.instance.m_referenceFrameIndex;
-            ITMTransportLineStatusesManager.instance.GetLastWeekStopIncome(stopId, out m_earningLastWeek);
-            ITMTransportLineStatusesManager.instance.GetStopIncome(stopId, out m_earningAllTime);
-            ITMTransportLineStatusesManager.instance.GetCurrentStopIncome(stopId, out m_earningCurrentWeek);
+            ITMTransportLineStatusesManager.Instance.GetLastWeekStopIncome(stopId, out m_earningLastWeek);
+            ITMTransportLineStatusesManager.Instance.GetStopIncome(stopId, out m_earningAllTime);
+            ITMTransportLineStatusesManager.Instance.GetCurrentStopIncome(stopId, out m_earningCurrentWeek);
             ITMLineUtils.GetQuantityPassengerWaiting(stopId, out residentsWaiting, out touristsWaiting, out timeUntilBored);
         }
     }

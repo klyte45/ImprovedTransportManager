@@ -1,8 +1,8 @@
 ﻿using ColossalFramework;
 using ColossalFramework.Globalization;
 using ColossalFramework.UI;
-using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
@@ -105,6 +105,7 @@ namespace ImprovedTransportManager.UI
             if (m_currentLine != 0)
             {
                 m_currentLineData.GetUpdated();
+                UpdateVehicleButtons(m_currentLine);
                 using (new GUILayout.HorizontalScope())
                 {
                     if (m_currentLineData.m_type.HasVehicles())
@@ -260,7 +261,7 @@ namespace ImprovedTransportManager.UI
 
         private void UpdateVehicleButtons(ushort lineID, bool force = false)
         {
-            if (m_loadedStopData.Count == 0 || (m_loadedVehiclesLine == lineID && !force && m_vehicleRecalcFrame + 23 > SimulationManager.instance.m_referenceFrameIndex))
+            if (m_loadedStopData.Count == 0 || (!force && m_loadedVehiclesLine == lineID && m_vehicleRecalcFrame + 23 > SimulationManager.instance.m_referenceFrameIndex))
             {
                 return;
             }
@@ -304,12 +305,12 @@ namespace ImprovedTransportManager.UI
 
                 info.m_vehicleAI.GetBufferStatus(vehicleId, ref vehicleData, out _, out currentVehicle.m_passengers, out currentVehicle.m_capacity);
 
-                ITMTransportLineStatusesManager.instance.GetCurrentIncomeAndExpensesForVehicles(vehicleId, out var incC, out var expC);
-                ITMTransportLineStatusesManager.instance.GetLastWeekIncomeAndExpensesForVehicles(vehicleId, out var incL, out var expL);
-                ITMTransportLineStatusesManager.instance.GetIncomeAndExpensesForVehicle(vehicleId, out var incA, out var expA);
-                currentVehicle.m_profitAllTime = (incA - expA) * .01f;
-                currentVehicle.m_profitLastWeek = (incL - expL) * .01f;
+                ITMTransportLineStatusesManager.Instance.GetCurrentIncomeAndExpensesForVehicles(vehicleId, out var incC, out var expC);
+                ITMTransportLineStatusesManager.Instance.GetLastWeekIncomeAndExpensesForVehicles(vehicleId, out var incL, out var expL);
+                ITMTransportLineStatusesManager.Instance.GetIncomeAndExpensesForVehicle(vehicleId, out var incA, out var expA);
                 currentVehicle.m_profitCurrentWeek = (incC - expC) * .01f;
+                currentVehicle.m_profitAllTime = ((incA - expA) * .01f) - currentVehicle.m_profitCurrentWeek;
+                currentVehicle.m_profitLastWeek = (incL - expL) * .01f;
 
 
                 vehicleId = vehicleData.m_nextLineVehicle;

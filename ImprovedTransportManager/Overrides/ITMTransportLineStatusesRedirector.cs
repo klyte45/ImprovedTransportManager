@@ -1,6 +1,6 @@
 ﻿using ColossalFramework;
 using HarmonyLib;
-using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using Kwytto.Utils;
 using System;
@@ -94,13 +94,13 @@ namespace ImprovedTransportManager.Overrides
             foreach (KeyValuePair<ushort, int> entry in capacities)
             {
                 int cost = (int)(entry.Value * tsd.GetEffectivePassengerCapacityCost());
-                ITMTransportLineStatusesManager.instance.AddToVehicle(entry.Key, 0, cost, ref refNull);
+                ITMTransportLineStatusesManager.Instance.AddToVehicle(entry.Key, 0, cost, ref refNull);
                 amount += cost;
             }
 
 
             LogUtils.DoLog($"DoTransportLineEconomyManagement : line {lineId} ({tsd} {tl.m_lineNumber}) ;amount = {amount}");
-            ITMTransportLineStatusesManager.instance.AddToLine(lineId, 0, amount, ref refNull, 0);
+            ITMTransportLineStatusesManager.Instance.AddToLine(lineId, 0, amount, ref refNull, 0);
             EconomyManager.instance.FetchResource(Resource.Maintenance, amount, tl.Info.m_class);
         }
 
@@ -113,9 +113,9 @@ namespace ImprovedTransportManager.Overrides
             if (lineId != 0)
             {
                 ushort stopId = TransportLine.GetPrevStop(VehicleManager.instance.m_vehicles.m_buffer[vehicleId].m_targetBuilding);
-                ITMTransportLineStatusesManager.instance.AddToLine(lineId, amount, 0, ref citizen, citizenId);
-                ITMTransportLineStatusesManager.instance.AddToVehicle(vehicleId, amount, 0, ref citizen);
-                ITMTransportLineStatusesManager.instance.AddToStop(stopId, amount, ref citizen);
+                ITMTransportLineStatusesManager.Instance.AddToLine(lineId, amount, 0, ref citizen, citizenId);
+                ITMTransportLineStatusesManager.Instance.AddToVehicle(vehicleId, amount, 0, ref citizen);
+                ITMTransportLineStatusesManager.Instance.AddToStop(stopId, amount, ref citizen);
                 LogUtils.DoLog($"DoHumanAiEconomyManagement : line {lineId};amount = {amount}; citizen = {citizenId}");
             }
 

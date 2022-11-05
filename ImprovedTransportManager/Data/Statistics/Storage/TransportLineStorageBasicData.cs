@@ -1,9 +1,10 @@
 ﻿using ICities;
+using ImprovedTransportManager.Singleton;
 using Kwytto.Data;
 using Kwytto.Utils;
 using System;
 using System.IO;
-using static ImprovedTransportManager.Data.ITMTransportLineStatusesManager;
+using static ImprovedTransportManager.Singleton.ITMTransportLineStatusesManager;
 
 namespace ImprovedTransportManager.Data
 {
@@ -44,7 +45,7 @@ namespace ImprovedTransportManager.Data
                     if (version >= GetMinVersion(e))
                     {
                         var isVehicleData = IsVehicleEnum(e);
-                        ITMTransportLineStatusesManager.instance.DoWithArray(e, (ref long[][] arrayRef) =>
+                        ITMTransportLineStatusesManager.Instance.DoWithArray(e, (ref long[][] arrayRef) =>
                         {
                             int idx = GetIdxFor(e);
 
@@ -94,7 +95,7 @@ namespace ImprovedTransportManager.Data
                 WriteLong(s, CURRENT_VERSION);
                 foreach (Enum e in LoadOrder)
                 {
-                    ITMTransportLineStatusesManager.instance.DoWithArray(e, (ref long[][] arrayRef) =>
+                    ITMTransportLineStatusesManager.Instance.DoWithArray(e, (ref long[][] arrayRef) =>
                     {
                         int idx = GetIdxFor(e);
                         for (int i = 0; i < arrayRef.Length; i++)
@@ -371,6 +372,5 @@ namespace ImprovedTransportManager.Data
 
         #endregion
     }
-
 
 }

@@ -151,7 +151,7 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label(hasVehicles ? $"{line.BudgetEffectiveNow:N0}%" : Str.itm_common_notApplicableAcronym, m_LineBasicLabelStyle);
                         GUILayout.Label(hasVehicles ? $"{line.m_vehiclesCount:N0}/{line.VehiclesTargetNow:N0}" : Str.itm_common_notApplicableAcronym, m_LineBasicLabelStyle);
                         GUILayout.Label($"{line.m_passengersResCount + line.m_passengersTouCount:N0}", m_LineBasicLabelStyle);
-                        GUILayout.Label(hasVehicles ? $"{line.m_lineFinancesBalance.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}" : Str.itm_common_notApplicableAcronym, new GUIStyle(m_HeaderLineStyle) { fixedWidth = 80 });
+                        GUILayout.Label(hasVehicles ? $"{line.m_lineFinancesBalance.ToGameCurrencyFormat()}" : Str.itm_common_notApplicableAcronym, new GUIStyle(m_HeaderLineStyle) { fixedWidth = 80 });
                         if (GUIComboBox.Button((int)line.LineActivity, m_lineActivityOptionsNames, $"{line.m_id}", this, 80) is int newIdx && newIdx != (int)line.LineActivity)
                         {
                             line.LineActivity = (LineActivityOptions)newIdx;
