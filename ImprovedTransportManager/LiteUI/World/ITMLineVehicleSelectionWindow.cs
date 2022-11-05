@@ -1,5 +1,4 @@
 ﻿extern alias UUI;
-using ColossalFramework.UI;
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
@@ -14,18 +13,19 @@ using UnityEngine;
 
 namespace ImprovedTransportManager.UI
 {
-    public class ITMLineVehicleSelectionWindow : ITMBaseWipDependentWindow<ITMLineVehicleSelectionWindow, PublicTransportWorldInfoPanel>
+    public class ITMLineVehicleSelectionWindow : GUIOpacityChanging
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
         protected override bool ShowCloseButton => false;
         protected override bool ShowMinimizeButton => true;
         protected override float FontSizeMultiplier => .9f;
-        protected override bool Resizable => false;
-        protected override string InitTitle => Str.itm_vehicleSelectWindow_title;
-        protected override Vector2 StartSize => new Vector2(400, 600);
-        protected override Vector2 StartPosition => new Vector2(600, 256);
-        protected override Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ComponentsWatching => ModInstance.Controller.PTPanels;
+        protected bool Resizable => false;
+        protected string InitTitle => Str.itm_vehicleSelectWindow_title;
+        protected Vector2 StartSize => new Vector2(400, 600);
+        protected Vector2 StartPosition => new Vector2(999999, 0);
+
+        public static ITMLineVehicleSelectionWindow Instance { get; private set; }
 
         private string[] m_availableGroups = new[] { Str.itm_vehicleSelectWindow_defaultGroupText };
         private ITMTransportLineXml m_currentLineSettings;
@@ -166,7 +166,7 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        protected override void OnIdChanged(InstanceID currentId)
+        internal void OnIdChanged(InstanceID currentId)
         {
             if (currentId.TransportLine > 0)
             {
@@ -188,13 +188,18 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        public override void OnAwake()
+        public override void Awake()
         {
+            base.Awake();
+            Init();
+            Instance = this;
             GameObjectUtils.CreateElement(out m_previewRenderer, transform);
             m_previewRenderer.Size = m_previewSize;
             m_previewRenderer.Zoom = 3;
             m_previewRenderer.CameraRotation = 40;
+            Visible = false;
         }
+        private void Init() => Init(InitTitle, new Rect(StartPosition, StartSize), Resizable, true);
 
         private void Update()
         {

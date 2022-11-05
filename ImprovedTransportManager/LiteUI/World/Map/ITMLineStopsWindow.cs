@@ -1,6 +1,5 @@
 ﻿using ColossalFramework;
 using ColossalFramework.Globalization;
-using ColossalFramework.UI;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
@@ -15,20 +14,19 @@ using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
-    public partial class ITMLineStopsWindow : ITMBaseWipDependentWindow<ITMLineStopsWindow, PublicTransportWorldInfoPanel>
+    public partial class ITMLineStopsWindow : GUIOpacityChanging
     {
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
         protected override bool ShowCloseButton => false;
         protected override bool ShowMinimizeButton => true;
         protected override float FontSizeMultiplier => .9f;
-        protected override bool Resizable => true;
-        protected override string InitTitle => Str.itm_lineMap_title;
-        protected override Vector2 StartSize => new Vector2(700, 300);
-        protected override Vector2 StartPosition => default;
-        protected override Vector2 MinSize => new Vector2(700, 300);
-        protected override Vector2 MaxSize => new Vector2(700, 999999);
-        protected override Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ComponentsWatching => ModInstance.Controller.PTPanels;
+        protected bool Resizable => true;
+        protected string InitTitle => Str.itm_lineMap_title;
+        protected Vector2 StartSize => new Vector2(700, 700);
+        protected Vector2 StartPosition => default;
+        protected Vector2 MinSize => new Vector2(700, 300);
+        protected Vector2 MaxSize => new Vector2(700, 999999);
 
 
         private const int STATION_SIZE = 120;
@@ -36,6 +34,9 @@ namespace ImprovedTransportManager.UI
         private Texture2D m_baseStation;
         private Texture2D m_baseStationFree;
         private Texture2D m_baseStationHigh;
+
+        public static ITMLineStopsWindow Instance { get; private set; }
+
         private Texture2D m_baseLineBg;
         public Texture2D TexStation { get; private set; }
         public Texture2D TexStationFree { get; private set; }
@@ -58,8 +59,11 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_noBreakLabel;
         private GUIStyle m_lineIconText;
 
-        public override void OnAwake()
+        public override void Awake()
         {
+            base.Awake();
+            Init();
+            Instance = this;
             m_baseLineBg = KResourceLoader.LoadTextureMod("map_lineBase");
             m_baseStation = KResourceLoader.LoadTextureMod("map_station");
             m_baseStationFree = KResourceLoader.LoadTextureMod("map_stationFree");
@@ -70,8 +74,9 @@ namespace ImprovedTransportManager.UI
             TexStationHigh = TextureUtils.New(m_baseStationHigh.width, m_baseStationHigh.height);
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
-            Minimized = true;
+            Visible = false;
         }
+        private void Init() => Init(InitTitle, new Rect(StartPosition, StartSize), Resizable, true, MinSize, MaxSize);
 
         private GUIStyle m_redButton;
         public GUIStyle RedButton
@@ -122,7 +127,7 @@ namespace ImprovedTransportManager.UI
                         }
                     }
                     GUILayout.FlexibleSpace();
-                    GUILayout.Label($"{Str.itm_lineMap_earningsLastPeriodAcronymLegend}\n{Str.itm_lineMap_earningsCurrentPeriodAcronymLegend}\n{Str.itm_lineMap_earningsAllTimeAcronymLegend}", m_smallLabel);
+                    GUILayout.Label($"{Str.itm_lineMap_earningsLastPeriodAcronymLegend}\n{Str.itm_lineMap_earningsCurrentPeriodAcronymLegend}\n{Str.itm_lineMap_earningsAllTimeAcronymLegend}", m_smallLabel, GUILayout.Height(50));
                 }
 
                 var headerRect = GUILayoutUtility.GetLastRect();
@@ -171,6 +176,7 @@ namespace ImprovedTransportManager.UI
                         var stationPosMapY = ((i + .25f) * STATION_SIZE) - (targetTex.height * .5f);
                         if (GUI.Button(new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height), targetTex, m_stationBtn))
                         {
+                            DefaultTool.OpenWorldInfoPanel(new InstanceID { NetNode = stop.stopId }, stop.position);
                             ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
                         }
                         var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
@@ -188,6 +194,7 @@ namespace ImprovedTransportManager.UI
                             var content = vehicle.GetContentFor(m_currentVehicleDataShow);
                             if (GUI.Button(new Rect(position, new Vector2(leftPivotLine * .25f, 20)), content, vehicle.CachedStyle))
                             {
+                                DefaultTool.OpenWorldInfoPanel(new InstanceID { Vehicle = vehicle.VehicleId }, default);
                                 ToolsModifierControl.cameraController.SetTarget(new InstanceID { Vehicle = vehicle.VehicleId }, default, false);
                             }
                         }
@@ -323,7 +330,7 @@ namespace ImprovedTransportManager.UI
             m_loadedVehiclesData.SetCapacity(idx);
         }
 
-        protected override void OnIdChanged(InstanceID currentId)
+        public void OnIdChanged(InstanceID currentId)
         {
             m_currentLine = currentId.TransportLine;
             m_currentLineData?.Dispose();
@@ -342,9 +349,9 @@ namespace ImprovedTransportManager.UI
         }
 
 
-        protected override void OnFixedUpdateIfVisible()
+        protected void FixedUpdate()
         {
-            if (m_currentLoadedColor != m_currentLineData.LineColor)
+            if (m_currentLineData != null && m_currentLoadedColor != m_currentLineData.LineColor)
             {
                 var lineColor = m_currentLineData.LineColor;
                 TexStation.SetPixels(m_baseStation.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());

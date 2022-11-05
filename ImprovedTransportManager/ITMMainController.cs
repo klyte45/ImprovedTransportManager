@@ -22,10 +22,10 @@ namespace ImprovedTransportManager
             refGOs.Add(GameObjectUtils.CreateElement<LinesListingUI>(UIView.GetAView().gameObject.transform, "LinesListingUI").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMCitySettingsGUI>(UIView.GetAView().gameObject.transform, "ITMCitySettingsGUI").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMStatisticsGUI>(UIView.GetAView().gameObject.transform, "ITMStatisticsGUI").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMLineStopsWindow>(UIView.GetAView().gameObject.transform, "ITMLineStopsWindow").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMLineVehicleSelectionWindow>(UIView.GetAView().gameObject.transform, "ITMLineVehicleSelectionWindow").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMLineDataWindow>(UIView.GetAView().gameObject.transform, "ITMLineDataWindow").gameObject);
 
-            refGOs.Add(ITMLineDataWindow.Instance.gameObject);
-            refGOs.Add(ITMLineStopsWindow.Instance.gameObject);
-            refGOs.Add(ITMLineVehicleSelectionWindow.Instance.gameObject);
 
         }
 

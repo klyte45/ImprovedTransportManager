@@ -1,5 +1,4 @@
-﻿using ColossalFramework.UI;
-using ImprovedTransportManager.Localization;
+﻿using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
@@ -10,20 +9,22 @@ using VehicleSkins.Localization;
 
 namespace ImprovedTransportManager.UI
 {
-    public class ITMLineDataWindow : ITMBaseWipDependentWindow<ITMLineDataWindow, PublicTransportWorldInfoPanel>
+    public class ITMLineDataWindow : GUIOpacityChanging
     {
+        public static ITMLineDataWindow Instance { get; private set; }
         protected override bool showOverModals => false;
         protected override bool requireModal => false;
-        protected override bool ShowCloseButton => false;
-        protected override bool ShowMinimizeButton => true;
+        protected override bool ShowCloseButton => true;
+        protected override bool ShowMinimizeButton => false;
         protected override float FontSizeMultiplier => .9f;
-        protected override bool Resizable => false;
-        protected override string InitTitle => ModInstance.Instance.GeneralName;
-        protected override Vector2 StartSize => new Vector2(400, minHeight);
-        protected override Vector2 StartPosition => new Vector2(256, 256);
-        protected override Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ComponentsWatching => ModInstance.Controller.PTPanels;
+        protected bool Resizable => false;
+        protected string InitTitle => ModInstance.Instance.GeneralName;
+        protected Vector2 StartSize => new Vector2(400, 500);
+        protected Vector2 StartPosition => new Vector2((UIScaler.MaxWidth / 2) - 200, 256);
+        protected virtual Vector2 MinSize { get; } = default;
+        protected virtual Vector2 MaxSize { get; } = default;
+        public ushort CurrentLine { get; private set; }
 
-        private const float minHeight = 500;
         private GUIColorPicker picker;
         private Texture2D m_childTex;
         private Texture2D m_teenTex;
@@ -40,13 +41,15 @@ namespace ImprovedTransportManager.UI
 
 
         private GUIStyle m_inlineBtnStyle;
-        private ushort m_currentLine;
         private LineData m_currentLineData;
         private GUIStyle m_rightTextLabel;
         private GUIStyle m_centerTextLabel;
 
-        public override void OnAwake()
+        public override void Awake()
         {
+            base.Awake();
+            Instance = this;
+            Init();
             m_childTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_CHILDREN));
             m_teenTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_TEEN));
             m_youngTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_YOUNG));
@@ -55,7 +58,9 @@ namespace ImprovedTransportManager.UI
 
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
+            Visible = false;
         }
+        private void Init() => Init(InitTitle, new Rect(StartPosition, StartSize), Resizable, true, MinSize, MaxSize);
         GUIStyle m_noBreakLabel;
 
         private GUIStyle m_redButton;
@@ -87,14 +92,14 @@ namespace ImprovedTransportManager.UI
         protected override void DrawWindow(Vector2 size)
         {
             InitStyles();
-            if (m_currentLine != 0)
+            if (CurrentLine != 0)
             {
-                ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[m_currentLine];
+                ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[CurrentLine];
                 m_currentLineData.GetUpdated();
                 GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.TripsSaved), m_centerTextLabel);
                 GUILayout.Space(4);
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
-                GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[m_currentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
+                GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);
                 if (m_currentLineData.m_type.HasVehicles())
                 {
@@ -236,14 +241,29 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        protected override void OnIdChanged(InstanceID currentId)
+        public void OnIdChanged(InstanceID currentId)
         {
-            m_currentLine = currentId.TransportLine;
-            m_lineActivityOptionsNames = m_lineActivityOptions.Select(x => x.ValueToI18n()).ToArray();
-            m_currentLineData?.Dispose();
-            m_currentLineData = LineData.FromLine(m_currentLine);
-            Visible = true;
-            Title = TransportManager.instance.GetLineName(m_currentLine);
+            if (currentId.TransportLine != 0)
+            {
+                CurrentLine = currentId.TransportLine;
+                m_lineActivityOptionsNames = m_lineActivityOptions.Select(x => x.ValueToI18n()).ToArray();
+                m_currentLineData?.Dispose();
+                m_currentLineData = LineData.FromLine(CurrentLine);
+                Title = TransportManager.instance.GetLineName(CurrentLine);
+
+                ITMLineVehicleSelectionWindow.Instance.OnIdChanged(currentId);
+                ITMLineStopsWindow.Instance.OnIdChanged(currentId);
+                ITMLineVehicleSelectionWindow.Instance.Visible = true;
+                ITMLineStopsWindow.Instance.Visible = true;
+                Visible = true;
+            }
+        }
+        protected override void OnWindowDestroyed() => Instance = null;
+        protected override void OnWindowClosed()
+        {
+            base.OnWindowClosed();
+            ITMLineVehicleSelectionWindow.Instance.Visible = false;
+            ITMLineStopsWindow.Instance.Visible = false;
         }
     }
 
