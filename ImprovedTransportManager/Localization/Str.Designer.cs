@@ -764,6 +764,186 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Adults.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_adult {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_adult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Children.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_child {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_child", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Seniors.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_elder {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_elder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Teens.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_teen {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_teen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Passenger age report.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_title {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_total {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Youngs.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerAgeReport_young {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerAgeReport_young", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Females.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerGenderReport_female {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerGenderReport_female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Males.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerGenderReport_male {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerGenderReport_male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Gender Report.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerGenderReport_title {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerGenderReport_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerGenderReport_total {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerGenderReport_total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Students.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerStudentsTouristsReport_students {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerStudentsTouristsReport_students", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Students &amp; Tourists.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerStudentsTouristsReport_title {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerStudentsTouristsReport_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerStudentsTouristsReport_total {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerStudentsTouristsReport_total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Tourists.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerStudentsTouristsReport_tourists {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerStudentsTouristsReport_tourists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a High Wealth.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerWealthReport_high {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerWealthReport_high", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Low Wealth.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerWealthReport_low {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerWealthReport_low", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Medium Wealth.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerWealthReport_medium {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerWealthReport_medium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Wealth Report.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerWealthReport_title {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerWealthReport_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Total.
+        /// </summary>
+        internal static string itm_statisticsTable_passengerWealthReport_total {
+            get {
+                return ResourceManager.GetString("itm_statisticsTable_passengerWealthReport_total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Period.
         /// </summary>
         internal static string itm_statisticsTable_periodTitle {

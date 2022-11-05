@@ -44,7 +44,11 @@ namespace ImprovedTransportManager.UI
             Instance = this;
             Init($"{ModInstance.Instance.GeneralName} - {Str.itm_statistics_title}", new Rect(128, 128, 680, 420), resizable: true, minSize: new Vector2(440, 260));
             var tabs = new IGUIVerticalITab[] {
-                        new FinanceReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle)
+                        new FinanceReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
+                        new PassengerWealthReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
+                        new StudentTouristsReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
+                        new PassengerAgeReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
+                        new PassengerGenderReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle)
                     };
             m_tabsContainer = new GUIVerticalTabsContainer(tabs);
             Visible = false;
@@ -77,14 +81,18 @@ namespace ImprovedTransportManager.UI
                 {
                     m_currentVehicleIdxSelected = -1;
                     m_currentStopIdxSelected = newSel;
+                    var currentTab = m_tabsContainer.CurrentTabIdx;
                     m_tabsContainer.Reset();
+                    m_tabsContainer.CurrentTabIdx = currentTab;
                 }
                 var newSel2 = GUIComboBox.Box(m_currentVehicleIdxSelected, m_currentStopIdxSelected < 0 ? m_vehiclesOptions : new string[0], "VEHFILTER_001", this, nullStr: Str.itm_statistics_nullVehicle, maxWidth: targetFilterWidth);
                 if (newSel2 != m_currentVehicleIdxSelected)
                 {
                     m_currentStopIdxSelected = -1;
                     m_currentVehicleIdxSelected = newSel2;
+                    var currentTab = m_tabsContainer.CurrentTabIdx;
                     m_tabsContainer.Reset();
+                    m_tabsContainer.CurrentTabIdx = currentTab;
                 }
                 GUIKwyttoCommons.SquareTextureButton(m_deleteTex, Str.itm_statistics_clearFilters, ClearFilters, size: 20);
             }
@@ -145,7 +153,9 @@ namespace ImprovedTransportManager.UI
         {
             m_currentStopIdxSelected = -1;
             m_currentVehicleIdxSelected = -1;
+            var currentTab = m_tabsContainer.CurrentTabIdx;
             m_tabsContainer.Reset();
+            m_tabsContainer.CurrentTabIdx = currentTab;
         }
 
         private void ReloadLines()
@@ -224,7 +234,6 @@ namespace ImprovedTransportManager.UI
         protected override void OnWindowOpened()
         {
             base.OnWindowOpened();
-            m_tabsContainer?.Reset();
         }
 
         protected override void OnWindowDestroyed()

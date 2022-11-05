@@ -73,25 +73,25 @@ namespace ImprovedTransportManager.Singleton
         #region Data feeding
         public void AddToLine(ushort lineId, long income, long expense, ref Citizen citizenData, ushort citizenId)
         {
-            IncrementInArray(lineId, ref m_linesDataLong, ref m_linesDataInt, (int)LineDataLong.INCOME, (int)LineDataLong.EXPENSE, (int)LineDataSmallInt.TOTAL_PASSENGERS, (int)LineDataSmallInt.TOURIST_PASSENGERS, (int)LineDataSmallInt.STUDENT_PASSENGERS, income, expense, ref citizenData);
-            if (!citizenData.Equals(default))
+            IncrementInArray(lineId, ref m_linesDataLong, ref m_linesDataInt, (int)LineDataLong.INCOME, (int)LineDataLong.EXPENSE, (int)LineDataSmallInt.TOTAL_PASSENGERS, (int)LineDataSmallInt.TOURIST_PASSENGERS, (int)LineDataSmallInt.STUDENT_PASSENGERS, income, expense, ref citizenData, citizenId);
+            if (citizenId != 0)
             {
                 int idxW = ((((int)citizenData.WealthLevel * 5) + (int)Citizen.GetAgeGroup(citizenData.m_age)) << 1) + (int)Citizen.GetGender(citizenId);
                 m_linesDataUshort[(lineId * CYCLES_HISTORY_ARRAY_SIZE) + CYCLES_CURRENT_DATA_IDX][idxW]++;
             }
         }
 
-        public void AddToVehicle(ushort vehicleId, long income, long expense, ref Citizen citizenData) => IncrementInArray(vehicleId, ref m_vehiclesDataLong, ref m_vehiclesDataInt, (int)VehicleDataLong.INCOME, (int)VehicleDataLong.EXPENSE, (int)VehicleDataSmallInt.TOTAL_PASSENGERS, (int)VehicleDataSmallInt.TOURIST_PASSENGERS, (int)VehicleDataSmallInt.STUDENT_PASSENGERS, income, expense, ref citizenData);
-        public void AddToStop(ushort stopId, long income, ref Citizen citizenData) => IncrementInArray(stopId, ref m_stopDataLong, ref m_stopDataInt, (int)StopDataLong.INCOME, null, (int)StopDataSmallInt.TOTAL_PASSENGERS, (int)StopDataSmallInt.TOURIST_PASSENGERS, (int)StopDataSmallInt.STUDENT_PASSENGERS, income, 0, ref citizenData);
+        public void AddToVehicle(ushort vehicleId, long income, long expense, ref Citizen citizenData, ushort citizenId) => IncrementInArray(vehicleId, ref m_vehiclesDataLong, ref m_vehiclesDataInt, (int)VehicleDataLong.INCOME, (int)VehicleDataLong.EXPENSE, (int)VehicleDataSmallInt.TOTAL_PASSENGERS, (int)VehicleDataSmallInt.TOURIST_PASSENGERS, (int)VehicleDataSmallInt.STUDENT_PASSENGERS, income, expense, ref citizenData, citizenId);
+        public void AddToStop(ushort stopId, long income, ref Citizen citizenData, ushort citizenId) => IncrementInArray(stopId, ref m_stopDataLong, ref m_stopDataInt, (int)StopDataLong.INCOME, null, (int)StopDataSmallInt.TOTAL_PASSENGERS, (int)StopDataSmallInt.TOURIST_PASSENGERS, (int)StopDataSmallInt.STUDENT_PASSENGERS, income, 0, ref citizenData, citizenId);
 
-        private void IncrementInArray(ushort id, ref long[][] arrayRef, ref int[][] arrayRefInt, int incomeIdx, int? expenseIdx, int totalPassIdx, int tourPassIdx, int studPassIdx, long income, long expense, ref Citizen citizenData)
+        private void IncrementInArray(ushort id, ref long[][] arrayRef, ref int[][] arrayRefInt, int incomeIdx, int? expenseIdx, int totalPassIdx, int tourPassIdx, int studPassIdx, long income, long expense, ref Citizen citizenData, ushort citizenId)
         {
             arrayRef[(id * CYCLES_HISTORY_ARRAY_SIZE) + CYCLES_CURRENT_DATA_IDX][incomeIdx] += income;
             if (expenseIdx is int idx)
             {
                 arrayRef[(id * CYCLES_HISTORY_ARRAY_SIZE) + CYCLES_CURRENT_DATA_IDX][idx] += expense;
             }
-            if (!citizenData.Equals(default))
+            if (citizenId != 0)
             {
                 arrayRefInt[(id * CYCLES_HISTORY_ARRAY_SIZE) + CYCLES_CURRENT_DATA_IDX][totalPassIdx]++;
                 if ((citizenData.m_flags & Citizen.Flags.Tourist) != 0)

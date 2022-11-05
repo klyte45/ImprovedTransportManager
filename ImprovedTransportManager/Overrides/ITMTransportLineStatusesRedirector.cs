@@ -94,7 +94,7 @@ namespace ImprovedTransportManager.Overrides
             foreach (KeyValuePair<ushort, int> entry in capacities)
             {
                 int cost = (int)(entry.Value * tsd.GetEffectivePassengerCapacityCost());
-                ITMTransportLineStatusesManager.Instance.AddToVehicle(entry.Key, 0, cost, ref refNull);
+                ITMTransportLineStatusesManager.Instance.AddToVehicle(entry.Key, 0, cost, ref refNull, 0);
                 amount += cost;
             }
 
@@ -114,8 +114,8 @@ namespace ImprovedTransportManager.Overrides
             {
                 ushort stopId = TransportLine.GetPrevStop(VehicleManager.instance.m_vehicles.m_buffer[vehicleId].m_targetBuilding);
                 ITMTransportLineStatusesManager.Instance.AddToLine(lineId, amount, 0, ref citizen, citizenId);
-                ITMTransportLineStatusesManager.Instance.AddToVehicle(vehicleId, amount, 0, ref citizen);
-                ITMTransportLineStatusesManager.Instance.AddToStop(stopId, amount, ref citizen);
+                ITMTransportLineStatusesManager.Instance.AddToVehicle(vehicleId, amount, 0, ref citizen, citizenId);
+                ITMTransportLineStatusesManager.Instance.AddToStop(stopId, amount, ref citizen, citizenId);
                 LogUtils.DoLog($"DoHumanAiEconomyManagement : line {lineId};amount = {amount}; citizen = {citizenId}");
             }
 

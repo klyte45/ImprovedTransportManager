@@ -385,4 +385,64 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
   <data name="itm_statisticsTable_totalLast24h" xml:space="preserve">
     <value>Total last 24h</value>
   </data>
+  <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
+    <value>Adults</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
+    <value>Seniors</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
+    <value>Teens</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
+    <value>Passenger age report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
+    <value>Youngs</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
+    <value>Females</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
+    <value>Males</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
+    <value>Gender Report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
+    <value>Students &amp; Tourists</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
+    <value>Tourists</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
+    <value>High Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
+    <value>Low Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
+    <value>Medium Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
+    <value>Wealth Report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
 </root>
