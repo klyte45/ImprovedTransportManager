@@ -33,7 +33,7 @@ namespace ImprovedTransportManager
              iconPath: "LinesListIcon",
              windowGetter: ()=>LinesListingUI.Instance
              ),
-             new UUIWindowButtonContainerPlaceholder(
+             CitySettingsBtn = new UUIWindowButtonContainerPlaceholder(
              buttonName: $"{SimpleName} - BBB",
              tooltip: $"{SimpleName} - {Str.itm_citySettings_title}",
              iconPath: "CitySettingsIcon",
@@ -46,6 +46,8 @@ namespace ImprovedTransportManager
              windowGetter: ()=>ITMStatisticsGUI.Instance
              )
         }.Where(x => x != null).ToArray());
+
+        internal UUIWindowButtonContainerPlaceholder CitySettingsBtn { get; private set; }
 
         protected override Dictionary<ulong, string> IncompatibleModList { get; } = new Dictionary<ulong, string>
         {

@@ -1,15 +1,19 @@
 ﻿extern alias UUI;
+
+using ColossalFramework.UI;
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Xml;
 using Kwytto.LiteUI;
+using Kwytto.Localization;
 using Kwytto.UI;
 using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Kwytto.LiteUI.KwyttoDialog;
 
 namespace ImprovedTransportManager.UI
 {
@@ -30,18 +34,23 @@ namespace ImprovedTransportManager.UI
         private string[] m_availableGroups = new[] { Str.itm_vehicleSelectWindow_defaultGroupText };
         private ITMTransportLineXml m_currentLineSettings;
         private HashSet<VehicleInfo> m_currentHashSet;
-        private List<KeyValuePair<string, VehicleInfo>> m_availableModels;
+        private List<MutableTuple<string, VehicleInfo, int, TransportSystemType>> m_availableModels;
         private ushort m_currentLine;
         private Vector2 m_scrollPos;
+
+        private HashSet<VehicleInfo> m_clipboard;
 
         private GUIStyle m_selectionBtnSel;
         private GUIStyle m_selectionBtnUns;
         private GUIStyle m_previewTitle;
+        private GUIStyle m_nobrLabel;
+        private GUIStyle m_rightLabel;
 
         private VehicleInfo m_currentPreview;
         private string m_currentPreviewTitle;
         private AVOPreviewRenderer m_previewRenderer;
         private readonly Vector3 m_previewSize = new Vector3(300, 200);
+        private Texture2D m_helpTex;
 
         public ITMLineVehicleSelectionWindow() : base()
         {
@@ -61,7 +70,7 @@ namespace ImprovedTransportManager.UI
         }
         protected override void DrawWindow(Vector2 size)
         {
-            InitSkins();
+            InitStyles();
             using (new GUILayout.HorizontalScope())
             {
                 var selectionGroup = GUIComboBox.Box(m_currentLineSettings.AssetGroup, m_availableGroups, "AssetGroupPicker_line", this, size.x);
@@ -70,6 +79,14 @@ namespace ImprovedTransportManager.UI
                     m_currentLineSettings.AssetGroup = (byte)selectionGroup;
                     m_currentHashSet = ITMTransportLineSettings.Instance.GetEffectiveAssetsForLine(m_currentLine);
                 }
+            }
+            using (new GUILayout.HorizontalScope())
+            {
+                GUILayout.Label(Str.itm_vehicleSelectWindow_assetNameOnOff, m_nobrLabel, GUILayout.MaxWidth(size.x - 190));
+                GUILayout.FlexibleSpace();
+                GUILayout.Label(Str.itm_vehicleSelectWindow_capacity, m_rightLabel, GUILayout.Width(65));
+                GUILayout.Label(Str.itm_vehicleSelectWindow_costPeriod, m_rightLabel, GUILayout.Width(80));
+                GUIKwyttoCommons.SquareTextureButton(m_helpTex, "", ShowHelp, size: 20);
             }
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollPos))
             {
@@ -81,29 +98,74 @@ namespace ImprovedTransportManager.UI
                 {
                     using (new GUILayout.HorizontalScope())
                     {
-                        var isSelected = m_currentHashSet.Contains(kvp.Value);
+                        var isSelected = m_currentHashSet.Contains(kvp.Second);
                         if (GUILayout.Button("", isSelected ? m_selectionBtnSel : m_selectionBtnUns))
                         {
-                            ToggleSelection(kvp.Value, isSelected);
+                            ToggleSelection(kvp.Second, isSelected);
                         }
                         GUILayout.Space(5);
-                        GUILayout.Label(kvp.Key);
+                        GUILayout.Label(kvp.First, m_nobrLabel);
                         var lastRect = GUILayoutUtility.GetLastRect();
                         var targetPos = UIScaler.MousePosition + GUIUtility.ScreenToGUIPoint(default);
                         if (Event.current.type == EventType.MouseUp && Input.GetMouseButtonUp(0) && lastRect.Contains(targetPos))
                         {
-                            ToggleSelection(kvp.Value, isSelected);
+                            ToggleSelection(kvp.Second, isSelected);
                         }
                         if (Event.current.type == EventType.Repaint && m_currentPreview is null && lastRect.Contains(targetPos))
                         {
-                            m_currentPreviewTitle = kvp.Key;
-                            m_currentPreview = kvp.Value;
+                            m_currentPreviewTitle = kvp.First;
+                            m_currentPreview = kvp.Second;
                         }
+                        if (GUIIntField.IntField(kvp.First + "_CAPEDIT", kvp.Third, 0, fieldWidth: 40) is int newCap && newCap != kvp.Third)
+                        {
+                            ITMAssetSettings.Instance.SetVehicleCapacity(kvp.First, newCap);
+                            kvp.Third = kvp.Second.GetCapacity();
+                        }
+                        GUILayout.Label((kvp.Fourth.GetEffectivePassengerCapacityCost() * kvp.Third).ToGameCurrencyFormat(), m_rightLabel, GUILayout.Width(90));
                     }
                 }
                 m_scrollPos = scroll.scrollPosition;
             }
+            using (new GUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button(Str.itm_common_copy))
+                {
+                    m_clipboard = new HashSet<VehicleInfo>(m_currentHashSet);
+                }
+                if (m_clipboard != null && GUILayout.Button(Str.itm_common_paste))
+                {
+                    m_currentHashSet.Clear();
+                    m_clipboard.ForEach(x => m_currentHashSet.Add(x));
+                }
+                GUILayout.FlexibleSpace();
+                if (GUILayout.Button(Str.itm_common_clear))
+                {
+                    m_currentHashSet.Clear();
+                }
+            }
         }
+
+        private void ShowHelp() => KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties
+        {
+            buttons = new[]
+        {
+            SpaceBtn,
+            new ButtonDefinition
+            {
+                title = Str.itm_goToMaintenanceCostScreen,
+                onClick = ()=> {
+                    ITMCitySettingsGUI.Instance.GoToMaintenanceCost();
+                    return true;
+                }
+            },
+            new ButtonDefinition
+            {
+                title = KStr.comm_releaseNotes_Ok,
+                onClick = ()=>true
+            }
+        },
+            scrollText = Str.itm_vehicleSelectWindow_helpContent
+        });
 
         private void ToggleSelection(VehicleInfo kvp, bool isSelected)
         {
@@ -117,7 +179,7 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        private void InitSkins()
+        private void InitStyles()
         {
             if (m_selectionBtnSel is null)
             {
@@ -164,6 +226,20 @@ namespace ImprovedTransportManager.UI
                     }
                 };
             }
+            if (m_nobrLabel is null)
+            {
+                m_nobrLabel = new GUIStyle(GUI.skin.label)
+                {
+                    wordWrap = false,
+                };
+            }
+            if (m_rightLabel is null)
+            {
+                m_rightLabel = new GUIStyle(m_nobrLabel)
+                {
+                    alignment = TextAnchor.MiddleRight,
+                };
+            }
         }
 
         internal void OnIdChanged(InstanceID currentId)
@@ -178,7 +254,7 @@ namespace ImprovedTransportManager.UI
                     Visible = false;
                     return;
                 }
-                m_availableModels = settings.GetAllBasicAssetsForLine(m_currentLine).OrderBy(x => x.Key).ToList();
+                m_availableModels = settings.GetAllBasicAssetsForLine(m_currentLine).Select(x => MutableTuple.New(x.Key, x.Value, x.Value.GetCapacity(), x.Value.ToTST())).OrderBy(x => x.First).ToList();
                 m_currentHashSet = settings.GetEffectiveAssetsForLine(m_currentLine);
             }
             else
@@ -198,6 +274,8 @@ namespace ImprovedTransportManager.UI
             m_previewRenderer.Zoom = 3;
             m_previewRenderer.CameraRotation = 40;
             Visible = false;
+
+            m_helpTex = KResourceLoader.LoadTextureKwytto(CommonsSpriteNames.K45_QuestionMark);
         }
         private void Init() => Init(InitTitle, new Rect(StartPosition, StartSize), Resizable, true);
 

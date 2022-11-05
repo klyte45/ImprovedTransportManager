@@ -70,11 +70,38 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Clear.
+        /// </summary>
+        internal static string itm_common_clear {
+            get {
+                return ResourceManager.GetString("itm_common_clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Copy.
+        /// </summary>
+        internal static string itm_common_copy {
+            get {
+                return ResourceManager.GetString("itm_common_copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a N/A.
         /// </summary>
         internal static string itm_common_notApplicableAcronym {
             get {
                 return ResourceManager.GetString("itm_common_notApplicableAcronym", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Paste.
+        /// </summary>
+        internal static string itm_common_paste {
+            get {
+                return ResourceManager.GetString("itm_common_paste", resourceCulture);
             }
         }
         
@@ -247,6 +274,15 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_expressData_title {
             get {
                 return ResourceManager.GetString("itm_expressData_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Go to maintenance screen.
+        /// </summary>
+        internal static string itm_goToMaintenanceCostScreen {
+            get {
+                return ResourceManager.GetString("itm_goToMaintenanceCostScreen", resourceCulture);
             }
         }
         
@@ -630,7 +666,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a All line infos that (possibly) can create a line tool is available below. Use by your own risk to create special lines in these modals.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
         ///&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;.
         /// </summary>
         internal static string itm_specialLineTools_header {
@@ -1018,11 +1054,54 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Vehicle (activate/deactivate).
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_assetNameOnOff {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_assetNameOnOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Capacity.
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_capacity {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_capacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Cost/Period.
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_costPeriod {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_costPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Current line exclusive.
         /// </summary>
         internal static string itm_vehicleSelectWindow_defaultGroupText {
             get {
                 return ResourceManager.GetString("itm_vehicleSelectWindow_defaultGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Select the assets allowed to spawn in the line in this window.
+        ///The new selection will be used as reference when spawning new vehicles to the line.
+        ///The vehicles in the line that aren&apos;t selected in this list will be sent to depot as soon it:
+        ///- Reach next stop (non-road based transport types only)
+        ///- Get emptied
+        ///- Reach the first stop or any terminal stop (road-based modals only)
+        ///
+        ///The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up [o restante da cadeia de caracteres foi truncado]&quot;;.
+        /// </summary>
+        internal static string itm_vehicleSelectWindow_helpContent {
+            get {
+                return ResourceManager.GetString("itm_vehicleSelectWindow_helpContent", resourceCulture);
             }
         }
         

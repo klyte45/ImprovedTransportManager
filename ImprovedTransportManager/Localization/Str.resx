@@ -458,10 +458,43 @@ Left it at "0" to use the default cost.</value>
     <value>Maintenance costs</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
-    <value>All line infos that (possibly) can create a line tool is available below. Use by your own risk to create special lines in these modals.
+    <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
 &lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;</value>
   </data>
   <data name="itm_specialLineTools_title" xml:space="preserve">
     <value>Line tools</value>
+  </data>
+  <data name="itm_common_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="itm_common_copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="itm_common_paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
+    <value>Go to maintenance screen</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
+    <value>Vehicle (activate/deactivate)</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
+    <value>Capacity</value>
+    <comment>Must be short</comment>
+  </data>
+  <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
+    <value>Cost/Period</value>
+    <comment>Must be short</comment>
+  </data>
+  <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
+    <value>Select the assets allowed to spawn in the line in this window.
+The new selection will be used as reference when spawning new vehicles to the line.
+The vehicles in the line that aren't selected in this list will be sent to depot as soon it:
+- Reach next stop (non-road based transport types only)
+- Get emptied
+- Reach the first stop or any terminal stop (road-based modals only)
+
+The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
   </data>
 </root>
