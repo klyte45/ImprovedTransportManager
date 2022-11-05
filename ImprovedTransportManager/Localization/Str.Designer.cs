@@ -602,6 +602,114 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Clear filters.
+        /// </summary>
+        internal static string itm_statistics_clearFilters {
+            get {
+                return ResourceManager.GetString("itm_statistics_clearFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=#FF00FF&gt;--TRANSPORT LINE--&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_statistics_nullSelLine {
+            get {
+                return ResourceManager.GetString("itm_statistics_nullSelLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_statistics_nullSelStop {
+            get {
+                return ResourceManager.GetString("itm_statistics_nullSelStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_statistics_nullVehicle {
+            get {
+                return ResourceManager.GetString("itm_statistics_nullVehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Reload lines.
+        /// </summary>
+        internal static string itm_statistics_reloadLines {
+            get {
+                return ResourceManager.GetString("itm_statistics_reloadLines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Select line.
+        /// </summary>
+        internal static string itm_statistics_selectLine {
+            get {
+                return ResourceManager.GetString("itm_statistics_selectLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Stop.
+        /// </summary>
+        internal static string itm_statistics_stop {
+            get {
+                return ResourceManager.GetString("itm_statistics_stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a All vehicles and stops.
+        /// </summary>
+        internal static string itm_statistics_subtitleTableFormatAll {
+            get {
+                return ResourceManager.GetString("itm_statistics_subtitleTableFormatAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Statistics @ Stop {0}.
+        /// </summary>
+        internal static string itm_statistics_subtitleTableFormatStops {
+            get {
+                return ResourceManager.GetString("itm_statistics_subtitleTableFormatStops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Statistics @ Vehicle {0}.
+        /// </summary>
+        internal static string itm_statistics_subtitleTableFormatVehicles {
+            get {
+                return ResourceManager.GetString("itm_statistics_subtitleTableFormatVehicles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Statistics.
+        /// </summary>
+        internal static string itm_statistics_title {
+            get {
+                return ResourceManager.GetString("itm_statistics_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Vehicle.
+        /// </summary>
+        internal static string itm_statistics_vehicle {
+            get {
+                return ResourceManager.GetString("itm_statistics_vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Current line exclusive.
         /// </summary>
         internal static string itm_vehicleSelectWindow_defaultGroupText {

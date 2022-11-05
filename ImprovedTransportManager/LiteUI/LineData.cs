@@ -101,7 +101,7 @@ namespace ImprovedTransportManager.UI
             {
                 m_id = new InstanceID { TransportLine = lineID },
                 m_type = TransportSystemTypeExtensions.FromLineId(lineID, false),
-                LineIdentifier = () => tlBuff[lineID].m_lineNumber.ToString(),
+                LineIdentifier = () => tlBuff[lineID].GetEffectiveIdentifier(lineID),
                 LineInternalSequentialNumber = () => tlBuff[lineID].m_lineNumber,
                 IsVisible = () => (tlBuff[lineID].m_flags & TransportLine.Flags.Hidden) == 0
             };

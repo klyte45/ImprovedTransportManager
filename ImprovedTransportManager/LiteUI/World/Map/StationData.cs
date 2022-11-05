@@ -32,7 +32,7 @@ namespace ImprovedTransportManager.UI
             var stop = new StationData
             {
                 stopId = currentStop,
-                cachedName = $"Stop #{currentStop}",
+                cachedName = ITMLineUtils.GetEffectiveStopName(currentStop),
                 position = nd.m_position,
                 tariffMultiplier = nd.m_position.DistrictTariffMultiplierHere(),
             };

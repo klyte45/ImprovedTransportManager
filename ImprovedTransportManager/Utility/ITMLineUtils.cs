@@ -87,5 +87,39 @@ namespace ImprovedTransportManager.Utility
             vehicleData.m_transportLine = 0;
             vehicleData.m_targetBuilding = targetBuilding;
         }
+
+        public static string GetEffectiveIdentifier(this ref TransportLine tl, ushort lineId)
+        {
+            return $"{tl.m_lineNumber}";
+        }
+        public static void DoWithEachStop(ushort lineId, Action<ushort, int> action)
+        {
+            ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[lineId];
+            ushort currentStop = tl.GetStop(0);
+            for (int i = 0; currentStop != 0 && i < 65536; currentStop = tl.GetStop(++i))
+            {
+                action(currentStop, i);
+            }
+        }
+
+        public static string GetEffectiveStopName(ushort stopId)
+        {
+            return $"Stop #{stopId}";
+        }
+
+        public static void DoWithEachVehicle(ushort lineId, Action<ushort, int> action)
+        {
+            ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[lineId];
+            ushort currentVehicle = tl.GetVehicle(0);
+            for (int i = 0; currentVehicle != 0 && i < 65536; currentVehicle = tl.GetVehicle(++i))
+            {
+                action(currentVehicle, i);
+            }
+        }
+        public static string GetEffectiveVehicleName(ushort vehicleId)
+        {
+            return $"#{vehicleId}";
+        }
+
     }
 }

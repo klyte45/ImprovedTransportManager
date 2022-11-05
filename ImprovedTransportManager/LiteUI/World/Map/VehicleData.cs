@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.Globalization;
+using ImprovedTransportManager.Utility;
 using Kwytto.Utils;
 using System;
 using UnityEngine;
@@ -71,7 +72,7 @@ namespace ImprovedTransportManager.UI
                 return m_cachedBg;
             }
         }
-        public string VehicleName => $"#{VehicleId}";
+        public string VehicleName => ITMLineUtils.GetEffectiveVehicleName(VehicleId);
 
         public float StationPositionMultiplierY => m_nextStopIdx + ((float)m_progressState * .25f);
         public Vector2 GetPositionOffset(float maxX, float stationHeight) => new Vector2((maxX * .75f) - (m_progressItemIdx % 4 * maxX * .25f), (stationHeight * StationPositionMultiplierY) + (Mathf.Floor(m_progressItemIdx * .25f) * 18) - 9f);

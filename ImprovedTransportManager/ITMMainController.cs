@@ -10,12 +10,15 @@ namespace ImprovedTransportManager
 {
     public class ITMMainController : BaseController<ModInstance, ITMMainController>
     {
+        public const ulong REALTIME_MOD_ID = 1420955187;
+
         private readonly List<GameObject> refGOs = new List<GameObject>();
         protected override void StartActions()
         {
             base.StartActions();
             refGOs.Add(GameObjectUtils.CreateElement<LinesListingUI>(UIView.GetAView().gameObject.transform, "LinesListingUI").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMCitySettingsGUI>(UIView.GetAView().gameObject.transform, "ITMCitySettingsGUI").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMStatisticsGUI>(UIView.GetAView().gameObject.transform, "ITMStatisticsGUI").gameObject);
 
             refGOs.Add(ITMLineDataWindow.Instance.gameObject);
             refGOs.Add(ITMLineStopsWindow.Instance.gameObject);
@@ -41,8 +44,6 @@ namespace ImprovedTransportManager
             }
         }
 
-
-
         public void OnDestroy()
         {
             foreach (GameObject go in refGOs)
@@ -50,5 +51,12 @@ namespace ImprovedTransportManager
                 Destroy(go);
             }
         }
+
+        #region Real Time
+        public readonly bool m_isRealTimeEnabled = PluginUtils.VerifyModEnabled(REALTIME_MOD_ID);
+
+
+
+        #endregion
     }
 }

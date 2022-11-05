@@ -4,6 +4,7 @@ using ColossalFramework.UI;
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
+using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
@@ -328,12 +329,7 @@ namespace ImprovedTransportManager.UI
             m_currentLineData = LineData.FromLine(m_currentLine);
             Visible = true;
             m_loadedStopData.Clear();
-            ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[m_currentLine];
-            ushort currentStop = tl.GetStop(0);
-            for (int i = 0; currentStop != 0 && i < 65536; currentStop = tl.GetStop(++i))
-            {
-                m_loadedStopData.Add(StationData.FromStop(currentStop));
-            }
+            ITMLineUtils.DoWithEachStop(m_currentLine, (x, _) => m_loadedStopData.Add(StationData.FromStop(x)));
             if (m_currentLineData.m_type.HasVehicles())
             {
                 UpdateVehicleButtons(m_currentLine, true);
@@ -343,6 +339,7 @@ namespace ImprovedTransportManager.UI
                 m_loadedVehiclesData.Clear();
             }
         }
+
 
         protected override void OnFixedUpdateIfVisible()
         {

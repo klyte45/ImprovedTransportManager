@@ -38,6 +38,12 @@ namespace ImprovedTransportManager
              tooltip: $"{SimpleName} - {Str.itm_citySettings_title}",
              iconPath: "CitySettingsIcon",
              windowGetter: ()=>ITMCitySettingsGUI.Instance
+             ),
+             new UUIWindowButtonContainerPlaceholder(
+             buttonName: $"{SimpleName} - CCC",
+             tooltip: $"{SimpleName} - {Str.itm_statistics_title}",
+             iconPath: "StatisticsIcon",
+             windowGetter: ()=>ITMStatisticsGUI.Instance
              )
         }.Where(x => x != null).ToArray());
 
