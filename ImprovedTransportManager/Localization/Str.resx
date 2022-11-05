@@ -445,4 +445,23 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
+  <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
+    <value>{0} (Default: {1:N0}¢/kpax)</value>
+    <comment>{0} will be the transport type name
+{1} will be the default cost per 1000 passengers</comment>
+  </data>
+  <data name="itm_maintenanceData_header" xml:space="preserve">
+    <value>The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
+Left it at "0" to use the default cost.</value>
+  </data>
+  <data name="itm_maintenanceData_title" xml:space="preserve">
+    <value>Maintenance costs</value>
+  </data>
+  <data name="itm_specialLineTools_header" xml:space="preserve">
+    <value>All line infos that (possibly) can create a line tool is available below. Use by your own risk to create special lines in these modals.
+&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;</value>
+  </data>
+  <data name="itm_specialLineTools_title" xml:space="preserve">
+    <value>Line tools</value>
+  </data>
 </root>

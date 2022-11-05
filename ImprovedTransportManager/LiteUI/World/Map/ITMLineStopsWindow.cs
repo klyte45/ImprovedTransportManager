@@ -117,17 +117,17 @@ namespace ImprovedTransportManager.UI
                     {
                         using (new GUILayout.VerticalScope())
                         {
-                            GUILayout.FlexibleSpace();
+                            GUILayout.Space(5);
                             GUILayout.Label(Str.itm_lineMap_vehicleDataToShow, m_centerLabel);
                             using (new GUILayout.HorizontalScope())
                             {
                                 m_currentVehicleDataShow = (VehicleShowDataType)GUIComboBox.Box((int)m_currentVehicleDataShow, m_vehicleShowOptions, "itmLineStopsVehicleDataShow", this, 200);
                             }
-                            GUILayout.FlexibleSpace();
+                            GUILayout.Space(5);
                         }
                     }
                     GUILayout.FlexibleSpace();
-                    GUILayout.Label($"{Str.itm_lineMap_earningsLastPeriodAcronymLegend}\n{Str.itm_lineMap_earningsCurrentPeriodAcronymLegend}\n{Str.itm_lineMap_earningsAllTimeAcronymLegend}", m_smallLabel, GUILayout.Height(50));
+                    GUILayout.Label($"{Str.itm_lineMap_earningsLastPeriodAcronymLegend}\n{Str.itm_lineMap_earningsCurrentPeriodAcronymLegend}\n{Str.itm_lineMap_earningsAllTimeAcronymLegend}", m_smallLabel);
                 }
 
                 var headerRect = GUILayoutUtility.GetLastRect();
@@ -202,6 +202,7 @@ namespace ImprovedTransportManager.UI
 
                     m_mapScroll = scroll.scrollPosition;
                 }
+                GUILayout.FlexibleSpace();
             }
         }
 

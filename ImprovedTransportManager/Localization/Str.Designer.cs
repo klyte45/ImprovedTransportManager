@@ -602,6 +602,53 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} (Default: {1:N0}¢/kpax).
+        /// </summary>
+        internal static string itm_maintenanceData_defaultMaintenanceFormat {
+            get {
+                return ResourceManager.GetString("itm_maintenanceData_defaultMaintenanceFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
+        ///Left it at &quot;0&quot; to use the default cost..
+        /// </summary>
+        internal static string itm_maintenanceData_header {
+            get {
+                return ResourceManager.GetString("itm_maintenanceData_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Maintenance costs.
+        /// </summary>
+        internal static string itm_maintenanceData_title {
+            get {
+                return ResourceManager.GetString("itm_maintenanceData_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a All line infos that (possibly) can create a line tool is available below. Use by your own risk to create special lines in these modals.
+        ///&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_specialLineTools_header {
+            get {
+                return ResourceManager.GetString("itm_specialLineTools_header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line tools.
+        /// </summary>
+        internal static string itm_specialLineTools_title {
+            get {
+                return ResourceManager.GetString("itm_specialLineTools_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Clear filters.
         /// </summary>
         internal static string itm_statistics_clearFilters {

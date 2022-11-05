@@ -17,7 +17,8 @@ namespace ImprovedTransportManager.UI
             GUIKwyttoCommons.AddToggle(Str.itm_expressData_expressTrolleybus, ref ITMCitySettings.Instance.expressTrolleybus);
             GUILayout.Space(6);
             GUIKwyttoCommons.AddToggle(Str.itm_expressData_disableUnbunchingTerminals, ref ITMCitySettings.Instance.disableUnbunchingTerminals);
-            GUILayout.Label(Str.itm_expressData_disableUnbunchingDescription);
+            GUILayout.Space(6);
+            GUILayout.Label(Str.itm_expressData_disableUnbunchingDescription, new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter }, GUILayout.ExpandHeight(true));
         }
 
         public void Reset()

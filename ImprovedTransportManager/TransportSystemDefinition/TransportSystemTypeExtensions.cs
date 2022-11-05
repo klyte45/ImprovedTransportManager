@@ -1,6 +1,7 @@
 ﻿extern alias UUI;
 using ColossalFramework;
 using ColossalFramework.Globalization;
+using ImprovedTransportManager.Data;
 using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
@@ -309,10 +310,11 @@ namespace ImprovedTransportManager.TransportSystems
 
         public static float GetEffectivePassengerCapacityCost(this TransportSystemType x)
         {
-            int settedCost =/* GetConfig()?.DefaultCostPerPassenger ??*/ 0;
-            return settedCost <= 0 ? x.GetDefaultPassengerCapacityCostLocal() : settedCost / 100f;
+            uint settedCost = ITMCitySettings.Instance.costPerThousandPassengers.TryGetValue(x, out uint val) ? val : 0;
+            return settedCost <= 0 ? x.GetDefaultPassengerCapacityCostLocal() : settedCost / 1000f;
         }
-        public static float GetDefaultPassengerCapacityCostLocal(this TransportSystemType x) => TransportInfoDict.TryGetValue(x, out TransportInfoContainer info) && !(info.Local is null) ? info.Local.m_maintenanceCostPerVehicle / (float)x.DefaultCapacity() : -1;
+        public static float GetDefaultPassengerCapacityCostLocal(this TransportSystemType x) 
+            => TransportInfoDict.TryGetValue(x, out TransportInfoContainer info) && !(info.Local is null) ? info.Local.m_maintenanceCostPerVehicle / (float)x.DefaultCapacity() : -1;
 
         public static string GetTransportName(this TransportSystemType x)
         {
@@ -334,9 +336,9 @@ namespace ImprovedTransportManager.TransportSystems
                 case TransportSystemType.TAXI: return Locale.Get("VEHICLE_TITLE", "Taxi");
                 case TransportSystemType.HELICOPTER: return Locale.Get("VEHICLE_TITLE", "Passenger Helicopter");
                 case TransportSystemType.TROLLEY: return Locale.Get("VEHICLE_TITLE", "Trolleybus 01");
-                case TransportSystemType.BALLOON:
-                case TransportSystemType.FISHING:
-                case TransportSystemType.POST:
+                case TransportSystemType.BALLOON: return Locale.Get("VEHICLE_TITLE", "Hot Air Balloon 01");
+                case TransportSystemType.FISHING: return Locale.Get("VEHICLE_TITLE", "Fishing Boat 01");
+                case TransportSystemType.POST: return Locale.Get("VEHICLE_TITLE", "Post Truck 01");
                 default: return "???";
             }
         }

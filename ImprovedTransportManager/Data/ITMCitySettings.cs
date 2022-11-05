@@ -1,4 +1,6 @@
-﻿using Kwytto.Data;
+﻿using ImprovedTransportManager.TransportSystems;
+using Kwytto.Data;
+using Kwytto.Utils;
 using System.Xml.Serialization;
 
 namespace ImprovedTransportManager.Data
@@ -17,6 +19,7 @@ namespace ImprovedTransportManager.Data
         public bool expressTrolleybus = true;
         [XmlAttribute("disableUnbunchingTerminals")]
         public bool disableUnbunchingTerminals = false;
-
+        [XmlElement("MaintenaceCostsPer1000Passengers")]
+        public SimpleEnumerableList<TransportSystemType, uint> costPerThousandPassengers = new SimpleEnumerableList<TransportSystemType, uint>();
     }
 }

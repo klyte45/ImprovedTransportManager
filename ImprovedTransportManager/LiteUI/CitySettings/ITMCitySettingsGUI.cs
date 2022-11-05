@@ -16,7 +16,9 @@ namespace ImprovedTransportManager.UI
             Instance = this;
             Init($"{ModInstance.Instance.GeneralName} - {Str.itm_citySettings_title}", new Rect(128, 128, 680, 420), resizable: true, minSize: new Vector2(440, 260));
             var tabs = new IGUIVerticalITab[] {
-                new ITMExpressDataTab()
+                new ITMExpressDataTab(),
+                new ITMMaintenanceDataTab(),
+                new ITMSpecialLineToolsTab()
                     };
             m_tabsContainer = new GUIVerticalTabsContainer(tabs);
             Visible = false;
