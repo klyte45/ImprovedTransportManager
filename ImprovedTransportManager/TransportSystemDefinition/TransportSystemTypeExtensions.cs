@@ -313,7 +313,7 @@ namespace ImprovedTransportManager.TransportSystems
             uint settedCost = ITMCitySettings.Instance.costPerThousandPassengers.TryGetValue(x, out uint val) ? val : 0;
             return settedCost <= 0 ? x.GetDefaultPassengerCapacityCostLocal() : settedCost / 1000f;
         }
-        public static float GetDefaultPassengerCapacityCostLocal(this TransportSystemType x) 
+        public static float GetDefaultPassengerCapacityCostLocal(this TransportSystemType x)
             => TransportInfoDict.TryGetValue(x, out TransportInfoContainer info) && !(info.Local is null) ? info.Local.m_maintenanceCostPerVehicle / (float)x.DefaultCapacity() : -1;
 
         public static string GetTransportName(this TransportSystemType x)
@@ -340,6 +340,28 @@ namespace ImprovedTransportManager.TransportSystems
                 case TransportSystemType.FISHING: return Locale.Get("VEHICLE_TITLE", "Fishing Boat 01");
                 case TransportSystemType.POST: return Locale.Get("VEHICLE_TITLE", "Post Truck 01");
                 default: return "???";
+            }
+        }
+        public static bool CanCreateLine(this TransportSystemType x)
+        {
+            switch (x)
+            {
+                case TransportSystemType.TRAIN:
+                case TransportSystemType.TRAM:
+                case TransportSystemType.METRO:
+                case TransportSystemType.BUS:
+                case TransportSystemType.PLANE:
+                case TransportSystemType.SHIP:
+                case TransportSystemType.BLIMP:
+                case TransportSystemType.FERRY:
+                case TransportSystemType.MONORAIL:
+                case TransportSystemType.EVAC_BUS:
+                case TransportSystemType.TOUR_BUS:
+                case TransportSystemType.TOUR_PED:
+                case TransportSystemType.HELICOPTER:
+                case TransportSystemType.TROLLEY:
+                    return true;
+                default: return false;
             }
         }
     }

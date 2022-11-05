@@ -20,7 +20,7 @@ namespace ImprovedTransportManager.UI
             {
                 foreach (var type in TransportSystemTypeExtensions.TransportInfoDict)
                 {
-                    if (type.Value.Local != null && type.Key.HasVehicles())
+                    if (type.Key.CanCreateLine() && type.Key.HasVehicles())
                         GUIKwyttoCommons.AddIntField(tabAreaSize.x
                             , string.Format(Str.itm_maintenanceData_defaultMaintenanceFormat, type.Key.GetTransportName(), type.Key.GetDefaultPassengerCapacityCostLocal() * 1000),
                             ITMCitySettings.Instance.costPerThousandPassengers.TryGetValue(type.Key, out uint val) ? (int)val : 0, (x) => ITMCitySettings.Instance.costPerThousandPassengers[type.Key] = (uint)x, true, 0);

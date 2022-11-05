@@ -31,7 +31,7 @@ namespace ImprovedTransportManager.UI
         }
 
         protected override List<WealthPassengerReport> GetLineData(ushort lineId) => ITMTransportLineStatusesManager.Instance.GetLineWealthReport(lineId);
-        protected override List<WealthPassengerReport> GetStopData(ushort stopId) => ITMTransportLineStatusesManager.Instance.GetStopWealthReport(stopId);
-        protected override List<WealthPassengerReport> GetVehicleData(ushort vehicleId) => ITMTransportLineStatusesManager.Instance.GetVehicleWealthReport(vehicleId);
+        protected override List<WealthPassengerReport> GetStopData(ushort stopId) => new List<WealthPassengerReport>();
+        protected override List<WealthPassengerReport> GetVehicleData(ushort vehicleId) => new List<WealthPassengerReport>();
     }
 }

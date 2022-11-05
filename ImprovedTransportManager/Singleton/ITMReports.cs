@@ -306,30 +306,6 @@ namespace ImprovedTransportManager.Singleton
             result.Sort((a, b) => a.RefFrame.CompareTo(b.RefFrame));
             return result;
         }
-        public static List<WealthPassengerReport> GetStopWealthReport(this ITMTransportLineStatusesManager manager, ushort stopId)
-        {
-            var result = new List<WealthPassengerReport>();
-            for (int j = 0; j < CYCLES_HISTORY_SIZE; j++)
-            {
-                result.Add(new WealthPassengerReport
-                {
-                    Low = LowWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, j)).Sum(x => x),
-                    Medium = MedWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, j)).Sum(x => x),
-                    High = HghWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, j)).Sum(x => x),
-                    RefFrame = manager.GetStartFrameForArrayIdx(j)
-                });
-
-            }
-            result.Add(new WealthPassengerReport
-            {
-                Low = LowWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
-                Medium = MedWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
-                High = HghWealthData.Select(x => GetAtArray(stopId, manager.m_stopDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
-                RefFrame = (Singleton<SimulationManager>.instance.m_currentFrameIndex + OFFSET_FRAMES) & ~FRAMES_PER_CYCLE_MASK
-            });
-            result.Sort((a, b) => a.RefFrame.CompareTo(b.RefFrame));
-            return result;
-        }
 
 
         #endregion
@@ -376,30 +352,6 @@ namespace ImprovedTransportManager.Singleton
                 Total = GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)VehicleDataSmallInt.TOTAL_PASSENGERS, CYCLES_CURRENT_DATA_IDX),
                 Student = GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)VehicleDataSmallInt.STUDENT_PASSENGERS, CYCLES_CURRENT_DATA_IDX),
                 Tourists = GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)VehicleDataSmallInt.TOURIST_PASSENGERS, CYCLES_CURRENT_DATA_IDX),
-                RefFrame = (Singleton<SimulationManager>.instance.m_currentFrameIndex + OFFSET_FRAMES) & ~FRAMES_PER_CYCLE_MASK
-            });
-            result.Sort((a, b) => a.RefFrame.CompareTo(b.RefFrame));
-            return result;
-        }
-        public static List<WealthPassengerReport> GetVehicleWealthReport(this ITMTransportLineStatusesManager manager, ushort vehicleId)
-        {
-            var result = new List<WealthPassengerReport>();
-            for (int j = 0; j < CYCLES_HISTORY_SIZE; j++)
-            {
-                result.Add(new WealthPassengerReport
-                {
-                    Low = LowWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, j)).Sum(x => x),
-                    Medium = MedWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, j)).Sum(x => x),
-                    High = HghWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, j)).Sum(x => x),
-                    RefFrame = manager.GetStartFrameForArrayIdx(j)
-                });
-
-            }
-            result.Add(new WealthPassengerReport
-            {
-                Low = LowWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
-                Medium = MedWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
-                High = HghWealthData.Select(x => GetAtArray(vehicleId, manager.m_vehiclesDataInt, (int)x, CYCLES_CURRENT_DATA_IDX)).Sum(x => x),
                 RefFrame = (Singleton<SimulationManager>.instance.m_currentFrameIndex + OFFSET_FRAMES) & ~FRAMES_PER_CYCLE_MASK
             });
             result.Sort((a, b) => a.RefFrame.CompareTo(b.RefFrame));

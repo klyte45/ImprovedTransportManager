@@ -45,9 +45,9 @@ namespace ImprovedTransportManager.UI
             Init($"{ModInstance.Instance.GeneralName} - {Str.itm_statistics_title}", new Rect(128, 128, 680, 420), resizable: true, minSize: new Vector2(440, 260));
             var tabs = new IGUIVerticalITab[] {
                         new FinanceReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
-                        new PassengerWealthReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
                         new StudentTouristsReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
                         new PassengerAgeReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
+                        new PassengerWealthReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle),
                         new PassengerGenderReportTab(GetCurrentSelectedLine,GetCurrentSelectedStop,GetCurrentSelectedVehicle)
                     };
             m_tabsContainer = new GUIVerticalTabsContainer(tabs);
