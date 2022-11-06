@@ -2,7 +2,7 @@
 
 This mod intends to be a replacement to the both old IPT2 and TLM. Here are some of features already done in this mod:
 
-- Overwriting completely the (heavy) line detail baloon panel
+- Overwriting completely the (heavy) line detail balloon panel
 - Select multiple vehicles models to spawn in a line
 - Copy/paste vehicle selection between lines
 - Change vehicle capacity
@@ -20,16 +20,21 @@ This mod intends to be a replacement to the both old IPT2 and TLM. Here are some
 - Replaced completely the vanilla line listing window to always point to ITM window
 - Export/Import default city settings
 - Integrations to Custom Data Mod to setup the line logo
+- Near lines (from TLM)
 
 What is missing but are planned to release version 1:
 
-- Autoname and autocolor (from TLM)
-- Fares, vehicles and budget settings groups (replacing old "prefixes" settings from TLM)
-- Near lines (from TLM)
-- Fare and budget per hour (from TLM - now it's like vanilla only, the new mode will be an additional feature)
+- Autoname from buildings, addresses and districts (from TLM)
+- Autocolor (from TLM)
+- Fares settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
+- Budget settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
+- Tickets settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
+- Fare per hour (expert mode only) (from TLM)
+- Budget per hour (expert mode only) (from TLM)
+- Lines settings by weekday (expert mode only)
 - Change stops names
 - Integrations to Write Everywhere to setup line destinations to terminus
-- Express circular lines (that NEVER stops in any stop if there's nothing to do,)
-- Custom line string identifier (from TLM - also to integrate with Write Everywhere)
+- Express circular lines (that NEVER stops in any stop if there's nothing to do)
+- Custom line string identifier  (expert mode only) (from TLM - also to integrate with Write Everywhere)
 - Vehicle context information (from IPT2)
-- Customize outside connection lines from train buildings (from TLM)
+- Customize outside connection lines from train buildings  (expert mode only) (from TLM)

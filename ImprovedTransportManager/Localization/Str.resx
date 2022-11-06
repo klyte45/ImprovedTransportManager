@@ -562,4 +562,10 @@ Recomended for experenced players only</value>
   <data name="itm_pickALogoForLine" xml:space="preserve">
     <value>Get a logo image for line: {0}</value>
   </data>
+  <data name="itm_nearLines_noNearLinesHere" xml:space="preserve">
+    <value>There are no lines around here...</value>
+  </data>
+  <data name="itm_nearLines_title" xml:space="preserve">
+    <value>Near lines</value>
+  </data>
 </root>

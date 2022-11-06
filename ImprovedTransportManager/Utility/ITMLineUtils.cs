@@ -1,6 +1,8 @@
 ﻿using ColossalFramework;
 using ImprovedTransportManager.Data;
+using ImprovedTransportManager.TransportSystems;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ImprovedTransportManager.Utility
@@ -128,5 +130,59 @@ namespace ImprovedTransportManager.Utility
         internal static bool IsTerminus(this ref TransportLine tl, ushort stopId)
             => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
             || (tl.m_stops == stopId);
+
+
+        public static bool GetNearLines(Vector3 pos, float maxDistance, HashSet<ushort> linesFound)
+        {
+            float extendedMaxDistance = maxDistance * 1.3f;
+            int num = Mathf.Max((int)(((pos.x - extendedMaxDistance) / 64f) + 135f), 0);
+            int num2 = Mathf.Max((int)(((pos.z - extendedMaxDistance) / 64f) + 135f), 0);
+            int num3 = Mathf.Min((int)(((pos.x + extendedMaxDistance) / 64f) + 135f), 269);
+            int num4 = Mathf.Min((int)(((pos.z + extendedMaxDistance) / 64f) + 135f), 269);
+            bool noneFound = true;
+            NetManager nm = Singleton<NetManager>.instance;
+            TransportManager tm = Singleton<TransportManager>.instance;
+            for (int i = num2; i <= num4; i++)
+            {
+                for (int j = num; j <= num3; j++)
+                {
+                    ushort num6 = nm.m_nodeGrid[(i * 270) + j];
+                    int num7 = 0;
+                    while (num6 != 0)
+                    {
+                        NetInfo info = nm.m_nodes.m_buffer[num6].Info;
+                        if ((info.m_class.m_service == ItemClass.Service.PublicTransport))
+                        {
+                            ushort transportLine = nm.m_nodes.m_buffer[num6].m_transportLine;
+                            var tsd = TransportSystemTypeExtensions.FromLineId(transportLine == 0 ? num6 : transportLine, transportLine == 0);
+                            if (transportLine != 0 && tsd != default
+                                //&& tsd.GetConfig().ShowInLinearMap
+                                )
+                            {
+                                TransportInfo info2 = tm.m_lines.m_buffer[transportLine].Info;
+                                if (!linesFound.Contains(transportLine) && (tm.m_lines.m_buffer[transportLine].m_flags & TransportLine.Flags.Temporary) == TransportLine.Flags.None)
+                                {
+                                    float num8 = Vector3.SqrMagnitude(pos - nm.m_nodes.m_buffer[num6].m_position);
+                                    if (num8 < maxDistance * maxDistance || (info2.m_transportType == TransportInfo.TransportType.Ship && num8 < extendedMaxDistance * extendedMaxDistance))
+                                    {
+                                        linesFound.Add(transportLine);
+                                        GetNearLines(nm.m_nodes.m_buffer[num6].m_position, maxDistance, linesFound);
+                                        noneFound = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        num6 = nm.m_nodes.m_buffer[num6].m_nextGridNode;
+                        if (++num7 >= 32768)
+                        {
+                            CODebugBase<LogChannel>.Error(LogChannel.Core, "Invalid list detected!\n" + Environment.StackTrace);
+                            break;
+                        }
+                    }
+                }
+            }
+            return noneFound;
+        }
     }
 }

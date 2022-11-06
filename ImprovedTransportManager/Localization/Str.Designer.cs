@@ -842,6 +842,24 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a There are no lines around here....
+        /// </summary>
+        internal static string itm_nearLines_noNearLinesHere {
+            get {
+                return ResourceManager.GetString("itm_nearLines_noNearLinesHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Near lines.
+        /// </summary>
+        internal static string itm_nearLines_title {
+            get {
+                return ResourceManager.GetString("itm_nearLines_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Get a logo image for line: {0}.
         /// </summary>
         internal static string itm_pickALogoForLine {
