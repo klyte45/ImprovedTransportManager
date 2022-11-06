@@ -9,7 +9,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("0.1.0.0")]
+[assembly: AssemblyVersion("0.1.0.*")]
 namespace ImprovedTransportManager
 {
     public class ModInstance : BasicIUserMod<ModInstance, ITMMainController>
@@ -27,7 +27,7 @@ namespace ImprovedTransportManager
         private IUUIButtonContainerPlaceholder[] cachedUUI;
         public override IUUIButtonContainerPlaceholder[] UUIButtons => cachedUUI ?? (cachedUUI = new IUUIButtonContainerPlaceholder[]
         {
-             new UUIWindowButtonContainerPlaceholder(
+             LinesListingBtn =  new UUIWindowButtonContainerPlaceholder(
              buttonName: $"{SimpleName} - AAA",
              tooltip: $"{SimpleName} - {Str.itm_linesListingWindow_tilte}",
              iconPath: "LinesListIcon",
@@ -47,7 +47,8 @@ namespace ImprovedTransportManager
              )
         }.Where(x => x != null).ToArray());
 
-        internal UUIWindowButtonContainerPlaceholder CitySettingsBtn { get; private set; }
+        internal static UUIWindowButtonContainerPlaceholder CitySettingsBtn { get; private set; }
+        internal static UUIWindowButtonContainerPlaceholder LinesListingBtn { get; private set; }
 
         protected override Dictionary<ulong, string> IncompatibleModList { get; } = new Dictionary<ulong, string>
         {

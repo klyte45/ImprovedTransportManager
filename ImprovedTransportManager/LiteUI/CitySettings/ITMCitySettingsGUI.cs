@@ -47,7 +47,7 @@ namespace ImprovedTransportManager.UI
 
         internal void GoToMaintenanceCost()
         {
-            (ModInstance.Instance as ModInstance).CitySettingsBtn.Open();
+            ModInstance.CitySettingsBtn.Open();
             m_tabsContainer.CurrentTabIdx = 1;
             GUI.BringWindowToFront(Id);
         }
