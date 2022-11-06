@@ -278,6 +278,101 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Assets settings.
+        /// </summary>
+        internal static string itm_generalSettings_assetsSettings {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_assetsSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The assets settings were exported to file:
+        ///&lt;color=yellow&gt;{0}&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_generalSettings_defaultAssetFileExportedMessage {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_defaultAssetFileExportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The asset settings were loaded successfully from default settings file.
+        ///You may need to reload all files to see the new values being used.
+        /// </summary>
+        internal static string itm_generalSettings_defaultAssetFileImportedMessage {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_defaultAssetFileImportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The city settings were exported to file:
+        ///&lt;color=yellow&gt;{0}&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_generalSettings_defaultCityFileExportedMessage {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_defaultCityFileExportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The city settings were loaded successfully from default settings file..
+        /// </summary>
+        internal static string itm_generalSettings_defaultCityFileImportedMessage {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_defaultCityFileImportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a General settings.
+        /// </summary>
+        internal static string itm_generalSettings_defaultGeneralSettings {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_defaultGeneralSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Expert mode
+        ///Shows advanced settings and extra windows for deep setup
+        ///Recomended for experenced players only.
+        /// </summary>
+        internal static string itm_generalSettings_expertMode {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_expertMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Export as default.
+        /// </summary>
+        internal static string itm_generalSettings_exportCurrentToFile {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_exportCurrentToFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Import from default.
+        /// </summary>
+        internal static string itm_generalSettings_importCurrentFromFile {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_importCurrentFromFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a General.
+        /// </summary>
+        internal static string itm_generalSettings_title {
+            get {
+                return ResourceManager.GetString("itm_generalSettings_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Go to maintenance screen.
         /// </summary>
         internal static string itm_goToMaintenanceCostScreen {

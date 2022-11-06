@@ -18,6 +18,7 @@ This mod intends to be a replacement to the both old IPT2 and TLM. Here are some
 - Change line ticket price
 - Manually disable the line without deleting it
 - Replaced completely the vanilla line listing window to always point to ITM window
+- Export/Import default city settings
 
 What is missing but are planned to release version 1:
 
@@ -28,8 +29,7 @@ What is missing but are planned to release version 1:
 - Change stops names
 - Integrations to Custom Data Mod to setup the line logo
 - Integrations to Write Everywhere to setup line destinations to terminus
-- Express circular lines (that NEVER stops in any stop)
+- Express circular lines (that NEVER stops in any stop if there's nothing to do,)
 - Custom line string identifier (from TLM - also to integrate with Write Everywhere)
 - Vehicle context information (from IPT2)
 - Customize outside connection lines from train buildings (from TLM)
-- Export/Import default city settings

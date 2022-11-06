@@ -512,4 +512,39 @@ The capacity can be edited here also, the maintenance cost is calculated based i
   <data name="itm_lineView_unsetAsTerminus" xml:space="preserve">
     <value>Remove terminus</value>
   </data>
+  <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
+    <value>Assets settings</value>
+  </data>
+  <data name="itm_generalSettings_defaultAssetFileExportedMessage" xml:space="preserve">
+    <value>The assets settings were exported to file:
+&lt;color=yellow&gt;{0}&lt;/color&gt;</value>
+  </data>
+  <data name="itm_generalSettings_defaultAssetFileImportedMessage" xml:space="preserve">
+    <value>The asset settings were loaded successfully from default settings file.
+You may need to reload all files to see the new values being used</value>
+  </data>
+  <data name="itm_generalSettings_defaultCityFileExportedMessage" xml:space="preserve">
+    <value>The city settings were exported to file:
+&lt;color=yellow&gt;{0}&lt;/color&gt;</value>
+  </data>
+  <data name="itm_generalSettings_defaultCityFileImportedMessage" xml:space="preserve">
+    <value>The city settings were loaded successfully from default settings file.</value>
+  </data>
+  <data name="itm_generalSettings_defaultGeneralSettings" xml:space="preserve">
+    <value>General settings</value>
+  </data>
+  <data name="itm_generalSettings_expertMode" xml:space="preserve">
+    <value>Expert mode
+Shows advanced settings and extra windows for deep setup
+Recomended for experenced players only</value>
+  </data>
+  <data name="itm_generalSettings_exportCurrentToFile" xml:space="preserve">
+    <value>Export as default</value>
+  </data>
+  <data name="itm_generalSettings_importCurrentFromFile" xml:space="preserve">
+    <value>Import from default</value>
+  </data>
+  <data name="itm_generalSettings_title" xml:space="preserve">
+    <value>General</value>
+  </data>
 </root>

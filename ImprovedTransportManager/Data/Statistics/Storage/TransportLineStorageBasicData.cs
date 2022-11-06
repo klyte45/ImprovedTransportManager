@@ -214,7 +214,7 @@ namespace ImprovedTransportManager.Data
 
         public void OnReleased() { }
 
-        public void LoadDefaults(ISerializableData serializableData) { }
+        public IDataExtension LoadDefaults(ISerializableData serializableData) => null;
         #region Serialization Utils
 
         internal static int PredictSize(Enum[] enumArray)

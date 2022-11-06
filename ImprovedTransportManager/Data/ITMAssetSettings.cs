@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using ICities;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using ImprovedTransportManager.Xml;
@@ -6,6 +7,7 @@ using Kwytto.Data;
 using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -28,6 +30,36 @@ namespace ImprovedTransportManager.Data
                 };
             }
             return Vehicles[vehicleName];
+        }
+
+        internal const string DEFAULTS_FILENAME = "AssetSettingsDefault.xml";
+        public static string DefaultsFilePath => Path.Combine(ModInstance.Instance.ModRootFolder, DEFAULTS_FILENAME);
+
+        public override ITMAssetSettings LoadDefaults(ISerializableData serializableData)
+        {
+            if (File.Exists(DefaultsFilePath))
+            {
+                try
+                {
+                    return XmlUtils.DefaultXmlDeserialize<ITMAssetSettings>(File.ReadAllText(DefaultsFilePath));
+                }
+                catch { }
+            }
+            return null;
+        }
+        internal static void ExportAsDefault()
+        {
+            KFileUtils.EnsureFolderCreation(ModInstance.Instance.ModRootFolder);
+            File.WriteAllText(DefaultsFilePath, XmlUtils.DefaultXmlSerialize(Instance));
+        }
+
+        internal static void ImportFromDefault()
+        {
+            if (Instance.LoadDefaults(null) is ITMAssetSettings s)
+            {
+                Instance = s;
+            }
+            Instance.AfterDeserialize(Instance);
         }
 
         public override void AfterDeserialize(ITMAssetSettings loadedData)
