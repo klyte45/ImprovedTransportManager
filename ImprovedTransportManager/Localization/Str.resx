@@ -547,4 +547,19 @@ Recomended for experenced players only</value>
   <data name="itm_generalSettings_title" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="itm_lineLogo_changeCustomLogo" xml:space="preserve">
+    <value>Change custom logo</value>
+  </data>
+  <data name="itm_lineLogo_deleteCustomLogo" xml:space="preserve">
+    <value>&lt;color=red&gt;Remove custom logo&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineLogo_invalidTexture" xml:space="preserve">
+    <value>Invalid texture!</value>
+  </data>
+  <data name="itm_lineLogo_invalidTextureContent" xml:space="preserve">
+    <value>The texture must have exactly 256x256 pixels as dimensions!</value>
+  </data>
+  <data name="itm_pickALogoForLine" xml:space="preserve">
+    <value>Get a logo image for line: {0}</value>
+  </data>
 </root>

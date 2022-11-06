@@ -382,6 +382,42 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Change custom logo.
+        /// </summary>
+        internal static string itm_lineLogo_changeCustomLogo {
+            get {
+                return ResourceManager.GetString("itm_lineLogo_changeCustomLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=red&gt;Remove custom logo&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_lineLogo_deleteCustomLogo {
+            get {
+                return ResourceManager.GetString("itm_lineLogo_deleteCustomLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid texture!.
+        /// </summary>
+        internal static string itm_lineLogo_invalidTexture {
+            get {
+                return ResourceManager.GetString("itm_lineLogo_invalidTexture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The texture must have exactly 256x256 pixels as dimensions!.
+        /// </summary>
+        internal static string itm_lineLogo_invalidTextureContent {
+            get {
+                return ResourceManager.GetString("itm_lineLogo_invalidTextureContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E16:.
         /// </summary>
         internal static string itm_lineMap_earningsAllTimeAcronym {
@@ -802,6 +838,15 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_maintenanceData_title {
             get {
                 return ResourceManager.GetString("itm_maintenanceData_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Get a logo image for line: {0}.
+        /// </summary>
+        internal static string itm_pickALogoForLine {
+            get {
+                return ResourceManager.GetString("itm_pickALogoForLine", resourceCulture);
             }
         }
         

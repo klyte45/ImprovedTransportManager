@@ -7,6 +7,7 @@ using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -54,6 +55,11 @@ namespace ImprovedTransportManager.UI
         private readonly DisposableFastList<VehicleData> m_loadedVehiclesData = new DisposableFastList<VehicleData>();
         private VehicleShowDataType m_currentVehicleDataShow = VehicleShowDataType.PassengerCapacity;
         private readonly string[] m_vehicleShowOptions = Enum.GetValues(typeof(VehicleShowDataType)).Cast<VehicleShowDataType>().Select(x => x.ValueToI18n()).ToArray();
+
+        private readonly string[] m_logoOptionsArray = new string[] {
+                              Str.itm_lineLogo_changeCustomLogo,
+                              Str.itm_lineLogo_deleteCustomLogo,
+                            };
         private Vector2 m_mapScroll;
 
         private GUIStyle m_smallLabel;
@@ -151,9 +157,28 @@ namespace ImprovedTransportManager.UI
                 var iconRect = new Rect((headerRect.size.x - headerRect.height) / 2, headerRect.position.y, headerRect.height, headerRect.height);
                 if (m_currentLineData.LineIcon is Texture2D tex)
                 {
-                    if (GUI.Button(iconRect, tex, m_stationBtn))
+                    GUI.Label(iconRect, tex, m_stationBtn);
+                    var contextMenuName = $"LINELOGO_CTXMENU_$$_";
+                    if (m_currentCtx == contextMenuName || iconRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
                     {
-                        //CALL CD if available
+                        if (GUIComboBox.ContextMenuRect(iconRect, m_logoOptionsArray, contextMenuName, this, "", GUI.skin.label) is int idx)
+                        {
+                            switch (idx)
+                            {
+                                case -2:
+                                    m_currentCtx = contextMenuName;
+                                    break;
+                                case -3:
+                                    m_currentCtx = null;
+                                    break;
+                                case 0:
+                                    KCImageFilePicker.PickAFile(string.Format(Str.itm_pickALogoForLine, m_currentLineData.LineName), OnNewLogoPicked);
+                                    break;
+                                case 1:
+                                    ModInstance.Controller.ConnectorCD.SetLineIcon(m_currentLineData.m_id.TransportLine, null);
+                                    break;
+                            }
+                        }
                     }
                 }
                 else
@@ -172,9 +197,9 @@ namespace ImprovedTransportManager.UI
                         {
                             textColor = contrastColor
                         }
-                    }))
+                    }) && ModInstance.Controller.ConnectorCD.CustomDataAvailable)
                     {
-                        //CALL CD if available
+                        KCImageFilePicker.PickAFile(string.Format(Str.itm_pickALogoForLine, m_currentLineData.LineName), OnNewLogoPicked);
                     }
                 }
 
@@ -241,7 +266,7 @@ namespace ImprovedTransportManager.UI
                                     }
                                     if (selectedText == Str.itm_lineView_removeStop)
                                     {
-                                        stop.RemoveStop(() => m_dirtyStops = true);                                       
+                                        stop.RemoveStop(() => m_dirtyStops = true);
                                     }
                                     m_currentCtx = null;
                                 }
@@ -266,6 +291,36 @@ namespace ImprovedTransportManager.UI
                 }
                 GUILayout.FlexibleSpace();
             }
+        }
+
+        private void OnNewLogoPicked(string x)
+        {
+            if (x != null)
+            {
+                var result = TextureAtlasUtils.LoadTextureFromFile(x, linear: true);
+                if (result.width != 256 || result.height != 256)
+                {
+                    ModInstance.Controller.StartCoroutine(ShowErrorModal());
+                    Destroy(result);
+                }
+                else
+                {
+                    ModInstance.Controller.ConnectorCD.SetLineIcon(m_currentLineData.m_id.TransportLine, result);
+                }
+            }
+        }
+        public IEnumerator ShowErrorModal()
+        {
+            yield return 0;
+            yield return 0;
+            KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties
+            {
+                title = Str.itm_lineLogo_invalidTexture,
+                message = Str.itm_lineLogo_invalidTextureContent,
+                messageAlign = TextAnchor.MiddleCenter,
+                messageTextSizeMultiplier = 1.5f,
+                buttons = KwyttoDialog.basicOkButtonBar
+            });
         }
 
         public bool HasAnyFreeStop() => m_loadedStopData.Any(x => x.fareMultiplier == 0);
@@ -317,8 +372,8 @@ namespace ImprovedTransportManager.UI
                     padding = new RectOffset(0, 0, -4, -4),
                     wordWrap = true,
                     alignment = TextAnchor.MiddleCenter,
-                    fontStyle = FontStyle.Bold
-                    //hover = GUI.skin.button.hover, //Only if CD exists
+                    fontStyle = FontStyle.Bold,
+                    hover = ModInstance.Controller.ConnectorCD.CustomDataAvailable ? GUI.skin.button.hover : GUI.skin.label.hover, //Only if CD exists
                 };
             }
         }

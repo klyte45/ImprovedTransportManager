@@ -1,4 +1,5 @@
 ﻿using ColossalFramework.UI;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.UI;
 using Kwytto.Interfaces;
@@ -16,6 +17,7 @@ namespace ImprovedTransportManager
         private readonly List<GameObject> refGOs = new List<GameObject>();
         public ITMTransportLineStatusesManager StatisticsManager => ITMTransportLineStatusesManager.Instance;
 
+        public IBridgeCD ConnectorCD { get; } = BridgeUtils.GetMostPrioritaryImplementation<IBridgeCD>();
         protected override void StartActions()
         {
             base.StartActions();

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KwyttoUtilityITM", "KwyttoU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImprovedTransportManager", "ImprovedTransportManager\ImprovedTransportManager.csproj", "{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K45_ITM2CD", "K45_ITM2CD\K45_ITM2CD.csproj", "{92B1E455-2115-4924-8BCC-178677410F85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E8F9A6-AFC1-4D4A-B127-2C99388A3B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B1E455-2115-4924-8BCC-178677410F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B1E455-2115-4924-8BCC-178677410F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B1E455-2115-4924-8BCC-178677410F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B1E455-2115-4924-8BCC-178677410F85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
