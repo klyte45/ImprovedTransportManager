@@ -61,6 +61,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Circular {0}.
+        /// </summary>
+        internal static string itm_autoName_circularTemplate {
+            get {
+                return ResourceManager.GetString("itm_autoName_circularTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a City settings.
         /// </summary>
         internal static string itm_citySettings_title {
@@ -102,6 +111,24 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_common_paste {
             get {
                 return ResourceManager.GetString("itm_common_paste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Auto name all city lines.
+        /// </summary>
+        internal static string itm_ctxMenuLineList_autonameAllCityLines {
+            get {
+                return ResourceManager.GetString("itm_ctxMenuLineList_autonameAllCityLines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Auto name all visible lines.
+        /// </summary>
+        internal static string itm_ctxMenuLineList_autonameVisibleLines {
+            get {
+                return ResourceManager.GetString("itm_ctxMenuLineList_autonameVisibleLines", resourceCulture);
             }
         }
         

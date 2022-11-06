@@ -1,8 +1,10 @@
 ﻿using ColossalFramework;
 using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ImprovedTransportManager.Utility
@@ -180,6 +182,35 @@ namespace ImprovedTransportManager.Utility
             }
             return noneFound;
         }
+
+        internal static void DoAutoname(ushort currentLine)
+        {
+            var stopsInName = new List<ushort>();
+            ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[currentLine];
+            if ((tl.m_flags & TransportLine.Flags.Complete) == 0)
+            {
+                return;
+            }
+
+            var currStop = tl.GetStop(0);
+            for (var idx = 0; currStop != 0; currStop = tl.GetStop(++idx))
+            {
+                if (tl.IsTerminus(currStop))
+                {
+                    stopsInName.Add(currStop);
+                }
+            }
+            if (stopsInName.Count == 0)
+            {
+                return;
+            }
+
+            string lineName = stopsInName.Count == 1
+            ? $"[{tl.GetEffectiveIdentifier(currentLine)}] {string.Format(Str.itm_autoName_circularTemplate, ITMNodeSettings.Instance.GetNodeName(stopsInName[0]))}"
+            : $"[{tl.GetEffectiveIdentifier(currentLine)}] {string.Join(" - ", stopsInName.Select(x => ITMNodeSettings.Instance.GetNodeName(x)).ToArray())}";
+            SimulationManager.instance.AddAction(TransportManager.instance.SetLineName(currentLine, lineName));
+        }
+
     }
 
 }

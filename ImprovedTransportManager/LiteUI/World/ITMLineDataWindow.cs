@@ -1,5 +1,6 @@
 ﻿using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
+using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
@@ -31,6 +32,7 @@ namespace ImprovedTransportManager.UI
         private Texture2D m_youngTex;
         private Texture2D m_adultTex;
         private Texture2D m_seniorTex;
+        private Texture2D m_autonameTex;
         private readonly LineActivityOptions[] m_lineActivityOptions = Enum.GetValues(typeof(LineActivityOptions)).Cast<LineActivityOptions>().ToArray();
         private string[] m_lineActivityOptionsNames;
         private const string COLOR_CHILDREN = "CC8844";
@@ -55,7 +57,7 @@ namespace ImprovedTransportManager.UI
             m_youngTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_YOUNG));
             m_adultTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_ADULT));
             m_seniorTex = TextureUtils.NewSingleColorForUI(ColorExtensions.FromRGB(COLOR_SENIOR));
-
+            m_autonameTex = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_AutoNameIcon);
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
             Visible = false;
@@ -98,7 +100,11 @@ namespace ImprovedTransportManager.UI
                 m_currentLineData.GetUpdated();
                 GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.TripsSaved), m_centerTextLabel);
                 GUILayout.Space(4);
-                GUIKwyttoCommons.TextWithLabel(size.x, Str.itm_lineView_lineName, m_currentLineData.LineName, (x) => m_currentLineData.LineName = x);
+                using (new GUILayout.HorizontalScope())
+                {
+                    GUIKwyttoCommons.TextWithLabel(size.x - 25, Str.itm_lineView_lineName, m_currentLineData.LineName, (x) => m_currentLineData.LineName = x);
+                    GUIKwyttoCommons.SquareTextureButton(m_autonameTex, "", () => ITMLineUtils.DoAutoname(CurrentLine), size: 20);
+                }
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);

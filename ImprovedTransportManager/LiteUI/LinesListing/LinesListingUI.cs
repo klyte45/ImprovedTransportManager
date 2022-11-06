@@ -1,8 +1,8 @@
 ﻿using ColossalFramework;
-using ColossalFramework.Globalization;
 using ColossalFramework.UI;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
+using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
@@ -51,6 +51,13 @@ namespace ImprovedTransportManager.UI
         private readonly Texture2D m_deleteIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Delete);
         private readonly Texture2D m_eyeIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Eye);
         private readonly Texture2D m_eyeSlashIcon = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_EyeSlash);
+        private readonly Texture2D m_settings = KResourceLoader.LoadTextureKwytto(Kwytto.UI.CommonsSpriteNames.K45_Settings);
+
+        private static readonly string[] m_optionsContext =
+        {
+            Str.itm_ctxMenuLineList_autonameVisibleLines,
+            Str.itm_ctxMenuLineList_autonameAllCityLines
+        };
 
         protected override void DrawWindow(Vector2 size)
         {
@@ -107,6 +114,23 @@ namespace ImprovedTransportManager.UI
                 HeaderButton(Str.itm_linesListingWindow_balanceColumnTitle, 80, SortOrder.Balance);
                 HeaderButton(Str.itm_linesListingWindow_activityColumnTitle, 80, SortOrder.Acitivty);
                 GUILayout.Space(40);
+                var rect = GUILayoutUtility.GetLastRect();
+                switch (GUIComboBox.ContextMenuRect(new Rect(rect.position, new Vector2(rect.width, 20)), m_optionsContext, "CTX_LINELIST", this, new GUIContent(m_settings), new GUIStyle(GUI.skin.button)
+                {
+                    contentOffset = default,
+                    padding = new RectOffset(),
+                }))
+                {
+                    case 0:
+                        currentView.ForEach(x => ITMLineUtils.DoAutoname(x.m_id.TransportLine));
+                        break;
+                    case 1:
+                        for (ushort i = 1; i < TransportManager.instance.m_lines.m_size; i++)
+                        {
+                            ITMLineUtils.DoAutoname(i);
+                        }
+                        break;
+                }
             }
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollLines))
             {

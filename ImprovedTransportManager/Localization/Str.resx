@@ -595,6 +595,16 @@ Recomended for experenced players only</value>
   <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
     <value>Recalculate stop name bind</value>
   </data>
+  <data name="itm_autoName_circularTemplate" xml:space="preserve">
+    <value>Circular {0}</value>
+    <comment>Template used when a line have a single terminal set</comment>
+  </data>
+  <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
+    <value>Auto name all city lines</value>
+  </data>
+  <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
+    <value>Auto name all visible lines</value>
+  </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
     <value>Erase all custom stop names</value>
   </data>
