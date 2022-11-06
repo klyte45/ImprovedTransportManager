@@ -1,0 +1,32 @@
+<color=yellow>Welcome to Improved Transport Manager, the ITM!</color>
+
+This mod intends to be a replacement to the both old IPT2 and TLM. Here are some of features already done in this mod:
+
+- Overwriting completely the (heavy) line detail baloon panel
+- Select multiple vehicles models to spawn in a line
+- Copy/paste vehicle selection between lines
+- Change vehicle capacity
+- Change vehicle cost per passenger
+- New line map with extended information for stops and vehicles
+<color=yellow>- Express lines for Bus, Tram and Trolleybus</color>
+- Vehicles never get back to depot with passengers
+- When express lines is on for modal, the vehicles only will get back to depot in a terminal stop
+- Select any stop as terminal stop (the first stop always is)
+- Change the internal line number
+<color=yellow>- Create lines for ship and airplanes (experimental)</color>
+- Reports for lines, stops and vehicles
+- Change line ticket price
+- Manually disable the line without deleting it
+
+What is missing but are planned to release version 1:
+- Replace completely the vanilla line listing window to always point to ITM window
+- Autoname and autocolor (from TLM)
+- Fares, vehicles and budget settings groups (replacing old "prefixes" settings from TLM)
+- Fare and budget per hour (from TLM - now it's like vanilla only, the new mode will be an additional feature)
+- Change stops names
+- Integrations to Custom Data Mod to setup the line logo
+- Integrations to Write Everywhere to setup line destinations to terminus
+- Express circular lines (that NEVER stops in any stop)
+- Custom line string identifier (from TLM - also to integrate with Write Everywhere)
+- Vehicle context information (from IPT2)
+- Customize outside connection lines from train buildings (from TLM)

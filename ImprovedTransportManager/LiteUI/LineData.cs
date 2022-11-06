@@ -175,7 +175,7 @@ namespace ImprovedTransportManager.UI
                     {
                         break;
                     }
-                    if (bufferN[nextStop].m_position.DistrictTariffMultiplierHere() == 0)
+                    if (bufferN[nextStop].m_position.DistrictFareMultiplierHere() == 0)
                     {
                         FreeStops++;
                     }

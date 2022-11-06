@@ -4,7 +4,7 @@ namespace ImprovedTransportManager.Utility
 {
     public static class ITMDistrictUtils
     {
-        public static float DistrictTariffMultiplierHere(this Vector3 position, bool applyEffectInDistrict = false)
+        public static float DistrictFareMultiplierHere(this Vector3 position, bool applyEffectInDistrict = false)
         {
             var instance = DistrictManager.instance;
             byte district = instance.GetDistrict(position);

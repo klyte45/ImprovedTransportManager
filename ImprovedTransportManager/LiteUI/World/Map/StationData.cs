@@ -1,6 +1,9 @@
-﻿using ImprovedTransportManager.Data;
+﻿using ColossalFramework;
+using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.Utility;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace ImprovedTransportManager.UI
@@ -11,19 +14,22 @@ namespace ImprovedTransportManager.UI
         public string cachedName;
         public float distanceNextStop;
         public Vector3 position;
-        public float tariffMultiplier;
+        public float fareMultiplier;
         private long m_earningAllTime;
         private long m_earningLastWeek;
         private long m_earningCurrentWeek;
         public int residentsWaiting;
         public int touristsWaiting;
         public int timeUntilBored;
+        public bool isTerminus;
+        private ushort lineId;
 
         public float EarningAllTime => m_earningAllTime * .01f;
         public float EarningLastWeek => m_earningLastWeek * .01f;
         public float EarningCurrentWeek => m_earningCurrentWeek * .01f;
 
         private uint lastUpdateFrame;
+        private uint lastUpdateTick;
 
         public static StationData FromStop(ushort currentStop)
         {
@@ -35,7 +41,8 @@ namespace ImprovedTransportManager.UI
                 stopId = currentStop,
                 cachedName = ITMLineUtils.GetEffectiveStopName(currentStop),
                 position = nd.m_position,
-                tariffMultiplier = nd.m_position.DistrictTariffMultiplierHere(),
+                fareMultiplier = nd.m_position.DistrictFareMultiplierHere(),
+                lineId = nd.m_transportLine
             };
             for (int s = 0; s < 8; s++)
             {
@@ -48,18 +55,59 @@ namespace ImprovedTransportManager.UI
             }
             return stop;
         }
-
         public void GetUpdated()
         {
-            if (lastUpdateFrame + 23 > SimulationManager.instance.m_referenceFrameIndex)
+
+            if (lastUpdateTick + 60 < SimulationManager.instance.m_currentTickIndex)
             {
-                return;
+                lastUpdateTick = SimulationManager.instance.m_currentTickIndex;
+                fareMultiplier = NetManager.instance.m_nodes.m_buffer[stopId].m_position.DistrictFareMultiplierHere();
+                isTerminus = ITMLineUtils.IsTerminus(stopId, lineId);
             }
-            lastUpdateFrame = SimulationManager.instance.m_referenceFrameIndex;
-            ITMTransportLineStatusesManager.Instance.GetLastWeekStopIncome(stopId, out m_earningLastWeek);
-            ITMTransportLineStatusesManager.Instance.GetStopIncome(stopId, out m_earningAllTime);
-            ITMTransportLineStatusesManager.Instance.GetCurrentStopIncome(stopId, out m_earningCurrentWeek);
-            ITMLineUtils.GetQuantityPassengerWaiting(stopId, out residentsWaiting, out touristsWaiting, out timeUntilBored);
+            if (lastUpdateFrame + 23 < SimulationManager.instance.m_referenceFrameIndex)
+            {
+                lastUpdateFrame = SimulationManager.instance.m_referenceFrameIndex;
+                ITMTransportLineStatusesManager.Instance.GetLastWeekStopIncome(stopId, out m_earningLastWeek);
+                ITMTransportLineStatusesManager.Instance.GetStopIncome(stopId, out m_earningAllTime);
+                ITMTransportLineStatusesManager.Instance.GetCurrentStopIncome(stopId, out m_earningCurrentWeek);
+                ITMLineUtils.GetQuantityPassengerWaiting(stopId, out residentsWaiting, out touristsWaiting, out timeUntilBored);
+            }
+        }
+
+        internal void SetAsFirst() => TransportManager.instance.m_lines.m_buffer[lineId].m_stops = stopId;
+
+        internal void UnsetTerminus() => ITMTransportLineSettings.Instance.m_terminalStops.Remove(stopId);
+
+        internal void SetTerminus() => ITMTransportLineSettings.Instance.m_terminalStops.Add(stopId);
+
+        internal void RemoveStop(Action callback) => Singleton<SimulationManager>.instance.AddAction(RemoveStopCoroutine(callback));
+
+        private IEnumerator RemoveStopCoroutine(Action callback)
+        {
+            TransportManager instance = Singleton<TransportManager>.instance;
+            int num = instance.m_lines.m_buffer[lineId].CountStops(lineId);
+            if (num <= 2)
+            {
+                instance.ReleaseLine(lineId);
+            }
+            else if (num >= 2)
+            {
+                TransportLine[] buff = instance.m_lines.m_buffer;
+                ushort stopScan = buff[lineId].m_stops;
+                int i = 0;
+                while (stopScan != stopId && stopScan != 0)
+                {
+                    stopScan = TransportLine.GetNextStop(stopScan);
+                    i++;
+                }
+                if (stopScan == 0)
+                {
+                    yield break;
+                }
+                buff[lineId].RemoveStop(lineId, i);
+            }
+            callback?.Invoke();
+            yield return 0;
         }
     }
 

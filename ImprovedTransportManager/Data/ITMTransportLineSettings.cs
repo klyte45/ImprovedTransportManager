@@ -17,7 +17,7 @@ namespace ImprovedTransportManager.Data
     [XmlRoot("ITMTransportLineSettings")]
     public class ITMTransportLineSettings : DataExtensionBase<ITMTransportLineSettings>
     {
-        [XmlElement("Configurations")]
+        [XmlElement("LineConfigurations")]
         public SimpleNonSequentialList<ITMTransportLineXml> Lines { get; set; } = new SimpleNonSequentialList<ITMTransportLineXml>();
         internal void SafeCleanEntry(ushort lineID) => Lines[lineID] = new ITMTransportLineXml();
         public ITMTransportLineXml SafeGetLine(ushort lineId)
@@ -31,6 +31,10 @@ namespace ImprovedTransportManager.Data
             }
             return Lines[lineId];
         }
+
+
+        [XmlElement("terminalStops")]
+        public HashSet<ushort> m_terminalStops { get; set; } = new HashSet<ushort>();
 
         public ITMTransportLineSettings()
         {
@@ -53,7 +57,7 @@ namespace ImprovedTransportManager.Data
         [XmlIgnore]
         private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>> GroupsBudgetList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>>();
         [XmlIgnore]
-        private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>> GroupsTariffList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>>();
+        private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>> GroupsFareList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>>();
 
         private O SafeGetGroupData<O>(Dictionary<TransportSystemType, SimpleNonSequentialList<O>> groupData, TransportSystemType tst, byte groupId) where O : class, new()
         {
@@ -114,11 +118,11 @@ namespace ImprovedTransportManager.Data
             get => ConvertToXmlFormat(GroupsBudgetList, y => y.Value);
             set => ConvertFromXmlFormat(value, GroupsBudgetList, (x, tst) => x);
         }
-        [XmlElement("GroupsTariffs")]
-        public SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>> GroupsTariffListXml
+        [XmlElement("GroupsFares")]
+        public SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>> GroupsFareListXml
         {
-            get => ConvertToXmlFormat(GroupsTariffList, y => y.Value);
-            set => ConvertFromXmlFormat(value, GroupsTariffList, (x, tst) => x);
+            get => ConvertToXmlFormat(GroupsFareList, y => y.Value);
+            set => ConvertFromXmlFormat(value, GroupsFareList, (x, tst) => x);
         }
         #endregion
 

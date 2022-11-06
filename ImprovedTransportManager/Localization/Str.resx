@@ -446,7 +446,7 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Total</value>
   </data>
   <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
-    <value>{0} (Default: {1:N0}¢/kpax)</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
     <comment>{0} will be the transport type name
 {1} will be the default cost per 1000 passengers</comment>
   </data>
@@ -496,5 +496,20 @@ The vehicles in the line that aren't selected in this list will be sent to depot
 - Reach the first stop or any terminal stop (road-based modals only)
 
 The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
+  </data>
+  <data name="itm_lineView_lineName" xml:space="preserve">
+    <value>Line name</value>
+  </data>
+  <data name="itm_lineView_removeStop" xml:space="preserve">
+    <value>&lt;color=red&gt;Remove stop&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineView_setAsFirstStop" xml:space="preserve">
+    <value>Set as first stop</value>
+  </data>
+  <data name="itm_lineView_setAsTerminus" xml:space="preserve">
+    <value>Set as terminus</value>
+  </data>
+  <data name="itm_lineView_unsetAsTerminus" xml:space="preserve">
+    <value>Remove terminus</value>
   </data>
 </root>

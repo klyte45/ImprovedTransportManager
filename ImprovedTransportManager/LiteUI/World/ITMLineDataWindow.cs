@@ -19,7 +19,7 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => ModInstance.Instance.GeneralName;
-        protected Vector2 StartSize => new Vector2(400, 500);
+        protected Vector2 StartSize => new Vector2(400, 600);
         protected Vector2 StartPosition => new Vector2((UIScaler.MaxWidth / 2) - 200, 256);
         protected virtual Vector2 MinSize { get; } = default;
         protected virtual Vector2 MaxSize { get; } = default;
@@ -98,6 +98,7 @@ namespace ImprovedTransportManager.UI
                 m_currentLineData.GetUpdated();
                 GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.TripsSaved), m_centerTextLabel);
                 GUILayout.Space(4);
+                GUIKwyttoCommons.TextWithLabel(size.x, Str.itm_lineView_lineName, m_currentLineData.LineName, (x) => m_currentLineData.LineName = x);
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);

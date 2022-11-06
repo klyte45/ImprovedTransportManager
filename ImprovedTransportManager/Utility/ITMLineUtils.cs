@@ -1,4 +1,5 @@
 ﻿using ColossalFramework;
+using ImprovedTransportManager.Data;
 using System;
 using UnityEngine;
 
@@ -121,5 +122,11 @@ namespace ImprovedTransportManager.Utility
             return $"#{vehicleId}";
         }
 
+        internal static bool IsTerminus(ushort stopId, ushort lineId)
+            => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
+            || (lineId > 0 && TransportManager.instance.m_lines.m_buffer[lineId].m_stops == stopId);
+        internal static bool IsTerminus(this ref TransportLine tl, ushort stopId)
+            => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
+            || (tl.m_stops == stopId);
     }
 }

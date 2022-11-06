@@ -35,8 +35,8 @@ namespace ImprovedTransportManager.Xml
 
         [XmlAttribute("budgetGroup")]
         public byte BudgetGroup { get; set; }
-        [XmlAttribute("tariffGroup")]
-        public byte TariffGroup { get; set; }
+        [XmlAttribute("fareGroup")]
+        public byte FareGroup { get; set; }
         [XmlAttribute("assetGroup")]
         public byte AssetGroup { get; set; }
         [XmlAttribute("depotGroup")]

@@ -548,6 +548,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line name.
+        /// </summary>
+        internal static string itm_lineView_lineName {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Lines Overview.
         /// </summary>
         internal static string itm_lineView_linesListBtn {
@@ -566,6 +575,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=red&gt;Remove stop&lt;/color&gt;.
+        /// </summary>
+        internal static string itm_lineView_removeStop {
+            get {
+                return ResourceManager.GetString("itm_lineView_removeStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N0} Residents / {1:N0} Tourists.
         /// </summary>
         internal static string itm_lineView_residentTourists {
@@ -580,6 +598,24 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_lineView_seniorLbl {
             get {
                 return ResourceManager.GetString("itm_lineView_seniorLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Set as first stop.
+        /// </summary>
+        internal static string itm_lineView_setAsFirstStop {
+            get {
+                return ResourceManager.GetString("itm_lineView_setAsFirstStop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Set as terminus.
+        /// </summary>
+        internal static string itm_lineView_setAsTerminus {
+            get {
+                return ResourceManager.GetString("itm_lineView_setAsTerminus", resourceCulture);
             }
         }
         
@@ -620,6 +656,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Remove terminus.
+        /// </summary>
+        internal static string itm_lineView_unsetAsTerminus {
+            get {
+                return ResourceManager.GetString("itm_lineView_unsetAsTerminus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Weekly report data.
         /// </summary>
         internal static string itm_lineView_weeklyDataTitle {
@@ -638,7 +683,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} (Default: {1:N0}¢/kpax).
+        ///   Consulta uma cadeia de caracteres localizada semelhante a &lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax).
         /// </summary>
         internal static string itm_maintenanceData_defaultMaintenanceFormat {
             get {

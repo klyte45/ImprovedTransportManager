@@ -34,6 +34,10 @@ namespace ImprovedTransportManager.UI
         private Texture2D m_baseStation;
         private Texture2D m_baseStationFree;
         private Texture2D m_baseStationHigh;
+        private Texture2D m_baseStationTerminus;
+        private Texture2D m_baseStationTerminusFree;
+        private Texture2D m_baseStationTerminusHigh;
+
 
         public static ITMLineStopsWindow Instance { get; private set; }
 
@@ -41,6 +45,9 @@ namespace ImprovedTransportManager.UI
         public Texture2D TexStation { get; private set; }
         public Texture2D TexStationFree { get; private set; }
         public Texture2D TexStationHigh { get; private set; }
+        public Texture2D TexStationTerminus { get; private set; }
+        public Texture2D TexStationTerminusFree { get; private set; }
+        public Texture2D TexStationTerminusHigh { get; private set; }
         public Texture2D TexLineBg { get; private set; }
         private Color m_currentLoadedColor;
         private readonly List<StationData> m_loadedStopData = new List<StationData>();
@@ -59,6 +66,8 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_noBreakLabel;
         private GUIStyle m_lineIconText;
 
+        private string m_currentCtx;
+
         public override void Awake()
         {
             base.Awake();
@@ -68,10 +77,16 @@ namespace ImprovedTransportManager.UI
             m_baseStation = KResourceLoader.LoadTextureMod("map_station");
             m_baseStationFree = KResourceLoader.LoadTextureMod("map_stationFree");
             m_baseStationHigh = KResourceLoader.LoadTextureMod("map_stationHigh");
+            m_baseStationTerminus = KResourceLoader.LoadTextureMod("map_stationTerminus");
+            m_baseStationTerminusFree = KResourceLoader.LoadTextureMod("map_stationTerminusFree");
+            m_baseStationTerminusHigh = KResourceLoader.LoadTextureMod("map_stationTerminusHigh");
             TexLineBg = TextureUtils.New(m_baseLineBg.width, m_baseLineBg.height);
             TexStation = TextureUtils.New(m_baseStation.width, m_baseStation.height);
             TexStationFree = TextureUtils.New(m_baseStationFree.width, m_baseStationFree.height);
             TexStationHigh = TextureUtils.New(m_baseStationHigh.width, m_baseStationHigh.height);
+            TexStationTerminus = TextureUtils.New(m_baseStationTerminus.width, m_baseStationTerminus.height);
+            TexStationTerminusFree = TextureUtils.New(m_baseStationTerminusFree.width, m_baseStationTerminusFree.height);
+            TexStationTerminusHigh = TextureUtils.New(m_baseStationTerminusHigh.width, m_baseStationTerminusHigh.height);
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
             Visible = false;
@@ -79,6 +94,8 @@ namespace ImprovedTransportManager.UI
         private void Init() => Init(InitTitle, new Rect(StartPosition, StartSize), Resizable, true, MinSize, MaxSize);
 
         private GUIStyle m_redButton;
+        private bool m_dirtyStops;
+
         public GUIStyle RedButton
         {
             get
@@ -172,7 +189,7 @@ namespace ImprovedTransportManager.UI
                         StationData stop = m_loadedStopData[i];
                         stop.GetUpdated();
                         var targetTex = GetStationImage(stop);
-                        var labelWidth = size.x - leftPivotLine - (targetTex.width + 6);
+                        var labelWidth = size.x - leftPivotLine - targetTex.width - 20;
                         var stationPosMapY = ((i + .25f) * STATION_SIZE) - (targetTex.height * .5f);
                         if (GUI.Button(new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height), targetTex, m_stationBtn))
                         {
@@ -181,10 +198,55 @@ namespace ImprovedTransportManager.UI
                         }
                         var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
                         var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
-                        GUI.Label(new Rect(textsBasePosition, new Vector2(labelWidth, 20)), $"<b>{stop.cachedName}</b>");
+                        var stopNameRect = new Rect(textsBasePosition, new Vector2(labelWidth, 20));
+                        GUI.Label(stopNameRect, $"<b>{stop.cachedName}</b>");
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
                         GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
+                        var contextMenuName = $"{stop.stopId}_CTXMENU_$$_";
+                        if (m_currentCtx == contextMenuName || stopNameRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
+                        {
+                            var rectCB = new Rect(stopNameRect.max.x - 30, stopNameRect.yMin, 30, stopNameRect.height);
+                            var optionsArray = new string[] {
+                              i > 0 ? Str.itm_lineView_setAsFirstStop:null,
+                              i== 0 ? null : stop.isTerminus? Str.itm_lineView_unsetAsTerminus : Str.itm_lineView_setAsTerminus,
+                              Str.itm_lineView_removeStop
+                            }.Where(x => x != null).ToArray();
+                            if (GUIComboBox.ContextMenuRect(rectCB, optionsArray, contextMenuName, this) is int idx)
+                            {
+                                switch (idx)
+                                {
+                                    case -2:
+                                        m_currentCtx = contextMenuName;
+                                        break;
+                                    case -3:
+                                        m_currentCtx = null;
+                                        break;
+                                }
+
+                                if (idx >= 0)
+                                {
+                                    var selectedText = optionsArray[idx];
+                                    if (selectedText == Str.itm_lineView_setAsFirstStop)
+                                    {
+                                        stop.SetAsFirst();
+                                    }
+                                    if (selectedText == Str.itm_lineView_unsetAsTerminus)
+                                    {
+                                        stop.UnsetTerminus();
+                                    }
+                                    if (selectedText == Str.itm_lineView_setAsTerminus)
+                                    {
+                                        stop.SetTerminus();
+                                    }
+                                    if (selectedText == Str.itm_lineView_removeStop)
+                                    {
+                                        stop.RemoveStop(() => m_dirtyStops = true);                                       
+                                    }
+                                    m_currentCtx = null;
+                                }
+                            }
+                        }
                     }
                     if (m_currentLineData.m_type.HasVehicles())
                     {
@@ -206,7 +268,7 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        public bool HasAnyFreeStop() => m_loadedStopData.Any(x => x.tariffMultiplier == 0);
+        public bool HasAnyFreeStop() => m_loadedStopData.Any(x => x.fareMultiplier == 0);
 
         private void InitStyles()
         {
@@ -261,9 +323,15 @@ namespace ImprovedTransportManager.UI
             }
         }
         private Texture2D GetStationImage(StationData s)
-            => s.tariffMultiplier > 1.001f
+            => s.isTerminus
+            ? s.fareMultiplier > 1.001f
+                ? TexStationTerminusHigh
+                : s.fareMultiplier < 0.999f
+                    ? TexStationTerminusFree
+                    : TexStationTerminus
+            : s.fareMultiplier > 1.001f
                 ? TexStationHigh
-                : s.tariffMultiplier < 0.999f
+                : s.fareMultiplier < 0.999f
                     ? TexStationFree
                     : TexStation;
 
@@ -334,11 +402,8 @@ namespace ImprovedTransportManager.UI
         public void OnIdChanged(InstanceID currentId)
         {
             m_currentLine = currentId.TransportLine;
-            m_currentLineData?.Dispose();
-            m_currentLineData = LineData.FromLine(m_currentLine);
             Visible = true;
-            m_loadedStopData.Clear();
-            ITMLineUtils.DoWithEachStop(m_currentLine, (x, _) => m_loadedStopData.Add(StationData.FromStop(x)));
+            ReloadStops();
             if (m_currentLineData.m_type.HasVehicles())
             {
                 UpdateVehicleButtons(m_currentLine, true);
@@ -349,20 +414,39 @@ namespace ImprovedTransportManager.UI
             }
         }
 
+        private void ReloadStops()
+        {
+            m_currentLineData?.Dispose();
+            m_currentLineData = LineData.FromLine(m_currentLine);
+            m_loadedStopData.Clear();
+            ITMLineUtils.DoWithEachStop(m_currentLine, (x, _) => m_loadedStopData.Add(StationData.FromStop(x)));
+            m_dirtyStops = false;
+        }
 
         protected void FixedUpdate()
         {
+            if (m_dirtyStops)
+            {
+                ReloadStops();
+
+            }
             if (m_currentLineData != null && m_currentLoadedColor != m_currentLineData.LineColor)
             {
                 var lineColor = m_currentLineData.LineColor;
-                TexStation.SetPixels(m_baseStation.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStation.Apply();
-                TexStationFree.SetPixels(m_baseStationFree.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStationFree.Apply();
-                TexStationHigh.SetPixels(m_baseStationHigh.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexStationHigh.Apply();
-                TexLineBg.SetPixels(m_baseLineBg.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
-                TexLineBg.Apply();
+                foreach (var tex in new[] {
+                    Tuple.New(TexStation ,m_baseStation),
+                    Tuple.New(TexStationFree ,m_baseStationFree),
+                    Tuple.New(TexStationHigh ,m_baseStationHigh),
+                    Tuple.New(TexStationTerminus ,m_baseStationTerminus),
+                    Tuple.New(TexStationTerminusFree ,m_baseStationTerminusFree),
+                    Tuple.New(TexStationTerminusHigh ,m_baseStationTerminusHigh),
+                    Tuple.New(TexLineBg ,m_baseLineBg)
+                })
+                {
+
+                    tex.First.SetPixels(tex.Second.GetPixels().Select(x => x == Color.black ? lineColor : x).ToArray());
+                    tex.First.Apply();
+                }
                 m_currentLoadedColor = lineColor;
             }
         }

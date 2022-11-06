@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Utility;
 using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
@@ -300,7 +301,7 @@ namespace ImprovedTransportManager.Overrides
                     var terminalMarkedStops = new ushort[buff[lineId].CountStops(lineId) - 1].Select((x, i) =>
                     {
                         var stopId = buff[lineId].GetStop(i + 1);
-                        return Tuple.New(stopId, TEMP__IsTerminalStop(stopId));//CHANGE TO TERMINAL CHECKING!
+                        return Tuple.New(stopId, buff[lineId].IsTerminus(stopId));
                     }).Where(x => x.Second).Select(x => x.First);
                     var terminalStops = new ushort[] { buff[lineId].m_stops }.Union(terminalMarkedStops).GroupBy(x => x).First().ToList();
                     data.m_targetBuilding = terminalStops[SimulationManager.instance.m_randomizer.Int32((uint)terminalStops.Count)];
@@ -313,10 +314,6 @@ namespace ImprovedTransportManager.Overrides
         }
         #endregion
 
-        private static bool TEMP__IsTerminalStop(ushort stopId)
-        {
-            return false;
-        }
 
         #region Express Bus
         public static bool PreCanLeaveStop(ref TransportLine tl, ushort nextStop, int waitTime)
@@ -331,7 +328,7 @@ namespace ImprovedTransportManager.Overrides
                 || (info.m_vehicleType == VehicleInfo.VehicleType.Tram && ITMCitySettings.Instance.expressTrams)
                 || (info.m_vehicleType == VehicleInfo.VehicleType.Trolleybus && ITMCitySettings.Instance.expressTrolleybus);
             var currentStop = TransportLine.GetPrevStop(nextStop);
-            return (validType && (ITMCitySettings.Instance.disableUnbunchingTerminals || (currentStop != tl.m_stops && !TEMP__IsTerminalStop(currentStop)))) || tl.CanLeaveStop(nextStop, waitTime);
+            return (validType && (ITMCitySettings.Instance.disableUnbunchingTerminals || (!tl.IsTerminus(currentStop)))) || tl.CanLeaveStop(nextStop, waitTime);
         }
 
 
