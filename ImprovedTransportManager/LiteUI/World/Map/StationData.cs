@@ -39,7 +39,6 @@ namespace ImprovedTransportManager.UI
             var stop = new StationData
             {
                 stopId = currentStop,
-                cachedName = ITMLineUtils.GetEffectiveStopName(currentStop),
                 position = nd.m_position,
                 fareMultiplier = nd.m_position.DistrictFareMultiplierHere(),
                 lineId = nd.m_transportLine
@@ -60,6 +59,7 @@ namespace ImprovedTransportManager.UI
 
             if (lastUpdateTick + 60 < SimulationManager.instance.m_currentTickIndex)
             {
+                cachedName = ITMLineUtils.GetEffectiveStopName(stopId);
                 lastUpdateTick = SimulationManager.instance.m_currentTickIndex;
                 fareMultiplier = NetManager.instance.m_nodes.m_buffer[stopId].m_position.DistrictFareMultiplierHere();
                 isTerminus = ITMLineUtils.IsTerminus(stopId, lineId);

@@ -568,4 +568,31 @@ Recomended for experenced players only</value>
   <data name="itm_nearLines_title" xml:space="preserve">
     <value>Near lines</value>
   </data>
+  <data name="itm_lineLogo_setCustomLogo" xml:space="preserve">
+    <value>Set custom logo</value>
+  </data>
+  <data name="itm_lineMap_failedSettingDistrict" xml:space="preserve">
+    <value>The current stop isn't inside a district. Ensure it belongs to a district to bind its name to it.</value>
+  </data>
+  <data name="itm_lineMap_failedSettingPark" xml:space="preserve">
+    <value>The current stop isn't inside a special area. Ensure it belongs to a special area to bind its name to it.</value>
+  </data>
+  <data name="itm_lineMap_forceBindToBuilding" xml:space="preserve">
+    <value>Force bind stop name to building (pick)</value>
+  </data>
+  <data name="itm_lineMap_forceBindToDistrict" xml:space="preserve">
+    <value>Force bind stop name to district</value>
+  </data>
+  <data name="itm_lineMap_forceBindToPark" xml:space="preserve">
+    <value>Force bind stop name to special area</value>
+  </data>
+  <data name="itm_lineMap_forceBindToRoad" xml:space="preserve">
+    <value>Force bind stop name to road (pick)</value>
+  </data>
+  <data name="itm_lineMap_recalculateAllStopNames" xml:space="preserve">
+    <value>Recalculate all stops names bindings</value>
+  </data>
+  <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
+    <value>Recalculate stop name bind</value>
+  </data>
 </root>

@@ -483,5 +483,6 @@ namespace ImprovedTransportManager.ModShared
             return accessSegments;
         }
 
+        public string GetVehicleIdentifier(ushort vehicleId) => $"#{vehicleId}";
     }
 }

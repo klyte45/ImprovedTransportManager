@@ -1,5 +1,6 @@
 ﻿using ColossalFramework;
 using ColossalFramework.Globalization;
+using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using VehicleSkins.Localization;
+using WriteEverywhere.Tools;
 
 namespace ImprovedTransportManager.UI
 {
@@ -31,6 +33,7 @@ namespace ImprovedTransportManager.UI
 
 
         private const int STATION_SIZE = 120;
+        private const string LOGO_CTX_MENU_ID = "LINELOGO_CTXMENU_$$_";
         private GUIColorPicker picker;
         private Texture2D m_baseStation;
         private Texture2D m_baseStationFree;
@@ -56,10 +59,7 @@ namespace ImprovedTransportManager.UI
         private VehicleShowDataType m_currentVehicleDataShow = VehicleShowDataType.PassengerCapacity;
         private readonly string[] m_vehicleShowOptions = Enum.GetValues(typeof(VehicleShowDataType)).Cast<VehicleShowDataType>().Select(x => x.ValueToI18n()).ToArray();
 
-        private readonly string[] m_logoOptionsArray = new string[] {
-                              Str.itm_lineLogo_changeCustomLogo,
-                              Str.itm_lineLogo_deleteCustomLogo,
-                            };
+
         private Vector2 m_mapScroll;
 
         private GUIStyle m_smallLabel;
@@ -158,31 +158,10 @@ namespace ImprovedTransportManager.UI
                 if (m_currentLineData.LineIcon is Texture2D tex)
                 {
                     GUI.Label(iconRect, tex, m_stationBtn);
-                    var contextMenuName = $"LINELOGO_CTXMENU_$$_";
-                    if (m_currentCtx == contextMenuName || iconRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
-                    {
-                        if (GUIComboBox.ContextMenuRect(iconRect, m_logoOptionsArray, contextMenuName, this, "", GUI.skin.label) is int idx)
-                        {
-                            switch (idx)
-                            {
-                                case -2:
-                                    m_currentCtx = contextMenuName;
-                                    break;
-                                case -3:
-                                    m_currentCtx = null;
-                                    break;
-                                case 0:
-                                    KCImageFilePicker.PickAFile(string.Format(Str.itm_pickALogoForLine, m_currentLineData.LineName), OnNewLogoPicked);
-                                    break;
-                                case 1:
-                                    ModInstance.Controller.ConnectorCD.SetLineIcon(m_currentLineData.m_id.TransportLine, null);
-                                    break;
-                            }
-                        }
-                    }
                 }
                 else
                 {
+                    tex = null;
                     var contrastColor = m_currentLineData.LineColor.ContrastColor();
                     GUI.DrawTexture(iconRect, GUIKwyttoCommons.whiteTexture);
 
@@ -190,18 +169,16 @@ namespace ImprovedTransportManager.UI
 
                     GUI.DrawTexture(subRect, m_currentLineData.m_uiTextureColor);
                     var identifier = m_currentLineData.LineIdentifier();
-                    if (GUI.Button(subRect, identifier, new GUIStyle(m_lineIconText)
+                    GUI.Label(subRect, identifier, new GUIStyle(m_lineIconText)
                     {
                         fontSize = Mathf.RoundToInt(16 * EffectiveFontSizeMultiplier * (.5f + (3f / identifier.Length))),
                         normal =
                         {
                             textColor = contrastColor
                         }
-                    }) && ModInstance.Controller.ConnectorCD.CustomDataAvailable)
-                    {
-                        KCImageFilePicker.PickAFile(string.Format(Str.itm_pickALogoForLine, m_currentLineData.LineName), OnNewLogoPicked);
-                    }
+                    });
                 }
+                RunContextMenuLine(iconRect, tex);
 
                 using (var scroll = new GUILayout.ScrollViewScope(m_mapScroll))
                 {
@@ -216,11 +193,9 @@ namespace ImprovedTransportManager.UI
                         var targetTex = GetStationImage(stop);
                         var labelWidth = size.x - leftPivotLine - targetTex.width - 20;
                         var stationPosMapY = ((i + .25f) * STATION_SIZE) - (targetTex.height * .5f);
-                        if (GUI.Button(new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height), targetTex, m_stationBtn))
-                        {
-                            DefaultTool.OpenWorldInfoPanel(new InstanceID { NetNode = stop.stopId }, stop.position);
-                            ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
-                        }
+                        var stationIconRect = new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height);
+                        GUI.Label(stationIconRect, targetTex, m_stationBtn);
+                        RunContextMenuStop(i, stop, stationIconRect);
                         var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
                         var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
                         var stopNameRect = new Rect(textsBasePosition, new Vector2(labelWidth, 20));
@@ -228,50 +203,7 @@ namespace ImprovedTransportManager.UI
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
                         GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
-                        var contextMenuName = $"{stop.stopId}_CTXMENU_$$_";
-                        if (m_currentCtx == contextMenuName || stopNameRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
-                        {
-                            var rectCB = new Rect(stopNameRect.max.x - 30, stopNameRect.yMin, 30, stopNameRect.height);
-                            var optionsArray = new string[] {
-                              i > 0 ? Str.itm_lineView_setAsFirstStop:null,
-                              i== 0 ? null : stop.isTerminus? Str.itm_lineView_unsetAsTerminus : Str.itm_lineView_setAsTerminus,
-                              Str.itm_lineView_removeStop
-                            }.Where(x => x != null).ToArray();
-                            if (GUIComboBox.ContextMenuRect(rectCB, optionsArray, contextMenuName, this) is int idx)
-                            {
-                                switch (idx)
-                                {
-                                    case -2:
-                                        m_currentCtx = contextMenuName;
-                                        break;
-                                    case -3:
-                                        m_currentCtx = null;
-                                        break;
-                                }
 
-                                if (idx >= 0)
-                                {
-                                    var selectedText = optionsArray[idx];
-                                    if (selectedText == Str.itm_lineView_setAsFirstStop)
-                                    {
-                                        stop.SetAsFirst();
-                                    }
-                                    if (selectedText == Str.itm_lineView_unsetAsTerminus)
-                                    {
-                                        stop.UnsetTerminus();
-                                    }
-                                    if (selectedText == Str.itm_lineView_setAsTerminus)
-                                    {
-                                        stop.SetTerminus();
-                                    }
-                                    if (selectedText == Str.itm_lineView_removeStop)
-                                    {
-                                        stop.RemoveStop(() => m_dirtyStops = true);
-                                    }
-                                    m_currentCtx = null;
-                                }
-                            }
-                        }
                     }
                     if (m_currentLineData.m_type.HasVehicles())
                     {
@@ -290,6 +222,139 @@ namespace ImprovedTransportManager.UI
                     m_mapScroll = scroll.scrollPosition;
                 }
                 GUILayout.FlexibleSpace();
+            }
+        }
+
+        private void RunContextMenuLine(Rect iconRect, Texture2D tex)
+        {
+            if (m_currentCtx == LOGO_CTX_MENU_ID || iconRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
+            {
+                var CDavailable = ModInstance.Controller.ConnectorCD.CustomDataAvailable;
+                string[] m_logoOptionsArray = new string[] {
+                            Str.itm_lineMap_recalculateAllStopNames,
+                       CDavailable? tex!=null?  Str.itm_lineLogo_changeCustomLogo: Str.itm_lineLogo_setCustomLogo: null,
+                            CDavailable&& tex!=null?       Str.itm_lineLogo_deleteCustomLogo : null,
+                            }.Where(x => x != null).ToArray();
+                if (m_logoOptionsArray.Length > 0 && GUIComboBox.ContextMenuRect(iconRect, m_logoOptionsArray, LOGO_CTX_MENU_ID, this, "", GUI.skin.label) is int idx)
+                {
+                    switch (idx)
+                    {
+                        case -2:
+                            m_currentCtx = LOGO_CTX_MENU_ID;
+                            break;
+                        case -3:
+                            m_currentCtx = null;
+                            break;
+                    }
+                    if (idx >= 0)
+                    {
+                        var optionSelected = m_logoOptionsArray[idx];
+                        if (optionSelected == Str.itm_lineLogo_changeCustomLogo || optionSelected == Str.itm_lineLogo_setCustomLogo)
+                        {
+                            KCImageFilePicker.PickAFile(string.Format(Str.itm_pickALogoForLine, m_currentLineData.LineName), OnNewLogoPicked);
+                        }
+                        else if (optionSelected == Str.itm_lineLogo_deleteCustomLogo)
+                        {
+                            ModInstance.Controller.ConnectorCD.SetLineIcon(m_currentLineData.m_id.TransportLine, null);
+                        }
+                        else if (optionSelected == Str.itm_lineMap_recalculateAllStopNames)
+                        {
+                            m_loadedStopData.ForEach(x => ITMNodeSettings.Instance.GetNodeName(x.stopId, true));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void RunContextMenuStop(int i, StationData stop, Rect stationIconRect)
+        {
+            var contextMenuName = $"{stop.stopId}_CTXMENU_$$_";
+            if (m_currentCtx == contextMenuName || stationIconRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
+            {
+                var optionsArray = new string[] {
+                              i > 0 ? Str.itm_lineView_setAsFirstStop : null,
+                              i== 0 ? null : stop.isTerminus? Str.itm_lineView_unsetAsTerminus : Str.itm_lineView_setAsTerminus,
+                              Str.itm_lineMap_forceBindToDistrict,
+                              Str.itm_lineMap_forceBindToPark,
+                              Str.itm_lineMap_forceBindToBuilding,
+                              Str.itm_lineMap_forceBindToRoad,
+                              Str.itm_lineMap_recalculateAutoBind,
+                              Str.itm_lineView_removeStop
+                            }.Where(x => x != null).ToArray();
+                if (GUIComboBox.ContextMenuRect(stationIconRect, optionsArray, contextMenuName, this, "", GUI.skin.label) is int idx)
+                {
+                    switch (idx)
+                    {
+                        case -2:
+                            m_currentCtx = contextMenuName;
+                            DefaultTool.OpenWorldInfoPanel(new InstanceID { NetNode = stop.stopId }, stop.position);
+                            ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
+                            break;
+                        case -3:
+                            m_currentCtx = null;
+                            break;
+                    }
+
+                    if (idx >= 0)
+                    {
+                        var selectedText = optionsArray[idx];
+                        if (selectedText == Str.itm_lineView_setAsFirstStop)
+                        {
+                            stop.SetAsFirst();
+                        }
+                        else if (selectedText == Str.itm_lineView_unsetAsTerminus)
+                        {
+                            stop.UnsetTerminus();
+                        }
+                        else if (selectedText == Str.itm_lineView_setAsTerminus)
+                        {
+                            stop.SetTerminus();
+                        }
+                        else if (selectedText == Str.itm_lineView_removeStop)
+                        {
+                            stop.RemoveStop(() => m_dirtyStops = true);
+                        }
+
+                        else if (Str.itm_lineMap_forceBindToDistrict == selectedText)
+                        {
+                            if (!ITMNodeSettings.Instance.ForceBindToDistrict(stop.stopId))
+                            {
+                                KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties
+                                {
+                                    buttons = KwyttoDialog.basicOkButtonBar,
+                                    scrollText = Str.itm_lineMap_failedSettingDistrict
+                                });
+                            }
+                        }
+                        else if (Str.itm_lineMap_forceBindToPark == selectedText)
+                        {
+                            if (!ITMNodeSettings.Instance.ForceBindToPark(stop.stopId))
+                            {
+                                KwyttoDialog.ShowModal(new KwyttoDialog.BindProperties
+                                {
+                                    buttons = KwyttoDialog.basicOkButtonBar,
+                                    scrollText = Str.itm_lineMap_failedSettingPark
+                                });
+                            }
+                        }
+                        else if (Str.itm_lineMap_forceBindToBuilding == selectedText)
+                        {
+                            ModInstance.Controller.BuildingToolInstance.OnBuildingSelect = (x) => ITMNodeSettings.Instance.ForceBindToBuilding(stop.stopId, x);
+                            ToolsModifierControl.SetTool<BuildingSelectorTool>();
+                        }
+                        else if (Str.itm_lineMap_forceBindToRoad == selectedText)
+                        {
+                            ModInstance.Controller.RoadSegmentToolInstance.OnSegmentSelect = (x) => ITMNodeSettings.Instance.ForceBindToRoad(stop.stopId, x);
+                            ToolsModifierControl.SetTool<SegmentSelectorTool>();
+                        }
+                        else if (Str.itm_lineMap_recalculateAutoBind == selectedText)
+                        {
+                            ITMNodeSettings.Instance.GetNodeName(stop.stopId, true);
+                        }
+
+                        m_currentCtx = null;
+                    }
+                }
             }
         }
 

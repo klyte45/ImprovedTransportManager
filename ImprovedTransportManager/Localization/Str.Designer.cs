@@ -418,6 +418,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Set custom logo.
+        /// </summary>
+        internal static string itm_lineLogo_setCustomLogo {
+            get {
+                return ResourceManager.GetString("itm_lineLogo_setCustomLogo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E16:.
         /// </summary>
         internal static string itm_lineMap_earningsAllTimeAcronym {
@@ -468,6 +477,78 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_lineMap_earningsLastPeriodAcronymLegend {
             get {
                 return ResourceManager.GetString("itm_lineMap_earningsLastPeriodAcronymLegend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The current stop isn&apos;t inside a district. Ensure it belongs to a district to bind its name to it..
+        /// </summary>
+        internal static string itm_lineMap_failedSettingDistrict {
+            get {
+                return ResourceManager.GetString("itm_lineMap_failedSettingDistrict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The current stop isn&apos;t inside a special area. Ensure it belongs to a special area to bind its name to it..
+        /// </summary>
+        internal static string itm_lineMap_failedSettingPark {
+            get {
+                return ResourceManager.GetString("itm_lineMap_failedSettingPark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Force bind stop name to building (pick).
+        /// </summary>
+        internal static string itm_lineMap_forceBindToBuilding {
+            get {
+                return ResourceManager.GetString("itm_lineMap_forceBindToBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Force bind stop name to district.
+        /// </summary>
+        internal static string itm_lineMap_forceBindToDistrict {
+            get {
+                return ResourceManager.GetString("itm_lineMap_forceBindToDistrict", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Force bind stop name to special area.
+        /// </summary>
+        internal static string itm_lineMap_forceBindToPark {
+            get {
+                return ResourceManager.GetString("itm_lineMap_forceBindToPark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Force bind stop name to road (pick).
+        /// </summary>
+        internal static string itm_lineMap_forceBindToRoad {
+            get {
+                return ResourceManager.GetString("itm_lineMap_forceBindToRoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Recalculate all stops names bindings.
+        /// </summary>
+        internal static string itm_lineMap_recalculateAllStopNames {
+            get {
+                return ResourceManager.GetString("itm_lineMap_recalculateAllStopNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Recalculate stop name bind.
+        /// </summary>
+        internal static string itm_lineMap_recalculateAutoBind {
+            get {
+                return ResourceManager.GetString("itm_lineMap_recalculateAutoBind", resourceCulture);
             }
         }
         

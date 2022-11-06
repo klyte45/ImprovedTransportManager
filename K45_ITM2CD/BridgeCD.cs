@@ -20,7 +20,12 @@ namespace K45_ITM2CD
         public Texture2D GetLineIcon(ushort lineId)
             => CDFacade.Instance.GetLineIcon(lineId);
 
+
         public void SetLineIcon(ushort lineId, Texture2D newIcon)
             => CDFacade.Instance.SetLineIcon(lineId, newIcon);
+
+
+        public string GetVehicleIdentifier(ushort vehicleId) 
+            => CDFacade.Instance.GetVehicleIdentifier(vehicleId);
     }
 }

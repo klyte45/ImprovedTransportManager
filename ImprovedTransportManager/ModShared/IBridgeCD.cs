@@ -9,5 +9,6 @@ namespace ImprovedTransportManager.ModShared
         bool GetAddressStreetAndNumber(Vector3 sidewalk, Vector3 midPosBuilding, out int number, out string streetName);
         Texture2D GetLineIcon(ushort lineId);
         void SetLineIcon(ushort lineId, Texture2D newIcon);
+        string GetVehicleIdentifier(ushort vehicleId);
     }
 }

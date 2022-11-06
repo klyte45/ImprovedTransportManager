@@ -5,8 +5,8 @@ using ImprovedTransportManager.UI;
 using Kwytto.Interfaces;
 using Kwytto.Utils;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using WriteEverywhere.Tools;
 
 namespace ImprovedTransportManager
 {
@@ -20,6 +20,8 @@ namespace ImprovedTransportManager
         public IBridgeCD ConnectorCD { get; } = BridgeUtils.GetMostPrioritaryImplementation<IBridgeCD>();
         protected override void StartActions()
         {
+            ToolsModifierControl.toolController.AddExtraToolToController<BuildingSelectorTool>();
+            ToolsModifierControl.toolController.AddExtraToolToController<SegmentSelectorTool>();
             base.StartActions();
             refGOs.Add(ITMNearLinesWindow.Instance.gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<LinesListingUI>(UIView.GetAView().gameObject.transform, "LinesListingUI").gameObject);
@@ -29,27 +31,12 @@ namespace ImprovedTransportManager
             refGOs.Add(GameObjectUtils.CreateElement<ITMLineVehicleSelectionWindow>(UIView.GetAView().gameObject.transform, "ITMLineVehicleSelectionWindow").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMLineDataWindow>(UIView.GetAView().gameObject.transform, "ITMLineDataWindow").gameObject);
 
-
         }
 
-
-        private Tuple<UIComponent, PublicTransportWorldInfoPanel>[] ptPanels;
-        public Tuple<UIComponent, PublicTransportWorldInfoPanel>[] PTPanels
-        {
-            get
-            {
-                if (ptPanels is null)
-                {
-                    var BWIPs = UIView.GetAView().GetComponentsInChildren<PublicTransportWorldInfoPanel>();
-                    if (BWIPs is null || BWIPs.Length == 0)
-                    {
-                        return null;
-                    }
-                    ptPanels = BWIPs.Select(x => Tuple.New(x.GetComponent<UIComponent>(), x)).ToArray();
-                }
-                return ptPanels;
-            }
-        }
+        #region Tool Access
+        public SegmentSelectorTool RoadSegmentToolInstance => ToolsModifierControl.toolController.GetComponent<SegmentSelectorTool>();
+        public BuildingSelectorTool BuildingToolInstance => ToolsModifierControl.toolController.GetComponent<BuildingSelectorTool>();
+        #endregion
 
         public void OnDestroy()
         {

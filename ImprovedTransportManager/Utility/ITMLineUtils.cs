@@ -106,9 +106,7 @@ namespace ImprovedTransportManager.Utility
         }
 
         public static string GetEffectiveStopName(ushort stopId)
-        {
-            return $"Stop #{stopId}";
-        }
+            => ITMNodeSettings.Instance.GetNodeName(stopId) ?? $"Stop #{stopId}";
 
         public static void DoWithEachVehicle(ushort lineId, Action<ushort, int> action)
         {
@@ -120,9 +118,7 @@ namespace ImprovedTransportManager.Utility
             }
         }
         public static string GetEffectiveVehicleName(ushort vehicleId)
-        {
-            return $"#{vehicleId}";
-        }
+            => ModInstance.Controller.ConnectorCD.GetVehicleIdentifier(vehicleId);
 
         internal static bool IsTerminus(ushort stopId, ushort lineId)
             => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
@@ -185,4 +181,5 @@ namespace ImprovedTransportManager.Utility
             return noneFound;
         }
     }
+
 }

@@ -10,10 +10,6 @@ namespace ImprovedTransportManager.Overrides
 {
     public class PublicTransportAtRoadAIOverrides : Redirector, IRedirectable
     {
-        private static bool TEMP__IsTerminalStop(ushort stopId)
-        {
-            return false;
-        }
         public void Awake()
         {
             var src = typeof(VehicleAI).GetMethod("ArrivingToDestination", RedirectorUtils.allFlags);
@@ -61,7 +57,7 @@ namespace ImprovedTransportManager.Overrides
             }
             var currentStop = vehicleData.m_targetBuilding;
             ref TransportLine line = ref TransportManager.instance.m_lines.m_buffer[vehicleData.m_transportLine];
-            if (currentStop == 0 || currentStop == line.m_stops || TEMP__IsTerminalStop(currentStop))
+            if (line.IsTerminus(currentStop))
             {
                 CheckDespawn(vehicleID, ref vehicleData, empty, true);
                 return true;
