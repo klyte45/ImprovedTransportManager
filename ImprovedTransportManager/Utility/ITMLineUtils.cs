@@ -2,6 +2,7 @@
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
+using Kwytto.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,9 +95,7 @@ namespace ImprovedTransportManager.Utility
         }
 
         public static string GetEffectiveIdentifier(this ref TransportLine tl, ushort lineId)
-        {
-            return $"{tl.m_lineNumber}";
-        }
+            => ITMTransportLineSettings.Instance.SafeGetLine(lineId).CustomCode.TrimToNull() ?? $"{tl.m_lineNumber}";
         public static void DoWithEachStop(ushort lineId, Action<ushort, int> action)
         {
             ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[lineId];
@@ -122,10 +121,10 @@ namespace ImprovedTransportManager.Utility
         public static string GetEffectiveVehicleName(ushort vehicleId)
             => ModInstance.Controller.ConnectorCD.GetVehicleIdentifier(vehicleId);
 
-        internal static bool IsTerminus(ushort stopId, ushort lineId)
+        internal static bool IsTerminal(ushort stopId, ushort lineId)
             => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
             || (lineId > 0 && TransportManager.instance.m_lines.m_buffer[lineId].m_stops == stopId);
-        internal static bool IsTerminus(this ref TransportLine tl, ushort stopId)
+        internal static bool IsTerminal(this ref TransportLine tl, ushort stopId)
             => ITMTransportLineSettings.Instance.m_terminalStops.Contains(stopId)
             || (tl.m_stops == stopId);
 
@@ -195,7 +194,7 @@ namespace ImprovedTransportManager.Utility
             var currStop = tl.GetStop(0);
             for (var idx = 0; currStop != 0; currStop = tl.GetStop(++idx))
             {
-                if (tl.IsTerminus(currStop))
+                if (tl.IsTerminal(currStop))
                 {
                     stopsInName.Add(currStop);
                 }

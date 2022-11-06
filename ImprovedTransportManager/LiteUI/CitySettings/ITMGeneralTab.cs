@@ -16,8 +16,8 @@ namespace ImprovedTransportManager.UI
 
         public void DrawArea(Vector2 tabAreaSize)
         {
-            GUIKwyttoCommons.AddToggle(Str.itm_generalSettings_expertMode, ref ITMCitySettings.Instance.expertMode);
-            GUILayout.Space(10);
+            //GUIKwyttoCommons.AddToggle(Str.itm_generalSettings_expertMode, ref ITMCitySettings.Instance.expertMode);
+            //GUILayout.Space(10);
             GUILayout.Label(Str.itm_generalSettings_defaultGeneralSettings);
             if (GUILayout.Button(Str.itm_generalSettings_exportCurrentToFile))
             {

@@ -49,7 +49,7 @@ namespace ImprovedTransportManager.Overrides
 
             List<Type> allVehicleAI = ReflectionUtils.GetSubtypesRecursive(typeof(VehicleAI), typeof(VehicleAI));
 
-            #region Vehicle going back on terminus stop only
+            #region Vehicle going back on terminal stop only
             MethodInfo PreventShouldReturnToSource = typeof(TransportLineOverrides).GetMethod("PreventShouldReturnToSource", ReflectionUtils.allFlags);
             LogUtils.DoLog("Loading PreventShouldReturnToSource Hook");
             AddRedirect(typeof(TramAI).GetMethod("ShouldReturnToSource", ReflectionUtils.allFlags), PreventShouldReturnToSource);
@@ -296,12 +296,12 @@ namespace ImprovedTransportManager.Overrides
             {
                 TransportLine[] buff = TransportManager.instance.m_lines.m_buffer;
                 var lineId = data.m_transportLine;
-                if (ITMTransportLineSettings.Instance.SafeGetLine(lineId).RequireLineStartTerminal)
+                if (ITMTransportLineSettings.Instance.SafeGetLine(lineId).m_requireLineStartTerminal)
                 {
                     var terminalMarkedStops = new ushort[buff[lineId].CountStops(lineId) - 1].Select((x, i) =>
                     {
                         var stopId = buff[lineId].GetStop(i + 1);
-                        return Tuple.New(stopId, buff[lineId].IsTerminus(stopId));
+                        return Tuple.New(stopId, buff[lineId].IsTerminal(stopId));
                     }).Where(x => x.Second).Select(x => x.First);
                     var terminalStops = new ushort[] { buff[lineId].m_stops }.Union(terminalMarkedStops).GroupBy(x => x).First().ToList();
                     data.m_targetBuilding = terminalStops[SimulationManager.instance.m_randomizer.Int32((uint)terminalStops.Count)];
@@ -322,13 +322,14 @@ namespace ImprovedTransportManager.Overrides
             {
                 return tl.CanLeaveStop(nextStop, waitTime);
             }
-            var info = VehicleManager.instance.m_vehicles.m_buffer[tl.m_vehicles].Info;
+            ref Vehicle firstVehicle = ref VehicleManager.instance.m_vehicles.m_buffer[tl.m_vehicles];
+            var info = firstVehicle.Info;
 
             var validType = (info.m_vehicleType == VehicleInfo.VehicleType.Car && ITMCitySettings.Instance.expressBuses)
                 || (info.m_vehicleType == VehicleInfo.VehicleType.Tram && ITMCitySettings.Instance.expressTrams)
                 || (info.m_vehicleType == VehicleInfo.VehicleType.Trolleybus && ITMCitySettings.Instance.expressTrolleybus);
             var currentStop = TransportLine.GetPrevStop(nextStop);
-            return (validType && (ITMCitySettings.Instance.disableUnbunchingTerminals || (!tl.IsTerminus(currentStop)))) || tl.CanLeaveStop(nextStop, waitTime);
+            return (validType && (ITMCitySettings.Instance.disableUnbunchingTerminals || !tl.IsTerminal(currentStop) || ITMTransportLineSettings.Instance.SafeGetLine(firstVehicle.m_transportLine).m_ignoreTerminalsMandatoryStop)) || tl.CanLeaveStop(nextStop, waitTime);
         }
 
 
@@ -350,7 +351,7 @@ namespace ImprovedTransportManager.Overrides
         }
         #endregion
 
-        #region Vehicle going back on terminus stop only
+        #region Vehicle going back on terminal stop only
         public static bool PreventShouldReturnToSource()
         {
             return false;

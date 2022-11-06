@@ -1,4 +1,5 @@
-﻿using ImprovedTransportManager.Localization;
+﻿using ImprovedTransportManager.Data;
+using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
@@ -20,8 +21,8 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => ModInstance.Instance.GeneralName;
-        protected Vector2 StartSize => new Vector2(400, 600);
         protected Vector2 StartPosition => new Vector2((UIScaler.MaxWidth / 2) - 200, 256);
+        protected Vector2 StartSize => new Vector2(400, 700);
         protected virtual Vector2 MinSize { get; } = default;
         protected virtual Vector2 MaxSize { get; } = default;
         public ushort CurrentLine { get; private set; }
@@ -97,6 +98,7 @@ namespace ImprovedTransportManager.UI
             if (CurrentLine != 0)
             {
                 ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[CurrentLine];
+                var lineData = ITMTransportLineSettings.Instance.SafeGetLine(CurrentLine);
                 m_currentLineData.GetUpdated();
                 GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.TripsSaved), m_centerTextLabel);
                 GUILayout.Space(4);
@@ -107,6 +109,15 @@ namespace ImprovedTransportManager.UI
                 }
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
+                GUIKwyttoCommons.TextWithLabel(size.x, Str.itm_lineView_customLineCode, lineData.CustomCode, (x) => lineData.CustomCode = x, textFieldProportion: 0.2f);
+                if ((tl.Info.m_vehicleType == VehicleInfo.VehicleType.Car && ITMCitySettings.Instance.expressBuses)
+                || (tl.Info.m_vehicleType == VehicleInfo.VehicleType.Tram && ITMCitySettings.Instance.expressTrams)
+                || (tl.Info.m_vehicleType == VehicleInfo.VehicleType.Trolleybus && ITMCitySettings.Instance.expressTrolleybus))
+                {
+                    GUIKwyttoCommons.AddToggle(Str.itm_lineView_ignoreMandatoryStopTerminal, ref lineData.m_ignoreTerminalsMandatoryStop);
+                }
+                GUIKwyttoCommons.AddToggle(Str.itm_lineView_requireStartAtTerminal, ref lineData.m_requireLineStartTerminal);
+                GUILayout.Space(8);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);
                 if (m_currentLineData.m_type.HasVehicles())
                 {

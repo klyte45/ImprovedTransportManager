@@ -506,11 +506,11 @@ The capacity can be edited here also, the maintenance cost is calculated based i
   <data name="itm_lineView_setAsFirstStop" xml:space="preserve">
     <value>Set as first stop</value>
   </data>
-  <data name="itm_lineView_setAsTerminus" xml:space="preserve">
-    <value>Set as terminus</value>
+  <data name="itm_lineView_setAsTerminal" xml:space="preserve">
+    <value>Set as terminal</value>
   </data>
-  <data name="itm_lineView_unsetAsTerminus" xml:space="preserve">
-    <value>Remove terminus</value>
+  <data name="itm_lineView_unsetAsTerminal" xml:space="preserve">
+    <value>Remove terminal</value>
   </data>
   <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
     <value>Assets settings</value>
@@ -596,7 +596,7 @@ Recomended for experenced players only</value>
     <value>Recalculate stop name bind</value>
   </data>
   <data name="itm_autoName_circularTemplate" xml:space="preserve">
-    <value>Circular {0}</value>
+    <value>{0} (Circular)</value>
     <comment>Template used when a line have a single terminal set</comment>
   </data>
   <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
@@ -607,5 +607,15 @@ Recomended for experenced players only</value>
   </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
     <value>Erase all custom stop names</value>
+  </data>
+  <data name="itm_lineView_customLineCode" xml:space="preserve">
+    <value>Custom line code (autoname/WE)</value>
+  </data>
+  <data name="itm_lineView_ignoreMandatoryStopTerminal" xml:space="preserve">
+    <value>Ignore mandatory stop at terminals (full circular)
+&lt;color=yellow&gt;NOTE:&lt;/color&gt; Vehicle unspawns only will be done when the vehicle gets organically empty</value>
+  </data>
+  <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
+    <value>Require new vehicles to start line by a terminal stop</value>
   </data>
 </root>

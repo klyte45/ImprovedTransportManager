@@ -21,7 +21,7 @@ namespace ImprovedTransportManager.UI
         public int residentsWaiting;
         public int touristsWaiting;
         public int timeUntilBored;
-        public bool isTerminus;
+        public bool isTerminal;
         private ushort lineId;
 
         public float EarningAllTime => m_earningAllTime * .01f;
@@ -62,7 +62,7 @@ namespace ImprovedTransportManager.UI
                 cachedName = ITMLineUtils.GetEffectiveStopName(stopId);
                 lastUpdateTick = SimulationManager.instance.m_currentTickIndex;
                 fareMultiplier = NetManager.instance.m_nodes.m_buffer[stopId].m_position.DistrictFareMultiplierHere();
-                isTerminus = ITMLineUtils.IsTerminus(stopId, lineId);
+                isTerminal = ITMLineUtils.IsTerminal(stopId, lineId);
             }
             if (lastUpdateFrame + 23 < SimulationManager.instance.m_referenceFrameIndex)
             {
@@ -76,9 +76,9 @@ namespace ImprovedTransportManager.UI
 
         internal void SetAsFirst() => TransportManager.instance.m_lines.m_buffer[lineId].m_stops = stopId;
 
-        internal void UnsetTerminus() => ITMTransportLineSettings.Instance.m_terminalStops.Remove(stopId);
+        internal void UnsetTerminal() => ITMTransportLineSettings.Instance.m_terminalStops.Remove(stopId);
 
-        internal void SetTerminus() => ITMTransportLineSettings.Instance.m_terminalStops.Add(stopId);
+        internal void SetTerminal() => ITMTransportLineSettings.Instance.m_terminalStops.Add(stopId);
 
         internal void RemoveStop(Action callback) => Singleton<SimulationManager>.instance.AddAction(RemoveStopCoroutine(callback));
 

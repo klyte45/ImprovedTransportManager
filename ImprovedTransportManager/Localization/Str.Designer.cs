@@ -61,7 +61,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Circular {0}.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0} (Circular).
         /// </summary>
         internal static string itm_autoName_circularTemplate {
             get {
@@ -733,6 +733,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Custom line code (autoname/WE).
+        /// </summary>
+        internal static string itm_lineView_customLineCode {
+            get {
+                return ResourceManager.GetString("itm_lineView_customLineCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Day:.
         /// </summary>
         internal static string itm_lineView_dayBudgetTitle {
@@ -756,6 +765,16 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_lineView_distanceStops {
             get {
                 return ResourceManager.GetString("itm_lineView_distanceStops", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ignore mandatory stop at terminals (full circular)
+        ///&lt;color=yellow&gt;NOTE:&lt;/color&gt; Vehicle unspawns only will be done when the vehicle gets organically empty.
+        /// </summary>
+        internal static string itm_lineView_ignoreMandatoryStopTerminal {
+            get {
+                return ResourceManager.GetString("itm_lineView_ignoreMandatoryStopTerminal", resourceCulture);
             }
         }
         
@@ -832,6 +851,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Require new vehicles to start line by a terminal stop.
+        /// </summary>
+        internal static string itm_lineView_requireStartAtTerminal {
+            get {
+                return ResourceManager.GetString("itm_lineView_requireStartAtTerminal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N0} Residents / {1:N0} Tourists.
         /// </summary>
         internal static string itm_lineView_residentTourists {
@@ -859,11 +887,11 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Set as terminus.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Set as terminal.
         /// </summary>
-        internal static string itm_lineView_setAsTerminus {
+        internal static string itm_lineView_setAsTerminal {
             get {
-                return ResourceManager.GetString("itm_lineView_setAsTerminus", resourceCulture);
+                return ResourceManager.GetString("itm_lineView_setAsTerminal", resourceCulture);
             }
         }
         
@@ -904,11 +932,11 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Remove terminus.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Remove terminal.
         /// </summary>
-        internal static string itm_lineView_unsetAsTerminus {
+        internal static string itm_lineView_unsetAsTerminal {
             get {
-                return ResourceManager.GetString("itm_lineView_unsetAsTerminus", resourceCulture);
+                return ResourceManager.GetString("itm_lineView_unsetAsTerminal", resourceCulture);
             }
         }
         

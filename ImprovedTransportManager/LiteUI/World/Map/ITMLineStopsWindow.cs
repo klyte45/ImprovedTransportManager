@@ -38,9 +38,9 @@ namespace ImprovedTransportManager.UI
         private Texture2D m_baseStation;
         private Texture2D m_baseStationFree;
         private Texture2D m_baseStationHigh;
-        private Texture2D m_baseStationTerminus;
-        private Texture2D m_baseStationTerminusFree;
-        private Texture2D m_baseStationTerminusHigh;
+        private Texture2D m_baseStationTerminal;
+        private Texture2D m_baseStationTerminalFree;
+        private Texture2D m_baseStationTerminalHigh;
 
 
         public static ITMLineStopsWindow Instance { get; private set; }
@@ -49,9 +49,9 @@ namespace ImprovedTransportManager.UI
         public Texture2D TexStation { get; private set; }
         public Texture2D TexStationFree { get; private set; }
         public Texture2D TexStationHigh { get; private set; }
-        public Texture2D TexStationTerminus { get; private set; }
-        public Texture2D TexStationTerminusFree { get; private set; }
-        public Texture2D TexStationTerminusHigh { get; private set; }
+        public Texture2D TexStationTerminal { get; private set; }
+        public Texture2D TexStationTerminalFree { get; private set; }
+        public Texture2D TexStationTerminalHigh { get; private set; }
         public Texture2D TexLineBg { get; private set; }
         private Color m_currentLoadedColor;
         private readonly List<StationData> m_loadedStopData = new List<StationData>();
@@ -85,16 +85,16 @@ namespace ImprovedTransportManager.UI
             m_baseStation = KResourceLoader.LoadTextureMod("map_station");
             m_baseStationFree = KResourceLoader.LoadTextureMod("map_stationFree");
             m_baseStationHigh = KResourceLoader.LoadTextureMod("map_stationHigh");
-            m_baseStationTerminus = KResourceLoader.LoadTextureMod("map_stationTerminus");
-            m_baseStationTerminusFree = KResourceLoader.LoadTextureMod("map_stationTerminusFree");
-            m_baseStationTerminusHigh = KResourceLoader.LoadTextureMod("map_stationTerminusHigh");
+            m_baseStationTerminal = KResourceLoader.LoadTextureMod("map_stationTerminal");
+            m_baseStationTerminalFree = KResourceLoader.LoadTextureMod("map_stationTerminalFree");
+            m_baseStationTerminalHigh = KResourceLoader.LoadTextureMod("map_stationTerminalHigh");
             TexLineBg = TextureUtils.New(m_baseLineBg.width, m_baseLineBg.height);
             TexStation = TextureUtils.New(m_baseStation.width, m_baseStation.height);
             TexStationFree = TextureUtils.New(m_baseStationFree.width, m_baseStationFree.height);
             TexStationHigh = TextureUtils.New(m_baseStationHigh.width, m_baseStationHigh.height);
-            TexStationTerminus = TextureUtils.New(m_baseStationTerminus.width, m_baseStationTerminus.height);
-            TexStationTerminusFree = TextureUtils.New(m_baseStationTerminusFree.width, m_baseStationTerminusFree.height);
-            TexStationTerminusHigh = TextureUtils.New(m_baseStationTerminusHigh.width, m_baseStationTerminusHigh.height);
+            TexStationTerminal = TextureUtils.New(m_baseStationTerminal.width, m_baseStationTerminal.height);
+            TexStationTerminalFree = TextureUtils.New(m_baseStationTerminalFree.width, m_baseStationTerminalFree.height);
+            TexStationTerminalHigh = TextureUtils.New(m_baseStationTerminalHigh.width, m_baseStationTerminalHigh.height);
             picker = GameObjectUtils.CreateElement<GUIColorPicker>(transform).Init();
             picker.Visible = false;
             Visible = false;
@@ -319,7 +319,7 @@ namespace ImprovedTransportManager.UI
             {
                 var optionsArray = new string[] {
                               i > 0 ? Str.itm_lineView_setAsFirstStop : null,
-                              i== 0 ? null : stop.isTerminus? Str.itm_lineView_unsetAsTerminus : Str.itm_lineView_setAsTerminus,
+                              i== 0 ? null : stop.isTerminal? Str.itm_lineView_unsetAsTerminal : Str.itm_lineView_setAsTerminal,
                               Str.itm_lineMap_forceBindToDistrict,
                               Str.itm_lineMap_forceBindToPark,
                               Str.itm_lineMap_forceBindToBuilding,
@@ -348,13 +348,13 @@ namespace ImprovedTransportManager.UI
                         {
                             stop.SetAsFirst();
                         }
-                        else if (selectedText == Str.itm_lineView_unsetAsTerminus)
+                        else if (selectedText == Str.itm_lineView_unsetAsTerminal)
                         {
-                            stop.UnsetTerminus();
+                            stop.UnsetTerminal();
                         }
-                        else if (selectedText == Str.itm_lineView_setAsTerminus)
+                        else if (selectedText == Str.itm_lineView_setAsTerminal)
                         {
-                            stop.SetTerminus();
+                            stop.SetTerminal();
                         }
                         else if (selectedText == Str.itm_lineView_removeStop)
                         {
@@ -495,12 +495,12 @@ namespace ImprovedTransportManager.UI
             }
         }
         private Texture2D GetStationImage(StationData s)
-            => s.isTerminus
+            => s.isTerminal
             ? s.fareMultiplier > 1.001f
-                ? TexStationTerminusHigh
+                ? TexStationTerminalHigh
                 : s.fareMultiplier < 0.999f
-                    ? TexStationTerminusFree
-                    : TexStationTerminus
+                    ? TexStationTerminalFree
+                    : TexStationTerminal
             : s.fareMultiplier > 1.001f
                 ? TexStationHigh
                 : s.fareMultiplier < 0.999f
@@ -609,9 +609,9 @@ namespace ImprovedTransportManager.UI
                     Tuple.New(TexStation ,m_baseStation),
                     Tuple.New(TexStationFree ,m_baseStationFree),
                     Tuple.New(TexStationHigh ,m_baseStationHigh),
-                    Tuple.New(TexStationTerminus ,m_baseStationTerminus),
-                    Tuple.New(TexStationTerminusFree ,m_baseStationTerminusFree),
-                    Tuple.New(TexStationTerminusHigh ,m_baseStationTerminusHigh),
+                    Tuple.New(TexStationTerminal ,m_baseStationTerminal),
+                    Tuple.New(TexStationTerminalFree ,m_baseStationTerminalFree),
+                    Tuple.New(TexStationTerminalHigh ,m_baseStationTerminalHigh),
                     Tuple.New(TexLineBg ,m_baseLineBg)
                 })
                 {

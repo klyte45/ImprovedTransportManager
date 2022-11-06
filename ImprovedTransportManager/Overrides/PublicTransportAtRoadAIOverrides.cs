@@ -57,7 +57,7 @@ namespace ImprovedTransportManager.Overrides
             }
             var currentStop = vehicleData.m_targetBuilding;
             ref TransportLine line = ref TransportManager.instance.m_lines.m_buffer[vehicleData.m_transportLine];
-            if (line.IsTerminus(currentStop))
+            if (line.IsTerminal(currentStop) && !ITMTransportLineSettings.Instance.SafeGetLine(vehicleData.m_transportLine).m_ignoreTerminalsMandatoryStop)
             {
                 CheckDespawn(vehicleID, ref vehicleData, empty, true);
                 return true;
