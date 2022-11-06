@@ -1,5 +1,6 @@
 ﻿using ColossalFramework.Globalization;
 using ImprovedTransportManager.Utility;
+using Kwytto.LiteUI;
 using Kwytto.Utils;
 using System;
 using UnityEngine;
@@ -55,7 +56,10 @@ namespace ImprovedTransportManager.UI
                                 background = CachedBG
                             },
                         fontSize = Mathf.CeilToInt(.9f * ITMLineStopsWindow.Instance.DefaultSize),
-                        hover = GUI.skin.button.hover,
+                        hover = {
+                            textColor =Color.white  ,
+                            background = GUIKwyttoCommons.darkTransparentTexture
+                        },
                     };
                 }
                 return m_cachedStyle;

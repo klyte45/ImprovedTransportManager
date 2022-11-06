@@ -23,15 +23,16 @@ This mod intends to be a replacement to the both old IPT2 and TLM. Here are some
 - Near lines (from TLM)
 - Name stops of a line based on one-shot near buildings/district/park/road (not automatic)
 - Give initial stop name linked to a near Public Transport building or to a road if none is near
+- Change stops names to a custom value
 
 <b>What is missing but are planned to release version 1:</b>
 
-- Change stops names to a custom value
 - Autoname lines based on terminals
 - Autocolor (from TLM)
 - Integrations to Write Everywhere to setup line destinations to terminus
 - Express circular lines (that NEVER stops in any stop if there's nothing to do)
 - Custom line string identifier  (expert mode only) (from TLM - also to integrate with Write Everywhere)
+- Depot selection
 - Fares settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
 - Budget settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
 - Tickets settings groups (expert mode only) (replacing old "prefixes" settings from TLM)

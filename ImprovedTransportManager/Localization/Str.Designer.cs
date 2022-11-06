@@ -481,6 +481,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Erase all custom stop names.
+        /// </summary>
+        internal static string itm_lineMap_eraseAllCustomStopNames {
+            get {
+                return ResourceManager.GetString("itm_lineMap_eraseAllCustomStopNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The current stop isn&apos;t inside a district. Ensure it belongs to a district to bind its name to it..
         /// </summary>
         internal static string itm_lineMap_failedSettingDistrict {

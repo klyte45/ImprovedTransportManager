@@ -73,6 +73,8 @@ namespace ImprovedTransportManager.UI
         private GUIStyle m_lineIconText;
 
         private string m_currentCtx;
+        private string m_currentStopNameEdit;
+        private string m_tempValue;
 
         public override void Awake()
         {
@@ -199,7 +201,36 @@ namespace ImprovedTransportManager.UI
                         var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
                         var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
                         var stopNameRect = new Rect(textsBasePosition, new Vector2(labelWidth, 20));
-                        GUI.Label(stopNameRect, $"<b>{stop.cachedName}</b>");
+
+                        var ctrlNameStopNameEditor = $"{stop.stopId}_NAMEEDIT_$$_";
+                        if (m_currentStopNameEdit == ctrlNameStopNameEditor)
+                        {
+                            GUI.SetNextControlName(ctrlNameStopNameEditor);
+                            m_tempValue = GUI.TextField(stopNameRect, m_tempValue);
+                            if (EnterPressed())
+                            {
+                                InstanceManager.instance.SetName(new InstanceID { NetNode = stop.stopId }, m_tempValue.TrimToNull());
+                                m_tempValue = null;
+                                m_currentStopNameEdit = null;
+                                GUI.FocusControl(null);
+                            }
+                            else if (EscapePressed() || (Event.current.type == EventType.MouseDown && !stopNameRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition)))
+                            {
+                                m_tempValue = null;
+                                m_currentStopNameEdit = null;
+                                GUI.FocusControl(null);
+                            }
+                            else
+                            {
+                                GUI.FocusControl(ctrlNameStopNameEditor);
+                            }
+                        }
+                        else if (GUI.Button(stopNameRect, $"<b>{stop.cachedName}</b>", m_stationBtn))
+                        {
+                            m_currentStopNameEdit = ctrlNameStopNameEditor;
+                            GUI.FocusControl(ctrlNameStopNameEditor);
+                            m_tempValue = stop.cachedName;
+                        }
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
                         GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
                         GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
@@ -232,6 +263,7 @@ namespace ImprovedTransportManager.UI
                 var CDavailable = ModInstance.Controller.ConnectorCD.CustomDataAvailable;
                 string[] m_logoOptionsArray = new string[] {
                             Str.itm_lineMap_recalculateAllStopNames,
+                            Str.itm_lineMap_eraseAllCustomStopNames,
                        CDavailable? tex!=null?  Str.itm_lineLogo_changeCustomLogo: Str.itm_lineLogo_setCustomLogo: null,
                             CDavailable&& tex!=null?       Str.itm_lineLogo_deleteCustomLogo : null,
                             }.Where(x => x != null).ToArray();
@@ -261,9 +293,23 @@ namespace ImprovedTransportManager.UI
                         {
                             m_loadedStopData.ForEach(x => ITMNodeSettings.Instance.GetNodeName(x.stopId, true));
                         }
+                        else if (optionSelected == Str.itm_lineMap_eraseAllCustomStopNames)
+                        {
+                            m_loadedStopData.ForEach(x => InstanceManager.instance.SetName(new InstanceID { NetNode = x.stopId }, null));
+                        }
                     }
                 }
             }
+        }
+        private static bool EnterPressed()
+        {
+            var keycode = Event.current.keyCode;
+            return keycode == KeyCode.KeypadEnter || keycode == KeyCode.Return;
+        }
+        private static bool EscapePressed()
+        {
+            var keycode = Event.current.keyCode;
+            return keycode == KeyCode.Escape;
         }
 
         private void RunContextMenuStop(int i, StationData stop, Rect stationIconRect)
@@ -425,7 +471,10 @@ namespace ImprovedTransportManager.UI
                     margin = new RectOffset(0, 0, 1, 1),
                     contentOffset = new Vector2(0, 0),
                     padding = new RectOffset(0, 0, 0, 0),
-                    hover = GUI.skin.button.hover,
+                    hover = {
+                        background = GUIKwyttoCommons.darkTransparentTexture,
+                        textColor= Color.white
+                    }
                 };
             }
             if (m_lineIconText is null)
@@ -438,7 +487,10 @@ namespace ImprovedTransportManager.UI
                     wordWrap = true,
                     alignment = TextAnchor.MiddleCenter,
                     fontStyle = FontStyle.Bold,
-                    hover = ModInstance.Controller.ConnectorCD.CustomDataAvailable ? GUI.skin.button.hover : GUI.skin.label.hover, //Only if CD exists
+                    hover = {
+                        background = GUIKwyttoCommons.darkTransparentTexture,
+                        textColor= Color.white
+                    }
                 };
             }
         }

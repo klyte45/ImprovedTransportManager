@@ -595,4 +595,7 @@ Recomended for experenced players only</value>
   <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
     <value>Recalculate stop name bind</value>
   </data>
+  <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
+    <value>Erase all custom stop names</value>
+  </data>
 </root>
