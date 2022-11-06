@@ -24,6 +24,16 @@ namespace ImprovedTransportManager.Xml
         [XmlIgnore]
         public HashSet<VehicleInfo> SelfAssetList { get; private set; } = new HashSet<VehicleInfo>();
 
+        [XmlElement("AllowedDepots")]
+        public SimpleXmlList<ushort> AllowedDepotsXml
+        {
+            get => new SimpleXmlList<ushort>(AllowedDepots);
+            set => AllowedDepots = new HashSet<ushort>(value);
+        }
+
+        [XmlIgnore]
+        public HashSet<ushort> AllowedDepots { get; private set; } = new HashSet<ushort>();
+
         [XmlAttribute("customIdentifier")]
         public string CustomCode
         {

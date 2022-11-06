@@ -18,28 +18,11 @@ namespace ImprovedTransportManager.Overrides
 
         public static void SetRandomBuilding(TransportSystemType tsd, ushort lineId, ref ushort currentId)
         {
-            return;
-            //Interfaces.IBasicExtension config = ITMLineUtils.GetEffectiveExtensionForLine(lineId);
-            //List<ushort> allowedDepots = config.GetAllowedDepots(tsd, lineId);
-            //if (allowedDepots.Count == 0)
-            //{
-            //    if (ModInstance.DebugMode)
-            //    {
-            //        LogUtils.DoLog("allowedDepots.Count --{0}-- == 0", allowedDepots.Count);
-            //    }
-            //    return;
-            //}
-            //var r = new Randomizer(new System.Random().Next());
-            //if (ModInstance.DebugMode)
-            //{
-            //    LogUtils.DoLog("DEPOT POSSIBLE VALUES FOR {2} LINE {1}: {0} ", string.Join(",", allowedDepots.Select(x => x.ToString()).ToArray()), lineId, tsd);
-            //}
-
-            //currentId = allowedDepots[r.Int32(0, allowedDepots.Count - 1)];
-            //if (ModInstance.DebugMode)
-            //{
-            //    LogUtils.DoLog("DEPOT FOR {2} LINE {1}: {0} ", currentId, lineId, tsd);
-            //}
+            var targetDepot = ITMTransportLineSettings.Instance.GetADepot(lineId);
+            if (targetDepot != 0)
+            {
+                currentId = targetDepot;
+            }
         }
         #endregion
 

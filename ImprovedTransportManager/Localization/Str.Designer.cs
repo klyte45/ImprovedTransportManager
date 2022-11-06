@@ -133,6 +133,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Line depot selection.
+        /// </summary>
+        internal static string itm_depotSelectWindow_title {
+            get {
+                return ResourceManager.GetString("itm_depotSelectWindow_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Day.
         /// </summary>
         internal static string itm_Enum__LineActivityOptions_Day {

@@ -34,7 +34,7 @@ namespace ImprovedTransportManager.Data
 
 
         [XmlElement("terminalStops")]
-        public HashSet<ushort> m_terminalStops { get; set; } = new HashSet<ushort>();
+        public SimpleXmlHashSet<ushort> m_terminalStops { get; set; } = new SimpleXmlHashSet<ushort>();
 
         public ITMTransportLineSettings()
         {
@@ -53,7 +53,7 @@ namespace ImprovedTransportManager.Data
         [XmlIgnore]
         private Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<VehicleInfo>>> GroupsAssetList = new Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<VehicleInfo>>>();
         [XmlIgnore]
-        private Dictionary<TransportSystemType, SimpleNonSequentialList<List<ushort>>> GroupsDepotList = new Dictionary<TransportSystemType, SimpleNonSequentialList<List<ushort>>>();
+        private Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<ushort>>> GroupsDepotList = new Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<ushort>>>();
         [XmlIgnore]
         private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>> GroupsBudgetList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>>();
         [XmlIgnore]
@@ -109,7 +109,7 @@ namespace ImprovedTransportManager.Data
             set
             {
                 var buff = BuildingManager.instance.m_buildings.m_buffer;
-                ConvertFromXmlFormat(value, GroupsDepotList, (x, tst) => x.Where(y => tst.IsFromSystem(buff[y].Info.m_buildingAI as DepotAI)).ToList());
+                ConvertFromXmlFormat(value, GroupsDepotList, (x, tst) => new HashSet<ushort>(x.Where(y => tst.IsFromSystem(buff[y].Info.m_buildingAI as DepotAI))));
             }
         }
         [XmlElement("GroupsBudget")]
@@ -165,6 +165,28 @@ namespace ImprovedTransportManager.Data
                 info = assetList.ElementAt(new Random().Next(assetList.Count));
             }
             return info;
+        }
+
+        #endregion
+
+        #region Depot List
+        public HashSet<ushort> GetEffectiveDepotsForLine(ushort lineId)
+        {
+            var config = SafeGetLine(lineId);
+            return config.DepotGroup != 0
+                ? SafeGetGroupData(GroupsDepotList, config.CachedTransportType, config.AssetGroup)
+                : config.AllowedDepots;
+        }
+
+        public ushort GetADepot(ushort lineId)
+        {
+            ushort depot = 0;
+            var depotList = GetEffectiveDepotsForLine(lineId);
+            if (depotList.Count > 0)
+            {
+                depot = depotList.ElementAt(new Random().Next(depotList.Count));
+            }
+            return depot;
         }
 
         #endregion

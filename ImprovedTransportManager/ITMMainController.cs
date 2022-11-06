@@ -29,6 +29,7 @@ namespace ImprovedTransportManager
             refGOs.Add(GameObjectUtils.CreateElement<ITMStatisticsGUI>(UIView.GetAView().gameObject.transform, "ITMStatisticsGUI").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMLineStopsWindow>(UIView.GetAView().gameObject.transform, "ITMLineStopsWindow").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMLineVehicleSelectionWindow>(UIView.GetAView().gameObject.transform, "ITMLineVehicleSelectionWindow").gameObject);
+            refGOs.Add(GameObjectUtils.CreateElement<ITMLineDepotSelectionWindow>(UIView.GetAView().gameObject.transform, "ITMLineDepotSelectionWindow").gameObject);
             refGOs.Add(GameObjectUtils.CreateElement<ITMLineDataWindow>(UIView.GetAView().gameObject.transform, "ITMLineDataWindow").gameObject);
 
         }

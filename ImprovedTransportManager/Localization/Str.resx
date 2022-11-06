@@ -608,6 +608,9 @@ Recomended for experenced players only</value>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
     <value>Erase all custom stop names</value>
   </data>
+  <data name="itm_depotSelectWindow_title" xml:space="preserve">
+    <value>Line depot selection</value>
+  </data>
   <data name="itm_lineView_customLineCode" xml:space="preserve">
     <value>Custom line code (autoname/WE)</value>
   </data>

@@ -270,8 +270,10 @@ namespace ImprovedTransportManager.UI
                 Title = TransportManager.instance.GetLineName(CurrentLine);
 
                 ITMLineVehicleSelectionWindow.Instance.OnIdChanged(currentId);
+                ITMLineDepotSelectionWindow.Instance.OnIdChanged(currentId);
                 ITMLineStopsWindow.Instance.OnIdChanged(currentId);
                 ITMLineVehicleSelectionWindow.Instance.Visible = true;
+                ITMLineDepotSelectionWindow.Instance.Visible = true;
                 ITMLineStopsWindow.Instance.Visible = true;
                 Visible = true;
             }
@@ -281,6 +283,7 @@ namespace ImprovedTransportManager.UI
         {
             base.OnWindowClosed();
             ITMLineVehicleSelectionWindow.Instance.Visible = false;
+            ITMLineDepotSelectionWindow.Instance.Visible = false;
             ITMLineStopsWindow.Instance.Visible = false;
         }
     }
