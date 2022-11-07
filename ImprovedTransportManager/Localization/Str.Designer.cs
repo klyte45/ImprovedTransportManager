@@ -97,6 +97,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Go to.
+        /// </summary>
+        internal static string itm_common_goTo {
+            get {
+                return ResourceManager.GetString("itm_common_goTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a N/A.
         /// </summary>
         internal static string itm_common_notApplicableAcronym {

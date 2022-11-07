@@ -71,8 +71,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Str.resx</DependentUpon>
     </Compile>
-    <Compile Include="ModShared\BridgeCDFallback.cs" />
-    <Compile Include="ModShared\IBridgeCD.cs" />
     <EmbeddedResource Include="Localization\Str.*.resx" />
     <EmbeddedResource Include="Localization\Str.resx">
       <Generator>ResXFileCodeGenerator</Generator>

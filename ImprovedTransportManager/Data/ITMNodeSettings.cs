@@ -147,6 +147,15 @@ namespace ImprovedTransportManager.Data
                 Nodes[nodeId].Id = instanceID;
             }
         }
+
+        internal ushort GetBuildingReference(ushort nodeId)
+        {
+            if (Nodes.TryGetValue(nodeId, out var nodeData) && nodeData.Id != default)
+            {
+                return nodeData.Id.Building;
+            }
+            return 0;
+        }
     }
 
 

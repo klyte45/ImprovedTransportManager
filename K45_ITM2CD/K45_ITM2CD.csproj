@@ -84,6 +84,7 @@
     <PostBuildEvent>set "ModDir=%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)\"
 
 xcopy /y /e "$(TargetPath)*" "%25ModDir%25"
+del "%25ModDir%25*.pdb"
 </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

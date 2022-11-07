@@ -1,6 +1,7 @@
 ﻿using ColossalFramework;
 using ColossalFramework.UI;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
@@ -122,7 +123,7 @@ namespace ImprovedTransportManager.UI
                 }))
                 {
                     case 0:
-                        currentView.ForEach(x => ITMLineUtils.DoAutoname(x.m_id.TransportLine));
+                        currentView.ForEach(x => ITMLineUtils.DoAutoname(x.m_id.TransportLine));                        
                         break;
                     case 1:
                         for (ushort i = 1; i < TransportManager.instance.m_lines.m_size; i++)

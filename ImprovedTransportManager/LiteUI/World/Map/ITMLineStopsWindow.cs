@@ -2,6 +2,7 @@
 using ColossalFramework.Globalization;
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
@@ -212,9 +213,11 @@ namespace ImprovedTransportManager.UI
                                 InstanceManager.instance.SetName(new InstanceID { NetNode = stop.stopId }, m_tempValue.TrimToNull());
                                 m_tempValue = null;
                                 m_currentStopNameEdit = null;
+                                ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                                ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
                                 GUI.FocusControl(null);
                             }
-                            else if (EscapePressed() || (Event.current.type == EventType.MouseDown && !stopNameRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition)))
+                            else if (EscapePressed() || (Input.GetMouseButtonDown(0) && !stopNameRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition)))
                             {
                                 m_tempValue = null;
                                 m_currentStopNameEdit = null;
@@ -291,11 +294,22 @@ namespace ImprovedTransportManager.UI
                         }
                         else if (optionSelected == Str.itm_lineMap_recalculateAllStopNames)
                         {
-                            m_loadedStopData.ForEach(x => ITMNodeSettings.Instance.GetNodeName(x.stopId, true));
+                            m_loadedStopData.ForEach(x =>
+                            {
+                                ITMNodeSettings.Instance.GetNodeName(x.stopId, true);
+                                ITMFacade.Instance.RunEventStopNameChanged(x.stopId);
+                            });
+
+                            ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
                         }
                         else if (optionSelected == Str.itm_lineMap_eraseAllCustomStopNames)
                         {
-                            m_loadedStopData.ForEach(x => InstanceManager.instance.SetName(new InstanceID { NetNode = x.stopId }, null));
+                            m_loadedStopData.ForEach(x =>
+                            {
+                                InstanceManager.instance.SetName(new InstanceID { NetNode = x.stopId }, null);
+                                ITMFacade.Instance.RunEventStopNameChanged(x.stopId);
+                            });
+                            ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
                         }
                     }
                 }
@@ -318,6 +332,7 @@ namespace ImprovedTransportManager.UI
             if (m_currentCtx == contextMenuName || stationIconRect.Contains(GUIUtility.ScreenToGUIPoint(default) + UIScaler.MousePosition))
             {
                 var optionsArray = new string[] {
+                              Str.itm_common_goTo,
                               i > 0 ? Str.itm_lineView_setAsFirstStop : null,
                               i== 0 ? null : stop.isTerminal? Str.itm_lineView_unsetAsTerminal : Str.itm_lineView_setAsTerminal,
                               Str.itm_lineMap_forceBindToDistrict,
@@ -327,14 +342,12 @@ namespace ImprovedTransportManager.UI
                               Str.itm_lineMap_recalculateAutoBind,
                               Str.itm_lineView_removeStop
                             }.Where(x => x != null).ToArray();
-                if (GUIComboBox.ContextMenuRect(stationIconRect, optionsArray, contextMenuName, this, "", GUI.skin.label) is int idx)
+                if (GUIComboBox.ContextMenuRect(stationIconRect, optionsArray, contextMenuName, this, "", m_stationBtn) is int idx)
                 {
                     switch (idx)
                     {
                         case -2:
                             m_currentCtx = contextMenuName;
-                            DefaultTool.OpenWorldInfoPanel(new InstanceID { NetNode = stop.stopId }, stop.position);
-                            ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
                             break;
                         case -3:
                             m_currentCtx = null;
@@ -344,7 +357,12 @@ namespace ImprovedTransportManager.UI
                     if (idx >= 0)
                     {
                         var selectedText = optionsArray[idx];
-                        if (selectedText == Str.itm_lineView_setAsFirstStop)
+                        if (selectedText == Str.itm_common_goTo)
+                        {
+                            DefaultTool.OpenWorldInfoPanel(new InstanceID { NetNode = stop.stopId }, stop.position);
+                            ToolsModifierControl.cameraController.SetTarget(new InstanceID { NetNode = stop.stopId }, stop.position, false);
+                        }
+                        else if (selectedText == Str.itm_lineView_setAsFirstStop)
                         {
                             stop.SetAsFirst();
                         }
@@ -371,6 +389,11 @@ namespace ImprovedTransportManager.UI
                                     scrollText = Str.itm_lineMap_failedSettingDistrict
                                 });
                             }
+                            else
+                            {
+                                ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                                ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
+                            }
                         }
                         else if (Str.itm_lineMap_forceBindToPark == selectedText)
                         {
@@ -382,20 +405,37 @@ namespace ImprovedTransportManager.UI
                                     scrollText = Str.itm_lineMap_failedSettingPark
                                 });
                             }
+                            else
+                            {
+                                ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                                ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
+                            }
                         }
                         else if (Str.itm_lineMap_forceBindToBuilding == selectedText)
                         {
-                            ModInstance.Controller.BuildingToolInstance.OnBuildingSelect = (x) => ITMNodeSettings.Instance.ForceBindToBuilding(stop.stopId, x);
+                            ModInstance.Controller.BuildingToolInstance.OnBuildingSelect = (x) =>
+                            {
+                                ITMNodeSettings.Instance.ForceBindToBuilding(stop.stopId, x);
+                                ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                                ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
+                            };
                             ToolsModifierControl.SetTool<BuildingSelectorTool>();
                         }
                         else if (Str.itm_lineMap_forceBindToRoad == selectedText)
                         {
-                            ModInstance.Controller.RoadSegmentToolInstance.OnSegmentSelect = (x) => ITMNodeSettings.Instance.ForceBindToRoad(stop.stopId, x);
+                            ModInstance.Controller.RoadSegmentToolInstance.OnSegmentSelect = (x) =>
+                            {
+                                ITMNodeSettings.Instance.ForceBindToRoad(stop.stopId, x);
+                                ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                                ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
+                            };
                             ToolsModifierControl.SetTool<SegmentSelectorTool>();
                         }
                         else if (Str.itm_lineMap_recalculateAutoBind == selectedText)
                         {
                             ITMNodeSettings.Instance.GetNodeName(stop.stopId, true);
+                            ITMFacade.Instance.RunEventStopNameChanged(stop.stopId);
+                            ITMFacade.Instance.RunEventLineDestinationsChanged(m_currentLine);
                         }
 
                         m_currentCtx = null;

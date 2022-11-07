@@ -621,4 +621,7 @@ Recomended for experenced players only</value>
   <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
     <value>Require new vehicles to start line by a terminal stop</value>
   </data>
+  <data name="itm_common_goTo" xml:space="preserve">
+    <value>Go to</value>
+  </data>
 </root>

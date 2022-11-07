@@ -37,6 +37,8 @@ namespace ImprovedTransportManager
         #region Tool Access
         public SegmentSelectorTool RoadSegmentToolInstance => ToolsModifierControl.toolController.GetComponent<SegmentSelectorTool>();
         public BuildingSelectorTool BuildingToolInstance => ToolsModifierControl.toolController.GetComponent<BuildingSelectorTool>();
+
+        public ITMFacade Facade { get; } = new ITMFacade();
         #endregion
 
         public void OnDestroy()

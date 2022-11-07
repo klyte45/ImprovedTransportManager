@@ -1,5 +1,6 @@
 ﻿using ColossalFramework;
 using ImprovedTransportManager.Data;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.Utility;
 using System;
@@ -74,13 +75,28 @@ namespace ImprovedTransportManager.UI
             }
         }
 
-        internal void SetAsFirst() => TransportManager.instance.m_lines.m_buffer[lineId].m_stops = stopId;
+        internal void SetAsFirst()
+        {
+            TransportManager.instance.m_lines.m_buffer[lineId].m_stops = stopId;
+            ITMFacade.Instance.RunEventLineDestinationsChanged(lineId);
+        }
 
-        internal void UnsetTerminal() => ITMTransportLineSettings.Instance.m_terminalStops.Remove(stopId);
+        internal void UnsetTerminal()
+        {
+            ITMTransportLineSettings.Instance.m_terminalStops.Remove(stopId);
+            ITMFacade.Instance.RunEventLineDestinationsChanged(lineId);
+        }
 
-        internal void SetTerminal() => ITMTransportLineSettings.Instance.m_terminalStops.Add(stopId);
+        internal void SetTerminal()
+        {
+            ITMTransportLineSettings.Instance.m_terminalStops.Add(stopId);
+            ITMFacade.Instance.RunEventLineDestinationsChanged(lineId);
+        }
 
-        internal void RemoveStop(Action callback) => Singleton<SimulationManager>.instance.AddAction(RemoveStopCoroutine(callback));
+        internal void RemoveStop(Action callback)
+        {
+            Singleton<SimulationManager>.instance.AddAction(RemoveStopCoroutine(callback));
+        }
 
         private IEnumerator RemoveStopCoroutine(Action callback)
         {
@@ -107,6 +123,7 @@ namespace ImprovedTransportManager.UI
                 buff[lineId].RemoveStop(lineId, i);
             }
             callback?.Invoke();
+            ITMFacade.Instance.RunEventLineDestinationsChanged(lineId);
             yield return 0;
         }
     }
