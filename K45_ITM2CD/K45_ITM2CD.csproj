@@ -85,7 +85,16 @@
 
 xcopy /y /e "$(TargetPath)*" "%25ModDir%25"
 del "%25ModDir%25*.pdb"
-</PostBuildEvent>
+
+if exist "$(SolutionDir)wsId.txt" (set /p wsId=&lt;"$(SolutionDir)wsId.txt") else (echo No Ws id file &amp; exit 0)
+if defined wsId (echo %25wsId%25 ) else exit 45
+SET "varCheck="&amp;for /f "delims=0123456789" %25%25i in ("%251") do set var=%25%25i
+if defined varCheck exit 45
+
+set "ModDirWS=$(SolutionDir)..\_wsMods\%25wsId%25\"
+
+xcopy /y /e "$(TargetPath)*" "%25ModDirWS%25"
+del "%25ModDirWS%25*.pdb"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
