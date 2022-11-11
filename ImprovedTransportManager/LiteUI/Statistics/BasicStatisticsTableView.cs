@@ -79,7 +79,7 @@ namespace ImprovedTransportManager.UI
                 return;
             }
 
-            var columnSizes = (tabAreaSize.x - 140) / ColumnsDescriptors.Count;
+            var columnSizes = (tabAreaSize.x - 140 * GUIWindow.ResolutionMultiplier) / ColumnsDescriptors.Count;
             #region header
             using (new GUILayout.HorizontalScope())
             {
@@ -95,25 +95,25 @@ namespace ImprovedTransportManager.UI
             using (new GUILayout.HorizontalScope())
             {
                 var currentData = loadedData.Last();
-                GUILayout.Label(string.Format(Str.itm_statisticsTable_currentLineColumnValue, GetStartDate(currentData)), cachedCellStyle, GUILayout.Width(100), GUILayout.Height(40));
+                GUILayout.Label(string.Format(Str.itm_statisticsTable_currentLineColumnValue, GetStartDate(currentData)), cachedCellStyle, GUILayout.Width(100 * GUIWindow.ResolutionMultiplier), GUILayout.Height(40 * GUIWindow.ResolutionMultiplier));
 
                 foreach (var funcPair in ColumnsDescriptors)
                 {
-                    GUILayout.Label(funcPair.Second(currentData), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40));
+                    GUILayout.Label(funcPair.Second(currentData), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40 * GUIWindow.ResolutionMultiplier));
                 }
             }
             #endregion
             #region total
             GUIKwyttoCommons.Space(0);
             var rect = GUILayoutUtility.GetLastRect();
-            GUI.DrawTexture(new Rect(rect.position + new Vector2(0, cachedCellStyle.padding.top), new Vector2(tabAreaSize.x, 40 + cachedCellStyle.padding.top + cachedCellStyle.padding.bottom)), GUIKwyttoCommons.darkGreenTexture);
+            GUI.DrawTexture(new Rect(rect.position + new Vector2(0, cachedCellStyle.padding.top), new Vector2(tabAreaSize.x, 40 * GUIWindow.ResolutionMultiplier + cachedCellStyle.padding.top + cachedCellStyle.padding.bottom)), GUIKwyttoCommons.darkGreenTexture);
             using (new GUILayout.HorizontalScope())
             {
                 GUILayout.Label(ModInstance.Controller.m_isRealTimeEnabled? Str.itm_statisticsTable_totalLast24h : Str.itm_statisticsTable_totalLast16w, cachedCellStyle, GUILayout.Width(100), GUILayout.Height(40));
 
                 foreach (var funcPair in ColumnsDescriptors) 
                 {
-                    GUILayout.Label(funcPair.Second(m_totalizer), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40));
+                    GUILayout.Label(funcPair.Second(m_totalizer), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40 * GUIWindow.ResolutionMultiplier));
                 }
             }
             #endregion
@@ -132,10 +132,10 @@ namespace ImprovedTransportManager.UI
                     D data = loadedData[i];
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.Label(GetDateFormatted(data), cachedCellStyle, GUILayout.Width(100), GUILayout.Height(40));
+                        GUILayout.Label(GetDateFormatted(data), cachedCellStyle, GUILayout.Width(100 * GUIWindow.ResolutionMultiplier), GUILayout.Height(40 * GUIWindow.ResolutionMultiplier));
                         foreach (var funcPair in ColumnsDescriptors)
                         {
-                            GUILayout.Label(funcPair.Second(data), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40));
+                            GUILayout.Label(funcPair.Second(data), cachedCellStyle, GUILayout.Width(columnSizes), GUILayout.Height(40 * GUIWindow.ResolutionMultiplier));
                         }
                     }
                 }

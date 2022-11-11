@@ -65,7 +65,7 @@ namespace ImprovedTransportManager.UI
         protected override void DrawWindow(Vector2 size)
         {
             InitStyles();
-            var targetFilterWidth = size.x / 3 - 30;
+            var targetFilterWidth = size.x / 3 - 30 * GUIWindow.ResolutionMultiplier;
             using (new GUILayout.HorizontalScope())
             {
                 var newSel0 = GUIComboBox.Box(m_currentLineIdxSelected, m_linesOptions, "LINEFILTER_001", this, nullStr: Str.itm_statistics_nullSelLine, maxWidth: targetFilterWidth);
