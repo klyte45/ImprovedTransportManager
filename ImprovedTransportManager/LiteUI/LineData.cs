@@ -1,4 +1,5 @@
 ﻿using ColossalFramework;
+using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
@@ -81,6 +82,7 @@ namespace ImprovedTransportManager.UI
         public int PassengersCarOwning { get; private set; }
         public int TripsSaved { get; private set; }
         public bool Broken { get; private set; }
+        public int CurrentGroupBudget { get; private set; }
         public Texture2D LineIcon => ModInstance.Controller.ConnectorCD.GetLineIcon(m_id.TransportLine);
 
         public int m_stopsCount;
@@ -123,7 +125,6 @@ namespace ImprovedTransportManager.UI
                 m_passengersResCount = refLine.m_passengers.m_residentPassengers.m_averageCount;
                 m_passengersTouCount = refLine.m_passengers.m_touristPassengers.m_averageCount;
 
-
                 PassengersChild = (int)refLine.m_passengers.m_childPassengers.m_averageCount;
                 PassengersTeen = (int)refLine.m_passengers.m_teenPassengers.m_averageCount;
                 PassengersYoung = (int)refLine.m_passengers.m_youngPassengers.m_averageCount;
@@ -140,27 +141,28 @@ namespace ImprovedTransportManager.UI
                     probabilityUsingCar += PassengersAdult * (((20 * m_passengersResCount) + (20 * m_passengersTouCount) + (totalCountPsg >> 1)) / totalCountPsg);
                     probabilityUsingCar += PassengersSenior * (((10 * m_passengersResCount) + (20 * m_passengersTouCount) + (totalCountPsg >> 1)) / totalCountPsg);
                 }
-                if (probabilityUsingCar > 0)
-                {
-                    TripsSaved = Mathf.Clamp((int)(((PassengersCarOwning * 10000L) + (probabilityUsingCar >> 1)) / probabilityUsingCar), 0, 100);
-                }
-                else
-                {
-                    TripsSaved = 0;
-                }
+                TripsSaved = probabilityUsingCar > 0
+                    ? Mathf.Clamp((int)(((PassengersCarOwning * 10000L) + (probabilityUsingCar >> 1)) / probabilityUsingCar), 0, 100)
+                    : 0;
 
                 m_budgetSelf = refLine.m_budget;
                 m_ticketPrice = refLine.m_ticketPrice;
                 BudgetCategoryNow = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class);
                 BudgetCategoryDay = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class, false);
                 BudgetCategoryNight = Singleton<EconomyManager>.instance.GetBudget(refLine.Info.m_class, true);
-                BudgetEffectiveNow = m_budgetSelf * BudgetCategoryNow / 100;
-                BudgetEffectiveDay = m_budgetSelf * BudgetCategoryDay / 100;
-                BudgetEffectiveNight = m_budgetSelf * BudgetCategoryNight / 100;
+
+                var dayB = ITMLineUtils.GetBudgetMultiplierLineWithIndexes(m_id.TransportLine, DayOfWeek.Monday, 8);
+                var nightB = ITMLineUtils.GetBudgetMultiplierLineWithIndexes(m_id.TransportLine, DayOfWeek.Monday, 20);
+                var now = ITMLineUtils.GetBudgetMultiplierLineWithIndexes(m_id.TransportLine, ITMLineUtils.ReferenceWeekday, ITMLineUtils.ReferenceTimer);
+
+                CurrentGroupBudget = ITMTransportLineSettings.Instance.SafeGetLine(m_id.TransportLine).BudgetGroup;
+                BudgetEffectiveNow = Mathf.FloorToInt(now.First * .01f * (now.Fifth ? 100 : BudgetCategoryNow));
+                BudgetEffectiveDay = Mathf.FloorToInt(dayB.First * .01f * (dayB.Fifth ? 100 : BudgetCategoryDay));
+                BudgetEffectiveNight = Mathf.FloorToInt(nightB.First * .01f * (nightB.Fifth ? 100 : BudgetCategoryNight));
                 m_vehiclesCount = refLine.CountVehicles(m_id.TransportLine);
-                VehiclesTargetNow = TEMP_CalculateTargetVehicles(BudgetEffectiveNow, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
-                VehiclesTargetDay = TEMP_CalculateTargetVehicles(BudgetEffectiveDay, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
-                VehiclesTargetNight = TEMP_CalculateTargetVehicles(BudgetEffectiveNight, refLine.m_totalLength, refLine.Info.m_defaultVehicleDistance);
+                VehiclesTargetNow = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNow * .01f);
+                VehiclesTargetDay = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveDay * .01f);
+                VehiclesTargetNight = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNight * .01f);
                 m_lengthKm = refLine.m_totalLength;
                 ITMTransportLineStatusesManager.Instance.GetLastWeekIncomeAndExpensesForLine(m_id.TransportLine, out var inc, out var exp);
                 m_lineFinancesBalance = (inc - exp) * .01f;
@@ -184,11 +186,6 @@ namespace ImprovedTransportManager.UI
                 m_lineActivity = (day ? LineActivityOptions.Day : 0) | (night ? LineActivityOptions.Night : 0);
             }
             return this;
-        }
-
-        private int TEMP_CalculateTargetVehicles(int budget, float lineLength, float defaultDistance)
-        {
-            return Mathf.CeilToInt(budget * lineLength / (defaultDistance * 100f));
         }
 
         public void Dispose()
@@ -265,5 +262,7 @@ namespace ImprovedTransportManager.UI
                 }
             });
         }
+
+        internal void SetBudgetGroup(byte v) => ITMTransportLineSettings.Instance.SafeGetLine(m_id.TransportLine).BudgetGroup = v;
     }
 }

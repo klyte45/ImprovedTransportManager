@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using ColossalFramework;
+using HarmonyLib;
 using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Utility;
 using Kwytto.Utils;
@@ -111,106 +112,106 @@ namespace ImprovedTransportManager.Overrides
         #endregion
 
         #region Budget Override
-        //private static readonly MethodInfo m_targetVehicles = typeof(TransportLine).GetMethod("CalculateTargetVehicleCount", RedirectorUtils.allFlags);
-        //private static readonly MethodInfo m_setActive = typeof(TransportLine).GetMethod("SetActive", RedirectorUtils.allFlags);
-        //private static readonly MethodInfo m_newTargetVehicles = typeof(TransportLineOverrides).GetMethod("NewCalculateTargetVehicleCount", RedirectorUtils.allFlags);
-        //private static readonly FieldInfo m_budgetField = typeof(TransportLine).GetField("m_budget", RedirectorUtils.allFlags);
-        //private static readonly MethodInfo m_getBudgetInt = typeof(ITMLineUtils).GetMethod("GetEffectiveBudgetInt", RedirectorUtils.allFlags);
-        //public static IEnumerable<CodeInstruction> TranspileSimulationStepLine(IEnumerable<CodeInstruction> instructions)
-        //{
-        //    var inst = new List<CodeInstruction>(instructions);
+        private static readonly MethodInfo m_targetVehicles = typeof(TransportLine).GetMethod("CalculateTargetVehicleCount", RedirectorUtils.allFlags);
+        private static readonly MethodInfo m_setActive = typeof(TransportLine).GetMethod("SetActive", RedirectorUtils.allFlags);
+        private static readonly MethodInfo m_newTargetVehicles = typeof(TransportLineOverrides).GetMethod("NewCalculateTargetVehicleCount", RedirectorUtils.allFlags);
+        private static readonly FieldInfo m_budgetField = typeof(TransportLine).GetField("m_budget", RedirectorUtils.allFlags);
+        private static readonly MethodInfo m_getBudgetInt = typeof(ITMLineUtils).GetMethod("GetEffectiveBudgetInt", RedirectorUtils.allFlags);
+        public static IEnumerable<CodeInstruction> TranspileSimulationStepLine(IEnumerable<CodeInstruction> instructions)
+        {
+            var inst = new List<CodeInstruction>(instructions);
 
-        //    inst.InsertRange(0, new List<CodeInstruction>
-        //            {
-        //                new CodeInstruction(OpCodes.Ldarg_0),
-        //                new CodeInstruction(OpCodes.Ldarg_1),
-        //                new CodeInstruction(OpCodes.Call, m_getBudgetInt),
-        //                new CodeInstruction(OpCodes.Ldc_I4_0),
-        //                new CodeInstruction(OpCodes.Cgt),
-        //                new CodeInstruction(OpCodes.Ldarg_1),
-        //                new CodeInstruction(OpCodes.Call, m_getBudgetInt),
-        //                new CodeInstruction(OpCodes.Ldc_I4_0),
-        //                new CodeInstruction(OpCodes.Cgt),
-        //                new CodeInstruction(OpCodes.Call,m_setActive ),
-        //            });
-        //    for (int i = 0; i < inst.Count; i++)
-        //    {
-        //        if (inst[i].opcode == OpCodes.Call && inst[i].operand == m_targetVehicles)
-        //        {
-        //            inst[i - 1].opcode = OpCodes.Ldarg_1;
-        //            inst[i] = new CodeInstruction(OpCodes.Call, m_newTargetVehicles);
-        //            inst.RemoveRange(i - 6, 5);
-        //        }
-        //    }
-        //    LogUtils.PrintMethodIL(inst);
-        //    return inst;
-        //}
-        //public static IEnumerable<CodeInstruction> TranspileSimulationStepAI(IEnumerable<CodeInstruction> instructions)
-        //{
-        //    var inst = new List<CodeInstruction>(instructions);
+            inst.InsertRange(0, new List<CodeInstruction>
+                    {
+                        new CodeInstruction(OpCodes.Ldarg_0),
+                        new CodeInstruction(OpCodes.Ldarg_1),
+                        new CodeInstruction(OpCodes.Call, m_getBudgetInt),
+                        new CodeInstruction(OpCodes.Ldc_I4_0),
+                        new CodeInstruction(OpCodes.Cgt),
+                        new CodeInstruction(OpCodes.Ldarg_1),
+                        new CodeInstruction(OpCodes.Call, m_getBudgetInt),
+                        new CodeInstruction(OpCodes.Ldc_I4_0),
+                        new CodeInstruction(OpCodes.Cgt),
+                        new CodeInstruction(OpCodes.Call,m_setActive ),
+                    });
+            for (int i = 0; i < inst.Count; i++)
+            {
+                if (inst[i].opcode == OpCodes.Call && inst[i].operand == m_targetVehicles)
+                {
+                    inst[i - 1].opcode = OpCodes.Ldarg_1;
+                    inst[i] = new CodeInstruction(OpCodes.Call, m_newTargetVehicles);
+                    inst.RemoveRange(i - 6, 5);
+                }
+            }
+            LogUtils.PrintMethodIL(inst);
+            return inst;
+        }
+        public static IEnumerable<CodeInstruction> TranspileSimulationStepAI(IEnumerable<CodeInstruction> instructions)
+        {
+            var inst = new List<CodeInstruction>(instructions);
 
-        //    for (int i = 0; i < inst.Count; i++)
-        //    {
-        //        if (inst[i].opcode == OpCodes.Ldfld && inst[i].operand == m_budgetField)
-        //        {
-        //            inst[i] = new CodeInstruction(OpCodes.Call, m_getBudgetInt);
-        //            inst[i + 1] = new CodeInstruction(OpCodes.Stloc_S, 4);
-        //            inst.RemoveAt(i + 9);
-        //            inst.RemoveAt(i + 8);
-        //            inst.RemoveAt(i + 7);
-        //            inst.RemoveAt(i + 6);
-        //            inst.RemoveAt(i + 5);
-        //            inst.RemoveAt(i + 4);
-        //            inst.RemoveAt(i + 3);
-        //            inst.RemoveAt(i + 2);
-        //            inst.RemoveAt(i - 1);
-        //            inst.RemoveAt(i - 4);
-        //            inst.RemoveAt(i - 5);
-        //            inst.RemoveAt(i - 6);
-        //            break;
-        //        }
-        //    }
-        //    LogUtils.PrintMethodIL(inst);
-        //    return inst;
-        //}
-        //public static int NewCalculateTargetVehicleCount(ushort lineId)
-        //{
-        //    ref TransportLine t = ref TransportManager.instance.m_lines.m_buffer[lineId];
-        //    float lineLength = t.m_totalLength;
-        //    if (lineLength == 0f && t.m_stops != 0)
-        //    {
-        //        NetManager instance = Singleton<NetManager>.instance;
-        //        ushort stops = t.m_stops;
-        //        ushort num2 = stops;
-        //        int num3 = 0;
-        //        while (num2 != 0)
-        //        {
-        //            ushort num4 = 0;
-        //            for (int i = 0; i < 8; i++)
-        //            {
-        //                ushort segment = instance.m_nodes.m_buffer[num2].GetSegment(i);
-        //                if (segment != 0 && instance.m_segments.m_buffer[segment].m_startNode == num2)
-        //                {
-        //                    lineLength += instance.m_segments.m_buffer[segment].m_averageLength;
-        //                    num4 = instance.m_segments.m_buffer[segment].m_endNode;
-        //                    break;
-        //                }
-        //            }
-        //            num2 = num4;
-        //            if (num2 == stops)
-        //            {
-        //                break;
-        //            }
-        //            if (++num3 >= 32768)
-        //            {
-        //                CODebugBase<LogChannel>.Error(LogChannel.Core, "Invalid list detected!\n" + Environment.StackTrace);
-        //                break;
-        //            }
-        //        }
-        //        t.m_totalLength = lineLength;
-        //    }
-        //    return ITMLineUtils.ProjectTargetVehicleCount(t.Info, lineLength, ITMLineUtils.GetEffectiveBudget(lineId));
-        //}
+            for (int i = 0; i < inst.Count; i++)
+            {
+                if (inst[i].opcode == OpCodes.Ldfld && inst[i].operand == m_budgetField)
+                {
+                    inst[i] = new CodeInstruction(OpCodes.Call, m_getBudgetInt);
+                    inst[i + 1] = new CodeInstruction(OpCodes.Stloc_S, 4);
+                    inst.RemoveAt(i + 9);
+                    inst.RemoveAt(i + 8);
+                    inst.RemoveAt(i + 7);
+                    inst.RemoveAt(i + 6);
+                    inst.RemoveAt(i + 5);
+                    inst.RemoveAt(i + 4);
+                    inst.RemoveAt(i + 3);
+                    inst.RemoveAt(i + 2);
+                    inst.RemoveAt(i - 1);
+                    inst.RemoveAt(i - 4);
+                    inst.RemoveAt(i - 5);
+                    inst.RemoveAt(i - 6);
+                    break;
+                }
+            }
+            LogUtils.PrintMethodIL(inst);
+            return inst;
+        }
+        public static int NewCalculateTargetVehicleCount(ushort lineId)
+        {
+            ref TransportLine t = ref TransportManager.instance.m_lines.m_buffer[lineId];
+            float lineLength = t.m_totalLength;
+            if (lineLength == 0f && t.m_stops != 0)
+            {
+                NetManager instance = NetManager.instance;
+                ushort stops = t.m_stops;
+                ushort num2 = stops;
+                int num3 = 0;
+                while (num2 != 0)
+                {
+                    ushort num4 = 0;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        ushort segment = instance.m_nodes.m_buffer[num2].GetSegment(i);
+                        if (segment != 0 && instance.m_segments.m_buffer[segment].m_startNode == num2)
+                        {
+                            lineLength += instance.m_segments.m_buffer[segment].m_averageLength;
+                            num4 = instance.m_segments.m_buffer[segment].m_endNode;
+                            break;
+                        }
+                    }
+                    num2 = num4;
+                    if (num2 == stops)
+                    {
+                        break;
+                    }
+                    if (++num3 >= 32768)
+                    {
+                        CODebugBase<LogChannel>.Error(LogChannel.Core, "Invalid list detected!\n" + Environment.StackTrace);
+                        break;
+                    }
+                }
+                t.m_totalLength = lineLength;
+            }
+            return ITMLineUtils.ProjectTargetVehicleCount(t.Info, lineLength, ITMLineUtils.GetEffectiveBudget(lineId));
+        }
 
         #endregion
 

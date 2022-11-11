@@ -74,7 +74,7 @@ namespace ImprovedTransportManager.UI
                     ClearFilters();
                     SelectLine(newSel0);
                 }
-                GUIKwyttoCommons.SquareTextureButton(m_reloadTex, Str.itm_statistics_reloadLines, ReloadLines, size: 20);
+                GUIKwyttoCommons.SquareTextureButton2(m_reloadTex, Str.itm_statistics_reloadLines, ReloadLines, size: 20);
                 GUILayout.FlexibleSpace();
                 var newSel = GUIComboBox.Box(m_currentStopIdxSelected, m_currentVehicleIdxSelected < 0 ? m_stopsOptions : new string[0], "STOPFILTER_001", this, nullStr: Str.itm_statistics_nullSelStop, maxWidth: targetFilterWidth);
                 if (newSel != m_currentStopIdxSelected)
@@ -94,7 +94,7 @@ namespace ImprovedTransportManager.UI
                     m_tabsContainer.Reset();
                     m_tabsContainer.CurrentTabIdx = currentTab;
                 }
-                GUIKwyttoCommons.SquareTextureButton(m_deleteTex, Str.itm_statistics_clearFilters, ClearFilters, size: 20);
+                GUIKwyttoCommons.SquareTextureButton2(m_deleteTex, Str.itm_statistics_clearFilters, ClearFilters, size: 20);
             }
             if (m_currentLineIdxSelected >= 0)
             {
@@ -111,7 +111,7 @@ namespace ImprovedTransportManager.UI
                 {
                     GUILayout.Label(Str.itm_statistics_subtitleTableFormatAll, m_centeredLabelSubtitle);
                 }
-                GUILayout.Space(0);
+                GUIKwyttoCommons.Space(0);
                 var rect = GUILayoutUtility.GetLastRect();
                 if (rect.position == default)
                 {
@@ -122,7 +122,7 @@ namespace ImprovedTransportManager.UI
                     cachedRect = rect;
                 }
                 rect.x = 0;
-                m_tabsContainer.DrawListTabs(new Rect(rect.position, size - rect.position), 150);
+                m_tabsContainer.DrawListTabs2(new Rect(rect.position, size - rect.position), 150);
             }
         }
 

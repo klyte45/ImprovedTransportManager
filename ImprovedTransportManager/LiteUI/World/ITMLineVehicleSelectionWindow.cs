@@ -86,7 +86,7 @@ namespace ImprovedTransportManager.UI
                 GUILayout.FlexibleSpace();
                 GUILayout.Label(Str.itm_vehicleSelectWindow_capacity, m_rightLabel, GUILayout.Width(65));
                 GUILayout.Label(Str.itm_vehicleSelectWindow_costPeriod, m_rightLabel, GUILayout.Width(80));
-                GUIKwyttoCommons.SquareTextureButton(m_helpTex, "", ShowHelp, size: 20);
+                GUIKwyttoCommons.SquareTextureButton2(m_helpTex, "", ShowHelp, size: 20);
             }
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollPos))
             {
@@ -103,7 +103,7 @@ namespace ImprovedTransportManager.UI
                         {
                             ToggleSelection(kvp.Second, isSelected);
                         }
-                        GUILayout.Space(5);
+                        GUIKwyttoCommons.Space(5);
                         GUILayout.Label(kvp.First, m_nobrLabel);
                         var lastRect = GUILayoutUtility.GetLastRect();
                         var targetPos = UIScaler.MousePosition + GUIUtility.ScreenToGUIPoint(default);
@@ -193,8 +193,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.yellowTexture
                     },
-                    fixedHeight = 20,
-                    fixedWidth = 20
+                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
+                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
                 };
             }
             if (m_selectionBtnUns is null)
@@ -209,8 +209,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.whiteTexture
                     },
-                    fixedHeight = 20,
-                    fixedWidth = 20
+                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
+                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
                 };
             }
             if (m_previewTitle is null)

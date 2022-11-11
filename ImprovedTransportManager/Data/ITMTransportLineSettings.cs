@@ -55,9 +55,9 @@ namespace ImprovedTransportManager.Data
         [XmlIgnore]
         private Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<ushort>>> GroupsDepotList = new Dictionary<TransportSystemType, SimpleNonSequentialList<HashSet<ushort>>>();
         [XmlIgnore]
-        private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>> GroupsBudgetList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>>>();
+        private Dictionary<TransportSystemType, SimpleNonSequentialList<BudgetEntryXml>> GroupsBudgetList = new Dictionary<TransportSystemType, SimpleNonSequentialList<BudgetEntryXml>>();
         [XmlIgnore]
-        private Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>> GroupsFareList = new Dictionary<TransportSystemType, SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>>>();
+        private Dictionary<TransportSystemType, SimpleNonSequentialList<TicketPriceEntryXml>> GroupsFareList = new Dictionary<TransportSystemType, SimpleNonSequentialList<TicketPriceEntryXml>>();
 
         private O SafeGetGroupData<O>(Dictionary<TransportSystemType, SimpleNonSequentialList<O>> groupData, TransportSystemType tst, byte groupId) where O : class, new()
         {
@@ -113,13 +113,13 @@ namespace ImprovedTransportManager.Data
             }
         }
         [XmlElement("GroupsBudget")]
-        public SimpleNonSequentialList<UintValueHourEntryXml<BudgetEntryXml>> GroupsBudgetListXml
+        public SimpleNonSequentialList<BudgetEntryXml> GroupsBudgetListXml
         {
             get => ConvertToXmlFormat(GroupsBudgetList, y => y.Value);
             set => ConvertFromXmlFormat(value, GroupsBudgetList, (x, tst) => x);
         }
         [XmlElement("GroupsFares")]
-        public SimpleNonSequentialList<UintValueHourEntryXml<TicketPriceEntryXml>> GroupsFareListXml
+        public SimpleNonSequentialList<TicketPriceEntryXml> GroupsFareListXml
         {
             get => ConvertToXmlFormat(GroupsFareList, y => y.Value);
             set => ConvertFromXmlFormat(value, GroupsFareList, (x, tst) => x);
@@ -189,6 +189,20 @@ namespace ImprovedTransportManager.Data
             return depot;
         }
 
+        internal TimeableList<BudgetEntryItemXml> GetWeekdayTable(ushort lineId, DayOfWeek referenceWeekday)
+        {
+            var config = SafeGetLine(lineId);
+            if (config.BudgetGroup == 0)
+            {
+                return null;
+            }
+            var tst = FromLineId(lineId, false);
+            if (GroupsBudgetList.TryGetValue(tst, out var groupList) && groupList.TryGetValue(config.BudgetGroup, out var group))
+            {
+                return group.GetWeekDayTable(referenceWeekday);
+            }
+            return null;
+        }
         #endregion
 
     }

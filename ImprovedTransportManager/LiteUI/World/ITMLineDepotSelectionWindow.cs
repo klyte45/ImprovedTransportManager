@@ -68,7 +68,7 @@ namespace ImprovedTransportManager.UI
                         {
                             ToggleSelection(kvp.First, isSelected);
                         }
-                        GUILayout.Space(5);
+                        GUIKwyttoCommons.Space(5);
                         GUILayout.Label($"<b>{kvp.Second}</b>\n<size={DefaultSize * .75f}>{kvp.Third} - {kvp.Fourth}</size>", m_nobrLabel);
                         var lastRect = GUILayoutUtility.GetLastRect();
                         var targetPos = UIScaler.MousePosition + GUIUtility.ScreenToGUIPoint(default);
@@ -147,8 +147,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.yellowTexture
                     },
-                    fixedHeight = 20,
-                    fixedWidth = 20
+                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
+                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
                 };
             }
             if (m_selectionBtnUns is null)
@@ -163,8 +163,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.whiteTexture
                     },
-                    fixedHeight = 20,
-                    fixedWidth = 20
+                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
+                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
                 };
             }
             if (m_previewTitle is null)

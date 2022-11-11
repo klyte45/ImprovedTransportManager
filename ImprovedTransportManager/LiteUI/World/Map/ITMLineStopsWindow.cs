@@ -143,13 +143,13 @@ namespace ImprovedTransportManager.UI
                     {
                         using (new GUILayout.VerticalScope())
                         {
-                            GUILayout.Space(5);
+                            GUIKwyttoCommons.Space(5);
                             GUILayout.Label(Str.itm_lineMap_vehicleDataToShow, m_centerLabel);
                             using (new GUILayout.HorizontalScope())
                             {
                                 m_currentVehicleDataShow = (VehicleShowDataType)GUIComboBox.Box((int)m_currentVehicleDataShow, m_vehicleShowOptions, "itmLineStopsVehicleDataShow", this, 200);
                             }
-                            GUILayout.Space(5);
+                            GUIKwyttoCommons.Space(5);
                         }
                     }
                     GUILayout.FlexibleSpace();
@@ -187,7 +187,7 @@ namespace ImprovedTransportManager.UI
                 {
                     var leftPivotLine = (size.x - TexLineBg.width) * .5f;
                     var lineLengthPixels = (m_loadedStopData.Count + .125f) * STATION_SIZE;
-                    GUILayout.Space(lineLengthPixels);
+                    GUIKwyttoCommons.Space(lineLengthPixels);
                     GUI.DrawTexture(new Rect(leftPivotLine, 0, TexLineBg.width, lineLengthPixels), TexLineBg, ScaleMode.StretchToFill);
                     for (int i = 0; i < m_loadedStopData.Count; i++)
                     {

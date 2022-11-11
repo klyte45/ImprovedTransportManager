@@ -36,7 +36,6 @@ This mod intends to be a replacement to the both old IPT2 and TLM. Here are some
 - Vehicle context information (from IPT2)
 - Fares settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
 - Budget settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
-- Tickets settings groups (expert mode only) (replacing old "prefixes" settings from TLM)
 - Fare per hour (expert mode only) (from TLM)
 - Budget per hour (expert mode only) (from TLM)
 - Lines settings by weekday (expert mode only)

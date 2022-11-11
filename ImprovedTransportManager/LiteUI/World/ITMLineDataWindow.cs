@@ -100,12 +100,12 @@ namespace ImprovedTransportManager.UI
                 ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[CurrentLine];
                 var lineData = ITMTransportLineSettings.Instance.SafeGetLine(CurrentLine);
                 m_currentLineData.GetUpdated();
-                GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.TripsSaved), m_centerTextLabel);
-                GUILayout.Space(4);
+                GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.m_vehiclesCount, m_currentLineData.TripsSaved), m_centerTextLabel);
+                GUIKwyttoCommons.Space(4);
                 using (new GUILayout.HorizontalScope())
                 {
                     GUIKwyttoCommons.TextWithLabel(size.x - 25, Str.itm_lineView_lineName, m_currentLineData.LineName, (x) => m_currentLineData.LineName = x);
-                    GUIKwyttoCommons.SquareTextureButton(m_autonameTex, "", () => ITMLineUtils.DoAutoname(CurrentLine), size: 20);
+                    GUIKwyttoCommons.SquareTextureButton2(m_autonameTex, "", () => ITMLineUtils.DoAutoname(CurrentLine), size: 20);
                 }
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
@@ -117,23 +117,33 @@ namespace ImprovedTransportManager.UI
                     GUIKwyttoCommons.AddToggle(Str.itm_lineView_ignoreMandatoryStopTerminal, ref lineData.m_ignoreTerminalsMandatoryStop);
                 }
                 GUIKwyttoCommons.AddToggle(Str.itm_lineView_requireStartAtTerminal, ref lineData.m_requireLineStartTerminal);
-                GUILayout.Space(8);
+                GUIKwyttoCommons.Space(8);
                 GUIKwyttoCommons.AddComboBox(size.x, Str.itm_lineView_lineActivity, m_currentLineData.LineActivity, m_lineActivityOptionsNames, m_lineActivityOptions, this, (x) => m_currentLineData.LineActivity = x);
                 if (m_currentLineData.m_type.HasVehicles())
                 {
-                    GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_ticketPrice, m_currentLineData.TicketPrice, (x) => m_currentLineData.TicketPrice = x, 0, tl.Info.m_ticketPrice * 5);
-                    GUILayout.Space(10);
-                    GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_lineBudget, m_currentLineData.BudgetSelf, (x) => m_currentLineData.BudgetSelf = x, 0, 500);
-                    GUILayout.Label($"\t- {Str.itm_lineView_dayBudgetTitle} " +
-                        ((m_currentLineData.LineActivity & LineActivityOptions.Day) == 0
+                    if (m_currentLineData.CurrentGroupBudget == 0)
+                    {
+                        GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_ticketPrice, m_currentLineData.TicketPrice, (x) => m_currentLineData.TicketPrice = x, 0, tl.Info.m_ticketPrice * 5);
+                        GUIKwyttoCommons.Space(10);
+                        GUIKwyttoCommons.AddSliderInt(size.x, Str.itm_lineView_lineBudget, m_currentLineData.BudgetSelf, (x) => m_currentLineData.BudgetSelf = x, 0, 500);
+                        GUILayout.Label($"\t- {Str.itm_lineView_dayBudgetTitle} " +
+                            ((m_currentLineData.LineActivity & LineActivityOptions.Day) == 0
+                                ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
+                                : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryDay}% =<color=yellow> {m_currentLineData.BudgetEffectiveDay}%</color> ({m_currentLineData.VehiclesTargetDay})"));
+                        GUILayout.Label($"\t- {Str.itm_lineView_nightBudgetTitle} " +
+                            ((m_currentLineData.LineActivity & LineActivityOptions.Night) == 0
                             ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
-                            : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryDay}% =<color=yellow> {m_currentLineData.BudgetEffectiveDay}%</color> ({m_currentLineData.VehiclesTargetDay})"));
-                    GUILayout.Label($"\t- {Str.itm_lineView_nightBudgetTitle} " +
-                        ((m_currentLineData.LineActivity & LineActivityOptions.Night) == 0
-                        ? $"<color=red>{LineActivityOptions.None.ValueToI18n()}</color>"
-                        : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryNight}% =<color=yellow> {m_currentLineData.BudgetEffectiveNight}%</color> ({m_currentLineData.VehiclesTargetNight})"
-                        ));
-                    GUILayout.Space(4);
+                            : $"{m_currentLineData.BudgetSelf}% x {m_currentLineData.BudgetCategoryNight}% =<color=yellow> {m_currentLineData.BudgetEffectiveNight}%</color> ({m_currentLineData.VehiclesTargetNight})"
+                            ));
+                        GUIKwyttoCommons.Space(4);
+                    }
+                    else
+                    {
+                        if (GUILayout.Button(string.Format(Str.itm_lineView_budgetUsingGroupTemplate, m_currentLineData.CurrentGroupBudget)))
+                        {
+                            m_currentLineData.SetBudgetGroup(0);
+                        }
+                    }
 
                     if (m_currentLineData.FreeStops > 0)
                     {
@@ -160,7 +170,7 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label($"{m_currentLineData.PassengersAdult}", m_rightTextLabel);
                         GUILayout.Label($"{m_currentLineData.PassengersSenior}", m_rightTextLabel);
                     }
-                    GUILayout.Space(2);
+                    GUIKwyttoCommons.Space(2);
                     using (new GUILayout.VerticalScope())
                     {
                         GUILayout.Label($"<color=#{COLOR_CHILDREN}>{Str.itm_lineView_childrenLbl}</color>");
@@ -170,12 +180,12 @@ namespace ImprovedTransportManager.UI
                         GUILayout.Label($"<color=#{COLOR_SENIOR}>{Str.itm_lineView_seniorLbl}</color>");
                     }
                     var height = GUILayoutUtility.GetLastRect().height;
-                    GUILayout.Space(10);
+                    GUIKwyttoCommons.Space(10);
                     using (new GUILayout.VerticalScope())
                     {
                         using (new GUILayout.HorizontalScope())
                         {
-                            GUILayout.Space(100);
+                            GUIKwyttoCommons.Space(100);
                         }
                     }
                     var position = GUILayoutUtility.GetLastRect().position + new Vector2(0, 3);
@@ -219,7 +229,7 @@ namespace ImprovedTransportManager.UI
                         m_currentLineData.Delete();
                     }
                 }
-                GUILayout.Space(2);
+                GUIKwyttoCommons.Space(2);
             }
         }
 

@@ -214,7 +214,7 @@
     <value>Children</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}m - {1} Stops - {2}% Trips saved</value>
+    <value>{0:N1}m - {1} Stops - {2} Vehicles - {3}% Trips saved</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
     <value>Lines Overview</value>
@@ -623,5 +623,8 @@ Recomended for experenced players only</value>
   </data>
   <data name="itm_common_goTo" xml:space="preserve">
     <value>Go to</value>
+  </data>
+  <data name="itm_lineView_budgetUsingGroupTemplate" xml:space="preserve">
+    <value>Using budget group {0}. Click to reset.</value>
   </data>
 </root>

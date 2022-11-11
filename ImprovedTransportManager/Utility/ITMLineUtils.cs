@@ -4,6 +4,7 @@ using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.TransportSystems;
 using Kwytto.Utils;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -210,5 +211,80 @@ namespace ImprovedTransportManager.Utility
             SimulationManager.instance.AddAction(TransportManager.instance.SetLineName(currentLine, lineName));
         }
 
+        #region Budget
+        public static float ReferenceTimer => (!Singleton<SimulationManager>.instance.m_enableDayNight) ? (float)Singleton<SimulationManager>.instance.m_currentGameTime.TimeOfDay.TotalHours % 24 : Singleton<SimulationManager>.instance.m_currentDayTimeHour;
+        public static DayOfWeek ReferenceWeekday => Singleton<SimulationManager>.instance.m_currentGameTime.DayOfWeek;
+
+        //RESULT, PREV VAL, NEXT VAL, LERP, ISGROUP
+        public static Tuple<float, int, int, float, bool> GetBudgetMultiplierLineWithIndexes(ushort lineId, DayOfWeek refWeek, float refTime)
+        {
+            TimeableList<BudgetEntryItemXml> budgetConfig = ITMTransportLineSettings.Instance.GetWeekdayTable(lineId, refWeek);
+            if (budgetConfig is null || budgetConfig.Count == 0)
+            {
+                var budget = TransportManager.instance.m_lines.m_buffer[lineId].m_budget;
+                return Tuple.New((float)budget, (int)budget, (int)budget, 0f, false);
+            }
+
+            Tuple<Tuple<BudgetEntryItemXml, int>, Tuple<BudgetEntryItemXml, int>, float> currentBudget = budgetConfig.GetAtHour(refTime);
+            var effectiveBudgetNow = Mathf.Lerp(currentBudget.First.First.Value, currentBudget.Second.First.Value, currentBudget.Third) / 100f;
+
+            return Tuple.New(effectiveBudgetNow, currentBudget.First.Second, currentBudget.Second.Second, currentBudget.Third, true);
+        }
+
+        public static float GetEffectiveBudget(ushort transportLine) => GetEffectiveBudgetInt(transportLine) / 100f;
+
+        public static int GetEffectiveBudgetInt(ushort transportLine)
+        {
+            ref TransportLine tl = ref Singleton<TransportManager>.instance.m_lines.m_buffer[transportLine];
+            TransportInfo info = tl.Info;
+            Tuple<float, int, int, float, bool> lineBudget = GetBudgetMultiplierLineWithIndexes(transportLine, ReferenceWeekday, ReferenceTimer);
+            int budgetClass = lineBudget.Fifth ? 100 : Singleton<EconomyManager>.instance.GetBudget(info.m_class);
+
+            var result = (int)(budgetClass * lineBudget.First);
+            var lineCfg = ITMTransportLineSettings.Instance.SafeGetLine(transportLine);
+            if (result == 0 != lineCfg.IsZeroed)
+            {
+                lineCfg.IsZeroed = result == 0;
+                if (lineCfg.IsZeroed)
+                {
+                    SimulationManager.instance.StartCoroutine(MakePassengersBored(transportLine, SimulationManager.instance.m_referenceFrameIndex));
+                }
+            }
+            return result;
+        }
+
+        private static IEnumerator MakePassengersBored(ushort transportLine, uint simulationFrameStart)
+        {
+            var lineCfg = ITMTransportLineSettings.Instance.SafeGetLine(transportLine);
+            int citizensCount = 0;
+            do
+            {
+                do
+                {
+                    yield return 0;
+                } while (SimulationManager.instance.m_referenceFrameIndex - simulationFrameStart < 5);
+                if (!lineCfg.IsZeroed)
+                {
+                    yield break;
+                }
+                ushort stop = Singleton<TransportManager>.instance.m_lines.m_buffer[transportLine].m_stops;
+                citizensCount = 0;
+                do
+                {
+                    var citizensToBored = new List<ushort>();
+                    DoWithEachPassengerWaiting(stop, (citizenId) => citizensToBored.Add(citizenId));
+                    foreach (var citizenId in citizensToBored)
+                    {
+                        CitizenManager.instance.m_instances.m_buffer[citizenId].m_waitCounter = byte.MaxValue;
+                    }
+                    citizensCount += citizensToBored.Count;
+                    stop = TransportLine.GetNextStop(stop);
+                } while (stop != Singleton<TransportManager>.instance.m_lines.m_buffer[transportLine].m_stops);
+                simulationFrameStart = SimulationManager.instance.m_referenceFrameIndex;
+            } while (citizensCount > 0 || !lineCfg.IsZeroed);
+        }
+
+        public static int ProjectTargetVehicleCount(TransportInfo info, float lineLength, float budget) => Mathf.CeilToInt(budget * lineLength / info.m_defaultVehicleDistance);
+        #endregion
     }
 }

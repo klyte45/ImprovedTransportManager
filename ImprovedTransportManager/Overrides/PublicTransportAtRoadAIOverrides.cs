@@ -124,10 +124,10 @@ namespace ImprovedTransportManager.Overrides
         private static bool CheckDespawn(ushort vehicleID, ref Vehicle vehicleData, bool isEmpty, bool forceIfNotEmpty)
         {
             if (vehicleData.m_transportLine != 0)
-            {
+            {                
                 ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[vehicleData.m_transportLine];
                 int currentVehicleCount = tl.CountVehicles(vehicleData.m_transportLine);
-                int targetVehicleCount = TEMP_CalculateTargetVehicles(ref tl);//TransportLineOverrides.NewCalculateTargetVehicleCount(vehicleData.m_transportLine);
+                int targetVehicleCount = TransportLineOverrides.NewCalculateTargetVehicleCount(vehicleData.m_transportLine) / 100;
                 if (currentVehicleCount > targetVehicleCount || !ITMTransportLineSettings.Instance.IsInfoAllowedToLine(vehicleData.Info, vehicleData.m_transportLine))
                 {
                     if (isEmpty)
@@ -145,12 +145,6 @@ namespace ImprovedTransportManager.Overrides
             return false;
         }
 
-        private static int TEMP_CalculateTargetVehicles(ref TransportLine tl)
-        {
-            var BudgetCategoryNow = Singleton<EconomyManager>.instance.GetBudget(tl.Info.m_class);
-            var budget = tl.m_budget * BudgetCategoryNow / 100;
-            return Mathf.CeilToInt(budget * tl.m_totalLength / (tl.Info.m_defaultVehicleDistance * 100f));
-        }
 
         private static int GetQuantityPassengerUnloadOnNextStop(ushort vehicleId, ref Vehicle data, out bool full, out bool empty)
         {

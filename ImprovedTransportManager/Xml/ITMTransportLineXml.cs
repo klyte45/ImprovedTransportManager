@@ -55,5 +55,7 @@ namespace ImprovedTransportManager.Xml
         public bool m_requireLineStartTerminal = true;
         [XmlAttribute("ignoreTerminalsMandatoryStop")]
         public bool m_ignoreTerminalsMandatoryStop;
+        [XmlAttribute("isZeroed")]
+        public bool IsZeroed { get; set; }
     }
 }

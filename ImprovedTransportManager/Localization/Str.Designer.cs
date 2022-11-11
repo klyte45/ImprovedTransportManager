@@ -733,6 +733,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Using budget group {0}. Click to reset..
+        /// </summary>
+        internal static string itm_lineView_budgetUsingGroupTemplate {
+            get {
+                return ResourceManager.GetString("itm_lineView_budgetUsingGroupTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Budget View.
         /// </summary>
         internal static string itm_lineView_budgetViewBtn {
@@ -778,7 +787,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N1}m - {1} Stops - {2}% Trips saved.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N1}m - {1} Stops - {2} Vehicles - {3}% Trips saved.
         /// </summary>
         internal static string itm_lineView_distanceStops {
             get {

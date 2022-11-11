@@ -15,7 +15,7 @@ namespace ImprovedTransportManager.UI
         public void DrawArea(Vector2 tabAreaSize)
         {
             GUILayout.Label(Str.itm_maintenanceData_header);
-            GUILayout.Space(4);
+            GUIKwyttoCommons.Space(4);
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollPos))
             {
                 foreach (var type in TransportSystemTypeExtensions.TransportInfoDict)

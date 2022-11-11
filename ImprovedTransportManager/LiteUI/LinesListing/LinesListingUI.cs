@@ -103,7 +103,7 @@ namespace ImprovedTransportManager.UI
                 using (new GUILayout.VerticalScope(GUILayout.Width(20)))
                 {
                     GUILayout.FlexibleSpace();
-                    GUIKwyttoCommons.SquareTextureButton(anyVisible ? m_eyeIcon : m_eyeSlashIcon, "", () => currentView.ForEach(line => line.ChangeLineVisibility(!anyVisible)), size: 20, style: m_HeaderLineStyle);
+                    GUIKwyttoCommons.SquareTextureButton2(anyVisible ? m_eyeIcon : m_eyeSlashIcon, "", () => currentView.ForEach(line => line.ChangeLineVisibility(!anyVisible)), size: 20, style: m_HeaderLineStyle);
                     GUILayout.FlexibleSpace();
                 }
                 HeaderButton("ID", 40, SortOrder.Id);
@@ -114,7 +114,7 @@ namespace ImprovedTransportManager.UI
                 HeaderButton(Str.itm_linesListingWindow_passengersColumnTitle, 40, SortOrder.Passengers);
                 HeaderButton(Str.itm_linesListingWindow_balanceColumnTitle, 80, SortOrder.Balance);
                 HeaderButton(Str.itm_linesListingWindow_activityColumnTitle, 80, SortOrder.Acitivty);
-                GUILayout.Space(40);
+                GUIKwyttoCommons.Space(40);
                 var rect = GUILayoutUtility.GetLastRect();
                 switch (GUIComboBox.ContextMenuRect(new Rect(rect.position, new Vector2(rect.width, 20)), m_optionsContext, "CTX_LINELIST", this, new GUIContent(m_settings), new GUIStyle(GUI.skin.button)
                 {
@@ -142,11 +142,11 @@ namespace ImprovedTransportManager.UI
                     {
                         if (line.IsHovered)
                         {
-                            GUILayout.Space(0);
+                            GUIKwyttoCommons.Space(0);
                             var rectBg = GUILayoutUtility.GetLastRect();
                             GUI.DrawTexture(new Rect(rectBg.position, new Vector2(size.x - 20, 25)), GUIKwyttoCommons.darkGreenTexture);
                         }
-                        GUIKwyttoCommons.SquareTextureButton(line.IsVisible() ? m_eyeIcon : m_eyeSlashIcon, "", () => line.ChangeLineVisibility(!line.IsVisible()), size: 20, style: m_HeaderLineStyle);
+                        GUIKwyttoCommons.SquareTextureButton2(line.IsVisible() ? m_eyeIcon : m_eyeSlashIcon, "", () => line.ChangeLineVisibility(!line.IsVisible()), size: 20, style: m_HeaderLineStyle);
                         GUILayout.Label("", m_LineBasicLabelStyle);
                         var rect = GUILayoutUtility.GetLastRect();
                         GUI.DrawTexture(rect, line.m_uiTextureColor);
@@ -181,8 +181,8 @@ namespace ImprovedTransportManager.UI
                         {
                             line.LineActivity = (LineActivityOptions)newIdx;
                         }
-                        GUIKwyttoCommons.SquareTextureButton(m_iconGoToLine, "", () => line.GoTo(), size: 20, style: m_HeaderLineStyle);
-                        GUIKwyttoCommons.SquareTextureButton(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
+                        GUIKwyttoCommons.SquareTextureButton2(m_iconGoToLine, "", () => line.GoTo(), size: 20, style: m_HeaderLineStyle);
+                        GUIKwyttoCommons.SquareTextureButton2(m_deleteIcon, "", () => line.Delete(), size: 20, style: m_redButton);
                     }
                     if (Event.current.type == EventType.Repaint)
                     {
@@ -195,7 +195,7 @@ namespace ImprovedTransportManager.UI
                             line.OnMouseLeave();
                         }
                     }
-                    GUILayout.Space(4);
+                    GUIKwyttoCommons.Space(4);
                 }
                 m_scrollLines = scroll.scrollPosition;
             }

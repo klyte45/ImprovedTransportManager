@@ -104,7 +104,7 @@ namespace ImprovedTransportManager.UI
             }
             #endregion
             #region total
-            GUILayout.Space(0);
+            GUIKwyttoCommons.Space(0);
             var rect = GUILayoutUtility.GetLastRect();
             GUI.DrawTexture(new Rect(rect.position + new Vector2(0, cachedCellStyle.padding.top), new Vector2(tabAreaSize.x, 40 + cachedCellStyle.padding.top + cachedCellStyle.padding.bottom)), GUIKwyttoCommons.darkGreenTexture);
             using (new GUILayout.HorizontalScope())
@@ -117,7 +117,7 @@ namespace ImprovedTransportManager.UI
                 }
             }
             #endregion
-            GUILayout.Space(8);
+            GUIKwyttoCommons.Space(8);
             using (var scroll = new GUILayout.ScrollViewScope(m_scroll))
             {
                 #region data
@@ -125,7 +125,7 @@ namespace ImprovedTransportManager.UI
                 {
                     if (i % 2 == 1)
                     {
-                        GUILayout.Space(0);
+                        GUIKwyttoCommons.Space(0);
                         var rect2 = GUILayoutUtility.GetLastRect();
                         GUI.DrawTexture(new Rect(rect2.position + new Vector2(0, cachedCellStyle.padding.top), new Vector2(tabAreaSize.x, 40 + cachedCellStyle.padding.top + cachedCellStyle.padding.bottom)), GUIKwyttoCommons.blackTexture);
                     }
