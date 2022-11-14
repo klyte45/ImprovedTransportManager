@@ -216,19 +216,37 @@ namespace ImprovedTransportManager.Utility
         public static DayOfWeek ReferenceWeekday => Singleton<SimulationManager>.instance.m_currentGameTime.DayOfWeek;
 
         //RESULT, PREV VAL, NEXT VAL, LERP, ISGROUP
-        public static Tuple<float, int, int, float, bool> GetBudgetMultiplierLineWithIndexes(ushort lineId, DayOfWeek refWeek, float refTime)
+        public static Tuple<float, ushort, ushort, float, bool> GetBudgetMultiplierLineWithIndexes(ushort lineId, DayOfWeek refWeek, float refTime)
         {
-            TimeableList<BudgetEntryItemXml> budgetConfig = ITMTransportLineSettings.Instance.GetWeekdayTable(lineId, refWeek);
-            if (budgetConfig is null || budgetConfig.Count == 0)
+            float lerpPos;
+            DayOfWeek selfRefDayOfWeek = refWeek;
+            uint selfHourRef = (uint)Mathf.FloorToInt(refTime);
+            uint otherHourRef;
+            DayOfWeek otherRefDayOfWeek;
+            if (refTime % 1 < 0.5f)
             {
-                var budget = TransportManager.instance.m_lines.m_buffer[lineId].m_budget;
-                return Tuple.New((float)budget, (int)budget, (int)budget, 0f, false);
+                otherHourRef = (selfHourRef + 23) % 24;
+                lerpPos = .5f - (refTime % 1);
+                otherRefDayOfWeek = otherHourRef > selfHourRef ? (DayOfWeek)(((int)selfRefDayOfWeek + 6) % 7) : selfRefDayOfWeek;
+            }
+            else
+            {
+                otherHourRef = (selfHourRef + 1) % 24;
+                lerpPos = (refTime % 1) - 0.5f;
+                otherRefDayOfWeek = otherHourRef < selfHourRef ? (DayOfWeek)(((int)selfRefDayOfWeek + 1) % 7) : selfRefDayOfWeek;
             }
 
-            Tuple<Tuple<BudgetEntryItemXml, int>, Tuple<BudgetEntryItemXml, int>, float> currentBudget = budgetConfig.GetAtHour(refTime);
-            var effectiveBudgetNow = Mathf.Lerp(currentBudget.First.First.Value, currentBudget.Second.First.Value, currentBudget.Third) / 100f;
+            var budgetConfigIn = ITMTransportLineSettings.Instance.GetWeekdayHourValue(lineId, selfRefDayOfWeek, selfHourRef);
+            if (budgetConfigIn == ushort.MaxValue)
+            {
+                var budget = TransportManager.instance.m_lines.m_buffer[lineId].m_budget;
+                return Tuple.New((float)budget, budget, budget, 0f, false);
+            }
+            var budgetConfigOut = ITMTransportLineSettings.Instance.GetWeekdayHourValue(lineId, otherRefDayOfWeek, otherHourRef);
 
-            return Tuple.New(effectiveBudgetNow, currentBudget.First.Second, currentBudget.Second.Second, currentBudget.Third, true);
+            var effectiveBudgetNow = Mathf.Lerp(budgetConfigIn, budgetConfigOut, lerpPos);
+
+            return Tuple.New(effectiveBudgetNow, budgetConfigIn, budgetConfigOut, lerpPos, true);
         }
 
         public static float GetEffectiveBudget(ushort transportLine) => GetEffectiveBudgetInt(transportLine) / 100f;
@@ -237,7 +255,7 @@ namespace ImprovedTransportManager.Utility
         {
             ref TransportLine tl = ref Singleton<TransportManager>.instance.m_lines.m_buffer[transportLine];
             TransportInfo info = tl.Info;
-            Tuple<float, int, int, float, bool> lineBudget = GetBudgetMultiplierLineWithIndexes(transportLine, ReferenceWeekday, ReferenceTimer);
+            var lineBudget = GetBudgetMultiplierLineWithIndexes(transportLine, ReferenceWeekday, ReferenceTimer);
             int budgetClass = lineBudget.Fifth ? 100 : Singleton<EconomyManager>.instance.GetBudget(info.m_class);
 
             var result = (int)(budgetClass * lineBudget.First);
@@ -284,7 +302,7 @@ namespace ImprovedTransportManager.Utility
             } while (citizensCount > 0 || !lineCfg.IsZeroed);
         }
 
-        public static int ProjectTargetVehicleCount(TransportInfo info, float lineLength, float budget) => Mathf.CeilToInt(budget * lineLength / info.m_defaultVehicleDistance);
+        public static int ProjectTargetVehicleCount(TransportInfo info, float lineLength, float budget) => Mathf.CeilToInt(budget * lineLength / info.m_defaultVehicleDistance * .01f);
         #endregion
     }
 }

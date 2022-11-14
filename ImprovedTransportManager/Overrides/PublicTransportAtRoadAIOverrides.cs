@@ -124,10 +124,10 @@ namespace ImprovedTransportManager.Overrides
         private static bool CheckDespawn(ushort vehicleID, ref Vehicle vehicleData, bool isEmpty, bool forceIfNotEmpty)
         {
             if (vehicleData.m_transportLine != 0)
-            {                
+            {
                 ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[vehicleData.m_transportLine];
                 int currentVehicleCount = tl.CountVehicles(vehicleData.m_transportLine);
-                int targetVehicleCount = TransportLineOverrides.NewCalculateTargetVehicleCount(vehicleData.m_transportLine) / 100;
+                int targetVehicleCount = TransportLineOverrides.NewCalculateTargetVehicleCount(vehicleData.m_transportLine);
                 if (currentVehicleCount > targetVehicleCount || !ITMTransportLineSettings.Instance.IsInfoAllowedToLine(vehicleData.Info, vehicleData.m_transportLine))
                 {
                     if (isEmpty)

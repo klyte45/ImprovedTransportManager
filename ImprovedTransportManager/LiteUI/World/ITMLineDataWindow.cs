@@ -285,6 +285,11 @@ namespace ImprovedTransportManager.UI
                 ITMLineVehicleSelectionWindow.Instance.Visible = true;
                 ITMLineDepotSelectionWindow.Instance.Visible = true;
                 ITMLineStopsWindow.Instance.Visible = true;
+                if (ITMCitySettings.Instance.expertMode)
+                {
+                    ITMLineCustomBudgetWindow.Instance.Visible = true;
+                    ITMLineCustomBudgetWindow.Instance.OnIdChanged(currentId);
+                }
                 Visible = true;
             }
         }
@@ -295,6 +300,7 @@ namespace ImprovedTransportManager.UI
             ITMLineVehicleSelectionWindow.Instance.Visible = false;
             ITMLineDepotSelectionWindow.Instance.Visible = false;
             ITMLineStopsWindow.Instance.Visible = false;
+            ITMLineCustomBudgetWindow.Instance.Visible = false;
         }
     }
 

@@ -26,7 +26,7 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => Str.itm_vehicleSelectWindow_title;
-        protected Vector2 StartSize => new Vector2(400, UIScaler.MaxHeight / 2);
+        protected Vector2 StartSize => new Vector2(400 * ResolutionMultiplier, UIScaler.MaxHeight / 2);
         protected Vector2 StartPosition => new Vector2(999999, 0);
 
         public static ITMLineVehicleSelectionWindow Instance { get; private set; }
@@ -49,7 +49,7 @@ namespace ImprovedTransportManager.UI
         private VehicleInfo m_currentPreview;
         private string m_currentPreviewTitle;
         private AVOPreviewRenderer m_previewRenderer;
-        private readonly Vector3 m_previewSize = new Vector3(300, 200);
+        private readonly Vector3 m_previewSize = new Vector3(300, 200) * ResolutionMultiplier;
         private Texture2D m_helpTex;
 
         public ITMLineVehicleSelectionWindow() : base()
@@ -82,10 +82,10 @@ namespace ImprovedTransportManager.UI
             }
             using (new GUILayout.HorizontalScope())
             {
-                GUILayout.Label(Str.itm_vehicleSelectWindow_assetNameOnOff, m_nobrLabel, GUILayout.MaxWidth(size.x - 190));
+                GUILayout.Label(Str.itm_vehicleSelectWindow_assetNameOnOff, m_nobrLabel, GUILayout.MaxWidth(size.x - 190 * ResolutionMultiplier));
                 GUILayout.FlexibleSpace();
-                GUILayout.Label(Str.itm_vehicleSelectWindow_capacity, m_rightLabel, GUILayout.Width(65));
-                GUILayout.Label(Str.itm_vehicleSelectWindow_costPeriod, m_rightLabel, GUILayout.Width(80));
+                GUILayout.Label(Str.itm_vehicleSelectWindow_capacity, m_rightLabel, GUILayout.Width(65 * ResolutionMultiplier));
+                GUILayout.Label(Str.itm_vehicleSelectWindow_costPeriod, m_rightLabel, GUILayout.Width(80 * ResolutionMultiplier));
                 GUIKwyttoCommons.SquareTextureButton2(m_helpTex, "", ShowHelp, size: 20);
             }
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollPos))
@@ -118,10 +118,10 @@ namespace ImprovedTransportManager.UI
                         }
                         if (GUIIntField.IntField(kvp.First + "_CAPEDIT", kvp.Third, 0, fieldWidth: 40) is int newCap && newCap != kvp.Third)
                         {
-                            ITMAssetSettings.Instance.SetVehicleCapacity(kvp.First, newCap);
+                            ITMAssetSettings.Instance.SetVehicleCapacity(kvp.Second, newCap);
                             kvp.Third = kvp.Second.GetCapacity();
                         }
-                        GUILayout.Label((kvp.Fourth.GetEffectivePassengerCapacityCost() * kvp.Third).ToGameCurrencyFormat(), m_rightLabel, GUILayout.Width(90));
+                        GUILayout.Label((kvp.Fourth.GetEffectivePassengerCapacityCost() * kvp.Third).ToGameCurrencyFormat(), m_rightLabel, GUILayout.Width(90 * ResolutionMultiplier));
                     }
                 }
                 m_scrollPos = scroll.scrollPosition;

@@ -76,12 +76,12 @@ namespace ImprovedTransportManager.Data
         {
             if (IsCustomCapacity(vehicle.name))
             {
-                SetVehicleCapacity(vehicle.name, GetCustomCapacity(vehicle.name));
+                SetVehicleCapacity(vehicle.m_vehicleAI, GetCustomCapacity(vehicle.name));
                 foreach (var trailer in vehicle.m_trailers)
                 {
                     if (IsCustomCapacity(trailer.m_info.name))
                     {
-                        SetVehicleCapacity(trailer.m_info.name, GetCustomCapacity(trailer.m_info.name));
+                        SetVehicleCapacity(trailer.m_info.m_vehicleAI, GetCustomCapacity(trailer.m_info.name));
                     }
                 }
             }
@@ -92,9 +92,8 @@ namespace ImprovedTransportManager.Data
             return capacity <= 0 ? m_defaultCapacities[name] : capacity;
         }
 
-        public void SetVehicleCapacity(string assetName, int newCapacity)
+        public void SetVehicleCapacity(VehicleInfo vehicle, int newCapacity)
         {
-            VehicleInfo vehicle = PrefabCollection<VehicleInfo>.FindLoaded(assetName);
             if (vehicle != null && !VehicleUtils.IsTrailer(vehicle))
             {
                 Dictionary<string, MutableTuple<float, int>> assetsCapacitiesPercentagePerTrailer = GetCapacityRelative(vehicle);

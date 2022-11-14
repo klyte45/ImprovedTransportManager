@@ -1,4 +1,5 @@
-﻿using ImprovedTransportManager.Localization;
+﻿using ImprovedTransportManager;
+using ImprovedTransportManager.Localization;
 using ImprovedTransportManager.UI;
 using Kwytto.Localization;
 using System;
@@ -41,6 +42,14 @@ namespace VehicleSkins.Localization
                         case VehicleShowDataType.ProfitAllTime: return Str.itm_Enum__VehicleShowDataType_ProfitAllTime;
                         case VehicleShowDataType.ProfitLastWeek: return Str.itm_Enum__VehicleShowDataType_ProfitLastWeek;
                         case VehicleShowDataType.ProfitCurrentWeek: return Str.itm_Enum__VehicleShowDataType_ProfitCurrentWeek;
+                    }
+                    break;
+                case BudgetEntryXml.BudgetType t:
+                    switch (t)
+                    {
+                        case BudgetEntryXml.BudgetType.Fixed: return Str.itm_Enum__BudgetType_Fixed;
+                        case BudgetEntryXml.BudgetType.PerHour: return Str.itm_Enum__BudgetType_PerHour;
+                        case BudgetEntryXml.BudgetType.PerHourAndWeek: return Str.itm_Enum__BudgetType_PerHourAndWeek;
                     }
                     break;
             }

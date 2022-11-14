@@ -15,7 +15,7 @@ namespace ImprovedTransportManager.UI
 
         protected override string InitTitle => Str.itm_nearLines_title;
 
-        protected override Vector2 StartSize { get; } = new Vector2(450, 400);
+        protected override Vector2 StartSize { get; } = new Vector2(450, 400) * ResolutionMultiplier;
 
         protected override Vector2 StartPosition => new Vector2(UIScaler.MaxWidth * .75f, UIScaler.MaxHeight * .75f) - (StartSize / 2);
         private Tuple<UIComponent, BuildingWorldInfoPanel>[] ptPanels;
@@ -44,20 +44,20 @@ namespace ImprovedTransportManager.UI
             if (linesFound.Count == 0)
             {
                 var content = new GUIContent(Str.itm_nearLines_noNearLinesHere);
-                windowRect.height = TitleBarHeight + GUI.skin.label.CalcHeight(content, 200) + 3;
+                windowRect.height = TitleBarHeight + GUI.skin.label.CalcHeight(content, 200 * ResolutionMultiplier) + 3;
                 windowRect.width = 200;
                 GUILayout.Label(content);
                 return;
             }
-            windowRect.height = Mathf.Min(600, TitleBarHeight + (60 * Mathf.Ceil(linesFound.Count / 3f)));
-            windowRect.width = Mathf.Min(450, 150 * linesFound.Count);
+            windowRect.height = Mathf.Min(600 * ResolutionMultiplier, TitleBarHeight + (60 * Mathf.Ceil(linesFound.Count / 3f)));
+            windowRect.width = Mathf.Min(450 * ResolutionMultiplier, 150 * ResolutionMultiplier * linesFound.Count);
 
             var idx = 0;
             using (var scroll = new GUILayout.ScrollViewScope(m_scrollPos))
             {
                 foreach (var line in linesFound)
                 {
-                    var targetRect = new Rect(idx % 3 * 150, idx / 3 * 60, 150, 60);
+                    var targetRect = new Rect(idx % 3 * 150 * ResolutionMultiplier, idx / 3 * 60 * ResolutionMultiplier, 150 * ResolutionMultiplier, 60 * ResolutionMultiplier);
 
                     if (GUI.Button(targetRect, TransportManager.instance.GetLineName(line), m_btnStyle))
                     {

@@ -160,9 +160,9 @@ namespace ImprovedTransportManager.UI
                 BudgetEffectiveDay = Mathf.FloorToInt(dayB.First * .01f * (dayB.Fifth ? 100 : BudgetCategoryDay));
                 BudgetEffectiveNight = Mathf.FloorToInt(nightB.First * .01f * (nightB.Fifth ? 100 : BudgetCategoryNight));
                 m_vehiclesCount = refLine.CountVehicles(m_id.TransportLine);
-                VehiclesTargetNow = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNow * .01f);
-                VehiclesTargetDay = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveDay * .01f);
-                VehiclesTargetNight = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNight * .01f);
+                VehiclesTargetNow = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNow);
+                VehiclesTargetDay = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveDay);
+                VehiclesTargetNight = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNight);
                 m_lengthKm = refLine.m_totalLength;
                 ITMTransportLineStatusesManager.Instance.GetLastWeekIncomeAndExpensesForLine(m_id.TransportLine, out var inc, out var exp);
                 m_lineFinancesBalance = (inc - exp) * .01f;

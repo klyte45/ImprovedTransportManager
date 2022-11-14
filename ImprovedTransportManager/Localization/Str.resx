@@ -627,4 +627,53 @@ Recomended for experenced players only</value>
   <data name="itm_lineView_budgetUsingGroupTemplate" xml:space="preserve">
     <value>Using budget group {0}. Click to reset.</value>
   </data>
+  <data name="itm_budgetCustomWindow_budgetTimetableResume" xml:space="preserve">
+    <value>Timetable resume</value>
+  </data>
+  <data name="itm_budgetCustomWindow_budgetType" xml:space="preserve">
+    <value>Setting type</value>
+  </data>
+  <data name="itm_budgetCustomWindow_defaultGroupDescription" xml:space="preserve">
+    <value>The default group is edited in the line details window and don't support special budget rules. Select a group to use budget by hour or hour and day of week.</value>
+  </data>
+  <data name="itm_budgetCustomWindow_defaultGroupText" xml:space="preserve">
+    <value>Default game budget settings</value>
+  </data>
+  <data name="itm_budgetCustomWindow_groupNameTemplate" xml:space="preserve">
+    <value>Budget group {0}</value>
+    <comment>{0} will be a number (1-32)</comment>
+  </data>
+  <data name="itm_budgetCustomWindow_groupsBudgets" xml:space="preserve">
+    <value>Group budgets' subgroups</value>
+  </data>
+  <data name="itm_budgetCustomWindow_groupsEachHour" xml:space="preserve">
+    <value>Group budget subgroups per hour</value>
+  </data>
+  <data name="itm_budgetCustomWindow_helpContent" xml:space="preserve">
+    <value>Budget groups are budgets shared between multiple lines. ITM supports up to 26 groups per transport type.
+The budget groups can have 3 different settings:
+&lt;color=yellow&gt;- Fixed:&lt;/color&gt; A fixed budget;
+&lt;color=yellow&gt;- Per hour:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer;
+&lt;color=yellow&gt;- Per hour and day of week:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer, but can have special tables for some days of week. Makes sense to use only with RealTime.</value>
+  </data>
+  <data name="itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat" xml:space="preserve">
+    <value>Lines using same group: {0}</value>
+    <comment>Will be on a button that will show all lines when clicked; {0} is the lines count</comment>
+  </data>
+  <data name="itm_budgetCustomWindow_transitionBudgetLabel" xml:space="preserve">
+    <value>{0}%→{1}%</value>
+    <comment>Used in timetable view to show the period of transition between budgets ({0} is the previous, {1} is the next budget)</comment>
+  </data>
+  <data name="itm_Enum__BudgetType_Fixed" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="itm_Enum__BudgetType_PerHour" xml:space="preserve">
+    <value>Per hour</value>
+  </data>
+  <data name="itm_Enum__BudgetType_PerHourAndWeek" xml:space="preserve">
+    <value>Per hour and weekday</value>
+  </data>
+  <data name="itm_budgetCustomWindow_title" xml:space="preserve">
+    <value>Budget advanced settings (Expert)</value>
+  </data>
 </root>

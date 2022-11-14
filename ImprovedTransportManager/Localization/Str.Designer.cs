@@ -70,6 +70,109 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Timetable resume.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_budgetTimetableResume {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_budgetTimetableResume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Setting type.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_budgetType {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_budgetType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The default group is edited in the line details window and don&apos;t support special budget rules. Select a group to use budget by hour or hour and day of week..
+        /// </summary>
+        internal static string itm_budgetCustomWindow_defaultGroupDescription {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_defaultGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Default game budget settings.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_defaultGroupText {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_defaultGroupText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Budget group {0}.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_groupNameTemplate {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_groupNameTemplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Group budgets&apos; subgroups.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_groupsBudgets {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_groupsBudgets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Group budget subgroups per hour.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_groupsEachHour {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_groupsEachHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Budget groups are budgets shared between multiple lines. ITM supports up to 26 groups per transport type.
+        ///The budget groups can have 3 different settings:
+        ///&lt;color=yellow&gt;- Fixed:&lt;/color&gt; A fixed budget;
+        ///&lt;color=yellow&gt;- Per hour:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer;
+        ///&lt;color=yellow&gt;- Per hour and day of week:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer, but can have special tables for some days of week. Makes sense to use only with RealTime..
+        /// </summary>
+        internal static string itm_budgetCustomWindow_helpContent {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_helpContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines using same group: {0}.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Budget advanced settings (Expert).
+        /// </summary>
+        internal static string itm_budgetCustomWindow_title {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0}%→{1}%.
+        /// </summary>
+        internal static string itm_budgetCustomWindow_transitionBudgetLabel {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_transitionBudgetLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a City settings.
         /// </summary>
         internal static string itm_citySettings_title {
@@ -147,6 +250,33 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_depotSelectWindow_title {
             get {
                 return ResourceManager.GetString("itm_depotSelectWindow_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Fixed.
+        /// </summary>
+        internal static string itm_Enum__BudgetType_Fixed {
+            get {
+                return ResourceManager.GetString("itm_Enum__BudgetType_Fixed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Per hour.
+        /// </summary>
+        internal static string itm_Enum__BudgetType_PerHour {
+            get {
+                return ResourceManager.GetString("itm_Enum__BudgetType_PerHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Per hour and weekday.
+        /// </summary>
+        internal static string itm_Enum__BudgetType_PerHourAndWeek {
+            get {
+                return ResourceManager.GetString("itm_Enum__BudgetType_PerHourAndWeek", resourceCulture);
             }
         }
         

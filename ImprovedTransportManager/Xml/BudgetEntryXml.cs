@@ -1,10 +1,14 @@
-﻿using Kwytto.Utils;
+﻿using HarmonyLib;
+using Kwytto.Utils;
+using MonoMod.Utils;
 using System;
+using System.Linq;
 using System.Xml.Serialization;
+using UnityEngine;
 
 namespace ImprovedTransportManager
 {
-    public class BudgetEntryXml 
+    public class BudgetEntryXml
     {
         public enum BudgetType
         {
@@ -16,57 +20,96 @@ namespace ImprovedTransportManager
         [XmlAttribute("type")]
         public BudgetType Type { get; set; }
 
-        private uint baseBudget = 100;
-
-        private TimeableList<BudgetEntryItemXml> m_cachedBaseBudgetHour;
-        private TimeableList<BudgetEntryItemXml> CachedBaseBudgetHour
+        [XmlElement("budgetGroups")]
+        public ushort[] BudgetGroups
         {
-            get
+            get => budgetGroups; set
             {
-                if (m_cachedBaseBudgetHour is null)
+                budgetGroups = value.Length == 0 ? new ushort[] { 100 } : value.Select(x => (ushort)Mathf.Clamp(x, 0, 500)).ToArray();
+            }
+        }
+        private byte[] defaultValue = new byte[24];
+
+        [XmlElement("defaultBudgetGroups")]
+        public byte[] DefaultValue
+        {
+            get => defaultValue; set
+            {
+                if (defaultValue?.Length != 24)
                 {
-                    m_cachedBaseBudgetHour = new TimeableList<BudgetEntryItemXml>();
-                    m_cachedBaseBudgetHour.Add(new BudgetEntryItemXml { Value = BaseBudget });
+                    defaultValue = new byte[24];
                 }
-                return m_cachedBaseBudgetHour;
+                else
+                {
+                    defaultValue = value;
+                }
             }
         }
 
-        [XmlAttribute("baseBudget")]
-        public uint BaseBudget
+        [XmlElement("overrideBudgetGroups")]
+        public SimpleNonSequentialList<byte[]> OverrideValues
         {
-            get => baseBudget; set
+            get => overrideValues; set
             {
-                baseBudget = value;
-                m_cachedBaseBudgetHour = null;
+                overrideValues = new SimpleNonSequentialList<byte[]>();
+                overrideValues.AddRange(value.Where(x => x.Value.Length == 24 && x.Key >= 0 && x.Key <= 6).ToDictionary(x => x.Key, x => x.Value));
             }
         }
 
-        [XmlElement("default")]
-        public TimeableList<BudgetEntryItemXml> DefaultValue = new TimeableList<BudgetEntryItemXml>();
+        internal ushort BaseBudget { get => BudgetGroups[0]; set => BudgetGroups[0] = value; }
 
-        [XmlElement("overrides")]
-        public SimpleNonSequentialList<TimeableList<BudgetEntryItemXml>> OverrideValues = new SimpleNonSequentialList<TimeableList<BudgetEntryItemXml>>();
+        private SimpleNonSequentialList<byte[]> overrideValues = new SimpleNonSequentialList<byte[]>();
 
-        internal TimeableList<BudgetEntryItemXml> GetWeekDayTable(DayOfWeek referenceWeekday)
+        private ushort[] budgetGroups = new ushort[] { 100 };
+
+        internal ushort GetBudgetAtWeekHour(DayOfWeek referenceWeekday, uint refHour)
         {
+            if (refHour >= 24)
+            {
+                return ushort.MaxValue;
+            }
+            byte targetGroup;
             switch (Type)
             {
-                case BudgetType.Fixed: return CachedBaseBudgetHour;
+                case BudgetType.Fixed: return BudgetGroups[0];
                 case BudgetType.PerHour:
-                    return DefaultValue;
+                    targetGroup = DefaultValue[refHour];
+                    break;
                 case BudgetType.PerHourAndWeek:
-                    if (OverrideValues.TryGetValue((long)referenceWeekday, out var list))
-                    {
-                        return list;
-                    }
-                    return DefaultValue;
+                    targetGroup = OverrideValues.TryGetValue((long)referenceWeekday, out var list) ? list[refHour] : DefaultValue[refHour];
+                    break;
+                default:
+                    return ushort.MaxValue;
             }
-            return null;
+            return targetGroup < BudgetGroups.Length ? BudgetGroups[targetGroup] : BudgetGroups[0];
+        }
+
+        internal void AddGroup(ushort value)
+        {
+            budgetGroups = budgetGroups.AddItem(value).ToArray();
+        }
+
+        internal void RemoveGroup(int idx)
+        {
+            budgetGroups = budgetGroups.Where((_, i) => i != idx).ToArray();
+            defaultValue = defaultValue.Select(x => (byte)(x == idx ? 0 : x > idx ? x - 1 : x)).ToArray();
+            foreach (var key in overrideValues.Keys.ToArray())
+            {
+                overrideValues[key] = overrideValues[key].Select(x => (byte)(x == idx ? 0 : x > idx ? x - 1 : x)).ToArray();
+            }
+        }
+        internal void IncrementGroupAt(int v, int i)
+        {
+            if (v == -1) //Base
+            {
+                defaultValue[i]++;
+                defaultValue[i] %= (byte)budgetGroups.Length;
+            }
+            else if (overrideValues.ContainsKey(v))
+            {
+                overrideValues[v][i]++;
+                overrideValues[v][i] %= (byte)budgetGroups.Length;
+            }
         }
     }
-
-    public class BudgetEntryItemXml : UintValueHourEntryXml<BudgetEntryItemXml> { }
-
-
 }

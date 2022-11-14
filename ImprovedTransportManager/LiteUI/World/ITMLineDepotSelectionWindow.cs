@@ -25,7 +25,7 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => Str.itm_depotSelectWindow_title;
-        protected Vector2 StartSize => new Vector2(400, UIScaler.MaxHeight / 2);
+        protected Vector2 StartSize => new Vector2(400 * ResolutionMultiplier, UIScaler.MaxHeight / 2);
         protected Vector2 StartPosition => new Vector2(999999, UIScaler.MaxHeight / 2);
 
         public static ITMLineDepotSelectionWindow Instance { get; private set; }
@@ -50,7 +50,7 @@ namespace ImprovedTransportManager.UI
             InitStyles();
             using (new GUILayout.HorizontalScope())
             {
-                var selectionGroup = GUIComboBox.Box(m_currentLineSettings.AssetGroup, m_availableGroups, "DepotGroupPicker_line", this, size.x);
+                var selectionGroup = GUIComboBox.Box(m_currentLineSettings.DepotGroup, m_availableGroups, "DepotGroupPicker_line", this, size.x);
                 if (selectionGroup != m_currentLineSettings.DepotGroup)
                 {
                     m_currentLineSettings.DepotGroup = (byte)selectionGroup;

@@ -28,11 +28,11 @@ namespace ImprovedTransportManager.Overrides
 
             #region Budget Override Hooks
 
-            //MethodInfo TranspileSimulationStepLine = typeof(TransportLineOverrides).GetMethod("TranspileSimulationStepLine", ReflectionUtils.allFlags);
-            //MethodInfo TranspileSimulationStepAI = typeof(TransportLineOverrides).GetMethod("TranspileSimulationStepAI", ReflectionUtils.allFlags);
-            //LogUtils.DoLog("Loading SimulationStepPre Hook");
-            //AddRedirect(typeof(TransportLine).GetMethod("SimulationStep", ReflectionUtils.allFlags), null, null, TranspileSimulationStepLine);
-            //AddRedirect(typeof(TransportLineAI).GetMethod("SimulationStep", ReflectionUtils.allFlags, null, new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType() }, null), null, null, TranspileSimulationStepAI);
+            MethodInfo TranspileSimulationStepLine = typeof(TransportLineOverrides).GetMethod("TranspileSimulationStepLine", ReflectionUtils.allFlags);
+            MethodInfo TranspileSimulationStepAI = typeof(TransportLineOverrides).GetMethod("TranspileSimulationStepAI", ReflectionUtils.allFlags);
+            LogUtils.DoLog("Loading SimulationStepPre Hook");
+            AddRedirect(typeof(TransportLine).GetMethod("SimulationStep", ReflectionUtils.allFlags), null, null, TranspileSimulationStepLine);
+            AddRedirect(typeof(TransportLineAI).GetMethod("SimulationStep", ReflectionUtils.allFlags, null, new Type[] { typeof(ushort), typeof(NetNode).MakeByRefType() }, null), null, null, TranspileSimulationStepAI);
             #endregion
 
             #region Ticket Override Hooks
@@ -352,8 +352,8 @@ namespace ImprovedTransportManager.Overrides
         }
         #endregion
 
-        #region Vehicle going back on terminal stop only
-        public static bool PreventShouldReturnToSource()
+        #region Vehicle going back on terminal stop only or if empty
+        public static bool PreventShouldReturnToSource(VehicleAI __instance, ushort vehicleID, ref Vehicle data)
         {
             return false;
         }
@@ -364,31 +364,31 @@ namespace ImprovedTransportManager.Overrides
             for (int i = 1; i < inst.Count - 3; i++)
             {
                 if (
-                    inst[i - 1].opcode == OpCodes.Br
-                    && inst[i].opcode == OpCodes.Ldloc_S
+                     inst[i].opcode == OpCodes.Ldloc_S
                     && inst[i].operand is LocalBuilder lb1
-                    && lb1.LocalIndex == 11
-                    && inst[i + 1].opcode == OpCodes.Ldloc_S
-                    && inst[i + 1].operand is LocalBuilder lb2
-                    && lb2.LocalIndex == 36
-                    && inst[i + 2].opcode == OpCodes.Ble
+                    && lb1.LocalIndex == 41
+                    && inst[i + 1].opcode == OpCodes.Brfalse
              )
                 {
                     LogUtils.DoLog($"Found @ line {i}");
-                    var targetLabel = (Label)inst[i + 2].operand;
-                    var labelsToAdd = new List<Label>();
-                    while (!inst[i].labels.Contains(targetLabel))
+                    inst.InsertRange(i + 2, new[]
                     {
-                        labelsToAdd.AddRange(inst[i].labels);
-                        inst.RemoveAt(i);
-                    }
-                    LogUtils.DoLog($"Moved labels: {labelsToAdd.Count}");
-                    inst[i].labels.AddRange(labelsToAdd);
+                        inst[i],
+                        new CodeInstruction(OpCodes.Call, typeof(TransportLineOverrides).GetMethod("IsEmpty",ReflectionUtils.allFlags)),
+                        inst[i+1]
+                    });
                     break;
                 }
             }
             LogUtils.PrintMethodIL(inst);
             return inst;
+        }
+
+        private static bool IsEmpty(ushort vehicleId)
+        {
+            ref Vehicle data = ref VehicleManager.instance.m_vehicles.m_buffer[vehicleId];
+            data.Info.m_vehicleAI.GetBufferStatus(vehicleId, ref data, out _, out var passengers, out _);
+            return passengers == 0;
         }
         #endregion
     }

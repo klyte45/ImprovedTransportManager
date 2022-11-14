@@ -189,21 +189,37 @@ namespace ImprovedTransportManager.Data
             return depot;
         }
 
-        internal TimeableList<BudgetEntryItemXml> GetWeekdayTable(ushort lineId, DayOfWeek referenceWeekday)
+        internal ushort GetWeekdayHourValue(ushort lineId, DayOfWeek referenceWeekday, uint fullHour)
         {
             var config = SafeGetLine(lineId);
             if (config.BudgetGroup == 0)
             {
-                return null;
+                return ushort.MaxValue;
             }
             var tst = FromLineId(lineId, false);
-            if (GroupsBudgetList.TryGetValue(tst, out var groupList) && groupList.TryGetValue(config.BudgetGroup, out var group))
-            {
-                return group.GetWeekDayTable(referenceWeekday);
-            }
-            return null;
+            return GroupsBudgetList.TryGetValue(tst, out var groupList) && groupList.TryGetValue(config.BudgetGroup, out var group)
+                ? group.GetBudgetAtWeekHour(referenceWeekday, fullHour)
+                : ushort.MaxValue;
         }
         #endregion
 
+        #region Budget
+        public BudgetEntryXml GetBudgetGroup(TransportSystemType type, int group)
+        {
+            if (group == 0)
+            {
+                return null;
+            }
+            if (!GroupsBudgetList.TryGetValue(type, out var groups))
+            {
+                GroupsBudgetList[type] = groups = new SimpleNonSequentialList<BudgetEntryXml>();
+            }
+            if (!groups.TryGetValue(group, out var groupData))
+            {
+                groups[group] = groupData = new BudgetEntryXml();
+            }
+            return groupData;
+        }
+        #endregion
     }
 }
