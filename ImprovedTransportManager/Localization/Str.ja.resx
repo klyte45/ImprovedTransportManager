@@ -118,100 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
-    <value>Balance</value>
+    <value>残高</value>
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
-    <value>Bdgt.</value>
+    <value>予算</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <value>路線の種類 &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - 路線設定の合計: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>Line Name</value>
+    <value>路線名</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
-    <value>Pass.</value>
+    <value>乗客</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Stops</value>
+    <value>停車</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
-    <value>There are no lines in this city!</value>
+    <value>都市に路線がありません！</value>
   </data>
   <data name="itm_linesListingWindow_tilte" xml:space="preserve">
-    <value>Public Transport Lines</value>
+    <value>公共交通の路線</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>Veh.</value>
+    <value>車両</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
-    <value>Day:</value>
+    <value>昼間:</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>路線を削除</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
-    <value>Line Activity</value>
+    <value>路線の稼働</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>Line Budget (%)</value>
+    <value>路線の予算 (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
-    <value>Line Color</value>
+    <value>路線カラー</value>
   </data>
   <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
-    <value>Internal line number</value>
+    <value>内部の路線番号</value>
   </data>
   <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
-    <value>Night:</value>
+    <value>夜間:</value>
   </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>複数の車両スキンが追加や選択が可能です</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Disabled</value>
+    <value>無効化</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Day</value>
+    <value>昼間</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Night</value>
+    <value>夜間</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Day and Night</value>
+    <value>昼間と夜間</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>Disab.</value>
+    <value>無効</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>昼間</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>夜間</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>昼&amp;夜</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
-    <value>Activ.</value>
+    <value>稼働</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>大人</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
-    <value>Budget View</value>
+    <value>予算ビュー</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Children</value>
+    <value>子供</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
     <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
