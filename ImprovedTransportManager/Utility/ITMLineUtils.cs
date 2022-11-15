@@ -303,6 +303,7 @@ namespace ImprovedTransportManager.Utility
         }
 
         public static int ProjectTargetVehicleCount(TransportInfo info, float lineLength, float budget) => Mathf.CeilToInt(budget * lineLength / info.m_defaultVehicleDistance * .01f);
+        public static float ProjectBudgetPercentagePerVehicle(TransportInfo info, float lineLength) => info.m_defaultVehicleDistance / lineLength;
         #endregion
     }
 }

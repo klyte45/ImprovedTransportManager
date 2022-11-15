@@ -101,7 +101,7 @@ namespace ImprovedTransportManager.UI
                 ref TransportLine tl = ref TransportManager.instance.m_lines.m_buffer[CurrentLine];
                 var lineData = ITMTransportLineSettings.Instance.SafeGetLine(CurrentLine);
                 m_currentLineData.GetUpdated();
-                GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.m_vehiclesCount, m_currentLineData.TripsSaved), m_centerTextLabel);
+                GUILayout.Label(string.Format(Str.itm_lineView_distanceStops, m_currentLineData.m_lengthKm, m_currentLineData.m_stopsCount, m_currentLineData.m_vehiclesCount, m_currentLineData.VehiclesTargetNow, m_currentLineData.TripsSaved), m_centerTextLabel);
                 GUIKwyttoCommons.Space(4);
                 using (new GUILayout.HorizontalScope())
                 {
@@ -149,6 +149,7 @@ namespace ImprovedTransportManager.UI
                             m_currentLineData.SetBudgetGroup(0);
                         }
                     }
+                    GUILayout.Label(string.Format(Str.itm_lineView_lineBudgetPercentToVehicles, m_currentLineData.BudgetPercentagePerVehicle), m_centerTextLabel);
 
                     if (m_currentLineData.FreeStops > 0)
                     {

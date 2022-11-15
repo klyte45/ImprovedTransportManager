@@ -30,11 +30,16 @@ namespace ImprovedTransportManager.UI
         public static ITMLineCustomBudgetWindow Instance { get; private set; }
 
         private string[] m_availableGroups = new[] { Str.itm_budgetCustomWindow_defaultGroupText }.Concat(new int[32].Select((_, i) => string.Format(Str.itm_budgetCustomWindow_groupNameTemplate, i + 1))).ToArray();
-        private static readonly string[] m_availableCustomTypesOptions = EnumI18nExtensions.GetAllValuesI18n<BudgetEntryXml.BudgetType>();
-        private static readonly BudgetEntryXml.BudgetType[] m_availableCustomType = Enum.GetValues(typeof(BudgetEntryXml.BudgetType)).Cast<BudgetEntryXml.BudgetType>().ToArray();
+        private static readonly BudgetEntryXml.BudgetType[] m_availableCustomType = new[]
+        {
+            BudgetEntryXml.BudgetType.Fixed,
+            BudgetEntryXml.BudgetType.PerHour,
+        };
+        private static readonly string[] m_availableCustomTypesOptions = m_availableCustomType.Select(x => x.ValueToI18n()).ToArray();
         private ITMTransportLineXml m_currentLineSettings;
         private ushort[] m_linesUsingSameGroup;
         private string[] m_linesUsingSameGroupNames;
+        private string[] m_cachedGroupsValues;
         private ushort m_currentLine;
         private Vector2 m_scrollGroups, m_scrollTimetable;
 
@@ -60,22 +65,28 @@ namespace ImprovedTransportManager.UI
                     OnChangeBudgetGroup(selectionGroup);
                 }
             }
-            if (m_linesUsingSameGroup.Length > 0)
+            if (m_currentLineSettings.BudgetGroup == 0)
+            {
+                GUILayout.Label(Str.itm_budgetCustomWindow_defaultGroupDescription);
+                return;
+            }
+            else if (m_linesUsingSameGroup.Length > 0)
             {
                 if (GUILayout.Button(string.Format(Str.itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat, m_linesUsingSameGroup.Length)))
                 {
-
+                    KwyttoDialog.ShowModal(new BindProperties
+                    {
+                        buttons = KwyttoDialog.basicOkButtonBar,
+                        message = string.Format(Str.itm_budgetCustomWindow_linesSharingGroupHeader, m_availableGroups[m_currentLineSettings.BudgetGroup]),
+                        scrollText = "\t- " + String.Join("\n\t-", (m_linesUsingSameGroupNames = m_linesUsingSameGroupNames ?? FillLinesUsingGroup()))
+                    });
                 }
             }
             else
             {
                 GUILayout.Label(string.Format(Str.itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat, 0), m_nobrLabel);
             }
-            if (m_currentLineSettings.BudgetGroup == 0)
-            {
-                GUILayout.Label(Str.itm_budgetCustomWindow_defaultGroupDescription);
-                return;
-            }
+
             GUIKwyttoCommons.AddComboBox(size.x, Str.itm_budgetCustomWindow_budgetType, m_currentGroupData.Type, m_availableCustomTypesOptions, m_availableCustomType, this, (x) => m_currentGroupData.Type = x);
             switch (m_currentGroupData.Type)
             {
@@ -91,9 +102,10 @@ namespace ImprovedTransportManager.UI
                     {
                         var offsetX = btnWidth * i;
                         GUI.Label(new Rect(refPos + new Vector2(offsetX, 0), new Vector2(btnWidth, 20 * ResolutionMultiplier)), $"{i}", m_centerLabel);
-                        if (GUI.Button(new Rect(refPos + new Vector2(offsetX, 25), new Vector2(btnWidth, 35 * ResolutionMultiplier)), $"{(char)('A' + m_currentGroupData.DefaultValue[i])}\n{m_currentGroupData.BudgetGroups[m_currentGroupData.DefaultValue[i]]}", m_selectionBtnUns))
+                        var selectedOption = GUIComboBox.ContextMenuRect(new Rect(refPos + new Vector2(offsetX, 25), new Vector2(btnWidth, 35 * ResolutionMultiplier)), GetGroupOptions(), $"BUDGET_GROUPSEL_{i}", this, new GUIContent($"{(char)('A' + m_currentGroupData.DefaultValue[i])}\n{m_currentGroupData.BudgetGroups[m_currentGroupData.DefaultValue[i]]}"), m_selectionBtnUns);
+                        if (selectedOption >= 0)
                         {
-                            m_currentGroupData.IncrementGroupAt(-1, i);
+                            m_currentGroupData.DefaultValue[i] = (byte)selectedOption;
                             m_currentEditingGroupTimeTableLines.Clear();
                         }
                     }
@@ -122,6 +134,7 @@ namespace ImprovedTransportManager.UI
                                         if (m_currentGroupData.BudgetGroups.Length > 1 && GUILayout.Button("X"))
                                         {
                                             m_currentGroupData.RemoveGroup(idx);
+                                            m_cachedGroupsValues = null;
                                         }
                                     }
                                 }
@@ -151,10 +164,22 @@ namespace ImprovedTransportManager.UI
             }
         }
 
+        private string[] GetGroupOptions()
+        {
+            if (m_cachedGroupsValues is null)
+            {
+                m_cachedGroupsValues = m_currentGroupData.BudgetGroups.Select((x, i) => $"{(char)('A' + i)}: {x}%").ToArray();
+            }
+            return m_cachedGroupsValues;
+        }
+
+        private string[] FillLinesUsingGroup() => m_linesUsingSameGroup.Select(x => TransportManager.instance.GetLineName(x)).ToArray();
+
         private void SetBudgetGroupForHourDefault(int idx, int? x)
         {
             m_currentGroupData.BudgetGroups[idx] = (ushort)x.Value;
             m_currentEditingGroupTimeTableLines.Clear();
+            m_cachedGroupsValues = null;
         }
 
         private void UpdateTimeTableLines()
@@ -214,6 +239,7 @@ namespace ImprovedTransportManager.UI
         {
             m_currentGroupData = ITMTransportLineSettings.Instance.GetBudgetGroup(m_currentLineSettings.CachedTransportType, m_currentLineSettings.BudgetGroup);
             m_linesUsingSameGroup = ITMTransportLineSettings.Instance.Lines.Where(x => x.Value.BudgetGroup == m_currentLineSettings.BudgetGroup && x.Value.CachedTransportType == m_currentLineSettings.CachedTransportType && x.Key != m_currentLine).Select(x => (ushort)x.Key).ToArray();
+            m_linesUsingSameGroupNames = null;
             m_currentEditingGroupTimeTableLines.Clear();
         }
 

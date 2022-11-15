@@ -58,6 +58,7 @@ namespace ImprovedTransportManager.UI
         public int BudgetCategoryNow { get; private set; }
         public int BudgetCategoryDay { get; private set; }
         public int BudgetCategoryNight { get; private set; }
+        public float BudgetPercentagePerVehicle { get; private set; }
         public int BudgetSelf
         {
             get => m_budgetSelf;
@@ -169,6 +170,7 @@ namespace ImprovedTransportManager.UI
                 VehiclesTargetDay = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveDay);
                 VehiclesTargetNight = ITMLineUtils.ProjectTargetVehicleCount(refLine.Info, refLine.m_totalLength, BudgetEffectiveNight);
                 m_lengthKm = refLine.m_totalLength;
+                BudgetPercentagePerVehicle = ITMLineUtils.ProjectBudgetPercentagePerVehicle(refLine.Info, refLine.m_totalLength);
                 ITMTransportLineStatusesManager.Instance.GetLastWeekIncomeAndExpensesForLine(m_id.TransportLine, out var inc, out var exp);
                 m_lineFinancesBalance = (inc - exp) * .01f;
                 Broken = (refLine.m_flags & TransportLine.Flags.Complete) == 0;

@@ -146,6 +146,15 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Lines using same budget group ({0}).
+        /// </summary>
+        internal static string itm_budgetCustomWindow_linesSharingGroupHeader {
+            get {
+                return ResourceManager.GetString("itm_budgetCustomWindow_linesSharingGroupHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Lines using same group: {0}.
         /// </summary>
         internal static string itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat {
@@ -917,7 +926,7 @@ namespace ImprovedTransportManager.Localization {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N1}m - {1} Stops - {2} Vehicles - {3}% Trips saved.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a {0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved.
         /// </summary>
         internal static string itm_lineView_distanceStops {
             get {
@@ -950,6 +959,15 @@ namespace ImprovedTransportManager.Localization {
         internal static string itm_lineView_lineBudget {
             get {
                 return ResourceManager.GetString("itm_lineView_lineBudget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a An extra vehicle is added each &lt;color=yellow&gt;{0:P1}&lt;/color&gt; of budget..
+        /// </summary>
+        internal static string itm_lineView_lineBudgetPercentToVehicles {
+            get {
+                return ResourceManager.GetString("itm_lineView_lineBudgetPercentToVehicles", resourceCulture);
             }
         }
         

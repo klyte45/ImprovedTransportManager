@@ -214,7 +214,7 @@
     <value>Children</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}m - {1} Stops - {2} Vehicles - {3}% Trips saved</value>
+    <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
     <value>Lines Overview</value>
@@ -675,5 +675,11 @@ The budget groups can have 3 different settings:
   </data>
   <data name="itm_budgetCustomWindow_title" xml:space="preserve">
     <value>Budget advanced settings (Expert)</value>
+  </data>
+  <data name="itm_budgetCustomWindow_linesSharingGroupHeader" xml:space="preserve">
+    <value>Lines using same budget group ({0})</value>
+  </data>
+  <data name="itm_lineView_lineBudgetPercentToVehicles" xml:space="preserve">
+    <value>An extra vehicle is added each &lt;color=yellow&gt;{0:P1}&lt;/color&gt; of budget.</value>
   </data>
 </root>
