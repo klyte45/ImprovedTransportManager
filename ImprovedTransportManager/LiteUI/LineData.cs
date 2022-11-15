@@ -1,5 +1,6 @@
 ﻿using ColossalFramework;
 using ImprovedTransportManager.Data;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.Singleton;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
@@ -27,7 +28,11 @@ namespace ImprovedTransportManager.UI
         public string LineName
         {
             get => TransportManager.instance.GetLineName(m_id.TransportLine);
-            set => SimulationManager.instance.AddAction(TransportManager.instance.SetLineName(m_id.TransportLine, value));
+            set
+            {
+                SimulationManager.instance.AddAction(TransportManager.instance.SetLineName(m_id.TransportLine, value));
+                SimulationManager.instance.AddAction(() => ITMFacade.Instance.RunEventLineAttributeChanged(m_id.TransportLine));
+            }
         }
         public Func<string> LineIdentifier { get; private set; }
         public Func<ushort> LineInternalSequentialNumber { get; private set; }

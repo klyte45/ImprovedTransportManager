@@ -1,5 +1,6 @@
 ﻿using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Localization;
+using ImprovedTransportManager.ModShared;
 using ImprovedTransportManager.TransportSystems;
 using ImprovedTransportManager.Utility;
 using Kwytto.LiteUI;
@@ -109,7 +110,11 @@ namespace ImprovedTransportManager.UI
                 }
                 GUIKwyttoCommons.AddColorPicker(Str.itm_lineView_lineColor, picker, m_currentLineData.LineColor, (x) => m_currentLineData.LineColor = x ?? default);
                 GUIKwyttoCommons.AddIntField(size.x, Str.itm_lineView_lineInternalNumber, m_currentLineData.LineInternalSequentialNumber(), (x) => TransportManager.instance.m_lines.m_buffer[CurrentLine].m_lineNumber = (ushort)(x ?? 0), min: 0, max: 65535);
-                GUIKwyttoCommons.TextWithLabel(size.x, Str.itm_lineView_customLineCode, lineData.CustomCode, (x) => lineData.CustomCode = x, textFieldProportion: 0.2f);
+                GUIKwyttoCommons.TextWithLabel(size.x, Str.itm_lineView_customLineCode, lineData.CustomCode, (x) =>
+                {
+                    lineData.CustomCode = x;
+                    ITMFacade.Instance.RunEventLineAttributeChanged(CurrentLine);
+                }, textFieldProportion: 0.2f);
                 if ((tl.Info.m_vehicleType == VehicleInfo.VehicleType.Car && ITMCitySettings.Instance.expressBuses)
                 || (tl.Info.m_vehicleType == VehicleInfo.VehicleType.Tram && ITMCitySettings.Instance.expressTrams)
                 || (tl.Info.m_vehicleType == VehicleInfo.VehicleType.Trolleybus && ITMCitySettings.Instance.expressTrolleybus))

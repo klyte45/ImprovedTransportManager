@@ -13,8 +13,11 @@ namespace ImprovedTransportManager.ModShared
 
         public event Action<ushort> EventStopNameChanged;
 
+        public event Action<ushort> EventLineAttributeChanged;
+
         internal void RunEventLineDestinationsChanged(ushort lineId) => EventLineDestinationsChanged?.Invoke(lineId);
         internal void RunEventStopNameChanged(ushort stopId) => EventStopNameChanged?.Invoke(stopId);
+        internal void RunEventLineAttributeChanged(ushort lineId) => EventLineAttributeChanged?.Invoke(lineId);
 
         public string GetLineIdentifier(ushort lineId) => ITMLineUtils.GetEffectiveIdentifier(ref TransportManager.instance.m_lines.m_buffer[lineId], lineId);
         public ushort GetStopBuilding(ushort stopId) => ITMNodeSettings.Instance.GetBuildingReference(stopId);
