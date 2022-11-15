@@ -117,81 +117,569 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
+    <value>Balance</value>
+    <comment>Requires to be short</comment>
+  </data>
+  <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
+    <value>Bdgt.</value>
+    <comment>Requires to be VERY short</comment>
+  </data>
+  <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
+    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <comment>0 = Transport Type Name
+1 = quantity of lines in current view
+2 = Total lines created in the city</comment>
+  </data>
+  <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
+    <value>Line Name</value>
+  </data>
+  <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
+    <value>Pass.</value>
+    <comment>Requires to be VERY short</comment>
+  </data>
+  <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
+    <value>Stops</value>
+    <comment>Requires to be VERY short</comment>
+  </data>
+  <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
+    <value>There are no lines in this city!</value>
+  </data>
+  <data name="itm_linesListingWindow_tilte" xml:space="preserve">
+    <value>Public Transport Lines</value>
+  </data>
+  <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
+    <value>Veh.</value>
+    <comment>Requires to be VERY short</comment>
+  </data>
+  <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
+    <value>Day:</value>
+  </data>
+  <data name="itm_lineView_deleteLine" xml:space="preserve">
+    <value>Delete line</value>
+  </data>
+  <data name="itm_lineView_lineActivity" xml:space="preserve">
+    <value>Line Activity</value>
+  </data>
+  <data name="itm_lineView_lineBudget" xml:space="preserve">
+    <value>Line Budget (%)</value>
+  </data>
+  <data name="itm_lineView_lineColor" xml:space="preserve">
+    <value>Line Color</value>
+  </data>
+  <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
+    <value>Internal line number</value>
+  </data>
+  <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
+    <value>Night:</value>
+  </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>Moltiplica il numero di skin dei veicoli</value>
   </data>
-  <data name="VS_MODELSELECT" xml:space="preserve">
-    <value>Seleziona modello</value>
+  <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
+    <value>Disabled</value>
   </data>
-  <data name="VS_THEREARENOSKINS" xml:space="preserve">
-    <value>Non ci sono skin caricate per questo modello di veicolo</value>
+  <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
+    <value>Day</value>
   </data>
-  <data name="VS_CREATENEWSKIN" xml:space="preserve">
-    <value>Crea nuova skin</value>
+  <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
+    <value>Night</value>
   </data>
-  <data name="VS_CREATESKIN_MESSAGE" xml:space="preserve">
-    <value>Digita il nome della nuova skin:</value>
+  <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
+    <value>Day and Night</value>
   </data>
-  <data name="VS_CREATESKIN_ERROR_ALREADYEXISTS" xml:space="preserve">
-    <value>&lt;color=yellow&gt;Esiste già una skin con questo nome!&lt;/color&gt;</value>
+  <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
+    <value>Disab.</value>
   </data>
-  <data name="VS_RELOADALLSKINS" xml:space="preserve">
-    <value>Ricarica tutte le skin</value>
+  <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
+    <value>Day</value>
   </data>
-  <data name="VS_RELOADASSETSKINS" xml:space="preserve">
-    <value>Ricarica tutte le skin dall'asset corrente</value>
+  <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
+    <value>Night</value>
   </data>
-  <data name="VS_ACTIVERULESONLY" xml:space="preserve">
-    <value>Filtra gli asset con almeno una skin</value>
+  <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
+    <value>D &amp; N</value>
   </data>
-  <data name="VS_EXPORTTOASSET_TITLE" xml:space="preserve">
-    <value>Esporta skin condivise da caricare sul Workshop</value>
+  <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
+    <value>Activ.</value>
+    <comment>Requires to be VERY short</comment>
   </data>
-  <data name="VS_EXPORTTOASSET_MSG" xml:space="preserve">
-    <value>Intendi cancellare tutte le skin già esportate sul workshop?
-Considera che quelle omonime saranno comunque sovrascritte   </value>
+  <data name="itm_lineView_adultLbl" xml:space="preserve">
+    <value>Adult</value>
   </data>
-  <data name="VS_EXPORTASSET" xml:space="preserve">
-    <value>Esporta condivisi sul workshop</value>
+  <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
+    <value>Budget View</value>
   </data>
-  <data name="VS_EXPORTTOASSET_MSGSUC" xml:space="preserve">
-    <value>File esportati per essere caricati con successo!</value>
+  <data name="itm_lineView_childrenLbl" xml:space="preserve">
+    <value>Children</value>
   </data>
-  <data name="VS_VIEWFILES" xml:space="preserve">
-    <value>Apri cartella file</value>
+  <data name="itm_lineView_distanceStops" xml:space="preserve">
+    <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
   </data>
-  <data name="VS_SOURCECOLOR_LEGEND" xml:space="preserve">
-    <value>Legenda sorgente skin: &lt;color=gray&gt;Skin originale&lt;/color&gt; &lt;color=green&gt;Workshop/Lavorazione&lt;/color&gt; &lt;color=yellow&gt;Cartella condivisa&lt;/color&gt;</value>
+  <data name="itm_lineView_linesListBtn" xml:space="preserve">
+    <value>Lines Overview</value>
   </data>
-  <data name="VS_CREATESKIN_MSGSUC" xml:space="preserve">
-    <value>File di skin creati!
-Vedi i file nella cartella, editali e ricarica in gioco per vedere le modifiche   </value>
+  <data name="itm_lineView_residentTourists" xml:space="preserve">
+    <value>{0:N0} Residents / {1:N0} Tourists</value>
   </data>
-  <data name="VS_USINGSAVEGAMECONFIG" xml:space="preserve">
-    <value>Usando configurazione salvataggio</value>
+  <data name="itm_lineView_seniorLbl" xml:space="preserve">
+    <value>Senior</value>
   </data>
-  <data name="VS_USINGSHAREDCONFIG" xml:space="preserve">
-    <value>Usando configurazione condivisa</value>
+  <data name="itm_lineView_teenLbl" xml:space="preserve">
+    <value>Teen</value>
   </data>
-  <data name="VS_EXPORTASSHARED" xml:space="preserve">
-    <value>Esporta corrente per condivisione</value>
+  <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
+    <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
   </data>
-  <data name="VS_DISCARDSAVEGAME" xml:space="preserve">
-    <value>Scarta e usa condivise</value>
+  <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
+    <value>&lt;color=red&gt;This line is broken!&lt;/color&gt;</value>
   </data>
-  <data name="VS_DEFAULTSNOTSAVED" xml:space="preserve">
-    <value>&lt;color=red&gt;La selezione di skin predifinite non è salvata!&lt;/color&gt;</value>
+  <data name="itm_lineView_ticketPrice" xml:space="preserve">
+    <value>Ticket Price (in cents)</value>
   </data>
-  <data name="VS_DEFAULTSSAVED" xml:space="preserve">
-    <value>Skin abilitate di default sono aggiornate con il file</value>
+  <data name="itm_lineView_weeklyDataTitle" xml:space="preserve">
+    <value>Weekly report data</value>
   </data>
-  <data name="VS_SAVESKINENABLESELECTION" xml:space="preserve">
-    <value>Salva skin abilitato di default</value>
+  <data name="itm_lineView_youngLbl" xml:space="preserve">
+    <value>Young</value>
   </data>
-  <data name="VS_DISCARDCHANGES" xml:space="preserve">
-    <value>Annulla modifiche</value>
+  <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
+    <value>Passengers/Capacity</value>
   </data>
-  <data name="vs_forceSkinInCurrentSelectedVehicle" xml:space="preserve">
-    <value>Forza la skin nel veicolo selezionato</value>
+  <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
+    <value>Profit (All Time)</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitLastWeek" xml:space="preserve">
+    <value>Profit (Last Period)</value>
+  </data>
+  <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
+    <value>Profit (Current Period)</value>
+  </data>
+  <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
+    <value>E16:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
+    <value>E16 - Earnings last 16 weeks (24h for Real Time)</value>
+  </data>
+  <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
+    <value>ECP:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsCurrentPeriodAcronymLegend" xml:space="preserve">
+    <value>ECP - Earnings current period</value>
+  </data>
+  <data name="itm_lineMap_earningsLastPeriodAcronym" xml:space="preserve">
+    <value>ELP:</value>
+    <comment>Must be VERY short</comment>
+  </data>
+  <data name="itm_lineMap_earningsLastPeriodAcronymLegend" xml:space="preserve">
+    <value>ELP - Earnings last period</value>
+  </data>
+  <data name="itm_lineMap_title" xml:space="preserve">
+    <value>Line stops map</value>
+  </data>
+  <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
+    <value>Vehicle data to show</value>
+  </data>
+  <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
+    <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
+  </data>
+  <data name="itm_common_notApplicableAcronym" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
+    <value>Vehicles models for line selection</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
+    <value>Current line exclusive</value>
+  </data>
+  <data name="itm_citySettings_title" xml:space="preserve">
+    <value>City settings</value>
+  </data>
+  <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
+    <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
+You can disable the unbunching also in terminal stops to get a more fluid line dynamic.</value>
+  </data>
+  <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
+    <value>Disable unbunching also in terminal stops</value>
+  </data>
+  <data name="itm_expressData_expressBuses" xml:space="preserve">
+    <value>Express buses</value>
+  </data>
+  <data name="itm_expressData_expressTrams" xml:space="preserve">
+    <value>Express trams</value>
+  </data>
+  <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
+    <value>Express trolleybuses</value>
+  </data>
+  <data name="itm_expressData_title" xml:space="preserve">
+    <value>Express lines</value>
+  </data>
+  <data name="itm_statistics_clearFilters" xml:space="preserve">
+    <value>Clear filters</value>
+  </data>
+  <data name="itm_statistics_nullSelLine" xml:space="preserve">
+    <value>&lt;color=#FF00FF&gt;--TRANSPORT LINE--&lt;/color&gt;</value>
+    <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
+  </data>
+  <data name="itm_statistics_nullSelStop" xml:space="preserve">
+    <value>&lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;</value>
+    <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
+  </data>
+  <data name="itm_statistics_nullVehicle" xml:space="preserve">
+    <value>&lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;</value>
+    <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
+  </data>
+  <data name="itm_statistics_reloadLines" xml:space="preserve">
+    <value>Reload lines</value>
+  </data>
+  <data name="itm_statistics_selectLine" xml:space="preserve">
+    <value>Select line</value>
+  </data>
+  <data name="itm_statistics_stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
+    <value>All vehicles and stops</value>
+  </data>
+  <data name="itm_statistics_subtitleTableFormatStops" xml:space="preserve">
+    <value>Statistics @ Stop {0}</value>
+  </data>
+  <data name="itm_statistics_subtitleTableFormatVehicles" xml:space="preserve">
+    <value>Statistics @ Vehicle {0}</value>
+  </data>
+  <data name="itm_statistics_title" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="itm_statistics_vehicle" xml:space="preserve">
+    <value>Vehicle</value>
+  </data>
+  <data name="itm_statisticsTable_currentLineColumnValue" xml:space="preserve">
+    <value>Since {0}</value>
+  </data>
+  <data name="itm_statisticsTable_periodTitle" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="itm_statisticsTable_dataNotAvailableForThisFilter" xml:space="preserve">
+    <value>This data is not available in current selected filter</value>
+  </data>
+  <data name="itm_statisticsTable_financeReport_balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="itm_statisticsTable_financeReport_expense" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="itm_statisticsTable_financeReport_income" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="itm_statisticsTable_financeReport_title" xml:space="preserve">
+    <value>Financial report</value>
+  </data>
+  <data name="itm_statisticsTable_totalLast16w" xml:space="preserve">
+    <value>Total last 16 weeks</value>
+  </data>
+  <data name="itm_statisticsTable_totalLast24h" xml:space="preserve">
+    <value>Total last 24h</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
+    <value>Adults</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
+    <value>Seniors</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
+    <value>Teens</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
+    <value>Passenger age report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
+    <value>Youngs</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
+    <value>Females</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
+    <value>Males</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
+    <value>Gender Report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
+    <value>Students</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
+    <value>Students &amp; Tourists</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
+    <value>Tourists</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
+    <value>High Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
+    <value>Low Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
+    <value>Medium Wealth</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
+    <value>Wealth Report</value>
+  </data>
+  <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
+    <comment>{0} will be the transport type name
+{1} will be the default cost per 1000 passengers</comment>
+  </data>
+  <data name="itm_maintenanceData_header" xml:space="preserve">
+    <value>The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
+Left it at "0" to use the default cost.</value>
+  </data>
+  <data name="itm_maintenanceData_title" xml:space="preserve">
+    <value>Maintenance costs</value>
+  </data>
+  <data name="itm_specialLineTools_header" xml:space="preserve">
+    <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
+&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;</value>
+  </data>
+  <data name="itm_specialLineTools_title" xml:space="preserve">
+    <value>Line tools</value>
+  </data>
+  <data name="itm_common_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="itm_common_copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="itm_common_paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
+    <value>Go to maintenance screen</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
+    <value>Vehicle (activate/deactivate)</value>
+  </data>
+  <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
+    <value>Capacity</value>
+    <comment>Must be short</comment>
+  </data>
+  <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
+    <value>Cost/Period</value>
+    <comment>Must be short</comment>
+  </data>
+  <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
+    <value>Select the assets allowed to spawn in the line in this window.
+The new selection will be used as reference when spawning new vehicles to the line.
+The vehicles in the line that aren't selected in this list will be sent to depot as soon it:
+- Reach next stop (non-road based transport types only)
+- Get emptied
+- Reach the first stop or any terminal stop (road-based modals only)
+
+The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
+  </data>
+  <data name="itm_lineView_lineName" xml:space="preserve">
+    <value>Line name</value>
+  </data>
+  <data name="itm_lineView_removeStop" xml:space="preserve">
+    <value>&lt;color=red&gt;Remove stop&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineView_setAsFirstStop" xml:space="preserve">
+    <value>Set as first stop</value>
+  </data>
+  <data name="itm_lineView_setAsTerminal" xml:space="preserve">
+    <value>Set as terminal</value>
+  </data>
+  <data name="itm_lineView_unsetAsTerminal" xml:space="preserve">
+    <value>Remove terminal</value>
+  </data>
+  <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
+    <value>Assets settings</value>
+  </data>
+  <data name="itm_generalSettings_defaultAssetFileExportedMessage" xml:space="preserve">
+    <value>The assets settings were exported to file:
+&lt;color=yellow&gt;{0}&lt;/color&gt;</value>
+  </data>
+  <data name="itm_generalSettings_defaultAssetFileImportedMessage" xml:space="preserve">
+    <value>The asset settings were loaded successfully from default settings file.
+You may need to reload all files to see the new values being used</value>
+  </data>
+  <data name="itm_generalSettings_defaultCityFileExportedMessage" xml:space="preserve">
+    <value>The city settings were exported to file:
+&lt;color=yellow&gt;{0}&lt;/color&gt;</value>
+  </data>
+  <data name="itm_generalSettings_defaultCityFileImportedMessage" xml:space="preserve">
+    <value>The city settings were loaded successfully from default settings file.</value>
+  </data>
+  <data name="itm_generalSettings_defaultGeneralSettings" xml:space="preserve">
+    <value>General settings</value>
+  </data>
+  <data name="itm_generalSettings_expertMode" xml:space="preserve">
+    <value>Expert mode
+Shows advanced settings and extra windows for deep setup
+Recomended for experenced players only</value>
+  </data>
+  <data name="itm_generalSettings_exportCurrentToFile" xml:space="preserve">
+    <value>Export as default</value>
+  </data>
+  <data name="itm_generalSettings_importCurrentFromFile" xml:space="preserve">
+    <value>Import from default</value>
+  </data>
+  <data name="itm_generalSettings_title" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="itm_lineLogo_changeCustomLogo" xml:space="preserve">
+    <value>Change custom logo</value>
+  </data>
+  <data name="itm_lineLogo_deleteCustomLogo" xml:space="preserve">
+    <value>&lt;color=red&gt;Remove custom logo&lt;/color&gt;</value>
+  </data>
+  <data name="itm_lineLogo_invalidTexture" xml:space="preserve">
+    <value>Invalid texture!</value>
+  </data>
+  <data name="itm_lineLogo_invalidTextureContent" xml:space="preserve">
+    <value>The texture must have exactly 256x256 pixels as dimensions!</value>
+  </data>
+  <data name="itm_pickALogoForLine" xml:space="preserve">
+    <value>Get a logo image for line: {0}</value>
+  </data>
+  <data name="itm_nearLines_noNearLinesHere" xml:space="preserve">
+    <value>There are no lines around here...</value>
+  </data>
+  <data name="itm_nearLines_title" xml:space="preserve">
+    <value>Near lines</value>
+  </data>
+  <data name="itm_lineLogo_setCustomLogo" xml:space="preserve">
+    <value>Set custom logo</value>
+  </data>
+  <data name="itm_lineMap_failedSettingDistrict" xml:space="preserve">
+    <value>The current stop isn't inside a district. Ensure it belongs to a district to bind its name to it.</value>
+  </data>
+  <data name="itm_lineMap_failedSettingPark" xml:space="preserve">
+    <value>The current stop isn't inside a special area. Ensure it belongs to a special area to bind its name to it.</value>
+  </data>
+  <data name="itm_lineMap_forceBindToBuilding" xml:space="preserve">
+    <value>Force bind stop name to building (pick)</value>
+  </data>
+  <data name="itm_lineMap_forceBindToDistrict" xml:space="preserve">
+    <value>Force bind stop name to district</value>
+  </data>
+  <data name="itm_lineMap_forceBindToPark" xml:space="preserve">
+    <value>Force bind stop name to special area</value>
+  </data>
+  <data name="itm_lineMap_forceBindToRoad" xml:space="preserve">
+    <value>Force bind stop name to road (pick)</value>
+  </data>
+  <data name="itm_lineMap_recalculateAllStopNames" xml:space="preserve">
+    <value>Recalculate all stops names bindings</value>
+  </data>
+  <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
+    <value>Recalculate stop name bind</value>
+  </data>
+  <data name="itm_autoName_circularTemplate" xml:space="preserve">
+    <value>{0} (Circular)</value>
+    <comment>Template used when a line have a single terminal set</comment>
+  </data>
+  <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
+    <value>Auto name all city lines</value>
+  </data>
+  <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
+    <value>Auto name all visible lines</value>
+  </data>
+  <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
+    <value>Erase all custom stop names</value>
+  </data>
+  <data name="itm_depotSelectWindow_title" xml:space="preserve">
+    <value>Line depot selection</value>
+  </data>
+  <data name="itm_lineView_customLineCode" xml:space="preserve">
+    <value>Custom line code (autoname/WE)</value>
+  </data>
+  <data name="itm_lineView_ignoreMandatoryStopTerminal" xml:space="preserve">
+    <value>Ignore mandatory stop at terminals (full circular)
+&lt;color=yellow&gt;NOTE:&lt;/color&gt; Vehicle unspawns only will be done when the vehicle gets organically empty</value>
+  </data>
+  <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
+    <value>Require new vehicles to start line by a terminal stop</value>
+  </data>
+  <data name="itm_common_goTo" xml:space="preserve">
+    <value>Go to</value>
+  </data>
+  <data name="itm_lineView_budgetUsingGroupTemplate" xml:space="preserve">
+    <value>Using budget group {0}. Click to reset.</value>
+  </data>
+  <data name="itm_budgetCustomWindow_budgetTimetableResume" xml:space="preserve">
+    <value>Timetable resume</value>
+  </data>
+  <data name="itm_budgetCustomWindow_budgetType" xml:space="preserve">
+    <value>Setting type</value>
+  </data>
+  <data name="itm_budgetCustomWindow_defaultGroupDescription" xml:space="preserve">
+    <value>The default group is edited in the line details window and don't support special budget rules. Select a group to use budget by hour or hour and day of week.</value>
+  </data>
+  <data name="itm_budgetCustomWindow_defaultGroupText" xml:space="preserve">
+    <value>Default game budget settings</value>
+  </data>
+  <data name="itm_budgetCustomWindow_groupNameTemplate" xml:space="preserve">
+    <value>Budget group {0}</value>
+    <comment>{0} will be a number (1-32)</comment>
+  </data>
+  <data name="itm_budgetCustomWindow_groupsBudgets" xml:space="preserve">
+    <value>Group budgets' subgroups</value>
+  </data>
+  <data name="itm_budgetCustomWindow_groupsEachHour" xml:space="preserve">
+    <value>Group budget subgroups per hour</value>
+  </data>
+  <data name="itm_budgetCustomWindow_helpContent" xml:space="preserve">
+    <value>Budget groups are budgets shared between multiple lines. ITM supports up to 26 groups per transport type.
+The budget groups can have 3 different settings:
+&lt;color=yellow&gt;- Fixed:&lt;/color&gt; A fixed budget;
+&lt;color=yellow&gt;- Per hour:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer;
+&lt;color=yellow&gt;- Per hour and day of week:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer, but can have special tables for some days of week. Makes sense to use only with RealTime.</value>
+  </data>
+  <data name="itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat" xml:space="preserve">
+    <value>Lines using same group: {0}</value>
+    <comment>Will be on a button that will show all lines when clicked; {0} is the lines count</comment>
+  </data>
+  <data name="itm_budgetCustomWindow_transitionBudgetLabel" xml:space="preserve">
+    <value>{0}%→{1}%</value>
+    <comment>Used in timetable view to show the period of transition between budgets ({0} is the previous, {1} is the next budget)</comment>
+  </data>
+  <data name="itm_Enum__BudgetType_Fixed" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="itm_Enum__BudgetType_PerHour" xml:space="preserve">
+    <value>Per hour</value>
+  </data>
+  <data name="itm_Enum__BudgetType_PerHourAndWeek" xml:space="preserve">
+    <value>Per hour and weekday</value>
+  </data>
+  <data name="itm_budgetCustomWindow_title" xml:space="preserve">
+    <value>Budget advanced settings (Expert)</value>
+  </data>
+  <data name="itm_budgetCustomWindow_linesSharingGroupHeader" xml:space="preserve">
+    <value>Lines using same budget group ({0})</value>
+  </data>
+  <data name="itm_lineView_lineBudgetPercentToVehicles" xml:space="preserve">
+    <value>An extra vehicle is added each &lt;color=yellow&gt;{0:P1}&lt;/color&gt; of budget.</value>
   </data>
 </root>
