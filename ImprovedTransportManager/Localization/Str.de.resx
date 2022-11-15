@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
-    <value>Balance</value>
+    <value>Kontostand</value>
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
@@ -126,37 +126,37 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <value>Linien vom Typ &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Gesamtzahl der Transportlinien in der Stadt: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>Line Name</value>
+    <value>Linienname</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
     <value>Pass.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Stops</value>
+    <value>Stopps</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
-    <value>There are no lines in this city!</value>
+    <value>Es gibt keine Linien in dieser Stadt!</value>
   </data>
   <data name="itm_linesListingWindow_tilte" xml:space="preserve">
-    <value>Public Transport Lines</value>
+    <value>ÖPNV Linien</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>Veh.</value>
+    <value>Fzg.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
-    <value>Day:</value>
+    <value>Tag:</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>Linie löschen</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
     <value>Line Activity</value>
