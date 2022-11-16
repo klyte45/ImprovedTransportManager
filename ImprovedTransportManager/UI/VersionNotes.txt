@@ -1,7 +1,8 @@
-<color=green>Update r6 (16/NOV/22)</color>
+<color=green>Update r7 (16/NOV/22)</color>
 - Fixed BG color to not be too dark nor saturated
 - Fixed non-full hd window sizes
 - Fixed ELT issues
+- Added some language translations (specially cn, ja and it)
 
 <color=yellow>Welcome to Improved Transport Manager, the ITM!</color>
 
@@ -47,6 +48,7 @@ This mod intends to be a replacement to the both old IPT2 and TLM. Here are some
 - Fare per hour (expert mode only) (from TLM)
 - Lines settings by weekday (expert mode only)
 - Customize outside connection lines from train buildings (expert mode only) (from TLM)
+- Bus depot line unbunch timer (from IPT2 pre-Airports DLC, but adapted) (expert mode only)
 
 <b>What is missing and <color=red>will not</color> be added to ITM:</b>
 
