@@ -25,7 +25,7 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => Str.itm_depotSelectWindow_title;
-        protected Vector2 StartSize => new Vector2(400 * ResolutionMultiplier, UIScaler.MaxHeight / 2);
+        protected Vector2 StartSize => new Vector2(400 , UIScaler.MaxHeight / 2);
         protected Vector2 StartPosition => new Vector2(999999, UIScaler.MaxHeight / 2);
 
         public static ITMLineDepotSelectionWindow Instance { get; private set; }
@@ -147,8 +147,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.yellowTexture
                     },
-                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
-                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
+                    fixedHeight = 20 ,
+                    fixedWidth = 20 
                 };
             }
             if (m_selectionBtnUns is null)
@@ -163,8 +163,8 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.whiteTexture
                     },
-                    fixedHeight = 20 * GUIWindow.ResolutionMultiplier,
-                    fixedWidth = 20 * GUIWindow.ResolutionMultiplier
+                    fixedHeight = 20 ,
+                    fixedWidth = 20 
                 };
             }
             if (m_previewTitle is null)

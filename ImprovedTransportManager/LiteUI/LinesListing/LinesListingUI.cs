@@ -88,7 +88,7 @@ namespace ImprovedTransportManager.UI
             {
                 GUILayout.Label(Str.itm_linesListingWindow_thereAreNoLinesInCity);
             }
-            var targetCount = Mathf.FloorToInt(Mathf.Min(m_availableTypes.Length, size.x / 200 * ResolutionMultiplier));
+            var targetCount = Mathf.FloorToInt(Mathf.Min(m_availableTypes.Length, size.x / 200 ));
             var curIdx = Array.IndexOf(m_availableTypes, m_currentTab);
             var sel = GUILayout.SelectionGrid(curIdx, m_availableTypesNames, targetCount, new GUIStyle(GUI.skin.button) { fontSize = Mathf.FloorToInt(EffectiveFontSizeMultiplier * 14) });
             if (sel >= 0 && curIdx != sel)
@@ -96,27 +96,27 @@ namespace ImprovedTransportManager.UI
                 m_currentTab = m_availableTypes[sel];
             }
             var currentView = GetCurrentView();
-            var lineNameSize = size.x - 440 * ResolutionMultiplier;
+            var lineNameSize = size.x - 440 ;
             var anyVisible = currentView.Any(x => x.IsVisible());
-            using (new GUILayout.HorizontalScope(GUILayout.Height(20 * ResolutionMultiplier)))
+            using (new GUILayout.HorizontalScope(GUILayout.Height(20 )))
             {
-                using (new GUILayout.VerticalScope(GUILayout.Width(20 * ResolutionMultiplier)))
+                using (new GUILayout.VerticalScope(GUILayout.Width(20 )))
                 {
                     GUILayout.FlexibleSpace();
                     GUIKwyttoCommons.SquareTextureButton2(anyVisible ? m_eyeIcon : m_eyeSlashIcon, "", () => currentView.ForEach(line => line.ChangeLineVisibility(!anyVisible)), size: 20, style: m_HeaderLineStyle);
                     GUILayout.FlexibleSpace();
                 }
-                HeaderButton("ID", 40 * ResolutionMultiplier, SortOrder.Id);
+                HeaderButton("ID", 40 , SortOrder.Id);
                 HeaderButton(Str.itm_linesListingWindow_nameColumnTitle, lineNameSize + 2, SortOrder.Name);
-                HeaderButton(Str.itm_linesListingWindow_stopsColumnTitle, 40 * ResolutionMultiplier, SortOrder.Stops);
-                HeaderButton(Str.itm_linesListingWindow_budgetColumnTitle, 40 * ResolutionMultiplier, SortOrder.Budget);
-                HeaderButton(Str.itm_linesListingWindow_vehiclesColumnTitle, 40 * ResolutionMultiplier, SortOrder.Vehicles);
-                HeaderButton(Str.itm_linesListingWindow_passengersColumnTitle, 40 * ResolutionMultiplier, SortOrder.Passengers);
-                HeaderButton(Str.itm_linesListingWindow_balanceColumnTitle, 80 * ResolutionMultiplier, SortOrder.Balance);
-                HeaderButton(Str.itm_linesListingWindow_activityColumnTitle, 80 * ResolutionMultiplier, SortOrder.Acitivty);
-                GUIKwyttoCommons.Space(40 * ResolutionMultiplier);
+                HeaderButton(Str.itm_linesListingWindow_stopsColumnTitle, 40 , SortOrder.Stops);
+                HeaderButton(Str.itm_linesListingWindow_budgetColumnTitle, 40 , SortOrder.Budget);
+                HeaderButton(Str.itm_linesListingWindow_vehiclesColumnTitle, 40 , SortOrder.Vehicles);
+                HeaderButton(Str.itm_linesListingWindow_passengersColumnTitle, 40 , SortOrder.Passengers);
+                HeaderButton(Str.itm_linesListingWindow_balanceColumnTitle, 80 , SortOrder.Balance);
+                HeaderButton(Str.itm_linesListingWindow_activityColumnTitle, 80 , SortOrder.Acitivty);
+                GUIKwyttoCommons.Space(40 );
                 var rect = GUILayoutUtility.GetLastRect();
-                switch (GUIComboBox.ContextMenuRect(new Rect(rect.position, new Vector2(rect.width, 20 * ResolutionMultiplier)), m_optionsContext, "CTX_LINELIST", this, new GUIContent(m_settings), new GUIStyle(GUI.skin.button)
+                switch (GUIComboBox.ContextMenuRect(new Rect(rect.position, new Vector2(rect.width, 20 )), m_optionsContext, "CTX_LINELIST", this, new GUIContent(m_settings), new GUIStyle(GUI.skin.button)
                 {
                     contentOffset = default,
                     padding = new RectOffset(),
@@ -138,13 +138,13 @@ namespace ImprovedTransportManager.UI
                 foreach (var line in currentView)
                 {
                     line.GetUpdated();
-                    using (new GUILayout.HorizontalScope(GUILayout.Height(22 * ResolutionMultiplier), GUILayout.Width(size.x - 20 * ResolutionMultiplier)))
+                    using (new GUILayout.HorizontalScope(GUILayout.Height(22 ), GUILayout.Width(size.x - 20 )))
                     {
                         if (line.IsHovered)
                         {
                             GUIKwyttoCommons.Space(0);
                             var rectBg = GUILayoutUtility.GetLastRect();
-                            GUI.DrawTexture(new Rect(rectBg.position, new Vector2(size.x - 20 * ResolutionMultiplier, 25 * ResolutionMultiplier)), GUIKwyttoCommons.darkGreenTexture);
+                            GUI.DrawTexture(new Rect(rectBg.position, new Vector2(size.x - 20 , 25 )), GUIKwyttoCommons.darkGreenTexture);
                         }
                         GUIKwyttoCommons.SquareTextureButton2(line.IsVisible() ? m_eyeIcon : m_eyeSlashIcon, "", () => line.ChangeLineVisibility(!line.IsVisible()), size: 20, style: m_HeaderLineStyle);
                         GUILayout.Label("", m_LineBasicLabelStyle);
@@ -274,9 +274,9 @@ namespace ImprovedTransportManager.UI
                 m_LineBasicLabelStyle = new GUIStyle(GUI.skin.label)
                 {
                     stretchHeight = true,
-                    fixedWidth = 40 * ResolutionMultiplier,
+                    fixedWidth = 40 ,
                     alignment = TextAnchor.MiddleCenter,
-                    fontSize = Mathf.CeilToInt(14 * ResolutionMultiplier),
+                    fontSize = Mathf.CeilToInt(14 ),
                     margin = new RectOffset(0, 0, 1, 1),
                     contentOffset = new Vector2(0, 0),
                     padding = new RectOffset(0, 0, 0, 0),
@@ -289,7 +289,7 @@ namespace ImprovedTransportManager.UI
                 {
                     stretchHeight = true,
                     alignment = TextAnchor.MiddleCenter,
-                    fontSize = Mathf.CeilToInt(14 * ResolutionMultiplier),
+                    fontSize = Mathf.CeilToInt(14 ),
                     margin = new RectOffset(0, 0, 1, 1),
                     contentOffset = new Vector2(0, 0),
                     padding = new RectOffset(0, 0, 0, 0),
@@ -302,7 +302,7 @@ namespace ImprovedTransportManager.UI
                 {
                     stretchHeight = true,
                     alignment = TextAnchor.MiddleLeft,
-                    fontSize = Mathf.CeilToInt(13 * ResolutionMultiplier),
+                    fontSize = Mathf.CeilToInt(13 ),
                     margin = new RectOffset(0, 0, 1, 1),
                     contentOffset = new Vector2(0, 0),
                     padding = new RectOffset(0, 0, 0, 0),

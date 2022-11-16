@@ -1,3 +1,8 @@
+<color=green>Update r6 (16/NOV/22)</color>
+- Fixed BG color to not be too dark nor saturated
+- Fixed non-full hd window sizes
+- Fixed ELT issues
+
 <color=yellow>Welcome to Improved Transport Manager, the ITM!</color>
 
 This mod intends to be a replacement to the both old IPT2 and TLM. Here are some of features already done in this mod:

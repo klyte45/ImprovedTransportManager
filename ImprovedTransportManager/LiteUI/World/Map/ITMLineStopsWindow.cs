@@ -27,10 +27,10 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => true;
         protected string InitTitle => Str.itm_lineMap_title;
-        protected Vector2 StartSize => new Vector2(700, 700);
+        protected Vector2 StartSize => new Vector2(700, 700) ;
         protected Vector2 StartPosition => default;
-        protected Vector2 MinSize => new Vector2(700, 300);
-        protected Vector2 MaxSize => new Vector2(700, 999999);
+        protected Vector2 MinSize => new Vector2(700, 300) ;
+        protected Vector2 MaxSize => new Vector2(700, 999999) ;
 
 
         private const int STATION_SIZE = 120;
@@ -168,7 +168,7 @@ namespace ImprovedTransportManager.UI
                     var contrastColor = m_currentLineData.LineColor.ContrastColor();
                     GUI.DrawTexture(iconRect, GUIKwyttoCommons.whiteTexture);
 
-                    var subRect = new Rect(iconRect.position + new Vector2(2, 2), iconRect.size - new Vector2(4, 4));
+                    var subRect = new Rect(iconRect.position + new Vector2(2, 2) , iconRect.size - new Vector2(4, 4) );
 
                     GUI.DrawTexture(subRect, m_currentLineData.m_uiTextureColor);
                     var identifier = m_currentLineData.LineIdentifier();
@@ -185,8 +185,8 @@ namespace ImprovedTransportManager.UI
 
                 using (var scroll = new GUILayout.ScrollViewScope(m_mapScroll))
                 {
-                    var leftPivotLine = (size.x - TexLineBg.width) * .5f;
-                    var lineLengthPixels = (m_loadedStopData.Count + .125f) * STATION_SIZE;
+                    var leftPivotLine = (size.x - TexLineBg.width ) * .5f;
+                    var lineLengthPixels = (m_loadedStopData.Count + .125f) * STATION_SIZE ;
                     GUIKwyttoCommons.Space(lineLengthPixels);
                     GUI.DrawTexture(new Rect(leftPivotLine, 0, TexLineBg.width, lineLengthPixels), TexLineBg, ScaleMode.StretchToFill);
                     for (int i = 0; i < m_loadedStopData.Count; i++)
@@ -194,14 +194,14 @@ namespace ImprovedTransportManager.UI
                         StationData stop = m_loadedStopData[i];
                         stop.GetUpdated();
                         var targetTex = GetStationImage(stop);
-                        var labelWidth = size.x - leftPivotLine - targetTex.width - 20;
-                        var stationPosMapY = ((i + .25f) * STATION_SIZE) - (targetTex.height * .5f);
-                        var stationIconRect = new Rect(leftPivotLine, stationPosMapY, targetTex.width, targetTex.height);
+                        var labelWidth = size.x - leftPivotLine - targetTex.width  - 20;
+                        var stationPosMapY = ((i + .25f) * STATION_SIZE ) - (targetTex.height * .5f);
+                        var stationIconRect = new Rect(leftPivotLine, stationPosMapY , targetTex.width , targetTex.height );
                         GUI.Label(stationIconRect, targetTex, m_stationBtn);
                         RunContextMenuStop(i, stop, stationIconRect);
-                        var textsBasePosition = new Vector2(targetTex.width + leftPivotLine + 6, stationPosMapY);
+                        var textsBasePosition = new Vector2((targetTex.width + leftPivotLine + 6) , stationPosMapY);
                         var boredPercent = 1 - (stop.timeUntilBored * (1f / 255));
-                        var stopNameRect = new Rect(textsBasePosition, new Vector2(labelWidth, 20));
+                        var stopNameRect = new Rect(textsBasePosition, new Vector2(labelWidth, 24) );
 
                         var ctrlNameStopNameEditor = $"{stop.stopId}_NAMEEDIT_$$_";
                         if (m_currentStopNameEdit == ctrlNameStopNameEditor)
@@ -234,18 +234,18 @@ namespace ImprovedTransportManager.UI
                             GUI.FocusControl(ctrlNameStopNameEditor);
                             m_tempValue = stop.cachedName;
                         }
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 17), new Vector2(labelWidth, 20)), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
-                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 34), new Vector2(labelWidth, 20)), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
-                        GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f)), new Vector2(labelWidth, 20)), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
+                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 25) , new Vector2(labelWidth, 24) ), $"{Str.itm_lineMap_earningsCurrentPeriodAcronym} {stop.EarningCurrentWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsLastPeriodAcronym} {stop.EarningLastWeek.ToString(Settings.moneyFormat, LocaleManager.cultureInfo)}; {Str.itm_lineMap_earningsAllTimeAcronym} {stop.EarningAllTime.ToString(Settings.moneyFormatNoCents, LocaleManager.cultureInfo)}", m_smallLabel);
+                        GUI.Label(new Rect(textsBasePosition + new Vector2(0, 50) , new Vector2(labelWidth, 24) ), string.Format(Str.itm_lineMap_waitingTemplate, stop.residentsWaiting, stop.touristsWaiting, boredPercent * 100, Color.Lerp(Color.white, Color.Lerp(Color.yellow, Color.red, (boredPercent * 2) - 1), boredPercent * 2).ToRGB()), m_smallLabel);
+                        GUI.Label(new Rect(new Vector2(textsBasePosition.x, stationPosMapY + (STATION_SIZE * .66f )), new Vector2(labelWidth, 24) ), $"<i><color=cyan>{stop.distanceNextStop:N0}m</color></i>");
 
                     }
                     if (m_currentLineData.m_type.HasVehicles())
                     {
                         foreach (var vehicle in m_loadedVehiclesData)
                         {
-                            var position = vehicle.GetPositionOffset(leftPivotLine - 4, STATION_SIZE);
+                            var position = vehicle.GetPositionOffset(leftPivotLine - 4 , STATION_SIZE );
                             var content = vehicle.GetContentFor(m_currentVehicleDataShow);
-                            if (GUI.Button(new Rect(position, new Vector2(leftPivotLine * .25f, 20)), content, vehicle.CachedStyle))
+                            if (GUI.Button(new Rect(position, new Vector2(leftPivotLine * .25f, 20) ), content, vehicle.CachedStyle))
                             {
                                 DefaultTool.OpenWorldInfoPanel(new InstanceID { Vehicle = vehicle.VehicleId }, default);
                                 ToolsModifierControl.cameraController.SetTarget(new InstanceID { Vehicle = vehicle.VehicleId }, default, false);

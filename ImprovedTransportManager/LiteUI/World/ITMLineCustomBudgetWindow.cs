@@ -23,9 +23,9 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => true;
         protected string InitTitle => Str.itm_budgetCustomWindow_title;
-        protected Vector2 StartSize => new Vector2(560, 300) * ResolutionMultiplier;
+        protected Vector2 StartSize => new Vector2(560, 300);
         protected Vector2 MinSize { get; } = new Vector2(560, 300);
-        protected Vector2 StartPosition => new Vector2(UIScaler.MaxWidth - 960 * ResolutionMultiplier, UIScaler.MaxHeight - 300 * ResolutionMultiplier);
+        protected Vector2 StartPosition => new Vector2(0, UIScaler.MaxHeight - 300);
 
         public static ITMLineCustomBudgetWindow Instance { get; private set; }
 
@@ -101,8 +101,8 @@ namespace ImprovedTransportManager.UI
                     for (int i = 0; i < 24; i++)
                     {
                         var offsetX = btnWidth * i;
-                        GUI.Label(new Rect(refPos + new Vector2(offsetX, 0), new Vector2(btnWidth, 20 * ResolutionMultiplier)), $"{i}", m_centerLabel);
-                        var selectedOption = GUIComboBox.ContextMenuRect(new Rect(refPos + new Vector2(offsetX, 25), new Vector2(btnWidth, 35 * ResolutionMultiplier)), GetGroupOptions(), $"BUDGET_GROUPSEL_{i}", this, new GUIContent($"{(char)('A' + m_currentGroupData.DefaultValue[i])}\n{m_currentGroupData.BudgetGroups[m_currentGroupData.DefaultValue[i]]}"), m_selectionBtnUns);
+                        GUI.Label(new Rect(refPos + new Vector2(offsetX, 0), new Vector2(btnWidth, 20)), $"{i}", m_centerLabel);
+                        var selectedOption = GUIComboBox.ContextMenuRect(new Rect(refPos + new Vector2(offsetX, 25), new Vector2(btnWidth, 35)), GetGroupOptions(), $"BUDGET_GROUPSEL_{i}", this, new GUIContent($"{(char)('A' + m_currentGroupData.DefaultValue[i])}\n{m_currentGroupData.BudgetGroups[m_currentGroupData.DefaultValue[i]]}"), m_selectionBtnUns);
                         if (selectedOption >= 0)
                         {
                             m_currentGroupData.DefaultValue[i] = (byte)selectedOption;
@@ -272,7 +272,7 @@ namespace ImprovedTransportManager.UI
                     {
                         background = GUIKwyttoCommons.whiteTexture
                     },
-                    fixedHeight = 35 * GUIWindow.ResolutionMultiplier,
+                    fixedHeight = 35,
                     alignment = TextAnchor.MiddleCenter,
                     wordWrap = false
                 };

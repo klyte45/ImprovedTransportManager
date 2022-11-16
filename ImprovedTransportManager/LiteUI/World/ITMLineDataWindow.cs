@@ -22,8 +22,8 @@ namespace ImprovedTransportManager.UI
         protected override float FontSizeMultiplier => .9f;
         protected bool Resizable => false;
         protected string InitTitle => ModInstance.Instance.GeneralName;
-        protected Vector2 StartPosition => new Vector2((UIScaler.MaxWidth / 2) - 200, 256);
-        protected Vector2 StartSize => new Vector2(400, 700);
+        protected Vector2 StartPosition => new Vector2((UIScaler.MaxWidth / 2) - 200, 256 );
+        protected Vector2 StartSize => new Vector2(400, 700) ;
         protected virtual Vector2 MinSize { get; } = default;
         protected virtual Vector2 MaxSize { get; } = default;
         public ushort CurrentLine { get; private set; }
@@ -268,8 +268,8 @@ namespace ImprovedTransportManager.UI
             {
                 m_inlineBtnStyle = new GUIStyle(GUI.skin.button)
                 {
-                    fixedHeight = 20 * ResolutionMultiplier,
-                    fixedWidth = 20 * ResolutionMultiplier,
+                    fixedHeight = 20 ,
+                    fixedWidth = 20 ,
                     margin = new RectOffset(0, 0, 1, 1),
                 };
             }

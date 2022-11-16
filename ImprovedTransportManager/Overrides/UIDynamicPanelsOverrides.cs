@@ -16,7 +16,7 @@ namespace ImprovedTransportManager.Overrides
 
         public static void AfterShow(ref UIComponent __result)
         {
-            var panelCompoent = __result.GetComponent<PublicTransportDetailPanel>();
+            var panelCompoent = __result?.GetComponent<PublicTransportDetailPanel>();
             if (panelCompoent != null)
             {
                 __result.Hide();
