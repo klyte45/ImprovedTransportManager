@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
-    <value>Баланс</value>
+    <value>Бюджет</value>
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
-    <value>Bdgt.</value>
+    <value>Бюдж.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
@@ -143,144 +143,144 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
-    <value>There are no lines in this city!</value>
+    <value>В этом городе нет маршрутов!</value>
   </data>
   <data name="itm_linesListingWindow_tilte" xml:space="preserve">
-    <value>Public Transport Lines</value>
+    <value>Линии общественного транспорта</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>Veh.</value>
+    <value>Тр-т</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
-    <value>Day:</value>
+    <value>День:</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>Удалить маршрут</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
-    <value>Line Activity</value>
+    <value>Активность маршрута</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>Line Budget (%)</value>
+    <value>Бюджет маршрута (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
-    <value>Line Color</value>
+    <value>Цвет маршрута</value>
   </data>
   <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
-    <value>Internal line number</value>
+    <value>Порядковый № маршрута</value>
   </data>
   <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
-    <value>Night:</value>
+    <value>Ночью:</value>
   </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>Multiplies vehicles skins possibilities</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Отменено</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Day</value>
+    <value>Днём</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Night</value>
+    <value>Ночью</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Day and Night</value>
+    <value>Днём и ночью</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>Disab.</value>
+    <value>Отмен.</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>Днём</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>Ночью</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>Д. и Н.</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
-    <value>Activ.</value>
+    <value>Активн.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>Взрослых</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
-    <value>Budget View</value>
+    <value>Обзор бюджета</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Children</value>
+    <value>Детей</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
+    <value>{0:N1}м - {1} Остановок - {2}/{3} ТС - На {4}% умен. поездок</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
-    <value>Lines Overview</value>
+    <value>Обзор маршрутов</value>
   </data>
   <data name="itm_lineView_residentTourists" xml:space="preserve">
-    <value>{0:N0} Residents / {1:N0} Tourists</value>
+    <value>{0:N0} Жителей / {1:N0} Туристов</value>
   </data>
   <data name="itm_lineView_seniorLbl" xml:space="preserve">
-    <value>Senior</value>
+    <value>Пожилых</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Teen</value>
+    <value>Подростков</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;{0} of {1} остановок этого маршрута не взимают плату в соответствии с политикой района. Маршрут может не иметь дохода!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
-    <value>&lt;color=red&gt;This line is broken!&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;Этот маршрут нерабочий!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_ticketPrice" xml:space="preserve">
-    <value>Ticket Price (in cents)</value>
+    <value>Цена билета (в центах)</value>
   </data>
   <data name="itm_lineView_weeklyDataTitle" xml:space="preserve">
-    <value>Weekly report data</value>
+    <value>Еженедельный отчёт</value>
   </data>
   <data name="itm_lineView_youngLbl" xml:space="preserve">
-    <value>Young</value>
+    <value>Молодых</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
-    <value>Passengers/Capacity</value>
+    <value>Пассажировместимость</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
-    <value>Identifier</value>
+    <value>Идентификатор</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
-    <value>Profit (All Time)</value>
+    <value>Прибыль (За всё время)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitLastWeek" xml:space="preserve">
-    <value>Profit (Last Period)</value>
+    <value>Прибыль (Последний период)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
-    <value>Profit (Current Period)</value>
+    <value>Прибыль (Текущий период)</value>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
-    <value>E16:</value>
+    <value>П16:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
-    <value>E16 - Earnings last 16 weeks (24h for Real Time)</value>
+    <value>П16 – прибыль за последние 16 недель (24 часа реального времени)</value>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
-    <value>ECP:</value>
+    <value>ПТП:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronymLegend" xml:space="preserve">
-    <value>ECP - Earnings current period</value>
+    <value>ПТП – прибыль за текущий период</value>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronym" xml:space="preserve">
-    <value>ELP:</value>
+    <value>ППП:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronymLegend" xml:space="preserve">
-    <value>ELP - Earnings last period</value>
+    <value>ППП - Прибыль за последний период</value>
   </data>
   <data name="itm_lineMap_title" xml:space="preserve">
-    <value>Line stops map</value>
+    <value>Карта остановок маршрута</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
     <value>Vehicle data to show</value>
@@ -437,7 +437,7 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Low Wealth</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
-    <value>Medium Wealth</value>
+    <value>Среднего достатка</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
     <value>Wealth Report</value>
