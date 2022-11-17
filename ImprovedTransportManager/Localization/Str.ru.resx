@@ -139,7 +139,7 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Остановки</value>
+    <value>Остан.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
@@ -149,7 +149,7 @@
     <value>Линии общественного транспорта</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>Тр-т</value>
+    <value>ТС</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
@@ -283,237 +283,237 @@
     <value>Карта остановок маршрута</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
-    <value>Данные транспорта для отображения</value>
+    <value>Характеристики транспорта</value>
   </data>
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
-    <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
+    <value>Недовольных&lt;/color&gt; &lt;color=#{3}&gt;Жителей: {0:N0}; Туристов: {1:N0}; {2:N0}%</value>
   </data>
   <data name="itm_common_notApplicableAcronym" xml:space="preserve">
-    <value>N/A</value>
+    <value>Н/Д</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
-    <value>Vehicles models for line selection</value>
+    <value>Выбор транспортных средств для маршрута</value>
   </data>
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
-    <value>Current line exclusive</value>
+    <value>Только для этого маршрута</value>
   </data>
   <data name="itm_citySettings_title" xml:space="preserve">
-    <value>City settings</value>
+    <value>Настройки города</value>
   </data>
   <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
-    <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
-You can disable the unbunching also in terminal stops to get a more fluid line dynamic.</value>
+    <value>При включении экспресс-линий, городской транспорт, перед возвращением в депо, не будет высаживать пассажиров на обычных остановках, а только на конечных. 
+Вы можете отключить высадку также на конечных остановках, чтобы получить более плавную динамику маршрута.</value>
   </data>
   <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
-    <value>Disable unbunching also in terminal stops</value>
+    <value>Отключить высадку также на конечных остановках</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
-    <value>Express buses</value>
+    <value>Экспресс-автобусы</value>
   </data>
   <data name="itm_expressData_expressTrams" xml:space="preserve">
-    <value>Express trams</value>
+    <value>Экспресс-трамваи</value>
   </data>
   <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
-    <value>Express trolleybuses</value>
+    <value>Экспресс-троллейбусы</value>
   </data>
   <data name="itm_expressData_title" xml:space="preserve">
-    <value>Express lines</value>
+    <value>Экспресс-маршруты</value>
   </data>
   <data name="itm_statistics_clearFilters" xml:space="preserve">
-    <value>Clear filters</value>
+    <value>Сбросить фильтры</value>
   </data>
   <data name="itm_statistics_nullSelLine" xml:space="preserve">
-    <value>&lt;color=#FF00FF&gt;--TRANSPORT LINE--&lt;/color&gt;</value>
+    <value>&lt;color=#FF00FF&gt;--МАРШРУТ--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullSelStop" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--ВСЕ ОСТАНОВКИ--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullVehicle" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--ВЕСЬ ТРАНСПОРТ--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_reloadLines" xml:space="preserve">
-    <value>Reload lines</value>
+    <value>Перезагрузить маршруты</value>
   </data>
   <data name="itm_statistics_selectLine" xml:space="preserve">
-    <value>Select line</value>
+    <value>Выбрать маршрут</value>
   </data>
   <data name="itm_statistics_stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Остановка</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
-    <value>All vehicles and stops</value>
+    <value>Все транспортные средства и остановки</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatStops" xml:space="preserve">
-    <value>Statistics @ Stop {0}</value>
+    <value>Статистика @ Остановка {0}</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatVehicles" xml:space="preserve">
-    <value>Statistics @ Vehicle {0}</value>
+    <value>Статистика @ ТС {0}</value>
   </data>
   <data name="itm_statistics_title" xml:space="preserve">
-    <value>Statistics</value>
+    <value>Статистика</value>
   </data>
   <data name="itm_statistics_vehicle" xml:space="preserve">
-    <value>Vehicle</value>
+    <value>Транспортное средство</value>
   </data>
   <data name="itm_statisticsTable_currentLineColumnValue" xml:space="preserve">
-    <value>Since {0}</value>
+    <value>С {0}</value>
   </data>
   <data name="itm_statisticsTable_periodTitle" xml:space="preserve">
-    <value>Period</value>
+    <value>Период</value>
   </data>
   <data name="itm_statisticsTable_dataNotAvailableForThisFilter" xml:space="preserve">
-    <value>This data is not available in current selected filter</value>
+    <value>Эти данные недоступны в текущем выбранном фильтре</value>
   </data>
   <data name="itm_statisticsTable_financeReport_balance" xml:space="preserve">
-    <value>Balance</value>
+    <value>Баланс</value>
   </data>
   <data name="itm_statisticsTable_financeReport_expense" xml:space="preserve">
-    <value>Expense</value>
+    <value>Расходы</value>
   </data>
   <data name="itm_statisticsTable_financeReport_income" xml:space="preserve">
-    <value>Income</value>
+    <value>Доходы</value>
   </data>
   <data name="itm_statisticsTable_financeReport_title" xml:space="preserve">
-    <value>Financial report</value>
+    <value>Финансовый отчёт</value>
   </data>
   <data name="itm_statisticsTable_totalLast16w" xml:space="preserve">
-    <value>Total last 16 weeks</value>
+    <value>Всего за последние 16 недель</value>
   </data>
   <data name="itm_statisticsTable_totalLast24h" xml:space="preserve">
-    <value>Total last 24h</value>
+    <value>Всего за последние 24 часа</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
-    <value>Adults</value>
+    <value>Взрослых</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
-    <value>Children</value>
+    <value>Детей</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
-    <value>Seniors</value>
+    <value>Пожилых</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
-    <value>Teens</value>
+    <value>Подростков</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
-    <value>Passenger age report</value>
+    <value>Отчёт о возрасте пассажиров</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
-    <value>Youngs</value>
+    <value>Молодых</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
-    <value>Females</value>
+    <value>Женщин</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
-    <value>Males</value>
+    <value>Мужчин</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
-    <value>Gender Report</value>
+    <value>Гендерный отчёт</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Students</value>
+    <value>Студентов</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Students &amp; Tourists</value>
+    <value>Студентов и туристов</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Tourists</value>
+    <value>Туристов</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
-    <value>High Wealth</value>
+    <value>Высокого достатка</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
-    <value>Low Wealth</value>
+    <value>Низкого достатка</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
     <value>Среднего достатка</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
-    <value>Wealth Report</value>
+    <value>Отчёт о благосостоянии</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Всего</value>
   </data>
   <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (По умолчанию: {1:N0}¢/kpax)</value>
     <comment>{0} will be the transport type name
 {1} will be the default cost per 1000 passengers</comment>
   </data>
   <data name="itm_maintenanceData_header" xml:space="preserve">
-    <value>The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
-Left it at "0" to use the default cost.</value>
+    <value>Стоимость технического обслуживания основана на соотношении затрат в центах на одного пассажира. Более высокая производительность означает более высокие затраты!
+ Оставьте значение "0", чтобы использовать стоимость по умолчанию.</value>
   </data>
   <data name="itm_maintenanceData_title" xml:space="preserve">
-    <value>Maintenance costs</value>
+    <value>Расходы на техобслуживание</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
-    <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
-&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;</value>
+    <value>Вся информация о маршруте, которая (возможно) может создать инструмент для маршрута, доступна ниже. Используйте на свой страх и риск для создания специальных строк в этих модальных окнах. 
+&lt;color=red&gt;МОЖЕТ БЫТЬ НЕ СТАБИЛЬНЫМ! ОСТОРОЖНО!&lt;/color&gt;</value>
   </data>
   <data name="itm_specialLineTools_title" xml:space="preserve">
-    <value>Line tools</value>
+    <value>Инструменты маршрута</value>
   </data>
   <data name="itm_common_clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Очистить</value>
   </data>
   <data name="itm_common_copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копировать</value>
   </data>
   <data name="itm_common_paste" xml:space="preserve">
-    <value>Paste</value>
+    <value>Вставить</value>
   </data>
   <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
-    <value>Go to maintenance screen</value>
+    <value>Перейти на страницу обслуживания</value>
   </data>
   <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
-    <value>Vehicle (activate/deactivate)</value>
+    <value>ТС (включение/отключение)</value>
   </data>
   <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
-    <value>Capacity</value>
+    <value>Вместимость</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
-    <value>Cost/Period</value>
+    <value>Стоимость/Период</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
-    <value>Select the assets allowed to spawn in the line in this window.
-The new selection will be used as reference when spawning new vehicles to the line.
-The vehicles in the line that aren't selected in this list will be sent to depot as soon it:
-- Reach next stop (non-road based transport types only)
-- Get emptied
-- Reach the first stop or any terminal stop (road-based modals only)
+    <value>Выберите ТС (транспортные средства), которым разрешено появляться в строках этого окна.
+ Новый выбор будет использоваться в качестве эталона при появлении новых ТС на маршруте.
+ ТС в очереди, не выбранные в этом списке, будут отправлены в депо, как только:
+ - Доберутся до следующей остановки (только для ТС не использующих автодороги)
+ - Высадят пассажиров
+ - Доберутся до первой остановки или любой конечной остановки (только для ТС передвигающихся по автодорогам).
 
-The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
+ Здесь же можно отредактировать вместимость, стоимость техобслуживания рассчитывается исходя из стоимости на каждую 1000 пассажиров, настроенную в окне "Настройки города".</value>
   </data>
   <data name="itm_lineView_lineName" xml:space="preserve">
-    <value>Line name</value>
+    <value>Название маршрута</value>
   </data>
   <data name="itm_lineView_removeStop" xml:space="preserve">
-    <value>&lt;color=red&gt;Remove stop&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;Удалить остановку&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_setAsFirstStop" xml:space="preserve">
-    <value>Set as first stop</value>
+    <value>Установить как первую остановку</value>
   </data>
   <data name="itm_lineView_setAsTerminal" xml:space="preserve">
-    <value>Set as terminal</value>
+    <value>Установить как конечную</value>
   </data>
   <data name="itm_lineView_unsetAsTerminal" xml:space="preserve">
-    <value>Remove terminal</value>
+    <value>Удалить конечную</value>
   </data>
   <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
-    <value>Assets settings</value>
+    <value>Настройки объектов</value>
   </data>
   <data name="itm_generalSettings_defaultAssetFileExportedMessage" xml:space="preserve">
     <value>The assets settings were exported to file:
