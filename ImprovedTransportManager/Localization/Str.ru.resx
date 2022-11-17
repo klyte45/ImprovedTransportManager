@@ -283,7 +283,7 @@
     <value>Карта остановок маршрута</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
-    <value>Vehicle data to show</value>
+    <value>Данные транспорта для отображения</value>
   </data>
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
     <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
