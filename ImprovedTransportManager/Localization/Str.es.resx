@@ -575,7 +575,7 @@ Recomendado solo para jugadores expertos</value>
     <value>La parada actual no está dentro de un distrito. Asegúrese de que pertenezca a un distrito para vincularle el nombre.</value>
   </data>
   <data name="itm_lineMap_failedSettingPark" xml:space="preserve">
-    <value>The current stop isn't inside a special area. Ensure it belongs to a special area to bind its name to it.</value>
+    <value>La parada actual no está dentro de un distrito especial. Asegúrese de que pertenezca a un distrito especial para vincularle el nombre.</value>
   </data>
   <data name="itm_lineMap_forceBindToBuilding" xml:space="preserve">
     <value>Forzar el nombre vinculado de la parada al edificio (seleccionar)</value>
@@ -584,7 +584,7 @@ Recomendado solo para jugadores expertos</value>
     <value>Forzar el nombre vinculado de la parada al distrito</value>
   </data>
   <data name="itm_lineMap_forceBindToPark" xml:space="preserve">
-    <value>Forzar el nombre vinculado de la parada al área especial</value>
+    <value>Forzar el nombre vinculado de la parada al distrito especial</value>
   </data>
   <data name="itm_lineMap_forceBindToRoad" xml:space="preserve">
     <value>Forzar el nombre vinculado de la parada a la carretera (seleccionar)</value>
@@ -615,11 +615,11 @@ Recomendado solo para jugadores expertos</value>
     <value>Código de línea personalizado (nombre automático/WE)</value>
   </data>
   <data name="itm_lineView_ignoreMandatoryStopTerminal" xml:space="preserve">
-    <value>Ignore mandatory stop at terminals (full circular)
-&lt;color=yellow&gt;NOTE:&lt;/color&gt; Vehicle unspawns only will be done when the vehicle gets organically empty</value>
+    <value>Ignorar la parada obligatoria en terminales (circulación completa)
+&lt;color=yellow&gt;NOTA:&lt;/color&gt; La eliminación de vehículos solo se realizará cuando el vehículo se vacíe orgánicamente</value>
   </data>
   <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
-    <value>Require new vehicles to start line by a terminal stop</value>
+    <value>Requiere nuevos vehículos para iniciar la línea por una parada terminal</value>
   </data>
   <data name="itm_common_goTo" xml:space="preserve">
     <value>Ir a</value>
