@@ -89,7 +89,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>set "ModDir=%25LOCALAPPDATA%25\Colossal Order\Cities_Skylines\Addons\Mods\$(SolutionName)\"
+    <PostBuildEvent>set "ModDir=$(SolutionDir)..\_appdataMods\$(SolutionName)\"
 rmdir /s /q "%25ModDir%25"
 
 mkdir "%25ModDir%25"

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-[assembly: AssemblyVersion("0.1.0.7")]
+[assembly: AssemblyVersion("0.1.0.8")]
 namespace ImprovedTransportManager
 {
     public class ModInstance : BasicIUserMod<ModInstance, ITMMainController>

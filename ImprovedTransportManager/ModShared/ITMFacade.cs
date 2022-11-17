@@ -1,13 +1,14 @@
-﻿using ImprovedTransportManager.Data;
+﻿using ICities;
+using ImprovedTransportManager.Data;
 using ImprovedTransportManager.Utility;
 using System;
 using System.Collections.Generic;
 
 namespace ImprovedTransportManager.ModShared
 {
-    public class ITMFacade
+    public class ITMFacade : ILoadingExtension
     {
-        public static ITMFacade Instance => ModInstance.Controller.Facade;
+        public static ITMFacade Instance { get; private set; } = new ITMFacade();
 
         public event Action<ushort> EventLineDestinationsChanged;
 
@@ -38,5 +39,13 @@ namespace ImprovedTransportManager.ModShared
 
             return result;
         }
+
+        public void OnCreated(ILoading loading) { }
+
+        public void OnReleased() => Instance = new ITMFacade();
+
+        public void OnLevelLoaded(LoadMode mode) { }
+
+        public void OnLevelUnloading() => Instance = new ITMFacade();
     }
 }
