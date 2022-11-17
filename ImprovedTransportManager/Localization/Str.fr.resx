@@ -156,65 +156,65 @@
     <value>Jour:</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>Supprimer la ligne</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
-    <value>Line Activity</value>
+    <value>Activité de la ligne</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>Line Budget (%)</value>
+    <value>Budget de la ligne (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
-    <value>Line Color</value>
+    <value>Couleur de la ligne</value>
   </data>
   <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
-    <value>Internal line number</value>
+    <value>N° interne de ligne</value>
   </data>
   <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
-    <value>Night:</value>
+    <value>Nuit :</value>
   </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>Multiplie les possibilités de skins de véhicules</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Disabled</value>
+    <value>Désactivé</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Day</value>
+    <value>Jour</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Night</value>
+    <value>Nuit</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Day and Night</value>
+    <value>Jour et nuit</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>Disab.</value>
+    <value>Désact.</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>Jour</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>Nuit</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>J &amp; N</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
     <value>Activ.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>Adulte</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
-    <value>Budget View</value>
+    <value>Vue budgétaire</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Children</value>
+    <value>Enfants</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
+    <value>{0:N1}m - {1} Arrêts - {2}/{3} Véhicules - {4}% de trajets économisés</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
     <value>Lines Overview</value>
@@ -223,10 +223,10 @@
     <value>{0:N0} Residents / {1:N0} Tourists</value>
   </data>
   <data name="itm_lineView_seniorLbl" xml:space="preserve">
-    <value>Senior</value>
+    <value>Sénior</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Teen</value>
+    <value>Ados</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
     <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
@@ -241,13 +241,13 @@
     <value>Weekly report data</value>
   </data>
   <data name="itm_lineView_youngLbl" xml:space="preserve">
-    <value>Young</value>
+    <value>Jeune</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
-    <value>Passengers/Capacity</value>
+    <value>Passagers/Capacité</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
-    <value>Identifier</value>
+    <value>Identifiant</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
     <value>Profit (All Time)</value>
@@ -256,7 +256,7 @@
     <value>Profit (Last Period)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
-    <value>Profit (Current Period)</value>
+    <value>Profit (période actuelle)</value>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
     <value>E16:</value>
@@ -308,10 +308,10 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Disable unbunching also in terminal stops</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
-    <value>Express buses</value>
+    <value>Bus express</value>
   </data>
   <data name="itm_expressData_expressTrams" xml:space="preserve">
-    <value>Express trams</value>
+    <value>Trams express</value>
   </data>
   <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
     <value>Express trolleybuses</value>
@@ -335,13 +335,13 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_reloadLines" xml:space="preserve">
-    <value>Reload lines</value>
+    <value>Actualiser les lignes</value>
   </data>
   <data name="itm_statistics_selectLine" xml:space="preserve">
-    <value>Select line</value>
+    <value>Sélectionnez une ligne</value>
   </data>
   <data name="itm_statistics_stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Arrêt</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
     <value>All vehicles and stops</value>
@@ -353,7 +353,7 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Statistics @ Vehicle {0}</value>
   </data>
   <data name="itm_statistics_title" xml:space="preserve">
-    <value>Statistics</value>
+    <value>Statistiques</value>
   </data>
   <data name="itm_statistics_vehicle" xml:space="preserve">
     <value>Vehicle</value>
@@ -386,31 +386,31 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Total last 24h</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
-    <value>Adults</value>
+    <value>Adultes</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
-    <value>Children</value>
+    <value>Enfants</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
-    <value>Seniors</value>
+    <value>Séniors</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
     <value>Teens</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
-    <value>Passenger age report</value>
+    <value>Rapport sur l'âge des passagers</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
-    <value>Youngs</value>
+    <value>Jeunes</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
-    <value>Females</value>
+    <value>Femmes</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
-    <value>Males</value>
+    <value>Hommes</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
     <value>Gender Report</value>
@@ -419,16 +419,16 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Students</value>
+    <value>Étudiants</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Students &amp; Tourists</value>
+    <value>Étudiants &amp; Touristes</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Tourists</value>
+    <value>Touristes</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
     <value>High Wealth</value>
@@ -455,7 +455,7 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
 Left it at "0" to use the default cost.</value>
   </data>
   <data name="itm_maintenanceData_title" xml:space="preserve">
-    <value>Maintenance costs</value>
+    <value>Frais de maintenance</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
     <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
@@ -468,23 +468,23 @@ Left it at "0" to use the default cost.</value>
     <value>Clear</value>
   </data>
   <data name="itm_common_copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Copier</value>
   </data>
   <data name="itm_common_paste" xml:space="preserve">
-    <value>Paste</value>
+    <value>Coller</value>
   </data>
   <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
-    <value>Go to maintenance screen</value>
+    <value>Aller à l'écran de maintenance</value>
   </data>
   <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
-    <value>Vehicle (activate/deactivate)</value>
+    <value>Véhicule (activer/désactiver)</value>
   </data>
   <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
-    <value>Capacity</value>
+    <value>Capacité</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
-    <value>Cost/Period</value>
+    <value>Coût/Période</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
@@ -498,7 +498,7 @@ The vehicles in the line that aren't selected in this list will be sent to depot
 The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
   </data>
   <data name="itm_lineView_lineName" xml:space="preserve">
-    <value>Line name</value>
+    <value>Nom de la ligne</value>
   </data>
   <data name="itm_lineView_removeStop" xml:space="preserve">
     <value>&lt;color=red&gt;Remove stop&lt;/color&gt;</value>
@@ -507,10 +507,10 @@ The capacity can be edited here also, the maintenance cost is calculated based i
     <value>Set as first stop</value>
   </data>
   <data name="itm_lineView_setAsTerminal" xml:space="preserve">
-    <value>Set as terminal</value>
+    <value>Définir comme terminus</value>
   </data>
   <data name="itm_lineView_unsetAsTerminal" xml:space="preserve">
-    <value>Remove terminal</value>
+    <value>Retirer le terminus</value>
   </data>
   <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
     <value>Assets settings</value>
@@ -531,7 +531,7 @@ You may need to reload all files to see the new values being used</value>
     <value>The city settings were loaded successfully from default settings file.</value>
   </data>
   <data name="itm_generalSettings_defaultGeneralSettings" xml:space="preserve">
-    <value>General settings</value>
+    <value>Paramètres généraux</value>
   </data>
   <data name="itm_generalSettings_expertMode" xml:space="preserve">
     <value>Expert mode
@@ -596,20 +596,20 @@ Recomended for experenced players only</value>
     <value>Recalculate stop name bind</value>
   </data>
   <data name="itm_autoName_circularTemplate" xml:space="preserve">
-    <value>{0} (Circular)</value>
+    <value>{0} (Circulaire)</value>
     <comment>Template used when a line have a single terminal set</comment>
   </data>
   <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
-    <value>Auto name all city lines</value>
+    <value>Nommer automatiquement toutes les lignes</value>
   </data>
   <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
-    <value>Auto name all visible lines</value>
+    <value>Nommer automatiquement toutes les lignes visibles</value>
   </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
-    <value>Erase all custom stop names</value>
+    <value>Effacer tous les noms d'arrêt personnalisés</value>
   </data>
   <data name="itm_depotSelectWindow_title" xml:space="preserve">
-    <value>Line depot selection</value>
+    <value>Sélection du dépôt de la ligne</value>
   </data>
   <data name="itm_lineView_customLineCode" xml:space="preserve">
     <value>Custom line code (autoname/WE)</value>
