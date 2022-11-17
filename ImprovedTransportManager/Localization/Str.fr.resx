@@ -327,11 +327,11 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullSelStop" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--TOUS LES ARRÊTS--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullVehicle" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--TOUS LES VÉHICULES --&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_reloadLines" xml:space="preserve">
@@ -344,25 +344,25 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Arrêt</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
-    <value>All vehicles and stops</value>
+    <value>Tous les véhicules et arrêts</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatStops" xml:space="preserve">
-    <value>Statistics @ Stop {0}</value>
+    <value>Statistiques @ Arrêt {0}</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatVehicles" xml:space="preserve">
-    <value>Statistics @ Vehicle {0}</value>
+    <value>Statistiques @ Véhicule {0}</value>
   </data>
   <data name="itm_statistics_title" xml:space="preserve">
     <value>Statistiques</value>
   </data>
   <data name="itm_statistics_vehicle" xml:space="preserve">
-    <value>Vehicle</value>
+    <value>Véhicule</value>
   </data>
   <data name="itm_statisticsTable_currentLineColumnValue" xml:space="preserve">
-    <value>Since {0}</value>
+    <value>Depuis {0}</value>
   </data>
   <data name="itm_statisticsTable_periodTitle" xml:space="preserve">
-    <value>Period</value>
+    <value>Période</value>
   </data>
   <data name="itm_statisticsTable_dataNotAvailableForThisFilter" xml:space="preserve">
     <value>This data is not available in current selected filter</value>
@@ -371,10 +371,10 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Balance</value>
   </data>
   <data name="itm_statisticsTable_financeReport_expense" xml:space="preserve">
-    <value>Expense</value>
+    <value>Dépenses</value>
   </data>
   <data name="itm_statisticsTable_financeReport_income" xml:space="preserve">
-    <value>Income</value>
+    <value>Recettes</value>
   </data>
   <data name="itm_statisticsTable_financeReport_title" xml:space="preserve">
     <value>Financial report</value>
@@ -395,7 +395,7 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Séniors</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
-    <value>Teens</value>
+    <value>Ados</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
     <value>Rapport sur l'âge des passagers</value>
