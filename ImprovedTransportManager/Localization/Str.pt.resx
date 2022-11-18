@@ -286,19 +286,19 @@
     <value>Dados do veículo a serem exibidos</value>
   </data>
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
-    <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
+    <value>&lt;color=#{3}&gt;Residentes: {0:N0}; Turistas: {1:N0}; {2:N0}% Entediados&lt;/color&gt;</value>
   </data>
   <data name="itm_common_notApplicableAcronym" xml:space="preserve">
-    <value>N/A</value>
+    <value>N/D</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
-    <value>Vehicles models for line selection</value>
+    <value>Modelos de veículos para seleção de linha</value>
   </data>
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
-    <value>Current line exclusive</value>
+    <value>Exclusivo para linha atual</value>
   </data>
   <data name="itm_citySettings_title" xml:space="preserve">
-    <value>City settings</value>
+    <value>Configurações da cidade</value>
   </data>
   <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
     <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
