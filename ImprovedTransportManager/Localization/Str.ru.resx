@@ -628,7 +628,7 @@
     <value>Используя бюджетную группу {0}. Нажмите, чтобы сбросить.</value>
   </data>
   <data name="itm_budgetCustomWindow_budgetTimetableResume" xml:space="preserve">
-    <value>Резюме расписания</value>
+    <value>Сводка расписания</value>
   </data>
   <data name="itm_budgetCustomWindow_budgetType" xml:space="preserve">
     <value>Тип настройки</value>
