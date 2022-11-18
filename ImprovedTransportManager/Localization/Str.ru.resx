@@ -159,7 +159,7 @@
     <value>Удалить маршрут</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
-    <value>Активность маршрута</value>
+    <value>Деятельность маршрута</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
     <value>Бюджет маршрута (%)</value>
@@ -168,53 +168,53 @@
     <value>Цвет маршрута</value>
   </data>
   <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
-    <value>Порядковый № маршрута</value>
+    <value>Внутренний номер маршрута</value>
   </data>
   <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
-    <value>Ночью:</value>
+    <value>Ночь:</value>
   </data>
   <data name="root_modDescription" xml:space="preserve">
-    <value>Multiplies vehicles skins possibilities</value>
+    <value>Расширяет возможности управления линиями общественного транспорта в Cities: Skylines</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Отменено</value>
+    <value>Отключено</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Днём</value>
+    <value>День</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Ночью</value>
+    <value>Ночь</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Днём и ночью</value>
+    <value>День и ночь</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
     <value>Отмен.</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Днём</value>
+    <value>День</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Ночью</value>
+    <value>Ночь</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>Д. и Н.</value>
+    <value>Д и Н</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
-    <value>Активн.</value>
+    <value>Деят.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Взрослых</value>
+    <value>Взрослые</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
     <value>Обзор бюджета</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Детей</value>
+    <value>Дети</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}м - {1} Остановок - {2}/{3} ТС - На {4}% умен. поездок</value>
+    <value>{0:N1}м - {1} остановок - {2}/{3} транспортных средств - Уменьшение поездок на {4}%</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
     <value>Обзор маршрутов</value>
@@ -223,16 +223,16 @@
     <value>{0:N0} Жителей / {1:N0} Туристов</value>
   </data>
   <data name="itm_lineView_seniorLbl" xml:space="preserve">
-    <value>Пожилых</value>
+    <value>Пожилые</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Подростков</value>
+    <value>Подростки</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0} of {1} остановок этого маршрута не взимают плату в соответствии с политикой района. Маршрут может не иметь дохода!&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;{0} из {1} остановок на этом маршруте не взимают плату в соответствии с районными внутренними политическими курсами. Маршрут может не приносить прибыли!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
-    <value>&lt;color=red&gt;Этот маршрут нерабочий!&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;Этот маршрут неисправен!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_ticketPrice" xml:space="preserve">
     <value>Цена билета (в центах)</value>
@@ -241,10 +241,10 @@
     <value>Еженедельный отчёт</value>
   </data>
   <data name="itm_lineView_youngLbl" xml:space="preserve">
-    <value>Молодых</value>
+    <value>Молодые</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
-    <value>Пассажировместимость</value>
+    <value>Пассажирская вместимость</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
     <value>Идентификатор</value>
@@ -280,7 +280,7 @@
     <value>ППП - Прибыль за последний период</value>
   </data>
   <data name="itm_lineMap_title" xml:space="preserve">
-    <value>Карта остановок маршрута</value>
+    <value>Карта маршрутов</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
     <value>Характеристики транспорта</value>
@@ -292,7 +292,7 @@
     <value>Н/Д</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
-    <value>Выбор ТС для маршрута</value>
+    <value>Выбор транспортного средства для маршрута</value>
   </data>
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
     <value>Только для этого маршрута</value>
@@ -301,11 +301,11 @@
     <value>Настройки города</value>
   </data>
   <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
-    <value>При включении экспресс-линий, городской транспорт, перед возвращением в депо, не будет высаживать пассажиров на обычных остановках, а только на конечных. 
-Вы можете отключить высадку также на конечных остановках, чтобы получить более плавную динамику маршрута.</value>
+    <value>При включении экспресс-линий, городской транспорт будет высаживать пассажиров только на конечных, не высаживая их на обычных остановках. 
+Вы также можете отключить высадку на конечных остановках для достижения большей постоянности на линии.</value>
   </data>
   <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
-    <value>Отключить высадку также на конечных остановках</value>
+    <value>Также отключить высадку на конечных остановках</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
     <value>Экспресс-автобусы</value>
@@ -344,19 +344,19 @@
     <value>Остановка</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
-    <value>Все ТС и остановки</value>
+    <value>Весь транспорт и все остановки</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatStops" xml:space="preserve">
     <value>Статистика @ Остановка {0}</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatVehicles" xml:space="preserve">
-    <value>Статистика @ ТС {0}</value>
+    <value>Статистика @ Транспортное средство {0}</value>
   </data>
   <data name="itm_statistics_title" xml:space="preserve">
     <value>Статистика</value>
   </data>
   <data name="itm_statistics_vehicle" xml:space="preserve">
-    <value>ТС</value>
+    <value>Транспортное средство</value>
   </data>
   <data name="itm_statisticsTable_currentLineColumnValue" xml:space="preserve">
     <value>С {0}</value>
@@ -365,16 +365,16 @@
     <value>Период</value>
   </data>
   <data name="itm_statisticsTable_dataNotAvailableForThisFilter" xml:space="preserve">
-    <value>Эти данные недоступны в текущем выбранном фильтре</value>
+    <value>Эти данные недоступны при применении текущего фильтра</value>
   </data>
   <data name="itm_statisticsTable_financeReport_balance" xml:space="preserve">
     <value>Баланс</value>
   </data>
   <data name="itm_statisticsTable_financeReport_expense" xml:space="preserve">
-    <value>Расходы</value>
+    <value>Расход</value>
   </data>
   <data name="itm_statisticsTable_financeReport_income" xml:space="preserve">
-    <value>Доходы</value>
+    <value>Доход</value>
   </data>
   <data name="itm_statisticsTable_financeReport_title" xml:space="preserve">
     <value>Финансовый отчёт</value>
@@ -386,16 +386,16 @@
     <value>Всего за последние 24 часа</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
-    <value>Взрослых</value>
+    <value>Взрослые</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
-    <value>Детей</value>
+    <value>Дети</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
-    <value>Пожилых</value>
+    <value>Пожилые</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
-    <value>Подростков</value>
+    <value>Подростки</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
     <value>Отчёт о возрасте пассажиров</value>
@@ -404,43 +404,43 @@
     <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
-    <value>Молодых</value>
+    <value>Молодые</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
-    <value>Женщин</value>
+    <value>Женщины</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
-    <value>Мужчин</value>
+    <value>Мужчины</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
-    <value>Гендерный отчёт</value>
+    <value>Отчёт по половой идентичности</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
     <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Студентов</value>
+    <value>Студенты</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Студентов и туристов</value>
+    <value>Студенты и туристы</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
     <value>Всего</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Туристов</value>
+    <value>Туристы</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
-    <value>Высокого достатка</value>
+    <value>C высоким достатком</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
-    <value>Низкого достатка</value>
+    <value>С низким достатком</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
-    <value>Среднего достатка</value>
+    <value>Со средним достатом</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
-    <value>Отчёт о благосостоянии</value>
+    <value>Отчёт по достатку</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
     <value>Всего</value>
@@ -451,15 +451,15 @@
 {1} will be the default cost per 1000 passengers</comment>
   </data>
   <data name="itm_maintenanceData_header" xml:space="preserve">
-    <value>Стоимость технического обслуживания основана на соотношении затрат в центах на одного пассажира. Более высокая производительность означает более высокие затраты!
- Оставьте значение "0", чтобы использовать стоимость по умолчанию.</value>
+    <value>Стоимость технического обслуживания основана на соотношении затрат в центах на одного пассажира. Более высокая производительность ведёт к более высоким затратам!
+Оставьте значение "0", чтобы использовать стоимость по умолчанию.</value>
   </data>
   <data name="itm_maintenanceData_title" xml:space="preserve">
     <value>Расходы на техобслуживание</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
     <value>Вся информация о маршруте, которая (возможно) может создать инструмент для маршрута, доступна ниже. Используйте на свой страх и риск для создания специальных строк в этих модальных окнах. 
-&lt;color=red&gt;МОЖЕТ БЫТЬ НЕ СТАБИЛЬНЫМ! ОСТОРОЖНО!&lt;/color&gt;</value>
+&lt;color=red&gt;МОЖЕТ БЫТЬ НЕСТАБИЛЬНО! ОСТОРОЖНО!&lt;/color&gt;</value>
   </data>
   <data name="itm_specialLineTools_title" xml:space="preserve">
     <value>Инструменты маршрута</value>
@@ -477,7 +477,7 @@
     <value>Перейти на страницу обслуживания</value>
   </data>
   <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
-    <value>ТС (включение/отключение)</value>
+    <value>Транспортное средство (включение/отключение)</value>
   </data>
   <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
     <value>Вместимость</value>
@@ -488,14 +488,14 @@
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
-    <value>Выберите ТС (транспортные средства), которым разрешено появляться в строках этого окна.
- Новый выбор будет использоваться в качестве эталона при появлении новых ТС на маршруте.
- ТС в очереди, не выбранные в этом списке, будут отправлены в депо, как только:
- - Доберутся до следующей остановки (только для ТС не использующих автодороги)
- - Высадят пассажиров
- - Доберутся до первой остановки или любой конечной остановки (только для ТС передвигающихся по автодорогам).
+    <value>Выберите в этом окне транспортные средства, которым разрешено появляться на маршруте.
+Новый выбор будет использоваться в качестве эталона при появлении новых транспортных средств на маршруте.
+Уже находящиеся на маршруте и не выбранные в этом списке транспортные средства будут отправлены в депо, как только они:
+ - Доберутся до следующей остановки (только для неавтомобильного транспорта)
+ - Полностью высадят пассажиров
+ - Доберутся до первой остановки или до любой конечной остановки (только для неавтомобильного транспорта).
 
- Здесь же можно отредактировать вместимость, стоимость техобслуживания рассчитывается исходя из стоимости на каждую 1000 пассажиров, настроенную в окне "Настройки города".</value>
+Здесь же можно отредактировать вместимость; стоимость техобслуживания рассчитывается исходя из стоимости на каждых 1000 пассажиров, настроенной в окне "Настройки города".</value>
   </data>
   <data name="itm_lineView_lineName" xml:space="preserve">
     <value>Название маршрута</value>
@@ -539,22 +539,22 @@
 Рекомендуется только для опытных игроков</value>
   </data>
   <data name="itm_generalSettings_exportCurrentToFile" xml:space="preserve">
-    <value>Экспорт по умолчанию</value>
+    <value>Экспортировать как файл по умолчанию</value>
   </data>
   <data name="itm_generalSettings_importCurrentFromFile" xml:space="preserve">
-    <value>Импорт по умолчанию</value>
+    <value>Импортировать из файла по умолчанию</value>
   </data>
   <data name="itm_generalSettings_title" xml:space="preserve">
-    <value>Основное</value>
+    <value>Основные</value>
   </data>
   <data name="itm_lineLogo_changeCustomLogo" xml:space="preserve">
-    <value>Изменить логотип</value>
+    <value>Изменить пользовательский логотип</value>
   </data>
   <data name="itm_lineLogo_deleteCustomLogo" xml:space="preserve">
-    <value>&lt;color=red&gt;Удалить логотип&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;Удалить пользовательский логотип&lt;/color&gt;</value>
   </data>
   <data name="itm_lineLogo_invalidTexture" xml:space="preserve">
-    <value>Нерабочая текстура!</value>
+    <value>Неисправная текстура!</value>
   </data>
   <data name="itm_lineLogo_invalidTextureContent" xml:space="preserve">
     <value>Текстура должна иметь размер ровно 256x256 пикселей!</value>
@@ -569,13 +569,13 @@
     <value>Ближайшие маршруты</value>
   </data>
   <data name="itm_lineLogo_setCustomLogo" xml:space="preserve">
-    <value>Установить логотип</value>
+    <value>Установить пользовательский логотип</value>
   </data>
   <data name="itm_lineMap_failedSettingDistrict" xml:space="preserve">
-    <value>Эта остановка размещена не в районе. Убедитесь, что она находится в границах района, чтобы связать с ним её название.</value>
+    <value>Эта остановка размещена вне района. Убедитесь, что она находится в границах района, чтобы связать с ним её название.</value>
   </data>
   <data name="itm_lineMap_failedSettingPark" xml:space="preserve">
-    <value>Эта остановка размещена не внутри специальной области. Убедитесь, что она находится в границах специальной области, чтобы привязать к нему её название.</value>
+    <value>Эта остановка размещена вне специальной области. Убедитесь, что она находится в границах специальной области, чтобы привязать к ней её название.</value>
   </data>
   <data name="itm_lineMap_forceBindToBuilding" xml:space="preserve">
     <value>Принудительно привязать название остановки к зданию (выбрать)</value>
@@ -590,20 +590,20 @@
     <value>Принудительно привязать название остановки к дороге (выбрать)</value>
   </data>
   <data name="itm_lineMap_recalculateAllStopNames" xml:space="preserve">
-    <value>Изменить все названия остановок по привязкам</value>
+    <value>Пересчитать все привязки названий остановок</value>
   </data>
   <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
-    <value>Изменить название остановки по привязке</value>
+    <value>Изменить привязку названия остановки</value>
   </data>
   <data name="itm_autoName_circularTemplate" xml:space="preserve">
     <value>{0} (Кольцевой)</value>
     <comment>Template used when a line have a single terminal set</comment>
   </data>
   <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
-    <value>Автоназвание всех маршрутов города</value>
+    <value>Давать автоматическое название всем маршрутам города</value>
   </data>
   <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
-    <value>Автоназвание всех видимых маршрутов</value>
+    <value>Давать автоматическое название всем видимым маршрутам</value>
   </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
     <value>Удалить все пользовательские названия остановок</value>
@@ -612,11 +612,11 @@
     <value>Выбор депо маршрута</value>
   </data>
   <data name="itm_lineView_customLineCode" xml:space="preserve">
-    <value>Пользовательский код маршрута (автоимя/WE)</value>
+    <value>Пользовательский код маршрута (автоматическое название/WE)</value>
   </data>
   <data name="itm_lineView_ignoreMandatoryStopTerminal" xml:space="preserve">
-    <value>Игнорировать обязательные остановки на конечных (полный цикл)
-&lt;color=yellow&gt;ПРИМЕЧАНИЕ:&lt;/color&gt; Транспортное средство исчезнет только тогда, когда оно станет органически пустым.</value>
+    <value>Игнорировать принудительную остановку на конечных (кольцо)
+&lt;color=yellow&gt;ПРИМЕЧАНИЕ:&lt;/color&gt; Транспортное средство исчезнет только тогда, когда там больше не будет пассажиров</value>
   </data>
   <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
     <value>Требовать, чтобы новые транспортные средства начинали работать с конечной остановки</value>
@@ -634,27 +634,27 @@
     <value>Тип настройки</value>
   </data>
   <data name="itm_budgetCustomWindow_defaultGroupDescription" xml:space="preserve">
-    <value>Группа по умолчанию редактируется в окне сведений о маршруте и не поддерживает специальные правила бюджета. Выберите группу для использования бюджета по часам или часам и дням недели.</value>
+    <value>Группа по умолчанию редактируется в окне сведений о маршруте и не поддерживает специальные бюджетные правила. Выберите группу для использования бюджета по часам или часам и дням недели.</value>
   </data>
   <data name="itm_budgetCustomWindow_defaultGroupText" xml:space="preserve">
-    <value>Настройки бюджета игры по умолчанию</value>
+    <value>Настройки бюджета как в игре по умолчанию</value>
   </data>
   <data name="itm_budgetCustomWindow_groupNameTemplate" xml:space="preserve">
     <value>Группа бюджета {0}</value>
     <comment>{0} will be a number (1-32)</comment>
   </data>
   <data name="itm_budgetCustomWindow_groupsBudgets" xml:space="preserve">
-    <value>Подгруппы групповых бюджетов</value>
+    <value>Подгруппы групп бюджета</value>
   </data>
   <data name="itm_budgetCustomWindow_groupsEachHour" xml:space="preserve">
-    <value>Групповой бюджет подгрупп в час</value>
+    <value>Подгруппы групп бюджета в час</value>
   </data>
   <data name="itm_budgetCustomWindow_helpContent" xml:space="preserve">
-    <value>Бюджетные группы — это бюджеты, разделённые между несколькими маршрутами. ITM поддерживает до 26 групп на тип транспорта.
+    <value>Бюджетные группы — это бюджеты, разделённые между несколькими маршрутами. ITM поддерживает до 26 групп на один вид транспорта.
 Группы бюджета могут быть 3 типов:
 &lt;color=yellow&gt;- Фиксированные:&lt;/color&gt; Фиксированный бюджет;
-&lt;color=yellow&gt;- В час:&lt;/color&gt; Бюджет на основе времени цикла дня/ночи или таймера реального времени;
-&lt;color=yellow&gt;- По часам и дням недели:&lt;/color&gt; Бюджет основан на цикле дня/ночи или таймере реального времени, но может иметь специальные таблицы для некоторых дней недели. Имеет смысл использовать только с RealTime.</value>
+&lt;color=yellow&gt;- Почасовые:&lt;/color&gt; Бюджет, основанный на цикле дня и ночи или цикле RealTime;
+&lt;color=yellow&gt;- По часам и дням недели:&lt;/color&gt; Бюджет, основанный на цикле дня и ночи или цикле RealTime, но с возможностью иметь специальные таблицы для некоторых дней недели. Имеет смысл использовать только с RealTime.</value>
   </data>
   <data name="itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat" xml:space="preserve">
     <value>Маршруты, использующие одну группу: {0}</value>
@@ -665,7 +665,7 @@
     <comment>Used in timetable view to show the period of transition between budgets ({0} is the previous, {1} is the next budget)</comment>
   </data>
   <data name="itm_Enum__BudgetType_Fixed" xml:space="preserve">
-    <value>Фикс.</value>
+    <value>Исправленный</value>
   </data>
   <data name="itm_Enum__BudgetType_PerHour" xml:space="preserve">
     <value>В час</value>
