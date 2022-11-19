@@ -305,7 +305,7 @@
 You can disable the unbunching also in terminal stops to get a more fluid line dynamic.</value>
   </data>
   <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
-    <value>Disable unbunching also in terminal stops</value>
+    <value>Desativar desvinculação também em paradas de terminal</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
     <value>Ônibus expresso</value>
@@ -323,25 +323,25 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Limpar filtros</value>
   </data>
   <data name="itm_statistics_nullSelLine" xml:space="preserve">
-    <value>&lt;color=#FF00FF&gt;--TRANSPORT LINE--&lt;/color&gt;</value>
+    <value>&lt;color=#FF00FF&gt;--LINHA DE TRANSPORTE--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullSelStop" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--TODAS AS PARADAS--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullVehicle" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--TODOS OS VEÍCULOS--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_reloadLines" xml:space="preserve">
-    <value>Reload lines</value>
+    <value>Recarregar linhas</value>
   </data>
   <data name="itm_statistics_selectLine" xml:space="preserve">
-    <value>Select line</value>
+    <value>Selecionar linha</value>
   </data>
   <data name="itm_statistics_stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Ponto</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
     <value>All vehicles and stops</value>
