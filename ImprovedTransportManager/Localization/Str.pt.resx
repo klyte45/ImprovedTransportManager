@@ -380,82 +380,82 @@ Você pode desativar a separação também nos pontos do terminal para obter uma
     <value>Relatório financeiro</value>
   </data>
   <data name="itm_statisticsTable_totalLast16w" xml:space="preserve">
-    <value>Total last 16 weeks</value>
+    <value>Total das últimas 16 semanas</value>
   </data>
   <data name="itm_statisticsTable_totalLast24h" xml:space="preserve">
-    <value>Total last 24h</value>
+    <value>Total das últimas 24h</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
-    <value>Adults</value>
+    <value>Adultos</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
-    <value>Children</value>
+    <value>Crianças</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
-    <value>Seniors</value>
+    <value>Idosos</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
-    <value>Teens</value>
+    <value>Adolescentes</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
-    <value>Passenger age report</value>
+    <value>Relatório de idade dos passageiros</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
-    <value>Youngs</value>
+    <value>Jovens</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
-    <value>Females</value>
+    <value>Mulheres</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
-    <value>Males</value>
+    <value>Homens</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
-    <value>Gender Report</value>
+    <value>Relatório de Gênero</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Students</value>
+    <value>Estudantes</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Students &amp; Tourists</value>
+    <value>Estudantes e Turistas</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Tourists</value>
+    <value>Turistas</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
-    <value>High Wealth</value>
+    <value>Alta Riqueza</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
-    <value>Low Wealth</value>
+    <value>Baixa Riqueza</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
-    <value>Medium Wealth</value>
+    <value>Riqueza Média</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
-    <value>Wealth Report</value>
+    <value>Relatório de Riqueza</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
     <value>Total</value>
   </data>
   <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Padrão: {1:N0}¢/kpax)</value>
     <comment>{0} will be the transport type name
 {1} will be the default cost per 1000 passengers</comment>
   </data>
   <data name="itm_maintenanceData_header" xml:space="preserve">
-    <value>The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
-Left it at "0" to use the default cost.</value>
+    <value>O custo da manutenção é baseado num custo em centavos por cada passageiro. Capacidades maiores significam custos maiores!
+Deixe em "0" para usar o custo padrão.</value>
   </data>
   <data name="itm_maintenanceData_title" xml:space="preserve">
-    <value>Maintenance costs</value>
+    <value>Custos de manutenção</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
     <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
