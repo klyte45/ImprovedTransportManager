@@ -106,6 +106,7 @@ set "ModDirWS=$(SolutionDir)..\_wsMods\%25wsId%25\"
 rmdir /s /q "%25ModDirWS%25"
 mkdir "%25ModDirWS%25"
 xcopy /y /e "$(TargetDir)*" "%25ModDirWS%25"
+copy "$(SolutionDir)/PreviewImage.png" "%25ModDirWS%25"
 del "%25ModDirWS%25*.pdb"</PostBuildEvent>
   </PropertyGroup>
 </Project>

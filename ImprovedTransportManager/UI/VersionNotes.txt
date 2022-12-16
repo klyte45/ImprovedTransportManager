@@ -1,11 +1,15 @@
+<color=green>Update r9 (17/DEC/22):</color> 
+- Fixes for Financial Districts update
+
+<color=green>Update r8 (17/NOV/22)</color>
+- Fixing integration with WE
+
 <color=green>Update r7 (16/NOV/22)</color>
 - Fixed BG color to not be too dark nor saturated
 - Fixed non-full hd window sizes
 - Fixed ELT issues
 - Added some language translations (specially cn, ja and it)
 
-<color=green>Update r8 (17/NOV/22)</color>
-- Fixing integration with WE
 
 <color=yellow>Welcome to Improved Transport Manager, the ITM!</color>
 
