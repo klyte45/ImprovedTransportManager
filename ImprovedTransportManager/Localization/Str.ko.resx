@@ -177,7 +177,7 @@
     <value>Multiplies vehicles skins possibilities</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Disabled</value>
+    <value>비활성화</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
     <value>Day</value>
@@ -189,16 +189,16 @@
     <value>Day and Night</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>Disab.</value>
+    <value>비활성화</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>주간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>야간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>주 &amp;  야</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
     <value>Activ.</value>
@@ -600,10 +600,10 @@ Recomended for experenced players only</value>
     <comment>Template used when a line have a single terminal set</comment>
   </data>
   <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
-    <value>Auto name all city lines</value>
+    <value>도시 내 모든 노선 이름 자동 짓기</value>
   </data>
   <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
-    <value>Auto name all visible lines</value>
+    <value>보이는 노선 이름 자동 짓기</value>
   </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
     <value>Erase all custom stop names</value>
