@@ -126,7 +126,7 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>路线类型 &lt;color=yellow&gt;{0}&lt;/color&gt; 的数量: {1:N0} - 公交路线设置总数: {2:N0}</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; 路线的数量: {1:N0} - 公共交通路线总数: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
