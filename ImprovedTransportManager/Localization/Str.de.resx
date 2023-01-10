@@ -192,95 +192,95 @@
     <value>Disab.</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>Tag</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>Nacht</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>T &amp; N</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
-    <value>Activ.</value>
+    <value>Aktiv.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>Erwachsene</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
-    <value>Budget View</value>
+    <value>Budget-Ansicht</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Children</value>
+    <value>Kinder</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
     <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
-    <value>Lines Overview</value>
+    <value>Linien-Übersicht</value>
   </data>
   <data name="itm_lineView_residentTourists" xml:space="preserve">
-    <value>{0:N0} Residents / {1:N0} Tourists</value>
+    <value>{0:N0} Bewohner / {1:N0} Touristen</value>
   </data>
   <data name="itm_lineView_seniorLbl" xml:space="preserve">
     <value>Senior</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Teen</value>
+    <value>Jugendlicher</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;{0} von {1} Haltestellen dieser Linie berechnen - auf Grund von Richtlinien - keine Gebühren. Die Linie hat möglicherweise keine Einnahmen!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
-    <value>&lt;color=red&gt;This line is broken!&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;Diese Linie ist fehlerhaft!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_ticketPrice" xml:space="preserve">
-    <value>Ticket Price (in cents)</value>
+    <value>Ticketpreis (in Cents)</value>
   </data>
   <data name="itm_lineView_weeklyDataTitle" xml:space="preserve">
     <value>Weekly report data</value>
   </data>
   <data name="itm_lineView_youngLbl" xml:space="preserve">
-    <value>Young</value>
+    <value>Jung</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
-    <value>Passengers/Capacity</value>
+    <value>Passagiere/Kapazität</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
     <value>Identifier</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
-    <value>Profit (All Time)</value>
+    <value>Gewinn (Gesamt)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitLastWeek" xml:space="preserve">
-    <value>Profit (Last Period)</value>
+    <value>Gewinn (Letzte Woche)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
-    <value>Profit (Current Period)</value>
+    <value>Gewinn (Diese Woche)</value>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
     <value>E16:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
-    <value>E16 - Earnings last 16 weeks (24h for Real Time)</value>
+    <value>E16 - Einnahmen der letzten 16 Wochen (24 Stunden in Echtzeit)</value>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
     <value>ECP:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronymLegend" xml:space="preserve">
-    <value>ECP - Earnings current period</value>
+    <value>ECP - Einnahmen der aktuellen Woche</value>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronym" xml:space="preserve">
     <value>ELP:</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronymLegend" xml:space="preserve">
-    <value>ELP - Earnings last period</value>
+    <value>ECP - Einnahmen der letzten Woche</value>
   </data>
   <data name="itm_lineMap_title" xml:space="preserve">
-    <value>Line stops map</value>
+    <value>Haltestellen-Karte</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
     <value>Vehicle data to show</value>
@@ -289,7 +289,7 @@
     <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
   </data>
   <data name="itm_common_notApplicableAcronym" xml:space="preserve">
-    <value>N/A</value>
+    <value>n. a.</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
     <value>Vehicles models for line selection</value>
@@ -298,7 +298,7 @@
     <value>Current line exclusive</value>
   </data>
   <data name="itm_citySettings_title" xml:space="preserve">
-    <value>City settings</value>
+    <value>Stadt-Einstellungen</value>
   </data>
   <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
     <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
@@ -308,13 +308,13 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Disable unbunching also in terminal stops</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
-    <value>Express buses</value>
+    <value>Express-Busse</value>
   </data>
   <data name="itm_expressData_expressTrams" xml:space="preserve">
-    <value>Express trams</value>
+    <value>Express-Straßenbahnen</value>
   </data>
   <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
-    <value>Express trolleybuses</value>
+    <value>Express-Oberleitungsbusse</value>
   </data>
   <data name="itm_expressData_title" xml:space="preserve">
     <value>Express lines</value>
@@ -416,37 +416,37 @@ You can disable the unbunching also in terminal stops to get a more fluid line d
     <value>Gender Report</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Gesamt</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Students</value>
+    <value>Studenten</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Students &amp; Tourists</value>
+    <value>Studenten &amp; Touristen</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Gesamt</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Tourists</value>
+    <value>Touristen</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
-    <value>High Wealth</value>
+    <value>Hoher Wohlstand</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
-    <value>Low Wealth</value>
+    <value>Niedriger Reichtum</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
-    <value>Medium Wealth</value>
+    <value>Mittlerer Reichtum</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
-    <value>Wealth Report</value>
+    <value>Reichtum-Bericht</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>Gesamt</value>
   </data>
   <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Standard: {1:N0}¢ / 1000 Passagiere)</value>
     <comment>{0} will be the transport type name
 {1} will be the default cost per 1000 passengers</comment>
   </data>
