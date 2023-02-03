@@ -118,546 +118,550 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
-    <value>Balance</value>
+    <value>잔고</value>
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
-    <value>Bdgt.</value>
+    <value>예산</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <value>해당 &lt;color=yellow&gt;{0}&lt;/color&gt; 유형 노선 수 : {1:N0} - 도시 내 총 노선 수 : {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>Line Name</value>
+    <value>노선 이름</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
-    <value>Pass.</value>
+    <value>승객</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Stops</value>
+    <value>역(들)</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
-    <value>There are no lines in this city!</value>
+    <value>이 도시엔 어떤 노선도 없어요!</value>
   </data>
   <data name="itm_linesListingWindow_tilte" xml:space="preserve">
-    <value>Public Transport Lines</value>
+    <value>대중교통 노선 목록</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>Veh.</value>
+    <value>배차</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
-    <value>Day:</value>
+    <value>주간 :</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>노선 삭제</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
-    <value>Line Activity</value>
+    <value>노선 활성화</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>Line Budget (%)</value>
+    <value>노선 예산 (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
-    <value>Line Color</value>
+    <value>노선 색상</value>
   </data>
   <data name="itm_lineView_lineInternalNumber" xml:space="preserve">
-    <value>Internal line number</value>
+    <value>노선 번호</value>
   </data>
   <data name="itm_lineView_nightBudgetTitle" xml:space="preserve">
-    <value>Night:</value>
+    <value>야간 :</value>
   </data>
   <data name="root_modDescription" xml:space="preserve">
     <value>Multiplies vehicles skins possibilities</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None" xml:space="preserve">
-    <value>Disabled</value>
+    <value>비활성화</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Day</value>
+    <value>주간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Night</value>
+    <value>야간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Day and Night</value>
+    <value>주간 및 야간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>Disab.</value>
+    <value>비활성</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>주간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>야간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>주 &amp;  야</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
-    <value>Activ.</value>
+    <value>활성화</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>성인</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
-    <value>Budget View</value>
+    <value>예산 열기</value>
   </data>
   <data name="itm_lineView_childrenLbl" xml:space="preserve">
-    <value>Children</value>
+    <value>어린이</value>
   </data>
   <data name="itm_lineView_distanceStops" xml:space="preserve">
-    <value>{0:N1}m - {1} Stops - {2}/{3} Vehicles - {4}% Trips saved</value>
+    <value>{0:N1}m - {1} 정거장들 - {2}/{3} 차량들 - {4}% 여정 완료됨</value>
   </data>
   <data name="itm_lineView_linesListBtn" xml:space="preserve">
-    <value>Lines Overview</value>
+    <value>노선목록 보기</value>
   </data>
   <data name="itm_lineView_residentTourists" xml:space="preserve">
-    <value>{0:N0} Residents / {1:N0} Tourists</value>
+    <value>거주민 : {0:N0} / 관광객 : {1:N0}</value>
   </data>
   <data name="itm_lineView_seniorLbl" xml:space="preserve">
-    <value>Senior</value>
+    <value>노인</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Teen</value>
+    <value>10대</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;{0} 과 {1} 정류장 사이는 구역 정책으로 인해 요금을 받지 않습니다. 따라서 이 노선은 수입이 없을 수 있습니다!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_thisLineIsBroken" xml:space="preserve">
-    <value>&lt;color=red&gt;This line is broken!&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;이 노선은 고장났어요!&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_ticketPrice" xml:space="preserve">
-    <value>Ticket Price (in cents)</value>
+    <value>노선 가격 (센트)</value>
   </data>
   <data name="itm_lineView_weeklyDataTitle" xml:space="preserve">
-    <value>Weekly report data</value>
+    <value>주간 보고서</value>
   </data>
   <data name="itm_lineView_youngLbl" xml:space="preserve">
-    <value>Young</value>
+    <value>청년</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_PassengerCapacity" xml:space="preserve">
-    <value>Passengers/Capacity</value>
+    <value>승객/수용량</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_Identifier" xml:space="preserve">
-    <value>Identifier</value>
+    <value>식별코드</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitAllTime" xml:space="preserve">
-    <value>Profit (All Time)</value>
+    <value>수입 (평생)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitLastWeek" xml:space="preserve">
-    <value>Profit (Last Period)</value>
+    <value>수입 (지난 주)</value>
   </data>
   <data name="itm_Enum__VehicleShowDataType_ProfitCurrentWeek" xml:space="preserve">
-    <value>Profit (Current Period)</value>
+    <value>수입 (현재)</value>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronym" xml:space="preserve">
-    <value>E16:</value>
+    <value>E16 :</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsAllTimeAcronymLegend" xml:space="preserve">
-    <value>E16 - Earnings last 16 weeks (24h for Real Time)</value>
+    <value>E16 - 지난 16주 동안 수입(실제 24시간)</value>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronym" xml:space="preserve">
-    <value>ECP:</value>
+    <value>ECP :</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsCurrentPeriodAcronymLegend" xml:space="preserve">
-    <value>ECP - Earnings current period</value>
+    <value>ECP - 현재 번 수입</value>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronym" xml:space="preserve">
-    <value>ELP:</value>
+    <value>ELP :</value>
     <comment>Must be VERY short</comment>
   </data>
   <data name="itm_lineMap_earningsLastPeriodAcronymLegend" xml:space="preserve">
-    <value>ELP - Earnings last period</value>
+    <value>ELP - 지난주 수입</value>
   </data>
   <data name="itm_lineMap_title" xml:space="preserve">
-    <value>Line stops map</value>
+    <value>노선 운영 현황</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
-    <value>Vehicle data to show</value>
+    <value>표기할 차량 데이터</value>
   </data>
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
-    <value>&lt;color=#{3}&gt;Residents: {0:N0}; Tourists: {1:N0}; {2:N0}% Bored&lt;/color&gt;</value>
+    <value>&lt;color=#{3}&gt;거주민 : {0:N0}; 관광객 : {1:N0}; {2:N0}% 탑승함&lt;/color&gt;</value>
   </data>
   <data name="itm_common_notApplicableAcronym" xml:space="preserve">
-    <value>N/A</value>
+    <value>없음</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
-    <value>Vehicles models for line selection</value>
+    <value>노선 차량 모델 관리</value>
   </data>
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
-    <value>Current line exclusive</value>
+    <value>현재 노선 전용</value>
   </data>
   <data name="itm_citySettings_title" xml:space="preserve">
-    <value>City settings</value>
+    <value>도시 설정</value>
   </data>
   <data name="itm_expressData_disableUnbunchingDescription" xml:space="preserve">
-    <value>When enabling the express lines, the buses won't unbunch in the regular stops anymore once it would be done only in terminal stops.
-You can disable the unbunching also in terminal stops to get a more fluid line dynamic.</value>
+    <value>'급행 노선' 기능을 활성화하면, 버스가 더 이상 일반 정류장에서 운행하지 않고 터미널에서만 정차합니다.
+'터미널 미쏠림현상 비활성화'를 통해 유동적인 노선 운영도 가능합니다.</value>
   </data>
   <data name="itm_expressData_disableUnbunchingTerminals" xml:space="preserve">
-    <value>Disable unbunching also in terminal stops</value>
+    <value>터미널 미쏠림현상 비활성화</value>
   </data>
   <data name="itm_expressData_expressBuses" xml:space="preserve">
-    <value>Express buses</value>
+    <value>급행 버스</value>
   </data>
   <data name="itm_expressData_expressTrams" xml:space="preserve">
-    <value>Express trams</value>
+    <value>급행 트램</value>
   </data>
   <data name="itm_expressData_expressTrolleybus" xml:space="preserve">
-    <value>Express trolleybuses</value>
+    <value>급행 트롤리버스</value>
   </data>
   <data name="itm_expressData_title" xml:space="preserve">
-    <value>Express lines</value>
+    <value>급행 노선들</value>
   </data>
   <data name="itm_statistics_clearFilters" xml:space="preserve">
-    <value>Clear filters</value>
+    <value>필터 초기화</value>
   </data>
   <data name="itm_statistics_nullSelLine" xml:space="preserve">
-    <value>&lt;color=#FF00FF&gt;--TRANSPORT LINE--&lt;/color&gt;</value>
+    <value>&lt;color=#FF00FF&gt;--대중교통 노선--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullSelStop" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL STOPS--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--모든 정거장--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_nullVehicle" xml:space="preserve">
-    <value>&lt;color=yellow&gt;--ALL VEHICLES--&lt;/color&gt;</value>
+    <value>&lt;color=yellow&gt;--모든 차량--&lt;/color&gt;</value>
     <comment>Default selection on statistics window. Please maintain the write style (when applicable)</comment>
   </data>
   <data name="itm_statistics_reloadLines" xml:space="preserve">
-    <value>Reload lines</value>
+    <value>노선 불러오기</value>
   </data>
   <data name="itm_statistics_selectLine" xml:space="preserve">
-    <value>Select line</value>
+    <value>노선 선택</value>
   </data>
   <data name="itm_statistics_stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>정거장</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatAll" xml:space="preserve">
-    <value>All vehicles and stops</value>
+    <value>모든 차량 및 정거장들</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatStops" xml:space="preserve">
-    <value>Statistics @ Stop {0}</value>
+    <value>현황 @ 정거장 {0}</value>
   </data>
   <data name="itm_statistics_subtitleTableFormatVehicles" xml:space="preserve">
-    <value>Statistics @ Vehicle {0}</value>
+    <value>현황 @ 차량 {0}</value>
   </data>
   <data name="itm_statistics_title" xml:space="preserve">
-    <value>Statistics</value>
+    <value>현황</value>
   </data>
   <data name="itm_statistics_vehicle" xml:space="preserve">
-    <value>Vehicle</value>
+    <value>차량</value>
   </data>
   <data name="itm_statisticsTable_currentLineColumnValue" xml:space="preserve">
-    <value>Since {0}</value>
+    <value>연도 {0}</value>
   </data>
   <data name="itm_statisticsTable_periodTitle" xml:space="preserve">
-    <value>Period</value>
+    <value>기간</value>
   </data>
   <data name="itm_statisticsTable_dataNotAvailableForThisFilter" xml:space="preserve">
-    <value>This data is not available in current selected filter</value>
+    <value>이 데이터는 선택한 필터에서는 사용 할 수 없습니다</value>
   </data>
   <data name="itm_statisticsTable_financeReport_balance" xml:space="preserve">
-    <value>Balance</value>
+    <value>잔고</value>
   </data>
   <data name="itm_statisticsTable_financeReport_expense" xml:space="preserve">
-    <value>Expense</value>
+    <value>지출</value>
   </data>
   <data name="itm_statisticsTable_financeReport_income" xml:space="preserve">
-    <value>Income</value>
+    <value>소득</value>
   </data>
   <data name="itm_statisticsTable_financeReport_title" xml:space="preserve">
-    <value>Financial report</value>
+    <value>재무 보고</value>
   </data>
   <data name="itm_statisticsTable_totalLast16w" xml:space="preserve">
-    <value>Total last 16 weeks</value>
+    <value>지난 16주 동안</value>
   </data>
   <data name="itm_statisticsTable_totalLast24h" xml:space="preserve">
-    <value>Total last 24h</value>
+    <value>지난 24시간 동안</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_adult" xml:space="preserve">
-    <value>Adults</value>
+    <value>성인</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_child" xml:space="preserve">
-    <value>Children</value>
+    <value>어린이</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_elder" xml:space="preserve">
-    <value>Seniors</value>
+    <value>노인</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_teen" xml:space="preserve">
-    <value>Teens</value>
+    <value>10대</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_title" xml:space="preserve">
-    <value>Passenger age report</value>
+    <value>승객 나이 보고</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>총</value>
   </data>
   <data name="itm_statisticsTable_passengerAgeReport_young" xml:space="preserve">
-    <value>Youngs</value>
+    <value>청년</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_female" xml:space="preserve">
-    <value>Females</value>
+    <value>여성</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_male" xml:space="preserve">
-    <value>Males</value>
+    <value>남성</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_title" xml:space="preserve">
-    <value>Gender Report</value>
+    <value>성별 보고</value>
   </data>
   <data name="itm_statisticsTable_passengerGenderReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>총</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_students" xml:space="preserve">
-    <value>Students</value>
+    <value>학생</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_title" xml:space="preserve">
-    <value>Students &amp; Tourists</value>
+    <value>학생 및 관광객</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>총</value>
   </data>
   <data name="itm_statisticsTable_passengerStudentsTouristsReport_tourists" xml:space="preserve">
-    <value>Tourists</value>
+    <value>관광객</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_high" xml:space="preserve">
-    <value>High Wealth</value>
+    <value>고소득층</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_low" xml:space="preserve">
-    <value>Low Wealth</value>
+    <value>저소득층</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_medium" xml:space="preserve">
-    <value>Medium Wealth</value>
+    <value>중산층</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_title" xml:space="preserve">
-    <value>Wealth Report</value>
+    <value>재산 보고</value>
   </data>
   <data name="itm_statisticsTable_passengerWealthReport_total" xml:space="preserve">
-    <value>Total</value>
+    <value>총</value>
   </data>
   <data name="itm_maintenanceData_defaultMaintenanceFormat" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (Default: {1:N0}¢/kpax)</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; (기본값 : {1:N0}¢/kpax)</value>
     <comment>{0} will be the transport type name
 {1} will be the default cost per 1000 passengers</comment>
   </data>
   <data name="itm_maintenanceData_header" xml:space="preserve">
-    <value>The maintenance cost is based in a cost in cents per passenger ratio. Higher capacities means higher costs!
-Left it at "0" to use the default cost.</value>
+    <value>유지보수 비용은 승객 비율당 비용(센트)을 기준으로 합니다.
+높은 값은은 더 높은 비용을 의미합니다!
+기본 비용으로 사용하려면 "0"으로 설정하십시오.</value>
   </data>
   <data name="itm_maintenanceData_title" xml:space="preserve">
-    <value>Maintenance costs</value>
+    <value>유지보수 비용</value>
   </data>
   <data name="itm_specialLineTools_header" xml:space="preserve">
-    <value>All line infos that (possibly) can create a line tool are available below. Use by your own risk to create special lines in these modals.
-&lt;color=red&gt;IT MAY BE NOT STABLE! BEWARE!&lt;/color&gt;</value>
+    <value>노선 도구를 통해 모든 노선 정보를 얻을 수 있습니다(아마도).
+해당 기능을 통해 특수 노선을 만드는 행위에 대한 위험을 감수해야합니다.
+&lt;color=red&gt;주의! 안정된 기능이 아님!&lt;/color&gt;</value>
   </data>
   <data name="itm_specialLineTools_title" xml:space="preserve">
-    <value>Line tools</value>
+    <value>노선 도구</value>
   </data>
   <data name="itm_common_clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>초기화</value>
   </data>
   <data name="itm_common_copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>복사</value>
   </data>
   <data name="itm_common_paste" xml:space="preserve">
-    <value>Paste</value>
+    <value>붙여넣기</value>
   </data>
   <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
-    <value>Go to maintenance screen</value>
+    <value>관리화면으로 이동</value>
   </data>
   <data name="itm_vehicleSelectWindow_assetNameOnOff" xml:space="preserve">
-    <value>Vehicle (activate/deactivate)</value>
+    <value>차량 (활성화/비활성화)</value>
   </data>
   <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
-    <value>Capacity</value>
+    <value>수용량</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
-    <value>Cost/Period</value>
+    <value>지출/비용</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_helpContent" xml:space="preserve">
-    <value>Select the assets allowed to spawn in the line in this window.
-The new selection will be used as reference when spawning new vehicles to the line.
-The vehicles in the line that aren't selected in this list will be sent to depot as soon it:
-- Reach next stop (non-road based transport types only)
-- Get emptied
-- Reach the first stop or any terminal stop (road-based modals only)
+    <value>해당 창에서 사용할 차량을 선택 할 수 있습니다.
+새 차량이 생성될 때 선택된 항목을 참고합니다.
+선택되어 있지 않은 차량은 해당 사항에 충족되면 차고지로 반환됩니다.
+- 다음 정류장 도달 시(도로 기반이 아닌 교통수단에 한함)
+- 승객 없을 시
+- 첫/마지막 정류장 도달 시(도로 기반이 교통수단에 한함)
 
-The capacity can be edited here also, the maintenance cost is calculated based in the cost for each 1000 passengers setted up at City Settings window.</value>
+수용량을 편집 할 수 있으며,
+유지 비용은 '도시 설정' 창에서 설정 한 1000명당 비용을 기준으로 책정됩니다</value>
   </data>
   <data name="itm_lineView_lineName" xml:space="preserve">
-    <value>Line name</value>
+    <value>노선 이름</value>
   </data>
   <data name="itm_lineView_removeStop" xml:space="preserve">
-    <value>&lt;color=red&gt;Remove stop&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;정류장 제거&lt;/color&gt;</value>
   </data>
   <data name="itm_lineView_setAsFirstStop" xml:space="preserve">
-    <value>Set as first stop</value>
+    <value>첫 정거장으로 설정</value>
   </data>
   <data name="itm_lineView_setAsTerminal" xml:space="preserve">
-    <value>Set as terminal</value>
+    <value>터미널로 설정</value>
   </data>
   <data name="itm_lineView_unsetAsTerminal" xml:space="preserve">
-    <value>Remove terminal</value>
+    <value>터미널 제거</value>
   </data>
   <data name="itm_generalSettings_assetsSettings" xml:space="preserve">
-    <value>Assets settings</value>
+    <value>에셋 설정</value>
   </data>
   <data name="itm_generalSettings_defaultAssetFileExportedMessage" xml:space="preserve">
-    <value>The assets settings were exported to file:
+    <value>에셋 설정 저장됨:
 &lt;color=yellow&gt;{0}&lt;/color&gt;</value>
   </data>
   <data name="itm_generalSettings_defaultAssetFileImportedMessage" xml:space="preserve">
-    <value>The asset settings were loaded successfully from default settings file.
-You may need to reload all files to see the new values being used</value>
+    <value>에셋 설정이 기본 설정 파일에 저장되었습니다.
+변경된 값을 확인하려면 다시 불러와야 될 수 있습니다.</value>
   </data>
   <data name="itm_generalSettings_defaultCityFileExportedMessage" xml:space="preserve">
-    <value>The city settings were exported to file:
+    <value>도시 설정 저장됨 :
 &lt;color=yellow&gt;{0}&lt;/color&gt;</value>
   </data>
   <data name="itm_generalSettings_defaultCityFileImportedMessage" xml:space="preserve">
-    <value>The city settings were loaded successfully from default settings file.</value>
+    <value>기본 설정값을 도시 설정에 적용 완료함.</value>
   </data>
   <data name="itm_generalSettings_defaultGeneralSettings" xml:space="preserve">
-    <value>General settings</value>
+    <value>일반 설정</value>
   </data>
   <data name="itm_generalSettings_expertMode" xml:space="preserve">
-    <value>Expert mode
-Shows advanced settings and extra windows for deep setup
-Recomended for experenced players only</value>
+    <value>전문가 모드
+고급 설정을 위한 추가 창 표시함
+숙련된 사용자만 사용할 것을 권장함</value>
   </data>
   <data name="itm_generalSettings_exportCurrentToFile" xml:space="preserve">
-    <value>Export as default</value>
+    <value>파일 내보내기</value>
   </data>
   <data name="itm_generalSettings_importCurrentFromFile" xml:space="preserve">
-    <value>Import from default</value>
+    <value>파일 가져오기</value>
   </data>
   <data name="itm_generalSettings_title" xml:space="preserve">
-    <value>General</value>
+    <value>일반</value>
   </data>
   <data name="itm_lineLogo_changeCustomLogo" xml:space="preserve">
-    <value>Change custom logo</value>
+    <value>커스텀 로고 변경</value>
   </data>
   <data name="itm_lineLogo_deleteCustomLogo" xml:space="preserve">
-    <value>&lt;color=red&gt;Remove custom logo&lt;/color&gt;</value>
+    <value>&lt;color=red&gt;커스텀 로고 제거&lt;/color&gt;</value>
   </data>
   <data name="itm_lineLogo_invalidTexture" xml:space="preserve">
-    <value>Invalid texture!</value>
+    <value>올바르지 않은 텍스처!</value>
   </data>
   <data name="itm_lineLogo_invalidTextureContent" xml:space="preserve">
-    <value>The texture must have exactly 256x256 pixels as dimensions!</value>
+    <value>텍스처 크기는 256x256 픽셀 사이즈여야 합니다!</value>
   </data>
   <data name="itm_pickALogoForLine" xml:space="preserve">
-    <value>Get a logo image for line: {0}</value>
+    <value>노선을 위한 로고 이미지 얻기 : {0}</value>
   </data>
   <data name="itm_nearLines_noNearLinesHere" xml:space="preserve">
-    <value>There are no lines around here...</value>
+    <value>이 곳 근처에 다른 노선이 없음...</value>
   </data>
   <data name="itm_nearLines_title" xml:space="preserve">
-    <value>Near lines</value>
+    <value>인근 노선</value>
   </data>
   <data name="itm_lineLogo_setCustomLogo" xml:space="preserve">
-    <value>Set custom logo</value>
+    <value>커스텀 로고 설정</value>
   </data>
   <data name="itm_lineMap_failedSettingDistrict" xml:space="preserve">
-    <value>The current stop isn't inside a district. Ensure it belongs to a district to bind its name to it.</value>
+    <value>현재 정류장이 구역 내에 있지 않습니다. 이름을 지정할 구역 내에 있는지 확인하십시오.</value>
   </data>
   <data name="itm_lineMap_failedSettingPark" xml:space="preserve">
-    <value>The current stop isn't inside a special area. Ensure it belongs to a special area to bind its name to it.</value>
+    <value>현재 정류장이 특수구역 내에 있지 않습니다. 이름을 지정할 특수구역 내에 있는지 확인하십시오.</value>
   </data>
   <data name="itm_lineMap_forceBindToBuilding" xml:space="preserve">
-    <value>Force bind stop name to building (pick)</value>
+    <value>건물 이름으로 이름 설정 중단 (선택)</value>
   </data>
   <data name="itm_lineMap_forceBindToDistrict" xml:space="preserve">
-    <value>Force bind stop name to district</value>
+    <value>구역 이름으로 이름 설정 중단</value>
   </data>
   <data name="itm_lineMap_forceBindToPark" xml:space="preserve">
-    <value>Force bind stop name to special area</value>
+    <value>특수구역 이름으로 이름 설정 중단</value>
   </data>
   <data name="itm_lineMap_forceBindToRoad" xml:space="preserve">
-    <value>Force bind stop name to road (pick)</value>
+    <value>도로 이름으로 이름 설정 중단 (선택)</value>
   </data>
   <data name="itm_lineMap_recalculateAllStopNames" xml:space="preserve">
-    <value>Recalculate all stops names bindings</value>
+    <value>모든 정류장 이름 재생성</value>
   </data>
   <data name="itm_lineMap_recalculateAutoBind" xml:space="preserve">
-    <value>Recalculate stop name bind</value>
+    <value>정류장 이름 재생성 중단</value>
   </data>
   <data name="itm_autoName_circularTemplate" xml:space="preserve">
-    <value>{0} (Circular)</value>
+    <value>{0} (원형)</value>
     <comment>Template used when a line have a single terminal set</comment>
   </data>
   <data name="itm_ctxMenuLineList_autonameAllCityLines" xml:space="preserve">
-    <value>Auto name all city lines</value>
+    <value>도시 내 모든 노선 이름 자동 짓기</value>
   </data>
   <data name="itm_ctxMenuLineList_autonameVisibleLines" xml:space="preserve">
-    <value>Auto name all visible lines</value>
+    <value>보이는 노선 이름 자동 짓기</value>
   </data>
   <data name="itm_lineMap_eraseAllCustomStopNames" xml:space="preserve">
-    <value>Erase all custom stop names</value>
+    <value>모든 커스텀 정류장 이름 삭제</value>
   </data>
   <data name="itm_depotSelectWindow_title" xml:space="preserve">
-    <value>Line depot selection</value>
+    <value>노선 차고지 선택</value>
   </data>
   <data name="itm_lineView_customLineCode" xml:space="preserve">
-    <value>Custom line code (autoname/WE)</value>
+    <value>커스텀 노선 코드 (자동이름/WE)</value>
   </data>
   <data name="itm_lineView_ignoreMandatoryStopTerminal" xml:space="preserve">
-    <value>Ignore mandatory stop at terminals (full circular)
-&lt;color=yellow&gt;NOTE:&lt;/color&gt; Vehicle unspawns only will be done when the vehicle gets organically empty</value>
+    <value>터미널에서 필수 정지 무시(완전 순환)
+&lt;color=yellow&gt;참고 :&lt;/color&gt;차량이 비어있을때만 차량이 생성되지 않습니다.</value>
   </data>
   <data name="itm_lineView_requireStartAtTerminal" xml:space="preserve">
-    <value>Require new vehicles to start line by a terminal stop</value>
+    <value>새 차량이 터미널에서 출발하도록 설정</value>
   </data>
   <data name="itm_common_goTo" xml:space="preserve">
-    <value>Go to</value>
+    <value>해당 역 위치로 이동</value>
   </data>
   <data name="itm_lineView_budgetUsingGroupTemplate" xml:space="preserve">
-    <value>Using budget group {0}. Click to reset.</value>
+    <value>{0} 그룹 유형 사용중. 초기화 하려면 클릭.</value>
   </data>
   <data name="itm_budgetCustomWindow_budgetTimetableResume" xml:space="preserve">
-    <value>Timetable resume</value>
+    <value>시간당 예산</value>
   </data>
   <data name="itm_budgetCustomWindow_budgetType" xml:space="preserve">
-    <value>Setting type</value>
+    <value>설정 유형</value>
   </data>
   <data name="itm_budgetCustomWindow_defaultGroupDescription" xml:space="preserve">
-    <value>The default group is edited in the line details window and don't support special budget rules. Select a group to use budget by hour or hour and day of week.</value>
+    <value>기본 그룹은 노선 세부 정보창에서 수정이 가능하며 특수 예산 규칙을 지원하지 않습니다.
+시간 또는 요일 별로 예산을 사용하려면 그룹을 선택하세요.</value>
   </data>
   <data name="itm_budgetCustomWindow_defaultGroupText" xml:space="preserve">
-    <value>Default game budget settings</value>
+    <value>기본값 게임 예산 설정</value>
   </data>
   <data name="itm_budgetCustomWindow_groupNameTemplate" xml:space="preserve">
-    <value>Budget group {0}</value>
+    <value>예산 그룹 {0}</value>
     <comment>{0} will be a number (1-32)</comment>
   </data>
   <data name="itm_budgetCustomWindow_groupsBudgets" xml:space="preserve">
-    <value>Group budgets' subgroups</value>
+    <value>예산 유형 하위 그룹</value>
   </data>
   <data name="itm_budgetCustomWindow_groupsEachHour" xml:space="preserve">
-    <value>Group budget subgroups per hour</value>
+    <value>시간 당 예산 유형</value>
   </data>
   <data name="itm_budgetCustomWindow_helpContent" xml:space="preserve">
-    <value>Budget groups are budgets shared between multiple lines. ITM supports up to 26 groups per transport type.
-The budget groups can have 3 different settings:
-&lt;color=yellow&gt;- Fixed:&lt;/color&gt; A fixed budget;
-&lt;color=yellow&gt;- Per hour:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer;
-&lt;color=yellow&gt;- Per hour and day of week:&lt;/color&gt; A budget based on time of the day/night cycle or RealTime timer, but can have special tables for some days of week. Makes sense to use only with RealTime.</value>
+    <value>예산 그룹은 여러 노선에 공유되는 예산입니다. ITM는 26개의 그룹을 지원합니다.
+3종류의 설정을 할 수 있습니다:
+&lt;color=yellow&gt;- 고정 :&lt;/color&gt; 고정된 예산;
+&lt;color=yellow&gt;- 매 시간 :&lt;/color&gt; 주야간 혹은 RealTime 모드를 위한 예산;
+&lt;color=yellow&gt;- 매 시간 및 요일 :&lt;/color&gt; 주야간 혹은 RealTime에 맞춘 예산, 특정 요일에 대한 특별 설정이 가능합니다. RealTime 모드에서만 사용하는것이 좋습니다.</value>
   </data>
   <data name="itm_budgetCustomWindow_linesUsingSameBudgetGroupFormat" xml:space="preserve">
-    <value>Lines using same group: {0}</value>
+    <value>같은 그룹 사용중인 노선들 : {0}</value>
     <comment>Will be on a button that will show all lines when clicked; {0} is the lines count</comment>
   </data>
   <data name="itm_budgetCustomWindow_transitionBudgetLabel" xml:space="preserve">
@@ -665,21 +669,21 @@ The budget groups can have 3 different settings:
     <comment>Used in timetable view to show the period of transition between budgets ({0} is the previous, {1} is the next budget)</comment>
   </data>
   <data name="itm_Enum__BudgetType_Fixed" xml:space="preserve">
-    <value>Fixed</value>
+    <value>고정</value>
   </data>
   <data name="itm_Enum__BudgetType_PerHour" xml:space="preserve">
-    <value>Per hour</value>
+    <value>시간 당</value>
   </data>
   <data name="itm_Enum__BudgetType_PerHourAndWeek" xml:space="preserve">
-    <value>Per hour and weekday</value>
+    <value>매 시간 및 요일</value>
   </data>
   <data name="itm_budgetCustomWindow_title" xml:space="preserve">
-    <value>Budget advanced settings (Expert)</value>
+    <value>예산 고급 설정 (전문가)</value>
   </data>
   <data name="itm_budgetCustomWindow_linesSharingGroupHeader" xml:space="preserve">
-    <value>Lines using same budget group ({0})</value>
+    <value>같은 예산 그룹 사용중인 노선들 ({0})</value>
   </data>
   <data name="itm_lineView_lineBudgetPercentToVehicles" xml:space="preserve">
-    <value>An extra vehicle is added each &lt;color=yellow&gt;{0:P1}&lt;/color&gt; of budget.</value>
+    <value>차량이 각 &lt;color=yellow&gt;{0:P1}&lt;/color&gt; 예산에 따라 추가 됩니다.</value>
   </data>
 </root>
