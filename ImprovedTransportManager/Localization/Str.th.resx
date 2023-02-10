@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="itm_linesListingWindow_balanceColumnTitle" xml:space="preserve">
-    <value>Balance</value>
+    <value>ยอดคงเหลือ</value>
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
@@ -156,7 +156,7 @@
     <value>Day:</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>Delete line</value>
+    <value>ลบเส้นทาง</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
     <value>Line Activity</value>
@@ -180,32 +180,32 @@
     <value>Disabled</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day" xml:space="preserve">
-    <value>Day</value>
+    <value>กลางวัน</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night" xml:space="preserve">
-    <value>Night</value>
+    <value>กลางคืน</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight" xml:space="preserve">
-    <value>Day and Night</value>
+    <value>กลางวันและกลางคืน</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
     <value>Disab.</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
-    <value>Day</value>
+    <value>กลางวัน</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Night_SHORT" xml:space="preserve">
-    <value>Night</value>
+    <value>กลางคืน</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_DayNight_SHORT" xml:space="preserve">
-    <value>D &amp; N</value>
+    <value>กลางวัน &amp; กลางคืน</value>
   </data>
   <data name="itm_linesListingWindow_activityColumnTitle" xml:space="preserve">
     <value>Activ.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_adultLbl" xml:space="preserve">
-    <value>Adult</value>
+    <value>ผู้ใหญ่</value>
   </data>
   <data name="itm_lineView_budgetViewBtn" xml:space="preserve">
     <value>Budget View</value>
@@ -226,7 +226,7 @@
     <value>Senior</value>
   </data>
   <data name="itm_lineView_teenLbl" xml:space="preserve">
-    <value>Teen</value>
+    <value>วัยรุ่น</value>
   </data>
   <data name="itm_lineView_thereAreFreeStops" xml:space="preserve">
     <value>&lt;color=yellow&gt;{0} of {1} stops of this line aren't charging fees due stops' district policies. The line might not have any earnings!&lt;/color&gt;</value>
