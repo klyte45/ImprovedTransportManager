@@ -132,7 +132,7 @@
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>Line Name</value>
+    <value>ชื่อเส้นทาง</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
     <value>Pass.</value>
@@ -468,10 +468,10 @@ Left it at "0" to use the default cost.</value>
     <value>Clear</value>
   </data>
   <data name="itm_common_copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>คัดลอก</value>
   </data>
   <data name="itm_common_paste" xml:space="preserve">
-    <value>Paste</value>
+    <value>วาง</value>
   </data>
   <data name="itm_goToMaintenanceCostScreen" xml:space="preserve">
     <value>Go to maintenance screen</value>
@@ -480,7 +480,7 @@ Left it at "0" to use the default cost.</value>
     <value>Vehicle (activate/deactivate)</value>
   </data>
   <data name="itm_vehicleSelectWindow_capacity" xml:space="preserve">
-    <value>Capacity</value>
+    <value>ความจุ</value>
     <comment>Must be short</comment>
   </data>
   <data name="itm_vehicleSelectWindow_costPeriod" xml:space="preserve">
@@ -545,7 +545,7 @@ Recomended for experenced players only</value>
     <value>Import from default</value>
   </data>
   <data name="itm_generalSettings_title" xml:space="preserve">
-    <value>General</value>
+    <value>ทั่วไป</value>
   </data>
   <data name="itm_lineLogo_changeCustomLogo" xml:space="preserve">
     <value>Change custom logo</value>
@@ -622,7 +622,7 @@ Recomended for experenced players only</value>
     <value>Require new vehicles to start line by a terminal stop</value>
   </data>
   <data name="itm_common_goTo" xml:space="preserve">
-    <value>Go to</value>
+    <value>ไปยัง</value>
   </data>
   <data name="itm_lineView_budgetUsingGroupTemplate" xml:space="preserve">
     <value>Using budget group {0}. Click to reset.</value>
@@ -665,10 +665,10 @@ The budget groups can have 3 different settings:
     <comment>Used in timetable view to show the period of transition between budgets ({0} is the previous, {1} is the next budget)</comment>
   </data>
   <data name="itm_Enum__BudgetType_Fixed" xml:space="preserve">
-    <value>Fixed</value>
+    <value>คงที่</value>
   </data>
   <data name="itm_Enum__BudgetType_PerHour" xml:space="preserve">
-    <value>Per hour</value>
+    <value>ต่อชั่วโมง</value>
   </data>
   <data name="itm_Enum__BudgetType_PerHourAndWeek" xml:space="preserve">
     <value>Per hour and weekday</value>
