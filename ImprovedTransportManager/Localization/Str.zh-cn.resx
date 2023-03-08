@@ -132,7 +132,7 @@
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>路线名称</value>
+    <value>线路名称</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
     <value>乘客</value>
@@ -162,7 +162,7 @@
     <value>线路启用时间</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>路线预算 (%)</value>
+    <value>线路预算 (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
     <value>线路颜色</value>
