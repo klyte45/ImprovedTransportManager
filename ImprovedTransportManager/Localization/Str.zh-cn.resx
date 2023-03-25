@@ -680,6 +680,6 @@
     <value>路线使用同一预算分组 ({0})</value>
   </data>
   <data name="itm_lineView_lineBudgetPercentToVehicles" xml:space="preserve">
-    <value>每 &lt;color=yellow&gt;{0:P1}&lt;/color&gt; 預算,额外增加一辆车。</value>
+    <value>每增加一辆载具，需要增加 &lt;color=yellow&gt;{0:P1}&lt;/color&gt; 的预算</value>
   </data>
 </root>
