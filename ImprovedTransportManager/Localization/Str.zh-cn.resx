@@ -156,7 +156,7 @@
     <value>日间：</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>删除路线</value>
+    <value>删除线路</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
     <value>线路启用时间</value>
