@@ -122,11 +122,11 @@
     <comment>Requires to be short</comment>
   </data>
   <data name="itm_linesListingWindow_budgetColumnTitle" xml:space="preserve">
-    <value>Bdgt.</value>
+    <value>งบประมาณ</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>Lines from type &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - Total transport lines in the city: {2:N0}</value>
+    <value>จากประเภทเส้นทาง &lt;color=yellow&gt;{0}&lt;/color&gt;: {1:N0} - สายการขนส่งทั้งหมดในเมือง: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
@@ -135,11 +135,11 @@
     <value>ชื่อเส้นทาง</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
-    <value>Pass.</value>
+    <value>ผู้โดยสาร</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Stops</value>
+    <value>ป้ายจอด</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
