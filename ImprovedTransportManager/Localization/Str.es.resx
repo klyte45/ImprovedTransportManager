@@ -584,7 +584,7 @@ Recomendado solo para jugadores expertos</value>
     <value>Forzar el nombre vinculado de la parada al distrito</value>
   </data>
   <data name="itm_lineMap_forceBindToPark" xml:space="preserve">
-    <value>Forzar el nombre vinculado de la parada al distrito especial</value>
+    <value>Forzar el nombre vinculado de la parada al área especial</value>
   </data>
   <data name="itm_lineMap_forceBindToRoad" xml:space="preserve">
     <value>Forzar el nombre vinculado de la parada a la carretera (seleccionar)</value>

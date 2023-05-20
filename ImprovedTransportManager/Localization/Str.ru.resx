@@ -132,14 +132,14 @@
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>Название маршрута</value>
+    <value>Название линии</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
     <value>Пасс.</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_stopsColumnTitle" xml:space="preserve">
-    <value>Остан.</value>
+    <value>Остановки</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_thereAreNoLinesInCity" xml:space="preserve">
@@ -149,7 +149,7 @@
     <value>Линии общественного транспорта</value>
   </data>
   <data name="itm_linesListingWindow_vehiclesColumnTitle" xml:space="preserve">
-    <value>ТС</value>
+    <value>Тр-т</value>
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_lineView_dayBudgetTitle" xml:space="preserve">
@@ -283,7 +283,7 @@
     <value>Карта маршрутов</value>
   </data>
   <data name="itm_lineMap_vehicleDataToShow" xml:space="preserve">
-    <value>Характеристики транспорта</value>
+    <value>Данные транспорта для отображения</value>
   </data>
   <data name="itm_lineMap_waitingTemplate" xml:space="preserve">
     <value>Недовольных&lt;/color&gt; &lt;color=#{3}&gt;Жителей: {0:N0}; Туристов: {1:N0}; {2:N0}%</value>
@@ -292,7 +292,7 @@
     <value>Н/Д</value>
   </data>
   <data name="itm_vehicleSelectWindow_title" xml:space="preserve">
-    <value>Выбор транспортного средства для маршрута</value>
+    <value>Выбор транспортных средств для маршрута</value>
   </data>
   <data name="itm_vehicleSelectWindow_defaultGroupText" xml:space="preserve">
     <value>Только для этого маршрута</value>

@@ -126,13 +126,13 @@
     <comment>Requires to be VERY short</comment>
   </data>
   <data name="itm_linesListingWindow_footerFormat" xml:space="preserve">
-    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; 线路的数量: {1:N0} - 公共交通路线总数: {2:N0}</value>
+    <value>&lt;color=yellow&gt;{0}&lt;/color&gt; 路线的数量: {1:N0} - 公共交通路线总数: {2:N0}</value>
     <comment>0 = Transport Type Name
 1 = quantity of lines in current view
 2 = Total lines created in the city</comment>
   </data>
   <data name="itm_linesListingWindow_nameColumnTitle" xml:space="preserve">
-    <value>路线名称</value>
+    <value>线路名称</value>
   </data>
   <data name="itm_linesListingWindow_passengersColumnTitle" xml:space="preserve">
     <value>乘客</value>
@@ -156,13 +156,13 @@
     <value>日间：</value>
   </data>
   <data name="itm_lineView_deleteLine" xml:space="preserve">
-    <value>删除路线</value>
+    <value>删除线路</value>
   </data>
   <data name="itm_lineView_lineActivity" xml:space="preserve">
     <value>线路启用时间</value>
   </data>
   <data name="itm_lineView_lineBudget" xml:space="preserve">
-    <value>路线预算 (%)</value>
+    <value>线路预算 (%)</value>
   </data>
   <data name="itm_lineView_lineColor" xml:space="preserve">
     <value>线路颜色</value>
@@ -680,6 +680,6 @@
     <value>路线使用同一预算分组 ({0})</value>
   </data>
   <data name="itm_lineView_lineBudgetPercentToVehicles" xml:space="preserve">
-    <value>每 &lt;color=yellow&gt;{0:P1}&lt;/color&gt; 預算,额外增加一辆车。</value>
+    <value>每增加一辆载具，需要增加 &lt;color=yellow&gt;{0:P1}&lt;/color&gt; 的预算</value>
   </data>
 </root>

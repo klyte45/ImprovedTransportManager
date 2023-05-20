@@ -189,7 +189,7 @@
     <value>주간 및 야간</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_None_SHORT" xml:space="preserve">
-    <value>비활성</value>
+    <value>비활성화</value>
   </data>
   <data name="itm_Enum__LineActivityOptions_Day_SHORT" xml:space="preserve">
     <value>주간</value>
